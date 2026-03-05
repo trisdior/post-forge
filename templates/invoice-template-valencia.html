@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice — Valencia Construction</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #333; background: #f5f5f5; padding: 20px; }
+        .invoice-container { max-width: 900px; margin: 0 auto; background: white; padding: 40px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        
+        /* Header */
+        .invoice-header { display: flex; justify-content: space-between; align-items: start; margin-bottom: 40px; border-bottom: 3px solid #1e3a8a; padding-bottom: 20px; }
+        .company-info h1 { color: #1e3a8a; font-size: 24px; margin-bottom: 8px; }
+        .company-info p { color: #666; font-size: 14px; margin: 3px 0; }
+        .invoice-meta { text-align: right; }
+        .invoice-meta div { margin: 8px 0; }
+        .invoice-meta label { color: #999; font-weight: 600; font-size: 12px; }
+        .invoice-meta span { color: #1e3a8a; font-weight: 700; font-size: 16px; }
+        
+        /* Client & Invoice Details */
+        .details-row { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin: 30px 0; }
+        .detail-section h3 { color: #1e3a8a; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+        .detail-section p { color: #333; font-size: 14px; margin: 4px 0; line-height: 1.6; }
+        
+        /* Line Items Table */
+        table { width: 100%; margin: 30px 0; border-collapse: collapse; }
+        table thead { background: #f8fafc; border-top: 2px solid #1e3a8a; border-bottom: 2px solid #1e3a8a; }
+        table th { color: #1e3a8a; font-weight: 700; padding: 12px; text-align: left; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; }
+        table td { padding: 16px 12px; border-bottom: 1px solid #e2e8f0; }
+        table tbody tr:last-child td { border-bottom: 2px solid #1e3a8a; }
+        .item-description { color: #666; font-size: 13px; }
+        .amount { text-align: right; color: #333; font-weight: 600; }
+        .text-right { text-align: right; }
+        
+        /* Totals Section */
+        .totals { display: flex; justify-content: flex-end; margin: 30px 0; }
+        .totals-box { width: 350px; }
+        .total-row { display: flex; justify-content: space-between; padding: 10px 0; font-size: 14px; }
+        .total-row label { color: #666; }
+        .total-row.subtotal label { font-weight: 600; color: #333; }
+        .total-row.tax label { font-weight: 600; color: #333; }
+        .total-row.grand-total { border-top: 2px solid #1e3a8a; padding-top: 15px; font-size: 18px; font-weight: 700; color: #1e3a8a; }
+        .total-row span { font-weight: 600; }
+        
+        /* Payment Terms & Notes */
+        .notes-section { margin-top: 40px; padding-top: 20px; border-top: 1px solid #e2e8f0; }
+        .notes-section h4 { color: #1e3a8a; font-size: 13px; font-weight: 700; text-transform: uppercase; margin-bottom: 8px; }
+        .notes-section p { color: #666; font-size: 13px; line-height: 1.6; }
+        
+        /* Footer */
+        .invoice-footer { margin-top: 50px; padding-top: 20px; border-top: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; }
+        .footer-contact { font-size: 13px; color: #666; }
+        .footer-contact strong { color: #1e3a8a; display: block; margin-bottom: 4px; }
+        .payment-status { background: #dcfce7; color: #166534; padding: 12px 20px; border-radius: 6px; font-weight: 600; font-size: 13px; text-align: right; }
+        
+        /* Print Styles */
+        @media print {
+            body { background: white; padding: 0; }
+            .invoice-container { box-shadow: none; }
+            .payment-status { background: #e0e7ff; }
+        }
+    </style>
+</head>
+<body>
+    <div class="invoice-container">
+        <!-- Header -->
+        <div class="invoice-header">
+            <div class="company-info">
+                <h1>VALENCIA CONSTRUCTION</h1>
+                <p>Chicago, IL</p>
+                <p>📞 (555) 123-4567 | 📧 hello@valenciaconstruction.com</p>
+            </div>
+            <div class="invoice-meta">
+                <div>
+                    <label>INVOICE #</label><br>
+                    <span>INV-2026-001</span>
+                </div>
+                <div style="margin-top: 15px;">
+                    <label>DATE</label><br>
+                    <span>February 19, 2026</span>
+                </div>
+                <div style="margin-top: 15px;">
+                    <label>DUE DATE</label><br>
+                    <span>March 5, 2026</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Client & Invoice Details -->
+        <div class="details-row">
+            <div class="detail-section">
+                <h3>Bill To</h3>
+                <p><strong>[Client Name]</strong></p>
+                <p>[Street Address]</p>
+                <p>[City, State ZIP]</p>
+                <p>Phone: [Client Phone]</p>
+                <p>Email: [Client Email]</p>
+            </div>
+            <div class="detail-section">
+                <h3>Project Details</h3>
+                <p><strong>Project:</strong> [Project Name]</p>
+                <p><strong>Location:</strong> [Project Address]</p>
+                <p><strong>Project ID:</strong> [Project ID]</p>
+                <p><strong>Period:</strong> [Start Date] — [End Date]</p>
+            </div>
+        </div>
+        
+        <!-- Line Items -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th style="text-align: right;">Quantity</th>
+                    <th style="text-align: right;">Unit Price</th>
+                    <th style="text-align: right;">Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <strong>[Item Name]</strong><br>
+                        <span class="item-description">[Optional: Detailed description, materials, labor breakdown]</span>
+                    </td>
+                    <td class="text-right">[Qty]</td>
+                    <td class="text-right">$[Price]</td>
+                    <td class="amount">$[Total]</td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>[Item Name]</strong><br>
+                        <span class="item-description">[Optional: Detailed description]</span>
+                    </td>
+                    <td class="text-right">[Qty]</td>
+                    <td class="text-right">$[Price]</td>
+                    <td class="amount">$[Total]</td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>[Item Name]</strong><br>
+                        <span class="item-description">[Optional: Detailed description]</span>
+                    </td>
+                    <td class="text-right">[Qty]</td>
+                    <td class="text-right">$[Price]</td>
+                    <td class="amount">$[Total]</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <!-- Totals -->
+        <div class="totals">
+            <div class="totals-box">
+                <div class="total-row subtotal">
+                    <label>SUBTOTAL</label>
+                    <span>$[Amount]</span>
+                </div>
+                <div class="total-row">
+                    <label>Materials Tax (6.25%)</label>
+                    <span>$[Amount]</span>
+                </div>
+                <div class="total-row tax">
+                    <label>Labor Tax (as applicable)</label>
+                    <span>$[Amount]</span>
+                </div>
+                <div class="total-row">
+                    <label>Discount Applied</label>
+                    <span>-$[Amount]</span>
+                </div>
+                <div class="total-row grand-total">
+                    <label>TOTAL DUE</label>
+                    <span>$[Amount]</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Notes & Terms -->
+        <div class="notes-section">
+            <h4>Payment Terms</h4>
+            <p><strong>Due Date:</strong> March 5, 2026 (Net 14 days from invoice date)</p>
+            <p><strong>Payment Methods:</strong> ACH transfer, credit card (3% fee), check, or cash</p>
+            <p><strong>Late Payments:</strong> 1.5% monthly interest on overdue balances after due date</p>
+            
+            <h4 style="margin-top: 15px;">Project Notes</h4>
+            <p>[Optional notes about the project, change orders, warranty details, or special terms]</p>
+            
+            <h4 style="margin-top: 15px;">Thank You!</h4>
+            <p>We appreciate your business. If you have any questions about this invoice, please contact us.</p>
+        </div>
+        
+        <!-- Footer -->
+        <div class="invoice-footer">
+            <div class="footer-contact">
+                <strong>Valencia Construction</strong>
+                📞 (555) 123-4567<br>
+                📧 hello@valenciaconstruction.com<br>
+                🌐 valenciaconstructionchi.com
+            </div>
+            <div class="payment-status">✓ AWAITING PAYMENT</div>
+        </div>
+    </div>
+</body>
+</html>

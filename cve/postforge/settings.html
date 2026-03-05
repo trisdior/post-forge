@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>PostForge - Settings</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0a0f;--surface:#12121a;--card:#16161f;--border:#1e1e2e;--text:#f0f0f5;--muted:#8888a0;--accent:#7c3aed;--accent2:#a855f7;--green:#10b981;--cyan:#06b6d4;--pink:#ec4899;--red:#ef4444;--orange:#f59e0b}
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+.nav{background:rgba(10,10,15,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.logo{font-size:20px;font-weight:900}.logo span{background:linear-gradient(135deg,var(--accent2),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.tabs{display:flex;gap:4px}.tab{padding:8px 16px;border-radius:8px;font-size:13px;font-weight:600;color:var(--muted);text-decoration:none;transition:all 0.2s}.tab:hover{color:var(--text);background:rgba(255,255,255,0.05)}.tab.active{color:var(--text);background:rgba(124,58,237,0.15)}
+.container{max-width:800px;margin:0 auto;padding:48px 24px}
+h1{font-size:28px;font-weight:900;margin-bottom:8px}
+.sub{color:var(--muted);font-size:15px;margin-bottom:40px}
+.section{margin-bottom:48px}
+.section h2{font-size:18px;font-weight:700;margin-bottom:20px;display:flex;align-items:center;gap:8px}
+.platform-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px 24px;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;transition:all 0.3s}
+.platform-card:hover{border-color:rgba(124,58,237,0.2)}
+.platform-info{display:flex;align-items:center;gap:16px}
+.platform-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px}
+.platform-icon.ig{background:linear-gradient(135deg,rgba(236,72,153,0.15),rgba(168,85,247,0.1))}
+.platform-icon.fb{background:rgba(59,130,246,0.12)}
+.platform-icon.tw{background:rgba(168,85,247,0.12)}
+.platform-icon.li{background:rgba(6,182,212,0.12)}
+.platform-icon.tt{background:rgba(16,185,129,0.12)}
+.platform-name{font-size:15px;font-weight:600}
+.platform-status{font-size:12px;margin-top:2px}
+.status-connected{color:var(--green)}
+.status-disconnected{color:var(--muted)}
+.connect-btn{padding:8px 20px;border-radius:8px;font-size:13px;font-weight:600;border:none;cursor:pointer;font-family:inherit;transition:all 0.2s}
+.connect-btn.connect{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff}
+.connect-btn.connect:hover{transform:translateY(-1px);box-shadow:0 4px 15px rgba(124,58,237,0.3)}
+.connect-btn.disconnect{background:transparent;border:1px solid var(--border);color:var(--muted)}
+.connect-btn.disconnect:hover{border-color:var(--red);color:var(--red)}
+.profile-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px}
+.profile-row{display:flex;align-items:center;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--border)}
+.profile-row:last-child{border-bottom:none}
+.profile-label{font-size:13px;color:var(--muted)}
+.profile-value{font-size:14px;font-weight:600}
+.plan-badge{padding:4px 12px;border-radius:6px;font-size:12px;font-weight:700}
+.plan-free{background:rgba(124,58,237,0.15);color:var(--accent2)}
+.plan-pro{background:rgba(16,185,129,0.15);color:var(--green)}
+.upgrade-btn{display:block;width:100%;padding:14px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-size:15px;font-weight:600;border:none;cursor:pointer;font-family:inherit;margin-top:24px;transition:all 0.3s;box-shadow:0 0 20px rgba(124,58,237,0.2)}
+.upgrade-btn:hover{box-shadow:0 0 30px rgba(124,58,237,0.4);transform:translateY(-2px)}
+.auto-section{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px}
+.auto-row{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+.auto-label div:first-child{font-size:14px;font-weight:600}
+.auto-label div:last-child{font-size:12px;color:var(--muted);margin-top:2px}
+.toggle{width:44px;height:24px;border-radius:12px;background:var(--border);position:relative;cursor:pointer;transition:background 0.3s}
+.toggle.on{background:var(--accent)}
+.toggle::after{content:'';position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;transition:transform 0.3s}
+.toggle.on::after{transform:translateX(20px)}
+</style>
+</head>
+<body>
+<div class="nav"><div class="logo">post<span>forge</span></div><div class="tabs"><a href="/app" class="tab">Create</a><a href="/agent" class="tab">My Agent</a><a href="/calendar" class="tab">Calendar</a><a href="/analytics" class="tab">Analytics</a><a href="/clips" class="tab">Clips</a><a href="/autopilot" class="tab">Auto-Pilot</a><a href="/settings" class="tab active">Settings</a></div><div></div></div>
+<div class="container">
+<h1>Settings</h1>
+<p class="sub">Manage your account, connect platforms, and configure automation.</p>
+
+<div class="section">
+<h2>Connected Platforms</h2>
+<div class="platform-card" data-platform="instagram"><div class="platform-info"><div class="platform-icon ig">&#128248;</div><div><div class="platform-name">Instagram</div><div class="platform-status status-disconnected">Not connected</div></div></div><button class="connect-btn connect">Connect</button></div>
+<div class="platform-card" data-platform="facebook"><div class="platform-info"><div class="platform-icon fb">&#128216;</div><div><div class="platform-name">Facebook</div><div class="platform-status status-disconnected">Not connected</div></div></div><button class="connect-btn connect">Connect</button></div>
+<div class="platform-card" data-platform="twitter"><div class="platform-info"><div class="platform-icon tw">&#120143;</div><div><div class="platform-name">X (Twitter)</div><div class="platform-status status-disconnected">Not connected</div></div></div><button class="connect-btn connect">Connect</button></div>
+<div class="platform-card" data-platform="linkedin"><div class="platform-info"><div class="platform-icon li">&#128188;</div><div><div class="platform-name">LinkedIn</div><div class="platform-status status-disconnected">Not connected</div></div></div><button class="connect-btn connect">Connect</button></div>
+<div class="platform-card"><div class="platform-info"><div class="platform-icon tt">&#127925;</div><div><div class="platform-name">TikTok</div><div class="platform-status status-disconnected">Coming soon</div></div></div><button class="connect-btn connect" disabled style="opacity:0.4">Coming soon</button></div>
+</div>
+
+<div class="section">
+<h2>Automation</h2>
+<div class="auto-section">
+<div class="auto-row"><div class="auto-label"><div>Auto-pilot mode</div><div>AI generates and posts content on your schedule</div></div><div class="toggle" onclick="this.classList.toggle('on')"></div></div>
+<div class="auto-row"><div class="auto-label"><div>Smart scheduling</div><div>Post at optimal times based on your audience</div></div><div class="toggle on" onclick="this.classList.toggle('on')"></div></div>
+<div class="auto-row"><div class="auto-label"><div>Auto-hashtags</div><div>AI adds trending and relevant hashtags</div></div><div class="toggle on" onclick="this.classList.toggle('on')"></div></div>
+<div class="auto-row"><div class="auto-label"><div>Approval required</div><div>Review posts before they go live</div></div><div class="toggle on" onclick="this.classList.toggle('on')"></div></div>
+<div class="auto-row"><div class="auto-label"><div>Cross-post</div><div>Automatically adapt and post to all connected platforms</div></div><div class="toggle" onclick="this.classList.toggle('on')"></div></div>
+</div>
+</div>
+
+<div class="section">
+<h2>Account</h2>
+<div class="profile-card">
+<div class="profile-row"><span class="profile-label">Email</span><span class="profile-value" id="user-email">-</span></div>
+<div class="profile-row"><span class="profile-label">Plan</span><span class="profile-value"><span class="plan-badge plan-free" id="user-plan">FREE</span></span></div>
+<div class="profile-row"><span class="profile-label">Posts used this month</span><span class="profile-value" id="user-usage">0 / 5</span></div>
+<div class="profile-row"><span class="profile-label">Member since</span><span class="profile-value" id="user-since">-</span></div>
+</div>
+<button class="upgrade-btn" id="upgrade-btn" onclick="upgrade('pro')">Upgrade to Pro - $49/mo</button>
+</div>
+
+<div class="section">
+<h2>&#x1F9E0; Agent Memory</h2>
+<div class="profile-card">
+<div class="profile-row"><span class="profile-label">Business Name</span><span class="profile-value" id="agent-biz">-</span></div>
+<div class="profile-row"><span class="profile-label">Total Posts Created</span><span class="profile-value" id="agent-posts">0</span></div>
+<div class="profile-row"><span class="profile-label">Queue Size</span><span class="profile-value" id="agent-queue">0</span></div>
+<div class="profile-row"><span class="profile-label">Learnings Stored</span><span class="profile-value" id="agent-learnings">0</span></div>
+</div>
+<button class="upgrade-btn" style="background:linear-gradient(135deg,var(--red),var(--pink));box-shadow:0 0 20px rgba(239,68,68,0.2)" onclick="if(confirm('This will erase your agent memory. Are you sure?'))resetAgent()">Reset Agent Memory</button>
+</div>
+
+<div class="section">
+<h2 style="color:var(--red)">Danger Zone</h2>
+<div class="profile-card">
+<div class="profile-row"><span class="profile-label">Delete Account</span><button class="connect-btn disconnect" onclick="alert('Contact support@postforge.com to delete your account.')">Delete</button></div>
+</div>
+</div>
+</div>
+<script>
+var token=localStorage.getItem('pf_token');
+var userId='user123'; // In production, get from token payload
+if(!token)location='/login';
+
+async function loadUser(){
+  try{
+    var r=await fetch('/api/me',{headers:{'Authorization':'Bearer '+token}});var u=await r.json();
+    if(u.email){
+      document.getElementById('user-email').textContent=u.email;
+      document.getElementById('user-since').textContent=new Date(u.created).toLocaleDateString();
+    }
+    // Load plan
+    var p=await fetch('/api/plan',{headers:{'Authorization':'Bearer '+token}});var pd=await p.json();
+    var planEl=document.getElementById('user-plan');
+    var usageEl=document.getElementById('user-usage');
+    var btnEl=document.getElementById('upgrade-btn');
+    planEl.textContent=(pd.plan||'free').toUpperCase();
+    var used=u.usage?u.usage.posts_generated:0;
+    if(pd.plan==='growth'){planEl.className='plan-badge';planEl.style.cssText='background:rgba(16,185,129,0.15);color:var(--green)';usageEl.textContent=used+' / 50';btnEl.textContent='Upgrade to Pro - $49/mo';btnEl.onclick=function(){upgrade('pro')}}
+    else if(pd.plan==='pro'){planEl.className='plan-badge plan-pro';usageEl.textContent=used+' / 150';btnEl.textContent='Upgrade to Business - $99/mo';btnEl.onclick=function(){upgrade('business')}}
+    else if(pd.plan==='business'){planEl.className='plan-badge plan-pro';usageEl.textContent=used+' / 500';btnEl.style.display='none'}
+    else{usageEl.textContent=used+' / 10';btnEl.textContent='Upgrade to Growth - $19/mo';btnEl.onclick=function(){upgrade('growth')}}
+  }catch(e){}
+  // Load agent info
+  try{
+    var a=await fetch('/api/agent',{headers:{'Authorization':'Bearer '+token}});var ad=await a.json();
+    if(ad.success){
+      document.getElementById('agent-biz').textContent=(ad.agent.business&&ad.agent.business.name)||'Not set';
+      document.getElementById('agent-posts').textContent=ad.agent.totalPosts||0;
+      document.getElementById('agent-queue').textContent=ad.agent.queueSize||0;
+      document.getElementById('agent-learnings').textContent=(ad.agent.learnings||[]).length;
+    }
+  }catch(e){}
+  // Load social connections
+  loadSocialStatus();
+}
+
+async function loadSocialStatus(){
+  try{
+    var r=await fetch('/api/social/status?userId='+userId);
+    var d=await r.json();
+    if(d.connections){
+      var platforms=['twitter','instagram','linkedin','facebook'];
+      platforms.forEach(function(p){
+        var card=document.querySelector('[data-platform="'+p+'"]');
+        if(!card)return;
+        var status=d.connections[p];
+        var statusEl=card.querySelector('.platform-status');
+        var btn=card.querySelector('.connect-btn');
+        if(status.connected){
+          statusEl.textContent='Connected: '+status.accountInfo.username||status.accountInfo.name||'Account';
+          statusEl.className='platform-status status-connected';
+          btn.textContent='Disconnect';
+          btn.className='connect-btn disconnect';
+          btn.onclick=function(){disconnectPlatform(p)};
+        }else{
+          statusEl.textContent='Not connected';
+          statusEl.className='platform-status status-disconnected';
+          btn.textContent='Connect';
+          btn.className='connect-btn connect';
+          btn.onclick=function(){connectPlatform(p)};
+        }
+      });
+    }
+  }catch(e){console.error('Failed to load social status:',e);}
+}
+
+async function upgrade(plan){
+  try{
+    var r=await fetch('/api/checkout',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+token},body:JSON.stringify({plan:plan})});
+    var d=await r.json();
+    if(d.url){window.location=d.url}
+    else{alert(d.error||'Checkout not available yet. Coming soon!')}
+  }catch(e){alert('Payments coming soon!')}
+}
+
+async function connectPlatform(platform){
+  try{
+    var r=await fetch('/api/social/auth/'+platform+'?userId='+userId);
+    var d=await r.json();
+    if(d.error){alert('Error: '+d.error);return;}
+    if(d.authUrl){window.location=d.authUrl}
+  }catch(e){alert('Failed to connect '+platform+': '+e.message)}
+}
+
+async function disconnectPlatform(platform){
+  if(!confirm('Disconnect '+platform+'? Posts will no longer auto-post to this platform.')){return;}
+  try{
+    var r=await fetch('/api/social/disconnect/'+platform,{method:'DELETE',headers:{'Content-Type':'application/json'},body:JSON.stringify({userId:userId})});
+    var d=await r.json();
+    if(d.success){alert('Disconnected from '+platform);loadSocialStatus()}
+    else{alert('Failed to disconnect: '+(d.error||'Unknown error'))}
+  }catch(e){alert('Disconnect failed: '+e.message)}
+}
+
+// Check for OAuth callback
+(function(){
+  var params=new URLSearchParams(window.location.search);
+  if(params.get('connected')){
+    var platform=params.get('connected');
+    alert('Successfully connected to '+platform+'!');
+    window.history.replaceState({},'','/settings');
+    loadSocialStatus();
+  }
+})();
+
+loadUser();
+</script>
+</body>
+</html>
+
+

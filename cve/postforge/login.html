@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PostForge â€” Sign In</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0f; --surface: #12121a; --border: #1e1e2e; --text: #f0f0f5;
+      --muted: #8888a0; --accent: #7c3aed; --accent-hover: #7c3aed; --green: #22c55e; --red: #ef4444;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+    .auth-container { position: relative; z-index: 1; width: 100%; max-width: 400px; padding: 24px; }
+    .auth-logo { text-align: center; font-size: 24px; font-weight: 800; margin-bottom: 40px; }
+    .auth-logo span { background: linear-gradient(135deg, #a855f7, #06b6d4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .auth-card { background: #16161f; border: 1px solid var(--border); border-radius: 16px; padding: 32px; }
+    .auth-card h2 { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+    .auth-card .sub { color: var(--muted); font-size: 14px; margin-bottom: 24px; }
+    .field { margin-bottom: 16px; }
+    .field label { display: block; font-size: 13px; font-weight: 600; color: var(--muted); margin-bottom: 6px; }
+    .field input {
+      width: 100%; background: var(--bg); border: 1px solid var(--border); border-radius: 8px;
+      padding: 12px 14px; color: var(--text); font-size: 14px; font-family: inherit; outline: none;
+      transition: border-color 0.2s;
+    }
+    .field input:focus { border-color: var(--accent); }
+    .field input::placeholder { color: #52525b; }
+    .auth-btn {
+      width: 100%; background: linear-gradient(135deg, #7c3aed, #a855f7); color: #fff; border: none; padding: 14px; box-shadow: 0 0 20px rgba(124,58,237,0.3);
+      border-radius: 10px; font-size: 15px; font-weight: 600; font-family: inherit;
+      cursor: pointer; transition: all 0.2s; margin-top: 8px;
+    }
+    .auth-btn:hover { background: var(--accent-hover); }
+    .auth-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .auth-switch { text-align: center; margin-top: 20px; font-size: 14px; color: var(--muted); }
+    .auth-switch a { color: var(--accent); text-decoration: none; font-weight: 600; }
+    .auth-switch a:hover { text-decoration: underline; }
+    .error-msg { color: var(--red); font-size: 13px; margin-top: 8px; display: none; }
+    .error-msg.active { display: block; }
+    .divider { display: flex; align-items: center; gap: 12px; margin: 20px 0; color: #52525b; font-size: 12px; }
+    .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    .guest-btn {
+      width: 100%; background: transparent; border: 1px solid var(--border); color: var(--muted);
+      padding: 12px; border-radius: 10px; font-size: 14px; font-weight: 500; font-family: inherit;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .guest-btn:hover { border-color: var(--muted); color: var(--text); }
+  </style>
+</head>
+<body>
+<div style="position:fixed;top:0;left:0;right:0;bottom:0;z-index:0;background-image:linear-gradient(rgba(124,58,237,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(124,58,237,0.03) 1px,transparent 1px);background-size:60px 60px;pointer-events:none"></div>
+<div style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;z-index:0;background:radial-gradient(circle,rgba(124,58,237,0.1) 0%,transparent 70%);pointer-events:none"></div>
+  <div class="auth-container">
+    <div class="auth-logo">post<span>forge</span></div>
+
+    <!-- SIGNUP -->
+    <div class="auth-card" id="signup-form">
+      <h2>Create your account</h2>
+      <p class="sub">Start generating content for free.</p>
+      <div class="field">
+        <label>Email</label>
+        <input type="email" id="s-email" placeholder="you@company.com">
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <input type="password" id="s-pass" placeholder="At least 6 characters">
+      </div>
+      <div class="field">
+        <label>Business Name (optional)</label>
+        <input type="text" id="s-biz" placeholder="Your business name">
+      </div>
+      <p class="error-msg" id="s-error"></p>
+      <button class="auth-btn" onclick="doSignup()">Create account â€” it's free</button>
+      <div class="auth-switch">Already have an account? <a href="#" onclick="showLogin()">Sign in</a></div>
+      <div class="divider">or</div>
+      <button class="guest-btn" onclick="window.location='/app'">Continue without account</button>
+    </div>
+
+    <!-- LOGIN -->
+    <div class="auth-card" id="login-form" style="display:none;">
+      <h2>Welcome back</h2>
+      <p class="sub">Sign in to your PostForge account.</p>
+      <div class="field">
+        <label>Email</label>
+        <input type="email" id="l-email" placeholder="you@company.com">
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <input type="password" id="l-pass" placeholder="Your password">
+      </div>
+      <p class="error-msg" id="l-error"></p>
+      <button class="auth-btn" onclick="doLogin()">Sign in</button>
+      <div class="auth-switch">Don't have an account? <a href="#" onclick="showSignup()">Create one</a></div>
+    </div>
+  </div>
+
+  <script>
+    function showLogin() { document.getElementById('signup-form').style.display='none'; document.getElementById('login-form').style.display='block'; }
+    function showSignup() { document.getElementById('login-form').style.display='none'; document.getElementById('signup-form').style.display='block'; }
+
+    async function doSignup() {
+      var err = document.getElementById('s-error');
+      err.classList.remove('active');
+      try {
+        var res = await fetch('/api/signup', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email: document.getElementById('s-email').value,
+            password: document.getElementById('s-pass').value,
+            businessName: document.getElementById('s-biz').value
+          })
+        });
+        var data = await res.json();
+        if (data.success) {
+          localStorage.setItem('pf_token', data.token);
+          localStorage.setItem('pf_user', JSON.stringify(data.user));
+          window.location = '/app';
+        } else {
+          err.textContent = data.error;
+          err.classList.add('active');
+        }
+      } catch(e) {
+        err.textContent = 'Connection error. Try again.';
+        err.classList.add('active');
+      }
+    }
+
+    async function doLogin() {
+      var err = document.getElementById('l-error');
+      err.classList.remove('active');
+      try {
+        var res = await fetch('/api/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email: document.getElementById('l-email').value,
+            password: document.getElementById('l-pass').value
+          })
+        });
+        var data = await res.json();
+        if (data.success) {
+          localStorage.setItem('pf_token', data.token);
+          localStorage.setItem('pf_user', JSON.stringify(data.user));
+          window.location = '/app';
+        } else {
+          err.textContent = data.error;
+          err.classList.add('active');
+        }
+      } catch(e) {
+        err.textContent = 'Connection error. Try again.';
+        err.classList.add('active');
+      }
+    }
+
+    // If already logged in, redirect
+    if (localStorage.getItem('pf_token')) window.location = '/app';
+  </script>
+</body>
+</html>
+

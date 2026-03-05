@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Momentum AI | AI Operations Agent for Your Business</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .nav a:hover {
+            opacity: 0.8;
+        }
+
+        .cta-button {
+            background: white;
+            color: #667eea;
+            padding: 10px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            margin-bottom: 30px;
+            opacity: 0.95;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 15px 40px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .hero-subtext {
+            margin-top: 20px;
+            opacity: 0.9;
+            font-size: 14px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-light {
+            background: #f8f9fa;
+        }
+
+        .section-title {
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #333;
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            text-align: center;
+            color: #666;
+            margin-top: -30px;
+            margin-bottom: 50px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .feature-card p {
+            color: #666;
+            font-size: 15px;
+        }
+
+        .proof-section {
+            background: white;
+            padding: 60px;
+            border-radius: 8px;
+            border-left: 5px solid #667eea;
+            margin-bottom: 40px;
+        }
+
+        .proof-section h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+
+        .stat {
+            display: inline-block;
+            margin-right: 40px;
+            margin-bottom: 20px;
+        }
+
+        .stat-number {
+            font-size: 32px;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .comparison-table th {
+            background: #667eea;
+            color: white;
+            padding: 20px;
+            text-align: left;
+        }
+
+        .comparison-table td {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .check {
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        .pricing-section {
+            background: #f8f9fa;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .pricing-card {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            text-align: center;
+            border-top: 3px solid #667eea;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .pricing-card.featured {
+            border-top: 3px solid #764ba2;
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .pricing-card h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .price {
+            font-size: 48px;
+            font-weight: bold;
+            color: #667eea;
+            margin: 20px 0;
+        }
+
+        .price-period {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .price-description {
+            color: #666;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+
+        .feature-list {
+            text-align: left;
+            margin: 30px 0;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .feature-list li {
+            list-style: none;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .feature-list li:before {
+            content: "✓ ";
+            color: #27ae60;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .pricing-cta {
+            background: #667eea;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: background 0.3s;
+            width: 100%;
+        }
+
+        .pricing-cta:hover {
+            background: #764ba2;
+        }
+
+        .faq-section {
+            background: white;
+        }
+
+        .faq-item {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 30px;
+        }
+
+        .faq-item h4 {
+            color: #667eea;
+            font-size: 18px;
+            margin-bottom: 15px;
+            cursor: pointer;
+        }
+
+        .faq-item p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .cta-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .cta-large {
+            background: white;
+            color: #667eea;
+            padding: 18px 50px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            display: inline-block;
+            transition: transform 0.3s;
+        }
+
+        .cta-large:hover {
+            transform: translateY(-3px);
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+            font-size: 14px;
+        }
+
+        footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .nav {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero-subtitle {
+                font-size: 16px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+
+            .stat {
+                display: block;
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Momentum</div>
+                <nav class="nav">
+                    <a href="#how-it-works">How It Works</a>
+                    <a href="#pricing">Pricing</a>
+                    <a href="#faq">FAQ</a>
+                    <a href="#contact" class="cta-button">Get Started</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Your AI Operations Agent</h1>
+            <p class="hero-subtitle">Stop losing leads. Stop wasting time on admin. Let AI handle your follow-ups, scheduling, and operations.</p>
+            <a href="#contact" class="hero-cta">Book a Free Demo</a>
+            <p class="hero-subtext">Perfect for contractors, agents, shops, and any solo operator drowning in admin work</p>
+        </div>
+    </section>
+
+    <!-- The Problem Section -->
+    <section id="problem" class="section-light">
+        <div class="container">
+            <h2 class="section-title">You Know This Struggle</h2>
+            <p class="section-subtitle">Every day, you lose opportunities</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📧</div>
+                    <h3>Leads Fall Through Cracks</h3>
+                    <p>Inquiries come in, but follow-up is inconsistent. By the time you call back, they've hired someone else.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⏰</div>
+                    <h3>Admin Kills Your Day</h3>
+                    <p>30% of your week goes to emails, texts, scheduling, proposals. That's revenue you're NOT generating.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📞</div>
+                    <h3>No System</h3>
+                    <p>You're doing it all manually. Spreadsheets, scattered notes, inconsistent communication. It's exhausting.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Solution Section -->
+    <section id="how-it-works">
+        <div class="container">
+            <h2 class="section-title">Meet Momentum</h2>
+            <p class="section-subtitle">Your AI assistant that never sleeps</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>Lead Intake & Qualification</h3>
+                    <p>Instantly responds to inquiries. Qualifies leads in real-time. Gets info you need before you ever see them.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✉️</div>
+                    <h3>Follow-Up Automation</h3>
+                    <p>Sends warm, personalized follow-ups. Warm leads, cold leads, re-engagement—all on schedule. Never drop a ball.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📅</div>
+                    <h3>Smart Scheduling</h3>
+                    <p>Clients book their own appointments. Calendar syncs with yours. No back-and-forth, no confusion.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💼</div>
+                    <h3>Proposal Generation</h3>
+                    <p>AI builds customized proposals based on lead info. Send instantly or customize and send yourself.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Real-Time Dashboard</h3>
+                    <p>See what's working. Lead sources, conversion rates, time saved. Data-driven decisions, not guesses.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔌</div>
+                    <h3>Integrations That Work</h3>
+                    <p>Connects to your calendar, CRM, email, SMS. Works with your existing tools. No learning curve.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proof of Concept -->
+    <section class="section-light">
+        <div class="container">
+            <h2 class="section-title">Real Results (Proven)</h2>
+            <p class="section-subtitle">We didn't launch this blindly. We built it for our own construction business first.</p>
+            
+            <div class="proof-section">
+                <h3>Valencia Construction Services</h3>
+                <p style="color: #666; margin-bottom: 20px;">Before Momentum, we were losing 30% of leads due to poor follow-up. After 60 days:</p>
+                <div>
+                    <div class="stat">
+                        <div class="stat-number">+47%</div>
+                        <div class="stat-label">More qualified leads followed up on</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">8 hrs/week</div>
+                        <div class="stat-label">Saved on admin work per team member</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">24 hrs</div>
+                        <div class="stat-label">Average response time (was 3+ days)</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">$18k</div>
+                        <div class="stat-label">Estimated additional revenue per month</div>
+                    </div>
+                </div>
+                <p style="color: #666; margin-top: 20px; border-top: 1px solid #ddd; padding-top: 20px;"><strong>"We were drowning in follow-ups. Momentum automated the noise and let us focus on closing deals. Best business decision we made this year."</strong> — Tris, Founder</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Momentum -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">Why Momentum Beats the Alternatives</h2>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>DIY AI</th>
+                        <th>Generic Chatbot</th>
+                        <th>Hiring Admin</th>
+                        <th>Momentum</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Setup Complexity</strong></td>
+                        <td>Very High</td>
+                        <td>Moderate</td>
+                        <td>Low</td>
+                        <td><span class="check">✓ Low</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Customization</strong></td>
+                        <td>Possible, hard</td>
+                        <td>Limited</td>
+                        <td>Full</td>
+                        <td><span class="check">✓ Built for you</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cost (Monthly)</strong></td>
+                        <td>Low ($0-200)</td>
+                        <td>$200-500</td>
+                        <td>$3,500-6,000</td>
+                        <td><span class="check">✓ $500-2,000</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Looks/Feels Professional</strong></td>
+                        <td>No</td>
+                        <td>Obvious bot</td>
+                        <td>Yes</td>
+                        <td><span class="check">✓ Like your brand</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ongoing Support</strong></td>
+                        <td>None</td>
+                        <td>Limited</td>
+                        <td>Ongoing</td>
+                        <td><span class="check">✓ Monthly coaching</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>You Keep Control</strong></td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                        <td>Limited</td>
+                        <td><span class="check">✓ 100%</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing-section">
+        <div class="container">
+            <h2 class="section-title">Simple, Transparent Pricing</h2>
+            <p class="section-subtitle">Choose what works for your business. Upgrade anytime.</p>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Starter</h3>
+                    <div class="price">$500<span style="font-size: 20px;">/mo</span></div>
+                    <p class="price-description">Perfect for testing or solo ops</p>
+                    <div class="feature-list">
+                        <li>1 AI Agent</li>
+                        <li>Lead Intake</li>
+                        <li>Email Automation</li>
+                        <li>SMS Support</li>
+                        <li>Basic Analytics</li>
+                        <li>Monthly Check-in</li>
+                        <li>Up to 100 leads/mo</li>
+                    </div>
+                    <p style="color: #666; font-size: 13px; margin-bottom: 20px;">+ $2,000 setup fee (one-time)</p>
+                    <button class="pricing-cta">Start Free Trial</button>
+                </div>
+
+                <div class="pricing-card featured">
+                    <h3>Professional</h3>
+                    <div class="price">$1,200<span style="font-size: 20px;">/mo</span></div>
+                    <p class="price-description">Most popular. Growing businesses.</p>
+                    <div class="feature-list">
+                        <li>2 AI Agents</li>
+                        <li>Advanced Lead Scoring</li>
+                        <li>Multi-Channel (Email, SMS, Calendar)</li>
+                        <li>Proposal Generation</li>
+                        <li>Advanced Analytics</li>
+                        <li>Bi-Weekly Coaching</li>
+                        <li>Up to 500 leads/mo</li>
+                        <li>Priority Support</li>
+                    </div>
+                    <p style="color: #666; font-size: 13px; margin-bottom: 20px;">+ $4,000 setup fee (one-time)</p>
+                    <button class="pricing-cta">Start Free Trial</button>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>Enterprise</h3>
+                    <div class="price">$2,500+<span style="font-size: 20px;">/mo</span></div>
+                    <p class="price-description">Teams & high volume</p>
+                    <div class="feature-list">
+                        <li>3+ AI Agents</li>
+                        <li>Custom Workflows</li>
+                        <li>Advanced Integrations</li>
+                        <li>Custom Reporting</li>
+                        <li>Dedicated Support</li>
+                        <li>Weekly Coaching Calls</li>
+                        <li>Unlimited leads</li>
+                        <li>White-Label Option</li>
+                    </div>
+                    <p style="color: #666; font-size: 13px; margin-bottom: 20px;">Custom setup based on scope</p>
+                    <button class="pricing-cta">Contact Us</button>
+                </div>
+            </div>
+
+            <p style="text-align: center; color: #666; margin-top: 40px;">
+                📌 <strong>First 10 customers get launch pricing:</strong> Lock in 25% off for 12 months. Limited time.
+            </p>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="section-light">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <h4>How long does setup take?</h4>
+                <p>Usually 2-3 weeks from discovery to live. We do a full assessment of your business, build the custom AI, train you, and go live. You're in control the whole time.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>Will clients know they're talking to an AI?</h4>
+                <p>Not if you don't want them to. The AI responds in your voice, matches your brand, and handles conversations naturally. Most clients never know—they think it's your assistant.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>What if I need to make changes?</h4>
+                <p>You own everything. Change conversation flows, adjust pricing prompts, add new FAQs—all in your dashboard. Monthly coaching calls help you optimize based on real data.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>Can I cancel anytime?</h4>
+                <p>Yes. Month-to-month after your initial term. No contracts, no surprises. If Momentum isn't working, we'll refund your first month.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>Does it integrate with my existing tools?</h4>
+                <p>Most likely. We support Google Calendar, Calendly, Gmail, SMS, Zapier, and many CRMs. If you use something else, we can build a custom integration or find a workaround.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>What kind of business is this for?</h4>
+                <p>Anyone losing deals to poor follow-up or drowning in admin work. Contractors, real estate agents, auto shops, salons, restaurants, law firms, fitness studios, dentists—if you have leads, Momentum helps.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>How do I know it's working?</h4>
+                <p>Real-time dashboard shows leads, conversion rates, time saved, revenue impact. Monthly coaching calls review your metrics and refine the AI based on what's working.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>What if something breaks?</h4>
+                <p>We monitor 24/7. If something goes wrong, you're notified immediately and we fix it. Starter tier gets email support; Professional and above get priority/phone support.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <h2>Ready to Stop Losing Deals?</h2>
+            <p>Book a free 20-minute demo. See how Momentum works for your business. No pressure, no pitch.</p>
+            <a href="https://calendly.com/momentum-ai/demo" class="cta-large">Schedule Your Demo</a>
+            <p style="font-size: 14px; margin-top: 20px; opacity: 0.8;">Or email us: hello@momentumtoday.com</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Momentum AI. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Contact</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Simple form validation for demo booking (placeholder)
+        console.log('Landing page loaded. Ready for booking integration.');
+    </script>
+</body>
+</html>

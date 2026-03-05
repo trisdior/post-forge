@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valencia Construction — Project Proposal</title>
+<style>
+  @page {
+    size: 8.5in 11in;
+    margin: 0.5in;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    color: #1a1a1a;
+    font-size: 11pt;
+    line-height: 1.5;
+    background: #fff;
+  }
+  .page { max-width: 8.5in; margin: 0 auto; padding: 0.5in; }
+  .page-break { page-break-before: always; }
+
+  /* Header */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 4px solid #D4A017;
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+  }
+  .header-logo h1 {
+    font-size: 28pt;
+    font-weight: 800;
+    color: #111;
+    letter-spacing: -0.5px;
+  }
+  .header-logo h1 span { color: #D4A017; }
+  .header-logo p {
+    font-size: 9pt;
+    color: #666;
+    margin-top: 2px;
+  }
+  .header-contact {
+    text-align: right;
+    font-size: 9pt;
+    color: #444;
+    line-height: 1.7;
+  }
+  .header-contact strong { color: #111; }
+
+  /* Proposal Title */
+  .proposal-title {
+    background: #111;
+    color: #fff;
+    padding: 14px 24px;
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .proposal-title h2 {
+    font-size: 16pt;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .proposal-title .proposal-num {
+    color: #D4A017;
+    font-size: 10pt;
+    font-weight: 600;
+  }
+
+  /* Info Grid */
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 24px;
+  }
+  .info-box {
+    border: 1px solid #ddd;
+    padding: 16px;
+    border-radius: 4px;
+  }
+  .info-box h3 {
+    font-size: 8pt;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #D4A017;
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+  .info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 0;
+    border-bottom: 1px dotted #eee;
+    font-size: 10pt;
+  }
+  .info-row:last-child { border-bottom: none; }
+  .info-label { color: #777; font-weight: 500; }
+  .info-value { font-weight: 600; color: #111; }
+  .fill { 
+    border-bottom: 1px solid #bbb; 
+    min-width: 160px; 
+    display: inline-block;
+    color: #333;
+  }
+
+  /* Section Headers */
+  .section-header {
+    background: #D4A017;
+    color: #111;
+    padding: 8px 16px;
+    font-size: 10pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 24px 0 12px 0;
+  }
+
+  /* Project Description */
+  .description {
+    padding: 16px;
+    background: #fafafa;
+    border-left: 3px solid #D4A017;
+    margin-bottom: 8px;
+    font-size: 10pt;
+    min-height: 60px;
+  }
+
+  /* Tiers */
+  .tiers {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    margin: 12px 0;
+  }
+  .tier {
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+  }
+  .tier.recommended {
+    border-color: #D4A017;
+    box-shadow: 0 0 0 1px #D4A017;
+  }
+  .tier-header {
+    padding: 12px;
+    text-align: center;
+    background: #f5f5f5;
+  }
+  .tier.recommended .tier-header {
+    background: #111;
+    color: #fff;
+  }
+  .tier-header h4 {
+    font-size: 13pt;
+    font-weight: 700;
+  }
+  .tier-header .tier-label {
+    font-size: 7pt;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #D4A017;
+    font-weight: 700;
+  }
+  .tier-price {
+    text-align: center;
+    padding: 12px;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+  }
+  .tier-price .amount {
+    font-size: 20pt;
+    font-weight: 800;
+    color: #111;
+  }
+  .tier-price .amount-label {
+    font-size: 8pt;
+    color: #999;
+    text-transform: uppercase;
+  }
+  .tier-scope {
+    padding: 12px;
+    font-size: 9pt;
+    line-height: 1.6;
+  }
+  .tier-scope ul {
+    list-style: none;
+    padding: 0;
+  }
+  .tier-scope li {
+    padding: 3px 0;
+    padding-left: 18px;
+    position: relative;
+  }
+  .tier-scope li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #D4A017;
+    font-weight: 700;
+  }
+  .badge {
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    background: #D4A017;
+    color: #111;
+    font-size: 7pt;
+    font-weight: 700;
+    padding: 3px 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 0 4px 0 4px;
+  }
+
+  /* Payment Schedule */
+  .payment-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 10pt;
+  }
+  .payment-table th {
+    background: #111;
+    color: #fff;
+    padding: 8px 12px;
+    text-align: left;
+    font-size: 8pt;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .payment-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid #eee;
+  }
+  .payment-table tr:nth-child(even) { background: #fafafa; }
+  .payment-table .amount-col { text-align: right; font-weight: 700; }
+
+  /* Timeline */
+  .timeline-bar {
+    display: flex;
+    margin: 12px 0;
+    border-radius: 4px;
+    overflow: hidden;
+    height: 36px;
+    font-size: 8pt;
+    font-weight: 600;
+  }
+  .timeline-phase {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    padding: 0 8px;
+    text-align: center;
+  }
+  .phase-1 { background: #111; }
+  .phase-2 { background: #444; }
+  .phase-3 { background: #D4A017; color: #111; }
+  .phase-4 { background: #888; }
+
+  /* Terms */
+  .terms {
+    font-size: 8pt;
+    color: #555;
+    line-height: 1.6;
+    columns: 2;
+    column-gap: 24px;
+    margin: 12px 0;
+  }
+  .terms ol {
+    padding-left: 16px;
+  }
+  .terms li {
+    margin-bottom: 4px;
+    break-inside: avoid;
+  }
+
+  /* Signatures */
+  .signatures {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 32px;
+    padding-top: 16px;
+  }
+  .sig-block {}
+  .sig-line {
+    border-bottom: 1px solid #111;
+    height: 40px;
+    margin-bottom: 4px;
+  }
+  .sig-label {
+    font-size: 8pt;
+    color: #777;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .sig-date {
+    margin-top: 16px;
+  }
+
+  /* Footer */
+  .footer {
+    margin-top: 24px;
+    padding-top: 12px;
+    border-top: 2px solid #D4A017;
+    text-align: center;
+    font-size: 8pt;
+    color: #999;
+  }
+  .footer strong { color: #D4A017; }
+
+  @media print {
+    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .page { padding: 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-logo">
+      <h1>VALENCIA <span>CONSTRUCTION</span></h1>
+      <p>Licensed &amp; Insured General Contractor — Chicago, IL</p>
+    </div>
+    <div class="header-contact">
+      <strong>Tris Valencia, Owner</strong><br>
+      (773) 682-7788<br>
+      info@valenciaconstructionchi.com<br>
+      valenciaconstructionchi.com<br>
+      License #: <span class="fill">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    </div>
+  </div>
+
+  <!-- PROPOSAL TITLE BAR -->
+  <div class="proposal-title">
+    <h2>Project Proposal</h2>
+    <div class="proposal-num">
+      Proposal #: <span class="fill" style="color:#D4A017">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><br>
+      Date: <span class="fill" style="color:#D4A017">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    </div>
+  </div>
+
+  <!-- CLIENT & PROJECT INFO -->
+  <div class="info-grid">
+    <div class="info-box">
+      <h3>Client Information</h3>
+      <div class="info-row"><span class="info-label">Name</span><span class="info-value fill"></span></div>
+      <div class="info-row"><span class="info-label">Address</span><span class="info-value fill"></span></div>
+      <div class="info-row"><span class="info-label">City/State/Zip</span><span class="info-value fill"></span></div>
+      <div class="info-row"><span class="info-label">Phone</span><span class="info-value fill"></span></div>
+      <div class="info-row"><span class="info-label">Email</span><span class="info-value fill"></span></div>
+    </div>
+    <div class="info-box">
+      <h3>Project Details</h3>
+      <div class="info-row"><span class="info-label">Project Address</span><span class="info-value fill"></span></div>
+      <div class="info-row"><span class="info-label">Project Type</span><span class="info-value fill"></span></div>
+      <div class="info-row"><span class="info-label">Est. Start Date</span><span class="info-value fill"></span></div>
+      <div class="info-row"><span class="info-label">Est. Duration</span><span class="info-value fill"></span></div>
+      <div class="info-row"><span class="info-label">Valid Until</span><span class="info-value fill"></span></div>
+    </div>
+  </div>
+
+  <!-- PROJECT DESCRIPTION -->
+  <div class="section-header">Project Description</div>
+  <div class="description">
+    <!-- FILL IN: Describe the project scope, client goals, and any site conditions -->
+    &nbsp;
+  </div>
+
+  <!-- 3-TIER OPTIONS -->
+  <div class="section-header">Proposal Options</div>
+  <div class="tiers">
+
+    <!-- GOOD -->
+    <div class="tier">
+      <div class="tier-header">
+        <div class="tier-label">Option 1</div>
+        <h4>Good</h4>
+      </div>
+      <div class="tier-price">
+        <div class="amount-label">Investment</div>
+        <div class="amount">$<span class="fill" style="min-width:80px"></span></div>
+      </div>
+      <div class="tier-scope">
+        <ul>
+          <li><!-- Scope item --></li>
+          <li><!-- Scope item --></li>
+          <li><!-- Scope item --></li>
+          <li><!-- Scope item --></li>
+          <li><!-- Scope item --></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- BETTER -->
+    <div class="tier recommended">
+      <span class="badge">Recommended</span>
+      <div class="tier-header">
+        <div class="tier-label">Option 2</div>
+        <h4>Better</h4>
+      </div>
+      <div class="tier-price">
+        <div class="amount-label">Investment</div>
+        <div class="amount">$<span class="fill" style="min-width:80px"></span></div>
+      </div>
+      <div class="tier-scope">
+        <ul>
+          <li><!-- Everything in Good, plus: --></li>
+          <li><!-- Scope item --></li>
+          <li><!-- Scope item --></li>
+          <li><!-- Scope item --></li>
+          <li><!-- Scope item --></li>
+          <li><!-- Scope item --></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- BEST -->
+    <div class="tier">
+      <div class="tier-header">
+        <div class="tier-label">Option 3</div>
+        <h4>Best</h4>
+      </div>
+      <div class="tier-price">
+        <div class="amount-label">Investment</div>
+        <div class="amount">$<span class="fill" style="min-width:80px"></span></div>
+      </div>
+      <div class="tier-scope">
+        <ul>
+          <li><!-- Everything in Better, plus: --></li>
+          <li><!-- Scope item --></li>
+          <li><!-- Scope item --></li>
+          <li><!-- Scope item --></li>
+          <li><!-- Scope item --></li>
+          <li><!-- Scope item --></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PAYMENT SCHEDULE -->
+  <div class="section-header">Payment Schedule</div>
+  <table class="payment-table">
+    <thead>
+      <tr>
+        <th>Milestone</th>
+        <th>Description</th>
+        <th>Percentage</th>
+        <th style="text-align:right">Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>1. Deposit</strong></td>
+        <td>Due upon signed agreement, before work begins</td>
+        <td>50%</td>
+        <td class="amount-col">$<span class="fill" style="min-width:60px"></span></td>
+      </tr>
+      <tr>
+        <td><strong>2. Midpoint</strong></td>
+        <td>Due at project midpoint (demolition complete / rough-in done)</td>
+        <td>25%</td>
+        <td class="amount-col">$<span class="fill" style="min-width:60px"></span></td>
+      </tr>
+      <tr>
+        <td><strong>3. Completion</strong></td>
+        <td>Due upon final walkthrough and client approval</td>
+        <td>25%</td>
+        <td class="amount-col">$<span class="fill" style="min-width:60px"></span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- TIMELINE -->
+  <div class="section-header">Estimated Timeline</div>
+  <div class="timeline-bar">
+    <div class="timeline-phase phase-1" style="flex:1">Planning &amp; Permits</div>
+    <div class="timeline-phase phase-2" style="flex:2">Demo &amp; Rough-In</div>
+    <div class="timeline-phase phase-3" style="flex:2">Build &amp; Install</div>
+    <div class="timeline-phase phase-4" style="flex:1">Finish &amp; Punch List</div>
+  </div>
+  <div style="font-size:9pt;color:#777;margin-bottom:4px;">
+    Estimated total duration: <strong class="fill" style="min-width:120px;color:#111"></strong>
+    &nbsp;&nbsp;|&nbsp;&nbsp;
+    Target completion: <strong class="fill" style="min-width:120px;color:#111"></strong>
+  </div>
+
+</div><!-- end page 1 -->
+
+<div class="page page-break">
+
+  <!-- TERMS -->
+  <div class="header" style="margin-bottom:16px">
+    <div class="header-logo">
+      <h1>VALENCIA <span>CONSTRUCTION</span></h1>
+    </div>
+    <div class="header-contact">
+      <strong>Terms &amp; Conditions</strong>
+    </div>
+  </div>
+
+  <div class="terms">
+    <ol>
+      <li><strong>Scope of Work:</strong> This proposal covers only the work explicitly described above. Any additional work requested will require a written change order with agreed-upon pricing before work begins.</li>
+      <li><strong>Change Orders:</strong> Changes to the scope of work must be documented in writing and signed by both parties. Additional costs and timeline adjustments will be outlined in the change order.</li>
+      <li><strong>Permits &amp; Inspections:</strong> Valencia Construction will obtain all necessary permits required by the City of Chicago. Permit fees are included in the proposal price unless otherwise noted. We coordinate all required inspections.</li>
+      <li><strong>Materials:</strong> All materials are as specified in the scope of work. Substitutions due to availability will be discussed with the client and approved before installation. Upgraded materials requested by the client may result in additional cost.</li>
+      <li><strong>Payment Terms:</strong> Payments are due as outlined in the payment schedule above. Payments not received within 7 days of the milestone may result in work stoppage. We accept check, cash, Zelle, and bank transfer.</li>
+      <li><strong>Timeline:</strong> Estimated timelines are provided in good faith. Delays due to permit processing, material backorders, weather, or client-requested changes are not the responsibility of Valencia Construction. We will communicate any delays promptly.</li>
+      <li><strong>Warranty:</strong> Valencia Construction warrants all labor for a period of one (1) year from the date of project completion. Manufacturer warranties on materials and fixtures apply separately and will be provided to the client.</li>
+      <li><strong>Insurance:</strong> Valencia Construction carries general liability insurance and workers' compensation coverage. Certificates of insurance are available upon request.</li>
+      <li><strong>Access:</strong> Client agrees to provide reasonable access to the project site during working hours (typically 8:00 AM – 5:00 PM, Monday – Saturday). Restricted access may affect the project timeline.</li>
+      <li><strong>Client Responsibilities:</strong> Client is responsible for removing personal belongings from the work area prior to project start. Valencia Construction is not responsible for items left in the work zone.</li>
+      <li><strong>Cancellation:</strong> Either party may cancel this agreement with written notice. If the client cancels after work has begun, client is responsible for payment of all work completed and materials ordered to date.</li>
+      <li><strong>Dispute Resolution:</strong> Any disputes arising from this agreement will be resolved through mediation in Cook County, Illinois before any legal action is taken.</li>
+      <li><strong>Proposal Validity:</strong> This proposal is valid for 30 days from the date issued. After 30 days, pricing and availability may change.</li>
+      <li><strong>Acceptance:</strong> By signing below, both parties agree to the scope of work, pricing, payment schedule, and terms outlined in this proposal.</li>
+    </ol>
+  </div>
+
+  <!-- SIGNATURES -->
+  <div class="section-header">Acceptance &amp; Signatures</div>
+  <p style="font-size:9pt;color:#555;margin:12px 0;">By signing below, the client agrees to the scope of work, selected tier pricing, payment schedule, and terms &amp; conditions outlined in this proposal.</p>
+
+  <div style="margin:12px 0;padding:12px;background:#f9f9f9;border:1px solid #eee;border-radius:4px;">
+    <strong style="font-size:10pt;">Selected Option:</strong>&nbsp;&nbsp;
+    ☐ Good &nbsp;&nbsp;&nbsp; ☐ Better &nbsp;&nbsp;&nbsp; ☐ Best
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <strong style="font-size:10pt;">Total Price:</strong> $<span class="fill" style="min-width:100px"></span>
+  </div>
+
+  <div class="signatures">
+    <div class="sig-block">
+      <p style="font-size:9pt;font-weight:700;margin-bottom:8px;">CLIENT</p>
+      <div class="sig-line"></div>
+      <div class="sig-label">Signature</div>
+      <div class="sig-date">
+        <div class="sig-line"></div>
+        <div class="sig-label">Printed Name</div>
+      </div>
+      <div class="sig-date">
+        <div class="sig-line"></div>
+        <div class="sig-label">Date</div>
+      </div>
+    </div>
+    <div class="sig-block">
+      <p style="font-size:9pt;font-weight:700;margin-bottom:8px;">VALENCIA CONSTRUCTION</p>
+      <div class="sig-line"></div>
+      <div class="sig-label">Signature</div>
+      <div class="sig-date">
+        <div class="sig-line"></div>
+        <div class="sig-label">Tris Valencia, Owner</div>
+      </div>
+      <div class="sig-date">
+        <div class="sig-line"></div>
+        <div class="sig-label">Date</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <strong>Valencia Construction</strong> — Licensed &amp; Insured General Contractor<br>
+    (773) 682-7788 &nbsp;|&nbsp; valenciaconstructionchi.com &nbsp;|&nbsp; Chicago, IL<br>
+    <em>Thank you for considering Valencia Construction. We look forward to working with you.</em>
+  </div>
+
+</div><!-- end page 2 -->
+
+</body>
+</html>

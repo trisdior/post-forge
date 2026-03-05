@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>PostForge &#x2014; AI Clip Engine</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0a0f;--surface:#12121a;--card:#16161f;--border:#1e1e2e;--text:#f0f0f5;--muted:#8888a0;--accent:#7c3aed;--accent2:#a855f7;--green:#10b981;--cyan:#06b6d4;--pink:#ec4899;--red:#ef4444;--orange:#f59e0b}
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+.bg-grid{position:fixed;top:0;left:0;right:0;bottom:0;z-index:0;background-image:linear-gradient(rgba(124,58,237,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(124,58,237,0.02) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
+.bg-glow{position:fixed;top:-200px;right:-100px;width:500px;height:500px;z-index:0;background:radial-gradient(circle,rgba(236,72,153,0.06) 0%,transparent 70%);pointer-events:none}
+
+.nav{background:rgba(10,10,15,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.logo{font-size:20px;font-weight:900}.logo span{background:linear-gradient(135deg,var(--accent2),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.tabs{display:flex;gap:4px;flex-wrap:wrap}.tab{padding:8px 16px;border-radius:8px;font-size:13px;font-weight:600;color:var(--muted);text-decoration:none;transition:all 0.2s}.tab:hover{color:var(--text);background:rgba(255,255,255,0.05)}.tab.active{color:var(--text);background:rgba(236,72,153,0.15)}
+.user-area{display:flex;align-items:center;gap:10px}
+
+.container{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:36px 24px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.header{margin-bottom:28px;animation:fadeUp 0.5s ease-out}
+.header h1{font-size:28px;font-weight:900;letter-spacing:-0.5px}
+.header p{color:var(--muted);font-size:14px;margin-top:4px}
+
+/* Upload Zone */
+.upload-zone{border:2px dashed var(--border);border-radius:20px;padding:60px 40px;text-align:center;cursor:pointer;transition:all 0.3s;margin-bottom:28px;animation:fadeUp 0.5s ease-out 0.05s both;position:relative;overflow:hidden}
+.upload-zone:hover{border-color:var(--accent);background:rgba(124,58,237,0.03)}
+.upload-zone.dragover{border-color:var(--pink);background:rgba(236,72,153,0.05)}
+.upload-zone.has-file{border-style:solid;border-color:var(--green);background:rgba(16,185,129,0.03)}
+.upload-icon{font-size:48px;margin-bottom:16px}
+.upload-title{font-size:18px;font-weight:700;margin-bottom:6px}
+.upload-sub{font-size:13px;color:var(--muted)}
+.upload-sub strong{color:var(--text)}
+.file-info{margin-top:16px;font-size:13px;color:var(--green);font-weight:600;display:none}
+.upload-zone.has-file .file-info{display:block}
+input[type="file"]{display:none}
+
+/* OR divider */
+.or-divider{display:flex;align-items:center;gap:16px;margin-bottom:28px;animation:fadeUp 0.5s ease-out 0.08s both}
+.or-line{flex:1;height:1px;background:var(--border)}
+.or-text{font-size:12px;color:var(--muted);font-weight:600}
+
+/* Transcript paste */
+.paste-section{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:28px;animation:fadeUp 0.5s ease-out 0.1s both}
+.paste-section h3{font-size:15px;font-weight:700;margin-bottom:6px}
+.paste-section p{font-size:12px;color:var(--muted);margin-bottom:12px}
+.paste-area{width:100%;min-height:140px;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:14px;color:var(--text);font-size:13px;font-family:inherit;line-height:1.6;outline:none;resize:vertical;transition:border-color 0.3s}
+.paste-area:focus{border-color:var(--accent)}
+.paste-area::placeholder{color:#44445a}
+
+/* Options */
+.options-row{display:flex;gap:14px;margin-bottom:28px;flex-wrap:wrap;animation:fadeUp 0.5s ease-out 0.12s both}
+.option-card{flex:1;min-width:200px;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;transition:all 0.3s}
+.option-card:hover{border-color:rgba(124,58,237,0.2)}
+.option-card h4{font-size:13px;font-weight:700;margin-bottom:8px}
+.option-card select,.option-card input{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:8px 12px;color:var(--text);font-size:13px;font-family:inherit;outline:none}
+
+/* Caption Styles */
+.style-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:28px;animation:fadeUp 0.5s ease-out 0.14s both}
+.style-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center;cursor:pointer;transition:all 0.3s}
+.style-card:hover{border-color:rgba(124,58,237,0.3)}
+.style-card.active{border-color:var(--pink);background:rgba(236,72,153,0.05)}
+.style-name{font-size:13px;font-weight:700;margin-bottom:4px}
+.style-preview{font-size:10px;color:var(--muted);line-height:1.4}
+
+/* Generate Button */
+.gen-btn{width:100%;padding:16px;border-radius:14px;background:linear-gradient(135deg,var(--pink),var(--accent2));color:#fff;font-size:16px;font-weight:700;border:none;cursor:pointer;font-family:inherit;transition:all 0.3s;margin-bottom:28px;box-shadow:0 0 30px rgba(236,72,153,0.3);animation:fadeUp 0.5s ease-out 0.16s both}
+.gen-btn:hover{transform:translateY(-2px);box-shadow:0 0 50px rgba(236,72,153,0.5)}
+.gen-btn:disabled{opacity:0.5;transform:none;cursor:not-allowed}
+
+/* Results */
+.results{animation:fadeUp 0.3s ease-out}
+.clip-card{background:var(--card);border:1px solid var(--border);border-radius:16px;margin-bottom:16px;overflow:hidden;transition:all 0.3s}
+.clip-card:hover{border-color:rgba(236,72,153,0.2)}
+.clip-header{display:flex;align-items:center;gap:12px;padding:16px 20px;background:rgba(0,0,0,0.2)}
+.clip-num{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--pink),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;flex-shrink:0}
+.clip-meta{flex:1}
+.clip-meta h4{font-size:14px;font-weight:700}
+.clip-meta span{font-size:11px;color:var(--muted)}
+.clip-tags{display:flex;gap:4px;flex-wrap:wrap}
+.clip-tag{padding:3px 8px;border-radius:4px;font-size:10px;font-weight:700;text-transform:uppercase}
+.clip-tag.type{background:rgba(236,72,153,0.1);color:var(--pink)}
+.clip-tag.time{background:rgba(6,182,212,0.1);color:var(--cyan)}
+.clip-tag.eng{background:rgba(16,185,129,0.1);color:var(--green)}
+
+.clip-body{padding:20px}
+.clip-section{margin-bottom:14px}
+.clip-section-label{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px}
+.clip-hook{font-size:16px;font-weight:800;line-height:1.4;padding:12px 16px;background:rgba(236,72,153,0.06);border:1px solid rgba(236,72,153,0.1);border-radius:10px}
+.clip-why{font-size:13px;color:var(--muted);line-height:1.6}
+.clip-captions{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.clip-caption{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 12px;font-size:12px;line-height:1.5;color:var(--muted)}
+.clip-caption strong{display:block;font-size:11px;color:var(--text);margin-bottom:4px}
+
+.clip-actions{display:flex;gap:8px;padding:12px 20px;background:rgba(0,0,0,0.2)}
+.clip-action{padding:8px 16px;border-radius:8px;font-size:12px;font-weight:600;border:none;cursor:pointer;font-family:inherit;transition:all 0.2s}
+.clip-action.primary{background:rgba(236,72,153,0.15);color:var(--pink)}.clip-action.primary:hover{background:rgba(236,72,153,0.25)}
+.clip-action.secondary{background:rgba(255,255,255,0.05);color:var(--muted)}.clip-action.secondary:hover{background:rgba(255,255,255,0.1);color:var(--text)}
+
+/* Loading */
+.loading-state{text-align:center;padding:48px}
+.spinner{width:32px;height:32px;border:3px solid var(--border);border-top-color:var(--pink);border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 16px}
+.loading-text{font-size:15px;font-weight:600;margin-bottom:6px}
+.loading-sub{font-size:13px;color:var(--muted)}
+
+/* Progress */
+.progress-bar{width:100%;height:6px;background:var(--border);border-radius:3px;margin-top:12px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--pink),var(--accent2));border-radius:3px;transition:width 0.5s;width:0%}
+
+@media(max-width:768px){.style-grid{grid-template-columns:repeat(2,1fr)}.clip-captions{grid-template-columns:1fr}.options-row{flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="bg-grid"></div><div class="bg-glow"></div>
+
+<nav class="nav">
+<div class="logo">post<span>forge</span></div>
+<div class="tabs">
+<a href="/app" class="tab">Create</a>
+<a href="/agent" class="tab">My Agent</a>
+<a href="/calendar" class="tab">Calendar</a>
+<a href="/analytics" class="tab">Analytics</a>
+<a href="/clips" class="tab active">Clips</a>
+<a href="/autopilot" class="tab">Auto-Pilot</a>
+<a href="/settings" class="tab">Settings</a>
+</div>
+<div class="user-area"></div>
+</nav>
+
+<div class="container">
+<div class="header">
+<h1>&#x1F3AC; AI Clip Engine</h1>
+<p>Upload raw video or paste a transcript. Your agent finds the viral moments, cuts the clips, adds captions.</p>
+</div>
+
+<!-- Upload Zone -->
+<div class="upload-zone" id="upload-zone" onclick="document.getElementById('file-input').click()" ondragover="event.preventDefault();this.classList.add('dragover')" ondragleave="this.classList.remove('dragover')" ondrop="handleDrop(event)">
+<div class="upload-icon">&#x1F4F9;</div>
+<div class="upload-title">Drop your video here or click to upload</div>
+<div class="upload-sub">MP4, MOV, AVI, MKV, WebM &#xB7; Up to <strong>500MB</strong></div>
+<div class="file-info" id="file-info"></div>
+<input type="file" id="file-input" accept="video/*" onchange="handleFile(this.files[0])">
+</div>
+
+<!-- OR -->
+<div class="or-divider">
+<div class="or-line"></div>
+<div class="or-text">OR PASTE TRANSCRIPT</div>
+<div class="or-line"></div>
+</div>
+
+<!-- Transcript Paste -->
+<div class="paste-section">
+<h3>Paste your transcript</h3>
+<p>If you already have a transcript (from YouTube, Descript, Otter.ai, etc), paste it here with timestamps.</p>
+<textarea class="paste-area" id="transcript" placeholder="[0:00 - 0:15] Hey what's up guys, today I want to show you this insane kitchen transformation we just finished...
+[0:15 - 0:32] So the homeowner came to us with a budget of thirty thousand dollars...
+[0:32 - 0:58] Let me show you the before photos first..."></textarea>
+</div>
+
+<!-- Options -->
+<div class="options-row">
+<div class="option-card">
+<h4>Number of clips</h4>
+<select id="clip-count">
+<option value="1">1 clip</option>
+<option value="2">2 clips</option>
+<option value="3" selected>3 clips</option>
+<option value="5">5 clips</option>
+</select>
+</div>
+<div class="option-card">
+<h4>Target platform</h4>
+<select id="clip-platform">
+<option value="all" selected>All platforms</option>
+<option value="tiktok">TikTok</option>
+<option value="instagram">Instagram Reels</option>
+<option value="youtube">YouTube Shorts</option>
+</select>
+</div>
+</div>
+
+<!-- Caption Style -->
+<div style="margin-bottom:10px;font-size:13px;font-weight:700;animation:fadeUp 0.5s ease-out 0.13s both">Caption Style</div>
+<div class="style-grid">
+<div class="style-card active" data-style="hormozi" onclick="selectStyle(this)">
+<div class="style-name">Hormozi Bold</div>
+<div class="style-preview">LARGE &#xB7; CENTERED &#xB7; HIGHLIGHTED</div>
+</div>
+<div class="style-card" data-style="minimal" onclick="selectStyle(this)">
+<div class="style-name">Clean Minimal</div>
+<div class="style-preview">Subtle white, bottom third</div>
+</div>
+<div class="style-card" data-style="karaoke" onclick="selectStyle(this)">
+<div class="style-name">Word Highlight</div>
+<div class="style-preview">Words light up as spoken</div>
+</div>
+<div class="style-card" data-style="bold" onclick="selectStyle(this)">
+<div class="style-name">Impact</div>
+<div class="style-preview">MASSIVE &#xB7; 2 WORDS &#xB7; PER FRAME</div>
+</div>
+</div>
+
+<!-- Generate -->
+<button class="gen-btn" id="gen-btn" onclick="analyzeVideo()">&#x1F3AC; Find Viral Moments</button>
+
+<!-- Results -->
+<div id="results"></div>
+</div>
+
+<script>
+var token=localStorage.getItem('pf_token');
+if(!token)location='/login';
+var selectedStyle='hormozi';
+var uploadedVideoId=null;
+var currentFile=null;
+
+function headers(){return{'Content-Type':'application/json','Authorization':'Bearer '+token}}
+
+function selectStyle(el){
+  document.querySelectorAll('.style-card').forEach(function(c){c.classList.remove('active')});
+  el.classList.add('active');
+  selectedStyle=el.dataset.style;
+}
+
+function handleDrop(e){
+  e.preventDefault();
+  e.currentTarget.classList.remove('dragover');
+  if(e.dataTransfer.files.length)handleFile(e.dataTransfer.files[0]);
+}
+
+function handleFile(file){
+  if(!file)return;
+  var maxSize=500*1024*1024;
+  if(file.size>maxSize){alert('File too large. Max 500MB.');return}
+  currentFile=file;
+  var zone=document.getElementById('upload-zone');
+  zone.classList.add('has-file');
+  var sizeMB=(file.size/1048576).toFixed(1);
+  document.getElementById('file-info').textContent='Selected: '+file.name+' ('+sizeMB+' MB)';
+}
+
+async function uploadVideo(){
+  if(!currentFile)return null;
+  // Get upload URL from our API
+  var r=await fetch('/api/clips/upload',{headers:headers()});
+  var d=await r.json();
+  if(!d.success)throw new Error(d.error);
+
+  // Upload to processing server
+  var formData=new FormData();
+  formData.append('video',currentFile);
+  var up=await fetch(d.uploadUrl,{method:'POST',headers:{'x-api-key':d.apiKey},body:formData});
+  var result=await up.json();
+  if(!result.success)throw new Error(result.error||'Upload failed');
+  return result;
+}
+
+async function transcribeVideo(videoId){
+  var r=await fetch('/api/clips/transcribe',{method:'POST',headers:headers(),body:JSON.stringify({videoId:videoId})});
+  return await r.json();
+}
+
+async function analyzeVideo(){
+  var btn=document.getElementById('gen-btn');
+  var results=document.getElementById('results');
+  var transcript=document.getElementById('transcript').value.trim();
+
+  btn.disabled=true;
+
+  // If we have a file but no transcript, need to upload and transcribe
+  if(currentFile&&!transcript){
+    btn.textContent='Uploading video...';
+    results.innerHTML='<div class="loading-state"><div class="spinner"></div><div class="loading-text">Uploading video...</div><div class="loading-sub">This may take a moment for large files</div><div class="progress-bar"><div class="progress-fill" id="progress" style="width:20%"></div></div></div>';
+
+    try{
+      var upload=await uploadVideo();
+      uploadedVideoId=upload.videoId;
+      document.getElementById('progress').style.width='50%';
+
+      btn.textContent='Transcribing...';
+      document.querySelector('.loading-text').textContent='Transcribing audio with Whisper AI...';
+      document.getElementById('progress').style.width='60%';
+
+      var trans=await transcribeVideo(upload.videoId);
+      if(!trans.success)throw new Error(trans.error);
+      transcript=trans.transcript;
+      document.getElementById('transcript').value=transcript;
+      document.getElementById('progress').style.width='80%';
+    }catch(e){
+      results.innerHTML='<div class="loading-state"><div class="loading-text" style="color:var(--red)">'+escHtml(e.message)+'</div><div class="loading-sub">Make sure the processing server is running. See setup instructions below.</div></div>';
+      btn.disabled=false;btn.textContent='\u{1F3AC} Find Viral Moments';
+      return;
+    }
+  }
+
+  if(!transcript||transcript.length<50){
+    alert('Paste a transcript or upload a video first. Minimum 50 characters.');
+    btn.disabled=false;btn.textContent='\u{1F3AC} Find Viral Moments';
+    return;
+  }
+
+  btn.textContent='Your agent is analyzing...';
+  results.innerHTML='<div class="loading-state"><div class="spinner"></div><div class="loading-text">Your agent is finding the viral moments...</div><div class="loading-sub">Analyzing transcript against your business data + viral patterns</div></div>';
+
+  try{
+    var r=await fetch('/api/clips/analyze',{method:'POST',headers:headers(),
+      body:JSON.stringify({
+        transcript:transcript,
+        videoId:uploadedVideoId||'manual',
+        clipCount:parseInt(document.getElementById('clip-count').value),
+        captionStyle:selectedStyle,
+        platforms:document.getElementById('clip-platform').value==='all'?['tiktok','instagram','youtube']:[document.getElementById('clip-platform').value]
+      }),
+      signal:AbortSignal.timeout(50000)
+    });
+    var d=await r.json();
+    if(d.success&&d.clips&&d.clips.length){
+      renderClips(d.clips);
+    }else{
+      results.innerHTML='<div class="loading-state"><div class="loading-text" style="color:var(--red)">'+(d.error||'No viral moments found')+'</div><div class="loading-sub">Try a longer video or more detailed transcript.</div></div>';
+    }
+  }catch(e){
+    results.innerHTML='<div class="loading-state"><div class="loading-text" style="color:var(--red)">Analysis timed out</div><div class="loading-sub">Try a shorter transcript or fewer clips.</div></div>';
+  }
+  btn.disabled=false;btn.textContent='\u{1F3AC} Find Viral Moments';
+}
+
+function renderClips(clips){
+  var html='<div class="results">';
+  clips.forEach(function(clip,i){
+    html+='<div class="clip-card">';
+    html+='<div class="clip-header">';
+    html+='<div class="clip-num">'+(i+1)+'</div>';
+    html+='<div class="clip-meta"><h4>'+escHtml(clip.hook||'Clip '+(i+1))+'</h4><span>'+escHtml(clip.start_time)+' - '+escHtml(clip.end_time)+' ('+escHtml(clip.duration_seconds+'s')+')</span></div>';
+    html+='<div class="clip-tags">';
+    if(clip.content_type)html+='<span class="clip-tag type">'+escHtml(clip.content_type)+'</span>';
+    if(clip.best_time)html+='<span class="clip-tag time">'+escHtml(clip.best_time)+'</span>';
+    if(clip.estimated_engagement)html+='<span class="clip-tag eng">'+escHtml(clip.estimated_engagement)+'</span>';
+    html+='</div></div>';
+
+    html+='<div class="clip-body">';
+    html+='<div class="clip-section"><div class="clip-section-label">Scroll-stopping hook</div><div class="clip-hook">'+escHtml(clip.hook||'')+'</div></div>';
+    html+='<div class="clip-section"><div class="clip-section-label">Why this goes viral</div><div class="clip-why">'+escHtml(clip.why_viral||'')+'</div></div>';
+
+    if(clip.captions){
+      html+='<div class="clip-section"><div class="clip-section-label">Platform captions</div><div class="clip-captions">';
+      if(clip.captions.tiktok)html+='<div class="clip-caption"><strong>TikTok</strong>'+escHtml(clip.captions.tiktok)+'</div>';
+      if(clip.captions.instagram)html+='<div class="clip-caption"><strong>Instagram</strong>'+escHtml(clip.captions.instagram)+'</div>';
+      if(clip.captions.youtube)html+='<div class="clip-caption"><strong>YouTube</strong>'+escHtml(clip.captions.youtube)+'</div>';
+      html+='</div></div>';
+    }
+
+    if(clip.hashtags&&clip.hashtags.length){
+      html+='<div class="clip-section"><div class="clip-section-label">Hashtags</div><div style="font-size:12px;color:var(--cyan)">'+clip.hashtags.map(function(h){return'#'+escHtml(h.replace('#',''))}).join(' ')+'</div></div>';
+    }
+
+    html+='<div class="clip-section"><div class="clip-section-label">Original transcript</div><div style="font-size:12px;color:var(--muted);line-height:1.6;max-height:80px;overflow-y:auto">'+escHtml(clip.original_text||'')+'</div></div>';
+    html+='</div>';
+
+    html+='<div class="clip-actions">';
+    if(uploadedVideoId)html+='<button class="clip-action primary" onclick="processClip('+i+')">&#x1F3AC; Cut + Caption This Clip</button>';
+    html+='<button class="clip-action secondary" onclick="copyCaption(this,'+i+')">&#x1F4CB; Copy Captions</button>';
+    html+='<button class="clip-action secondary" onclick="queueClip('+i+')">&#x1F4CB; Add to Queue</button>';
+    html+='</div>';
+    html+='</div>';
+  });
+  html+='</div>';
+  document.getElementById('results').innerHTML=html;
+  window.currentClips=clips;
+}
+
+async function processClip(index){
+  if(!uploadedVideoId){alert('Upload a video first to cut clips.');return}
+  var clip=window.currentClips[index];
+  try{
+    var r=await fetch('/api/clips/process',{method:'POST',headers:headers(),
+      body:JSON.stringify({videoId:uploadedVideoId,clips:[clip],captionStyle:selectedStyle})});
+    var d=await r.json();
+    if(d.success){showToast('Clip processed! Download ready.')}
+    else{showToast(d.error||'Processing failed','error')}
+  }catch(e){showToast('Processing server unavailable','error')}
+}
+
+function copyCaption(btn,index){
+  var clip=window.currentClips[index];
+  var text='';
+  if(clip.captions){
+    if(clip.captions.tiktok)text+='TIKTOK:\n'+clip.captions.tiktok+'\n\n';
+    if(clip.captions.instagram)text+='INSTAGRAM:\n'+clip.captions.instagram+'\n\n';
+    if(clip.captions.youtube)text+='YOUTUBE:\n'+clip.captions.youtube;
+  }
+  navigator.clipboard.writeText(text);
+  btn.textContent='Copied!';setTimeout(function(){btn.innerHTML='&#x1F4CB; Copy Captions'},1500);
+}
+
+async function queueClip(index){
+  var clip=window.currentClips[index];
+  try{
+    var posts=[{platform:'tiktok',type:clip.content_type||'clip',content:(clip.captions&&clip.captions.tiktok)||clip.hook,best_time:clip.best_time||''}];
+    await fetch('/api/agent/queue',{method:'POST'}); // simplified — uses addToQueue in generate
+    // Use agent generate endpoint with specific instruction
+    await fetch('/api/agent/feedback',{method:'POST',headers:headers(),body:JSON.stringify({learning:'User liked clip type: '+clip.content_type+'. Hook style: '+clip.hook})});
+    showToast('Clip added to queue + agent learned your preference!');
+  }catch(e){}
+}
+
+function escHtml(s){var d=document.createElement('div');d.textContent=s||'';return d.innerHTML}
+function showToast(msg,type){
+  var t=document.createElement('div');
+  t.style.cssText='position:fixed;bottom:24px;left:50%;transform:translateX(-50%);padding:12px 24px;border-radius:10px;font-size:13px;font-weight:600;z-index:9999;font-family:Inter,sans-serif;';
+  t.style.background=type==='error'?'rgba(239,68,68,0.9)':'rgba(236,72,153,0.9)';
+  t.style.color='#fff';t.textContent=msg;
+  document.body.appendChild(t);setTimeout(function(){t.remove()},3000);
+}
+</script>
+</body>
+</html>

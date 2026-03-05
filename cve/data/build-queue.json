@@ -1,0 +1,286 @@
+[
+  {
+    "id": "1rhwxiw",
+    "source": "reddit",
+    "title": "I tracked every hour I worked for a week, and honestly it was kind of embarrassing.",
+    "url": "https://reddit.com/r/productivity/comments/1rhwxiw/i_tracked_every_hour_i_worked_for_a_week_and/",
+    "scores": {
+      "demand": 10,
+      "pain": 4,
+      "buildability": 9,
+      "revenue": 6,
+      "overall": 72
+    },
+    "overall_score": 72,
+    "recommendation": "BUILD",
+    "analyzed_at": "2026-03-04T16:57:04.602526",
+    "signals": [
+      "broken"
+    ],
+    "engagement": {
+      "upvotes": 1450,
+      "comments": 73
+    },
+    "snippet": "at one point in my life i was working like 70+ hour weeks and couldn't figure out why nothing was getting done. (i had a corporate job plus i was freelancing on the side, hence the crazy hours)\n\nso i was working until midnight most days, and weekends were also spent working on freelance projects.  \n"
+  },
+  {
+    "id": "1rjv2q4",
+    "source": "reddit",
+    "title": "Why AI Can't Stop Using Em Dashes \u2014 And Why Nobody Can Fix It",
+    "url": "https://reddit.com/r/ChatGPT/comments/1rjv2q4/why_ai_cant_stop_using_em_dashes_and_why_nobody/",
+    "scores": {
+      "demand": 10,
+      "pain": 4,
+      "buildability": 9,
+      "revenue": 4,
+      "overall": 68
+    },
+    "overall_score": 68,
+    "recommendation": "BUILD",
+    "analyzed_at": "2026-03-04T16:57:04.602526",
+    "signals": [
+      "broken"
+    ],
+    "engagement": {
+      "upvotes": 615,
+      "comments": 300
+    },
+    "snippet": "Every AI writes like this \u2014 mid-thought, clause inserted, dash deployed. You've noticed it. Everyone has. Em dashes have become the single most reliable tell of AI-generated text, to the point where human writers have started avoiding them out of fear of being mistaken for a chatbot.\n\nHere's the int"
+  },
+  {
+    "id": "1ri53j1",
+    "source": "reddit",
+    "title": "I built a 100% offline, free loyalty card wallet because I hated holding up the checkout line.",
+    "url": "https://reddit.com/r/apple/comments/1ri53j1/i_built_a_100_offline_free_loyalty_card_wallet/",
+    "scores": {
+      "demand": 10,
+      "pain": 4,
+      "buildability": 9,
+      "revenue": 6,
+      "overall": 72
+    },
+    "overall_score": 72,
+    "recommendation": "BUILD",
+    "analyzed_at": "2026-03-04T16:57:04.602526",
+    "signals": [
+      "tired of"
+    ],
+    "engagement": {
+      "upvotes": 408,
+      "comments": 129
+    },
+    "snippet": "I\u2019m the developer of Offline Cards. I built this app out of sheer personal frustration. I was so tired of standing at the register, waiting for a store's official app to load on spotty cell service, and feeling like a fool while the line behind me grew.\n\nI just wanted a lightning-fast solution that "
+  },
+  {
+    "id": "1rkfek2",
+    "source": "reddit",
+    "title": "Switching to claude from chatgpt was fun for 3 days",
+    "url": "https://reddit.com/r/ChatGPT/comments/1rkfek2/switching_to_claude_from_chatgpt_was_fun_for_3/",
+    "scores": {
+      "demand": 10,
+      "pain": 4,
+      "buildability": 9,
+      "revenue": 4,
+      "overall": 68
+    },
+    "overall_score": 68,
+    "recommendation": "BUILD",
+    "analyzed_at": "2026-03-04T16:57:04.602526",
+    "signals": [
+      "unusable"
+    ],
+    "engagement": {
+      "upvotes": 154,
+      "comments": 419
+    },
+    "snippet": "First things first, claude is much better at just talking, it understands context, has jokes and tries to swing you the right way if you\u2019re spiraling or wasting time instead instead of just fueling it like chatGPT does, it\u2019s genuinely more fun to talk to. \n\nHowever all the fun ends here.\n\nAs soon as"
+  },
+  {
+    "id": "1qoxwdt",
+    "source": "reddit",
+    "title": "State of the Subreddit (January 2027): Mods applications and rules updates",
+    "url": "https://reddit.com/r/programming/comments/1qoxwdt/state_of_the_subreddit_january_2027_mods/",
+    "scores": {
+      "demand": 7,
+      "pain": 7,
+      "buildability": 9,
+      "revenue": 4,
+      "overall": 68
+    },
+    "overall_score": 68,
+    "recommendation": "BUILD",
+    "analyzed_at": "2026-03-04T16:57:04.602526",
+    "signals": [
+      "broken",
+      "sucks"
+    ],
+    "engagement": {
+      "upvotes": 116,
+      "comments": 74
+    },
+    "snippet": "tl;dr: mods applications and minor rules changes. Also it's 2026, lol.\n\nHello fellow programs!\n\nIt's been a while since I've [checked in](https://old.reddit.com/r/programming/comments/1chs4ib/the_state_of_the_subreddit_may_2024/) and I wanted to give an update on the state of affairs. I won't be abl"
+  },
+  {
+    "id": "47247645",
+    "source": "hackernews",
+    "title": "MacBook Neo",
+    "url": "https://www.apple.com/newsroom/2026/03/say-hello-to-macbook-neo/",
+    "scores": {
+      "demand": 10,
+      "pain": 4,
+      "buildability": 9,
+      "revenue": 4,
+      "overall": 68
+    },
+    "overall_score": 68,
+    "recommendation": "BUILD",
+    "analyzed_at": "2026-03-04T16:57:04.602526",
+    "signals": [],
+    "engagement": {
+      "upvotes": 1345,
+      "comments": 1693
+    },
+    "snippet": "<a href=\"https:&#x2F;&#x2F;www.apple.com&#x2F;macbook-neo&#x2F;\" rel=\"nofollow\">https:&#x2F;&#x2F;www.apple.com&#x2F;macbook-neo&#x2F;</a>"
+  },
+  {
+    "id": "1pku5yi",
+    "source": "reddit",
+    "title": "Lost potential clients because my Instagram looked \"inactive.\" Now I'm spending entire Sundays filming reels.",
+    "url": "https://reddit.com/r/freelance/comments/1pku5yi/lost_potential_clients_because_my_instagram/",
+    "scores": {
+      "demand": 7,
+      "pain": 4,
+      "buildability": 9,
+      "revenue": 6,
+      "overall": 65
+    },
+    "overall_score": 65,
+    "recommendation": "BUILD",
+    "analyzed_at": "2026-03-04T16:57:04.602526",
+    "signals": [
+      "broken"
+    ],
+    "engagement": {
+      "upvotes": 102,
+      "comments": 55
+    },
+    "snippet": "I just spent my entire Sunday filming Instagram reels and I'm losing my mind.\n\nFreelance brand designer, three years in. Work is fine. But somehow I became a content creator along the way and I don't remember signing up for that.\n\nI spend 6-8 hours a week shooting reels for Instagram because apparen"
+  },
+  {
+    "id": "47224295",
+    "source": "hackernews",
+    "title": "Show HN: I built a sub-500ms latency voice agent from scratch",
+    "url": "https://www.ntik.me/posts/voice-agent",
+    "scores": {
+      "demand": 10,
+      "pain": 4,
+      "buildability": 9,
+      "revenue": 4,
+      "overall": 68
+    },
+    "overall_score": 68,
+    "recommendation": "BUILD",
+    "analyzed_at": "2026-03-04T16:57:04.602526",
+    "signals": [],
+    "engagement": {
+      "upvotes": 561,
+      "comments": 153
+    },
+    "snippet": "I built a voice agent from scratch that averages ~400ms end-to-end latency (phone stop \u2192 first syllable). That\u2019s with full STT \u2192 LLM \u2192 TTS in the loop, clean barge-ins, and no precomputed responses.<p>What moved the needle:<p>Voice is a turn-taking problem, not a transcription problem. VAD alone fai"
+  },
+  {
+    "id": "1riyr34",
+    "source": "reddit",
+    "title": "Went from $0 to $1k MRR. If I started my SaaS over, here's exactly what I'd do",
+    "url": "https://reddit.com/r/indiehackers/comments/1riyr34/went_from_0_to_1k_mrr_if_i_started_my_saas_over/",
+    "scores": {
+      "demand": 7,
+      "pain": 4,
+      "buildability": 9,
+      "revenue": 6,
+      "overall": 65
+    },
+    "overall_score": 65,
+    "recommendation": "BUILD",
+    "analyzed_at": "2026-03-04T16:57:04.602526",
+    "signals": [
+      "broken"
+    ],
+    "engagement": {
+      "upvotes": 31,
+      "comments": 122
+    },
+    "snippet": "After going from $0 to $1K MRR, I've learned that what you focus on matters, but the order you focus on it matters even more.\n\nHere are the 7 steps, in the exact sequence I'd follow if I started over:\n\n**1) Solve a recurring painpoint**\n\nThis is a non-negotiable. My earlier projects solved one-time "
+  },
+  {
+    "id": "47215427",
+    "source": "hackernews",
+    "title": "Show HN: Omni \u2013 Open-source workplace search and chat, built on Postgres",
+    "url": "https://github.com/getomnico/omni",
+    "scores": {
+      "demand": 7,
+      "pain": 4,
+      "buildability": 9,
+      "revenue": 6,
+      "overall": 65
+    },
+    "overall_score": 65,
+    "recommendation": "BUILD",
+    "analyzed_at": "2026-03-04T16:57:04.602526",
+    "signals": [
+      "alternative to"
+    ],
+    "engagement": {
+      "upvotes": 172,
+      "comments": 43
+    },
+    "snippet": "Hey HN!<p>Over the past few months, I&#x27;ve been working on building Omni - a workplace search and chat platform that connects to apps like Google Drive&#x2F;Gmail, Slack, Confluence, etc. Essentially an open-source alternative to Glean, fully self-hosted.<p>I noticed that some orgs find Glean to "
+  },
+  {
+    "id": "47219668",
+    "source": "hackernews",
+    "title": "Ask HN: Who is hiring? (March 2026)",
+    "url": "https://news.ycombinator.com/item?id=47219668",
+    "scores": {
+      "demand": 10,
+      "pain": 4,
+      "buildability": 9,
+      "revenue": 4,
+      "overall": 68
+    },
+    "overall_score": 68,
+    "recommendation": "BUILD",
+    "analyzed_at": "2026-03-04T16:57:04.602526",
+    "signals": [],
+    "engagement": {
+      "upvotes": 239,
+      "comments": 351
+    },
+    "snippet": "Please state the location and include REMOTE for remote work, REMOTE (US)\nor similar if the country is restricted, and ONSITE when remote work is <i>not</i> an option.<p>Please only post if you personally are part of the hiring company\u2014no\nrecruiting firms or job boards. One post per company. If it i"
+  },
+  {
+    "id": "1rju16k",
+    "source": "reddit",
+    "title": "Am I the only one tired of juggling 10 tools to build one startup? I will not promote.",
+    "url": "https://reddit.com/r/startups/comments/1rju16k/am_i_the_only_one_tired_of_juggling_10_tools_to/",
+    "scores": {
+      "demand": 5,
+      "pain": 7,
+      "buildability": 9,
+      "revenue": 6,
+      "overall": 68
+    },
+    "overall_score": 68,
+    "recommendation": "BUILD",
+    "analyzed_at": "2026-03-04T16:57:04.603524",
+    "signals": [
+      "tired of",
+      "broken"
+    ],
+    "engagement": {
+      "upvotes": 0,
+      "comments": 52
+    },
+    "snippet": "Why is there no \"one place\" for first-time founders? Seriously asking because this has been bugging me! You have an idea. cool. Now what?\n\nResearch the market? open ChatGPT, Google Trends, reddit... spend 3 hours and still not sure if anyone cares\n\nValidate? Everyone says \"talk to people,\" but like."
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "timestamp": "2026-03-04T16:57:04.622206",
+    "opportunities_found": 72,
+    "analyzed": 72,
+    "build_queue_size": 12,
+    "top_opportunity": "I tracked every hour I worked for a week, and honestly it was kind of embarrassing."
+  },
+  {
+    "timestamp": "2026-03-04T17:11:40.724716",
+    "opportunities_found": 0,
+    "analyzed": 0,
+    "specs_created": 0,
+    "projects_built": 12,
+    "launches_ready": 12,
+    "current_mrr": 0
+  }
+]

@@ -1,0 +1,15 @@
+2026/03/04-15:00:07.900 29fc Reusing MANIFEST C:\Users\trisd\clawd\data\facebook-browser-profile\Default\Local Storage\leveldb/MANIFEST-000001
+2026/03/04-15:00:07.904 29fc Recovering log #17
+2026/03/04-15:00:07.906 29fc Reusing old log C:\Users\trisd\clawd\data\facebook-browser-profile\Default\Local Storage\leveldb/000017.log 
+2026/03/04-15:04:08.644 2100 Level-0 table #20: started
+2026/03/04-15:04:08.647 2100 Level-0 table #20: 13483 bytes OK
+2026/03/04-15:04:08.649 2100 Delete type=0 #17
+2026/03/04-15:04:08.649 2100 Compacting 4@0 + 1@1 files
+2026/03/04-15:04:08.653 2100 Generated table #21@0: 2294 keys, 59762 bytes
+2026/03/04-15:04:08.653 2100 Compacted 4@0 + 1@1 files => 59762 bytes
+2026/03/04-15:04:08.654 2100 compacted to: files[ 0 1 1 0 0 0 0 ]
+2026/03/04-15:04:08.655 2100 Delete type=2 #8
+2026/03/04-15:04:08.655 2100 Delete type=2 #11
+2026/03/04-15:04:08.655 2100 Delete type=2 #13
+2026/03/04-15:04:08.655 2100 Delete type=2 #16
+2026/03/04-15:04:08.655 2100 Delete type=2 #20

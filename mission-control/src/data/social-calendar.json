@@ -1,0 +1,172 @@
+{
+  "calendar": [
+    {
+      "id": 1,
+      "date": "2026-03-03",
+      "day": "Tuesday",
+      "time": "10:00 AM",
+      "platform": ["Facebook", "Google Business"],
+      "type": "Kitchen Remodel Tips",
+      "content": "5 Kitchen Remodeling Mistakes We See (And How to Avoid Them) - Most homeowners don't realize...",
+      "status": "draft",
+      "image": null,
+      "cta": "DM us for a free estimate!"
+    },
+    {
+      "id": 2,
+      "date": "2026-03-06",
+      "day": "Thursday",
+      "time": "10:00 AM",
+      "platform": ["Facebook", "Google Business"],
+      "type": "Before/After Project",
+      "content": "Check out this incredible bathroom transformation! From dated and cramped to modern and spacious. What do you think?",
+      "status": "draft",
+      "image": "needed",
+      "cta": "Ready for your own transformation? Call us!"
+    },
+    {
+      "id": 3,
+      "date": "2026-03-10",
+      "day": "Tuesday",
+      "time": "10:00 AM",
+      "platform": ["Facebook", "Google Business"],
+      "type": "Industry Tips",
+      "content": "Why You Should Replace Your Flooring Before Selling (Real Estate Agents Hate This One Trick)",
+      "status": "draft",
+      "image": null,
+      "cta": "Need new flooring? Let's talk"
+    },
+    {
+      "id": 4,
+      "date": "2026-03-13",
+      "day": "Thursday",
+      "time": "10:00 AM",
+      "platform": ["Facebook", "Google Business"],
+      "type": "Service Highlight",
+      "content": "Did you know we do more than just kitchens? Electrical, plumbing, drywall, painting - you name it, we handle it.",
+      "status": "draft",
+      "image": null,
+      "cta": "What's your project?"
+    },
+    {
+      "id": 5,
+      "date": "2026-03-17",
+      "day": "Tuesday",
+      "time": "10:00 AM",
+      "platform": ["Facebook", "Google Business"],
+      "type": "Customer Testimonial",
+      "content": "⭐⭐⭐⭐⭐ 'They were professional, on-time, and cleaned up after themselves. Highly recommend!' - Sarah M.",
+      "status": "draft",
+      "image": null,
+      "cta": "See more reviews →"
+    },
+    {
+      "id": 6,
+      "date": "2026-03-20",
+      "day": "Thursday",
+      "time": "10:00 AM",
+      "platform": ["Facebook", "Google Business"],
+      "type": "Seasonal Promotion",
+      "content": "SPRING SPECIAL: Mention this post and get 10% off your remodeling project. Limited time!",
+      "status": "draft",
+      "image": null,
+      "cta": "Schedule your free estimate today"
+    },
+    {
+      "id": 7,
+      "date": "2026-03-24",
+      "day": "Tuesday",
+      "time": "10:00 AM",
+      "platform": ["Facebook", "Google Business"],
+      "type": "Kitchen Remodel Tips",
+      "content": "Granite vs Quartz: Which Countertop Material Wins? (We Break Down Cost + Durability)",
+      "status": "draft",
+      "image": null,
+      "cta": "Let's design your kitchen"
+    },
+    {
+      "id": 8,
+      "date": "2026-03-27",
+      "day": "Thursday",
+      "time": "10:00 AM",
+      "platform": ["Facebook", "Google Business"],
+      "type": "Team Spotlight",
+      "content": "Meet our crew! These are the hands behind every Valencia Construction project. Proud to work with this team.",
+      "status": "draft",
+      "image": "needed",
+      "cta": "Quality work starts with quality people"
+    },
+    {
+      "id": 9,
+      "date": "2026-03-31",
+      "day": "Tuesday",
+      "time": "10:00 AM",
+      "platform": ["Facebook", "Google Business"],
+      "type": "Before/After Project",
+      "content": "This dated bathroom got a complete overhaul. New tile, fixtures, and lighting. Night and day difference!",
+      "status": "draft",
+      "image": "needed",
+      "cta": "Your bathroom deserves this treatment"
+    },
+    {
+      "id": 10,
+      "date": "2026-04-03",
+      "day": "Thursday",
+      "time": "10:00 AM",
+      "platform": ["Facebook", "Google Business"],
+      "type": "Industry Tips",
+      "content": "Pro Tip: Don't Skip the Foundation Work - Most Remodels Fail Because of What You Can't See",
+      "status": "draft",
+      "image": null,
+      "cta": "We inspect everything"
+    },
+    {
+      "id": 11,
+      "date": "2026-04-07",
+      "day": "Tuesday",
+      "time": "10:00 AM",
+      "platform": ["Facebook", "Google Business"],
+      "type": "Service Highlight",
+      "content": "Full renovation? Kitchen AND bathroom? We coordinate everything so you don't have to.",
+      "status": "draft",
+      "image": null,
+      "cta": "Let's plan your project"
+    },
+    {
+      "id": 12,
+      "date": "2026-04-10",
+      "day": "Thursday",
+      "time": "10:00 AM",
+      "platform": ["Facebook", "Google Business"],
+      "type": "Customer Testimonial",
+      "content": "⭐⭐⭐⭐⭐ 'They made the whole process stress-free. Best decision we made!' - James & Maria T.",
+      "status": "draft",
+      "image": null,
+      "cta": "Your next review could be here"
+    },
+    {
+      "id": 13,
+      "date": "2026-04-14",
+      "day": "Tuesday",
+      "time": "10:00 AM",
+      "platform": ["Facebook", "Google Business"],
+      "type": "Seasonal Promotion",
+      "content": "EASTER SPECIAL: Get your home ready for spring. 15% off through April 21st.",
+      "status": "draft",
+      "image": null,
+      "cta": "Limited time offer - book now"
+    },
+    {
+      "id": 14,
+      "date": "2026-04-17",
+      "day": "Thursday",
+      "time": "10:00 AM",
+      "platform": ["Facebook", "Google Business"],
+      "type": "Seasonal Promotion",
+      "content": "Why April is the BEST time to remodel (Hint: Contractors are less booked, and weather is perfect)",
+      "status": "draft",
+      "image": null,
+      "cta": "Schedule your free estimate now"
+    }
+  ]
+}

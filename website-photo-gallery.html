@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valencia Construction - Project Gallery</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            padding: 40px 20px;
+        }
+
+        .gallery-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .gallery-header h1 {
+            font-size: 2.5em;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+        }
+
+        .gallery-header p {
+            font-size: 1.1em;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Filter buttons */
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 25px;
+            border: 2px solid #ddd;
+            background: white;
+            color: #333;
+            cursor: pointer;
+            border-radius: 25px;
+            font-size: 1em;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover {
+            border-color: #0066cc;
+            color: #0066cc;
+        }
+
+        .filter-btn.active {
+            background: #0066cc;
+            color: white;
+            border-color: #0066cc;
+        }
+
+        /* Gallery grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .project-card.hidden {
+            display: none;
+        }
+
+        .project-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            height: 300px;
+        }
+
+        .before-image, .after-image {
+            position: relative;
+            overflow: hidden;
+            background: #e9ecef;
+        }
+
+        .before-image img, .after-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .image-label {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+
+        .after-image .image-label {
+            left: auto;
+            right: 10px;
+        }
+
+        .project-info {
+            padding: 25px;
+        }
+
+        .project-category {
+            display: inline-block;
+            background: #e7f0ff;
+            color: #0066cc;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .project-title {
+            font-size: 1.5em;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+        }
+
+        .project-description {
+            color: #666;
+            font-size: 0.95em;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .project-meta {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+            font-size: 0.9em;
+            color: #999;
+        }
+
+        .project-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal.open {
+            display: flex;
+        }
+
+        .modal-content {
+            max-width: 900px;
+            width: 100%;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            padding: 30px;
+            background: #f8f9fa;
+        }
+
+        .modal-image-container {
+            position: relative;
+        }
+
+        .modal-image-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .modal-image-label {
+            text-align: center;
+            color: #666;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .modal-info {
+            padding: 30px;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.9);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1001;
+        }
+
+        .modal-close:hover {
+            background: white;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #0066cc;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: background 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: #0052a3;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .gallery-header h1 {
+                font-size: 2em;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-images {
+                grid-template-columns: 1fr;
+                height: 400px;
+            }
+
+            .before-image, .after-image {
+                height: 200px;
+            }
+
+            .modal-images {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="gallery-container">
+        <div class="gallery-header">
+            <h1>Valencia Construction Projects</h1>
+            <p>See how we transform spaces. Click any project to view full before & after photos and project details.</p>
+        </div>
+
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">All Projects</button>
+            <button class="filter-btn" data-filter="kitchen">Kitchen Remodels</button>
+            <button class="filter-btn" data-filter="bathroom">Bathroom Remodels</button>
+            <button class="filter-btn" data-filter="flooring">Flooring</button>
+            <button class="filter-btn" data-filter="general">General Renovations</button>
+        </div>
+
+        <div class="gallery-grid" id="galleryGrid">
+            <!-- Projects will be inserted here by JavaScript -->
+        </div>
+    </div>
+
+    <!-- Modal for full-size viewing -->
+    <div class="modal" id="projectModal">
+        <button class="modal-close" onclick="closeModal()">&times;</button>
+        <div class="modal-content">
+            <div class="modal-images" id="modalImages"></div>
+            <div class="modal-info" id="modalInfo"></div>
+        </div>
+    </div>
+
+    <script>
+        // Sample project data — Tris can add real photos and data later
+        const projects = [
+            {
+                id: 1,
+                title: "Modern Kitchen Transformation",
+                category: "kitchen",
+                description: "Complete kitchen renovation with custom cabinetry, granite countertops, and stainless steel appliances.",
+                before: "https://via.placeholder.com/400x300?text=Kitchen+Before",
+                after: "https://via.placeholder.com/400x300?text=Kitchen+After",
+                location: "Lincoln Park, Chicago",
+                scope: "$18,500",
+                timeline: "6 weeks"
+            },
+            {
+                id: 2,
+                title: "Luxury Bathroom Renovation",
+                category: "bathroom",
+                description: "Master bathroom redesign featuring heated floors, marble shower, and custom vanity.",
+                before: "https://via.placeholder.com/400x300?text=Bathroom+Before",
+                after: "https://via.placeholder.com/400x300?text=Bathroom+After",
+                location: "Lakeview, Chicago",
+                scope: "$12,000",
+                timeline: "4 weeks"
+            },
+            {
+                id: 3,
+                title: "Hardwood Flooring Installation",
+                category: "flooring",
+                description: "1,800 sq ft of premium oak hardwood throughout main level.",
+                before: "https://via.placeholder.com/400x300?text=Flooring+Before",
+                after: "https://via.placeholder.com/400x300?text=Flooring+After",
+                location: "Pilsen, Chicago",
+                scope: "$9,800",
+                timeline: "3 weeks"
+            },
+            {
+                id: 4,
+                title: "Complete Home Renovation",
+                category: "general",
+                description: "Full gut renovation including electrical, plumbing, drywall, flooring, and painting.",
+                before: "https://via.placeholder.com/400x300?text=Reno+Before",
+                after: "https://via.placeholder.com/400x300?text=Reno+After",
+                location: "West Loop, Chicago",
+                scope: "$45,000",
+                timeline: "12 weeks"
+            },
+            {
+                id: 5,
+                title: "Kitchen & Dining Update",
+                category: "kitchen",
+                description: "Open-concept kitchen with island, new appliances, and ambient lighting.",
+                before: "https://via.placeholder.com/400x300?text=Kitchen+Update+Before",
+                after: "https://via.placeholder.com/400x300?text=Kitchen+Update+After",
+                location: "Hyde Park, Chicago",
+                scope: "$22,000",
+                timeline: "8 weeks"
+            },
+            {
+                id: 6,
+                title: "Guest Bathroom Upgrade",
+                category: "bathroom",
+                description: "Compact but stylish bathroom with modern fixtures and custom tile work.",
+                before: "https://via.placeholder.com/400x300?text=Guest+Bath+Before",
+                after: "https://via.placeholder.com/400x300?text=Guest+Bath+After",
+                location: "Logan Square, Chicago",
+                scope: "$7,500",
+                timeline: "2 weeks"
+            }
+        ];
+
+        // Render gallery
+        function renderGallery(filter = 'all') {
+            const grid = document.getElementById('galleryGrid');
+            grid.innerHTML = '';
+
+            projects
+                .filter(p => filter === 'all' || p.category === filter)
+                .forEach(project => {
+                    const card = document.createElement('div');
+                    card.className = 'project-card';
+                    card.innerHTML = `
+                        <div class="project-images">
+                            <div class="before-image">
+                                <img src="${project.before}" alt="Before">
+                                <div class="image-label">BEFORE</div>
+                            </div>
+                            <div class="after-image">
+                                <img src="${project.after}" alt="After">
+                                <div class="image-label">AFTER</div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-category">${project.category.toUpperCase()}</span>
+                            <h3 class="project-title">${project.title}</h3>
+                            <p class="project-description">${project.description}</p>
+                            <div class="project-meta">
+                                <span>📍 ${project.location}</span>
+                                <span>🏷️ ${project.scope}</span>
+                            </div>
+                        </div>
+                    `;
+                    card.onclick = () => openModal(project);
+                    grid.appendChild(card);
+                });
+        }
+
+        // Filter functionality
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                renderGallery(e.target.dataset.filter);
+            });
+        });
+
+        // Modal functions
+        function openModal(project) {
+            const modal = document.getElementById('projectModal');
+            const imagesDiv = document.getElementById('modalImages');
+            const infoDiv = document.getElementById('modalInfo');
+
+            imagesDiv.innerHTML = `
+                <div class="modal-image-container">
+                    <img src="${project.before}" alt="Before">
+                    <div class="modal-image-label">BEFORE</div>
+                </div>
+                <div class="modal-image-container">
+                    <img src="${project.after}" alt="After">
+                    <div class="modal-image-label">AFTER</div>
+                </div>
+            `;
+
+            infoDiv.innerHTML = `
+                <h2 style="margin-bottom: 10px;">${project.title}</h2>
+                <span class="project-category">${project.category.toUpperCase()}</span>
+                <p style="margin: 20px 0; line-height: 1.8; color: #666;">${project.description}</p>
+                
+                <div style="background: #f8f9fa; padding: 20px; border-radius: 5px; margin: 20px 0;">
+                    <h4 style="margin-bottom: 15px;">Project Details</h4>
+                    <div style="display: grid; gap: 15px;">
+                        <div>
+                            <div style="color: #999; font-size: 0.9em;">LOCATION</div>
+                            <div style="color: #1a1a1a; font-weight: 600;">${project.location}</div>
+                        </div>
+                        <div>
+                            <div style="color: #999; font-size: 0.9em;">PROJECT SCOPE</div>
+                            <div style="color: #1a1a1a; font-weight: 600;">${project.scope}</div>
+                        </div>
+                        <div>
+                            <div style="color: #999; font-size: 0.9em;">TIMELINE</div>
+                            <div style="color: #1a1a1a; font-weight: 600;">${project.timeline}</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="/contact" class="cta-button">Request a Quote for Similar Work</a>
+            `;
+
+            modal.classList.add('open');
+        }
+
+        function closeModal() {
+            document.getElementById('projectModal').classList.remove('open');
+        }
+
+        // Close modal on outside click
+        document.getElementById('projectModal').addEventListener('click', (e) => {
+            if (e.target.id === 'projectModal') closeModal();
+        });
+
+        // Initial render
+        renderGallery();
+    </script>
+</body>
+</html>

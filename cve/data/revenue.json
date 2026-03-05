@@ -1,0 +1,67 @@
+{
+  "total_mrr": 0,
+  "products": [
+    {
+      "id": "1rhwxiw",
+      "title": "I tracked every hour I worked for a week, and honestly it was kind of embarrassing.",
+      "mrr": 0
+    },
+    {
+      "id": "1rjv2q4",
+      "title": "Why AI Can't Stop Using Em Dashes \u2014 And Why Nobody Can Fix It",
+      "mrr": 0
+    },
+    {
+      "id": "1ri53j1",
+      "title": "I built a 100% offline, free loyalty card wallet because I hated holding up the checkout line.",
+      "mrr": 0
+    },
+    {
+      "id": "1rkfek2",
+      "title": "Switching to claude from chatgpt was fun for 3 days",
+      "mrr": 0
+    },
+    {
+      "id": "1qoxwdt",
+      "title": "State of the Subreddit (January 2027): Mods applications and rules updates",
+      "mrr": 0
+    },
+    {
+      "id": "47247645",
+      "title": "MacBook Neo",
+      "mrr": 0
+    },
+    {
+      "id": "1pku5yi",
+      "title": "Lost potential clients because my Instagram looked \"inactive.\" Now I'm spending entire Sundays filming reels.",
+      "mrr": 0
+    },
+    {
+      "id": "47224295",
+      "title": "Show HN: I built a sub-500ms latency voice agent from scratch",
+      "mrr": 0
+    },
+    {
+      "id": "1riyr34",
+      "title": "Went from $0 to $1k MRR. If I started my SaaS over, here's exactly what I'd do",
+      "mrr": 0
+    },
+    {
+      "id": "47215427",
+      "title": "Show HN: Omni \u2013 Open-source workplace search and chat, built on Postgres",
+      "mrr": 0
+    },
+    {
+      "id": "47219668",
+      "title": "Ask HN: Who is hiring? (March 2026)",
+      "mrr": 0
+    },
+    {
+      "id": "1rju16k",
+      "title": "Am I the only one tired of juggling 10 tools to build one startup? I will not promote.",
+      "mrr": 0
+    }
+  ],
+  "target_mrr": 1000000,
+  "last_updated": "2026-03-04T17:12:58.711248"
+}

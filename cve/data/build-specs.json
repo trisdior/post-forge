@@ -1,0 +1,490 @@
+[
+  {
+    "id": "1rhwxiw",
+    "opportunity_title": "I tracked every hour I worked for a week, and honestly it was kind of embarrassing.",
+    "opportunity_url": "https://reddit.com/r/productivity/comments/1rhwxiw/i_tracked_every_hour_i_worked_for_a_week_and/",
+    "opportunity_score": 72,
+    "product": {
+      "type": "saas_webapp",
+      "name": "I tracked every hour I worked for a week, and honestly it was kind of embarrassing.",
+      "tagline": "Solving: I tracked every hour I worked for a week, and honestly it was kind of embarrassi",
+      "problem": "I tracked every hour I worked for a week, and honestly it was kind of embarrassing.",
+      "signals": [
+        "broken"
+      ]
+    },
+    "revenue": {
+      "model": "subscription",
+      "price": "$10-30/mo",
+      "target_mrr": "$20K"
+    },
+    "tech_stack": "Next.js + Tailwind + Supabase + Stripe, Vercel",
+    "mvp_scope": {
+      "timeline": "24-48 hours",
+      "core_features": [
+        "Core pain point solution",
+        "User authentication",
+        "Payment integration (Stripe)",
+        "Landing page with value prop"
+      ],
+      "post_mvp": [
+        "Analytics dashboard",
+        "Team features",
+        "API access",
+        "Mobile optimization"
+      ]
+    },
+    "competitive_edge": "Ship faster, iterate faster, price aggressively",
+    "status": "built",
+    "created_at": "2026-03-04T17:01:10.791329",
+    "project_dir": "C:\\Users\\trisd\\clawd\\cve\\projects\\i-tracked-every-hour-i-worked-for-a-week",
+    "built_at": "2026-03-04T17:12:55.039091"
+  },
+  {
+    "id": "1rjv2q4",
+    "opportunity_title": "Why AI Can't Stop Using Em Dashes \u2014 And Why Nobody Can Fix It",
+    "opportunity_url": "https://reddit.com/r/ChatGPT/comments/1rjv2q4/why_ai_cant_stop_using_em_dashes_and_why_nobody/",
+    "opportunity_score": 68,
+    "product": {
+      "type": "agent_skill",
+      "name": "Why AI Can't Stop Using Em Dashes \u2014 And Why Nobody Can Fix It",
+      "tagline": "Solving: Why AI Can't Stop Using Em Dashes \u2014 And Why Nobody Can Fix It",
+      "problem": "Why AI Can't Stop Using Em Dashes \u2014 And Why Nobody Can Fix It",
+      "signals": [
+        "broken"
+      ]
+    },
+    "revenue": {
+      "model": "marketplace",
+      "price": "$20-100/skill",
+      "target_mrr": "$15K"
+    },
+    "tech_stack": "Python, OpenClaw skill format, ClawHub publish",
+    "mvp_scope": {
+      "timeline": "24-48 hours",
+      "core_features": [
+        "Core pain point solution",
+        "User authentication",
+        "Payment integration (Stripe)",
+        "Landing page with value prop"
+      ],
+      "post_mvp": [
+        "Analytics dashboard",
+        "Team features",
+        "API access",
+        "Mobile optimization"
+      ]
+    },
+    "competitive_edge": "Ship faster, iterate faster, price aggressively",
+    "status": "built",
+    "created_at": "2026-03-04T17:01:10.791329",
+    "project_dir": "C:\\Users\\trisd\\clawd\\cve\\projects\\why-ai-can-t-stop-using-em-dashes-\u2014-and-",
+    "built_at": "2026-03-04T17:12:55.040091"
+  },
+  {
+    "id": "1ri53j1",
+    "opportunity_title": "I built a 100% offline, free loyalty card wallet because I hated holding up the checkout line.",
+    "opportunity_url": "https://reddit.com/r/apple/comments/1ri53j1/i_built_a_100_offline_free_loyalty_card_wallet/",
+    "opportunity_score": 72,
+    "product": {
+      "type": "web_app",
+      "name": "I built a 100% offline, free loyalty card wallet because I hated holding up the checkout line.",
+      "tagline": "Solving: I built a 100% offline, free loyalty card wallet because I hated holding up the ",
+      "problem": "I built a 100% offline, free loyalty card wallet because I hated holding up the checkout line.",
+      "signals": [
+        "tired of"
+      ]
+    },
+    "revenue": {
+      "model": "subscription",
+      "price": "$10-30/mo",
+      "target_mrr": "$50K"
+    },
+    "tech_stack": "Next.js + Tailwind + Supabase, Vercel deploy",
+    "mvp_scope": {
+      "timeline": "24-48 hours",
+      "core_features": [
+        "Core pain point solution",
+        "User authentication",
+        "Payment integration (Stripe)",
+        "Landing page with value prop"
+      ],
+      "post_mvp": [
+        "Analytics dashboard",
+        "Team features",
+        "API access",
+        "Mobile optimization"
+      ]
+    },
+    "competitive_edge": "Ship faster, iterate faster, price aggressively",
+    "status": "built",
+    "created_at": "2026-03-04T17:01:10.791329",
+    "project_dir": "C:\\Users\\trisd\\clawd\\cve\\projects\\i-built-a-100%-offline-free-loyalty-card",
+    "built_at": "2026-03-04T17:12:55.043091"
+  },
+  {
+    "id": "1rkfek2",
+    "opportunity_title": "Switching to claude from chatgpt was fun for 3 days",
+    "opportunity_url": "https://reddit.com/r/ChatGPT/comments/1rkfek2/switching_to_claude_from_chatgpt_was_fun_for_3/",
+    "opportunity_score": 68,
+    "product": {
+      "type": "saas_webapp",
+      "name": "Switching to claude from chatgpt was fun for 3 days",
+      "tagline": "Solving: Switching to claude from chatgpt was fun for 3 days",
+      "problem": "Switching to claude from chatgpt was fun for 3 days",
+      "signals": [
+        "unusable"
+      ]
+    },
+    "revenue": {
+      "model": "subscription",
+      "price": "$10-30/mo",
+      "target_mrr": "$20K"
+    },
+    "tech_stack": "Next.js + Tailwind + Supabase + Stripe, Vercel",
+    "mvp_scope": {
+      "timeline": "24-48 hours",
+      "core_features": [
+        "Core pain point solution",
+        "User authentication",
+        "Payment integration (Stripe)",
+        "Landing page with value prop"
+      ],
+      "post_mvp": [
+        "Analytics dashboard",
+        "Team features",
+        "API access",
+        "Mobile optimization"
+      ]
+    },
+    "competitive_edge": "Ship faster, iterate faster, price aggressively",
+    "status": "built",
+    "created_at": "2026-03-04T17:01:10.791329",
+    "project_dir": "C:\\Users\\trisd\\clawd\\cve\\projects\\switching-to-claude-from-chatgpt-was-fun",
+    "built_at": "2026-03-04T17:12:55.044728"
+  },
+  {
+    "id": "1qoxwdt",
+    "opportunity_title": "State of the Subreddit (January 2027): Mods applications and rules updates",
+    "opportunity_url": "https://reddit.com/r/programming/comments/1qoxwdt/state_of_the_subreddit_january_2027_mods/",
+    "opportunity_score": 68,
+    "product": {
+      "type": "web_app",
+      "name": "State of the Subreddit (January 2027): Mods applications and rules updates",
+      "tagline": "Solving: State of the Subreddit (January 2027): Mods applications and rules updates",
+      "problem": "State of the Subreddit (January 2027): Mods applications and rules updates",
+      "signals": [
+        "broken",
+        "sucks"
+      ]
+    },
+    "revenue": {
+      "model": "subscription",
+      "price": "$10-30/mo",
+      "target_mrr": "$50K"
+    },
+    "tech_stack": "Next.js + Tailwind + Supabase, Vercel deploy",
+    "mvp_scope": {
+      "timeline": "24-48 hours",
+      "core_features": [
+        "Core pain point solution",
+        "User authentication",
+        "Payment integration (Stripe)",
+        "Landing page with value prop"
+      ],
+      "post_mvp": [
+        "Analytics dashboard",
+        "Team features",
+        "API access",
+        "Mobile optimization"
+      ]
+    },
+    "competitive_edge": "Ship faster, iterate faster, price aggressively",
+    "status": "built",
+    "created_at": "2026-03-04T17:01:10.791329",
+    "project_dir": "C:\\Users\\trisd\\clawd\\cve\\projects\\state-of-the-subreddit-january-2027-mods",
+    "built_at": "2026-03-04T17:12:55.047580"
+  },
+  {
+    "id": "47247645",
+    "opportunity_title": "MacBook Neo",
+    "opportunity_url": "https://www.apple.com/newsroom/2026/03/say-hello-to-macbook-neo/",
+    "opportunity_score": 68,
+    "product": {
+      "type": "web_app",
+      "name": "MacBook Neo",
+      "tagline": "Solving: MacBook Neo",
+      "problem": "MacBook Neo",
+      "signals": []
+    },
+    "revenue": {
+      "model": "subscription",
+      "price": "$10-30/mo",
+      "target_mrr": "$50K"
+    },
+    "tech_stack": "Next.js + Tailwind + Supabase, Vercel deploy",
+    "mvp_scope": {
+      "timeline": "24-48 hours",
+      "core_features": [
+        "Core pain point solution",
+        "User authentication",
+        "Payment integration (Stripe)",
+        "Landing page with value prop"
+      ],
+      "post_mvp": [
+        "Analytics dashboard",
+        "Team features",
+        "API access",
+        "Mobile optimization"
+      ]
+    },
+    "competitive_edge": "Ship faster, iterate faster, price aggressively",
+    "status": "built",
+    "created_at": "2026-03-04T17:01:10.791329",
+    "project_dir": "C:\\Users\\trisd\\clawd\\cve\\projects\\macbook-neo",
+    "built_at": "2026-03-04T17:12:55.049591"
+  },
+  {
+    "id": "1pku5yi",
+    "opportunity_title": "Lost potential clients because my Instagram looked \"inactive.\" Now I'm spending entire Sundays filming reels.",
+    "opportunity_url": "https://reddit.com/r/freelance/comments/1pku5yi/lost_potential_clients_because_my_instagram/",
+    "opportunity_score": 65,
+    "product": {
+      "type": "web_app",
+      "name": "Lost potential clients because my Instagram looked \"inactive.\" Now I'm spending entire Sundays filming reels.",
+      "tagline": "Solving: Lost potential clients because my Instagram looked \"inactive.\" Now I'm spending ",
+      "problem": "Lost potential clients because my Instagram looked \"inactive.\" Now I'm spending entire Sundays filming reels.",
+      "signals": [
+        "broken"
+      ]
+    },
+    "revenue": {
+      "model": "subscription",
+      "price": "$10-30/mo",
+      "target_mrr": "$50K"
+    },
+    "tech_stack": "Next.js + Tailwind + Supabase, Vercel deploy",
+    "mvp_scope": {
+      "timeline": "24-48 hours",
+      "core_features": [
+        "Core pain point solution",
+        "User authentication",
+        "Payment integration (Stripe)",
+        "Landing page with value prop"
+      ],
+      "post_mvp": [
+        "Analytics dashboard",
+        "Team features",
+        "API access",
+        "Mobile optimization"
+      ]
+    },
+    "competitive_edge": "Ship faster, iterate faster, price aggressively",
+    "status": "built",
+    "created_at": "2026-03-04T17:01:10.791329",
+    "project_dir": "C:\\Users\\trisd\\clawd\\cve\\projects\\lost-potential-clients-because-my-instag",
+    "built_at": "2026-03-04T17:12:55.052588"
+  },
+  {
+    "id": "47224295",
+    "opportunity_title": "Show HN: I built a sub-500ms latency voice agent from scratch",
+    "opportunity_url": "https://www.ntik.me/posts/voice-agent",
+    "opportunity_score": 68,
+    "product": {
+      "type": "web_app",
+      "name": "Show HN: I built a sub-500ms latency voice agent from scratch",
+      "tagline": "Solving: Show HN: I built a sub-500ms latency voice agent from scratch",
+      "problem": "Show HN: I built a sub-500ms latency voice agent from scratch",
+      "signals": []
+    },
+    "revenue": {
+      "model": "subscription",
+      "price": "$10-30/mo",
+      "target_mrr": "$50K"
+    },
+    "tech_stack": "Next.js + Tailwind + Supabase, Vercel deploy",
+    "mvp_scope": {
+      "timeline": "24-48 hours",
+      "core_features": [
+        "Core pain point solution",
+        "User authentication",
+        "Payment integration (Stripe)",
+        "Landing page with value prop"
+      ],
+      "post_mvp": [
+        "Analytics dashboard",
+        "Team features",
+        "API access",
+        "Mobile optimization"
+      ]
+    },
+    "competitive_edge": "Ship faster, iterate faster, price aggressively",
+    "status": "built",
+    "created_at": "2026-03-04T17:01:10.791329",
+    "project_dir": "C:\\Users\\trisd\\clawd\\cve\\projects\\show-hn-i-built-a-sub-500ms-latency-voic",
+    "built_at": "2026-03-04T17:12:55.054586"
+  },
+  {
+    "id": "1riyr34",
+    "opportunity_title": "Went from $0 to $1k MRR. If I started my SaaS over, here's exactly what I'd do",
+    "opportunity_url": "https://reddit.com/r/indiehackers/comments/1riyr34/went_from_0_to_1k_mrr_if_i_started_my_saas_over/",
+    "opportunity_score": 65,
+    "product": {
+      "type": "saas_webapp",
+      "name": "Went from $0 to $1k MRR. If I started my SaaS over, here's exactly what I'd do",
+      "tagline": "Solving: Went from $0 to $1k MRR. If I started my SaaS over, here's exactly what I'd do",
+      "problem": "Went from $0 to $1k MRR. If I started my SaaS over, here's exactly what I'd do",
+      "signals": [
+        "broken"
+      ]
+    },
+    "revenue": {
+      "model": "subscription",
+      "price": "$10-30/mo",
+      "target_mrr": "$20K"
+    },
+    "tech_stack": "Next.js + Tailwind + Supabase + Stripe, Vercel",
+    "mvp_scope": {
+      "timeline": "24-48 hours",
+      "core_features": [
+        "Core pain point solution",
+        "User authentication",
+        "Payment integration (Stripe)",
+        "Landing page with value prop"
+      ],
+      "post_mvp": [
+        "Analytics dashboard",
+        "Team features",
+        "API access",
+        "Mobile optimization"
+      ]
+    },
+    "competitive_edge": "Ship faster, iterate faster, price aggressively",
+    "status": "built",
+    "created_at": "2026-03-04T17:01:10.791329",
+    "project_dir": "C:\\Users\\trisd\\clawd\\cve\\projects\\went-from-$0-to-$1k-mrr-if-i-started-my-",
+    "built_at": "2026-03-04T17:12:55.057585"
+  },
+  {
+    "id": "47215427",
+    "opportunity_title": "Show HN: Omni \u2013 Open-source workplace search and chat, built on Postgres",
+    "opportunity_url": "https://github.com/getomnico/omni",
+    "opportunity_score": 65,
+    "product": {
+      "type": "web_app",
+      "name": "Show HN: Omni \u2013 Open-source workplace search and chat, built on Postgres",
+      "tagline": "Solving: Show HN: Omni \u2013 Open-source workplace search and chat, built on Postgres",
+      "problem": "Show HN: Omni \u2013 Open-source workplace search and chat, built on Postgres",
+      "signals": [
+        "alternative to"
+      ]
+    },
+    "revenue": {
+      "model": "subscription",
+      "price": "$10-30/mo",
+      "target_mrr": "$50K"
+    },
+    "tech_stack": "Next.js + Tailwind + Supabase, Vercel deploy",
+    "mvp_scope": {
+      "timeline": "24-48 hours",
+      "core_features": [
+        "Core pain point solution",
+        "User authentication",
+        "Payment integration (Stripe)",
+        "Landing page with value prop"
+      ],
+      "post_mvp": [
+        "Analytics dashboard",
+        "Team features",
+        "API access",
+        "Mobile optimization"
+      ]
+    },
+    "competitive_edge": "Ship faster, iterate faster, price aggressively",
+    "status": "built",
+    "created_at": "2026-03-04T17:01:10.791329",
+    "project_dir": "C:\\Users\\trisd\\clawd\\cve\\projects\\show-hn-omni-\u2013-open-source-workplace-sea",
+    "built_at": "2026-03-04T17:12:55.060096"
+  },
+  {
+    "id": "47219668",
+    "opportunity_title": "Ask HN: Who is hiring? (March 2026)",
+    "opportunity_url": "https://news.ycombinator.com/item?id=47219668",
+    "opportunity_score": 68,
+    "product": {
+      "type": "saas_webapp",
+      "name": "Ask HN: Who is hiring? (March 2026)",
+      "tagline": "Solving: Ask HN: Who is hiring? (March 2026)",
+      "problem": "Ask HN: Who is hiring? (March 2026)",
+      "signals": []
+    },
+    "revenue": {
+      "model": "subscription",
+      "price": "$10-30/mo",
+      "target_mrr": "$20K"
+    },
+    "tech_stack": "Next.js + Tailwind + Supabase + Stripe, Vercel",
+    "mvp_scope": {
+      "timeline": "24-48 hours",
+      "core_features": [
+        "Core pain point solution",
+        "User authentication",
+        "Payment integration (Stripe)",
+        "Landing page with value prop"
+      ],
+      "post_mvp": [
+        "Analytics dashboard",
+        "Team features",
+        "API access",
+        "Mobile optimization"
+      ]
+    },
+    "competitive_edge": "Ship faster, iterate faster, price aggressively",
+    "status": "built",
+    "created_at": "2026-03-04T17:01:10.791329",
+    "project_dir": "C:\\Users\\trisd\\clawd\\cve\\projects\\ask-hn-who-is-hiring-march-2026",
+    "built_at": "2026-03-04T17:12:55.062098"
+  },
+  {
+    "id": "1rju16k",
+    "opportunity_title": "Am I the only one tired of juggling 10 tools to build one startup? I will not promote.",
+    "opportunity_url": "https://reddit.com/r/startups/comments/1rju16k/am_i_the_only_one_tired_of_juggling_10_tools_to/",
+    "opportunity_score": 68,
+    "product": {
+      "type": "tool",
+      "name": "Am I the only one tired of juggling 10 tools to build one startup? I will not promote.",
+      "tagline": "Solving: Am I the only one tired of juggling 10 tools to build one startup? I will not pr",
+      "problem": "Am I the only one tired of juggling 10 tools to build one startup? I will not promote.",
+      "signals": [
+        "tired of",
+        "broken"
+      ]
+    },
+    "revenue": {
+      "model": "one_time_or_sub",
+      "price": "$10-50",
+      "target_mrr": "$10K"
+    },
+    "tech_stack": "Python CLI or Next.js webapp, pip/npm publish",
+    "mvp_scope": {
+      "timeline": "24-48 hours",
+      "core_features": [
+        "Core pain point solution",
+        "User authentication",
+        "Payment integration (Stripe)",
+        "Landing page with value prop"
+      ],
+      "post_mvp": [
+        "Analytics dashboard",
+        "Team features",
+        "API access",
+        "Mobile optimization"
+      ]
+    },
+    "competitive_edge": "Ship faster, iterate faster, price aggressively",
+    "status": "built",
+    "created_at": "2026-03-04T17:01:10.791329",
+    "project_dir": "C:\\Users\\trisd\\clawd\\cve\\projects\\am-i-the-only-one-tired-of-juggling-10-t",
+    "built_at": "2026-03-04T17:12:55.065097"
+  }
+]

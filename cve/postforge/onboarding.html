@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>PostForge — Set Up Your Business</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0a0f;--card:#16161f;--border:#1e1e2e;--text:#f0f0f5;--muted:#8888a0;--accent:#7c3aed;--accent2:#a855f7;--green:#10b981;--cyan:#06b6d4;--pink:#ec4899}
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow-x:hidden}
+.bg-grid{position:fixed;top:0;left:0;right:0;bottom:0;z-index:0;background-image:linear-gradient(rgba(124,58,237,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(124,58,237,0.03) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
+.bg-glow{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;z-index:0;background:radial-gradient(circle,rgba(124,58,237,0.08) 0%,transparent 70%);pointer-events:none}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+.container{position:relative;z-index:1;width:100%;max-width:560px;padding:24px}
+
+/* Progress */
+.progress-bar{display:flex;gap:6px;margin-bottom:40px;animation:fadeIn 0.5s ease-out}
+.progress-dot{flex:1;height:4px;border-radius:2px;background:var(--border);transition:background 0.5s}
+.progress-dot.done{background:var(--accent2)}
+.progress-dot.active{background:linear-gradient(90deg,var(--accent),var(--accent2));box-shadow:0 0 8px rgba(124,58,237,0.4)}
+
+/* Steps */
+.step{display:none;animation:fadeUp 0.5s ease-out}
+.step.active{display:block}
+.step-num{font-size:12px;font-weight:700;color:var(--accent2);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+.step h1{font-size:28px;font-weight:900;margin-bottom:6px;letter-spacing:-0.5px}
+.step p{color:var(--muted);font-size:14px;line-height:1.6;margin-bottom:28px}
+
+.form-group{margin-bottom:18px}
+.form-label{font-size:12px;font-weight:600;color:var(--muted);display:block;margin-bottom:6px}
+.form-input{width:100%;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--text);font-size:15px;font-family:inherit;outline:none;transition:all 0.3s}
+.form-input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(124,58,237,0.1)}
+.form-input::placeholder{color:#44445a}
+select.form-input{appearance:none;cursor:pointer}
+textarea.form-input{min-height:80px;resize:vertical;line-height:1.5}
+
+/* Industry Grid */
+.industry-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px}
+.ind-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px 12px;text-align:center;cursor:pointer;transition:all 0.3s}
+.ind-card:hover{border-color:rgba(124,58,237,0.3);transform:translateY(-2px)}
+.ind-card.selected{border-color:var(--accent);background:rgba(124,58,237,0.08);box-shadow:0 0 15px rgba(124,58,237,0.15)}
+.ind-icon{font-size:28px;margin-bottom:8px}
+.ind-name{font-size:12px;font-weight:700}
+
+/* Platform Pills */
+.plat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px}
+.plat-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px;text-align:center;cursor:pointer;transition:all 0.3s}
+.plat-card:hover{border-color:rgba(124,58,237,0.3)}
+.plat-card.selected{border-color:var(--green);background:rgba(16,185,129,0.06)}
+.plat-icon{font-size:24px;margin-bottom:6px}
+.plat-name{font-size:12px;font-weight:700}
+
+/* Goal cards */
+.goal-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}
+.goal-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;cursor:pointer;transition:all 0.3s}
+.goal-card:hover{border-color:rgba(124,58,237,0.3)}
+.goal-card.selected{border-color:var(--accent);background:rgba(124,58,237,0.06)}
+.goal-card h3{font-size:14px;font-weight:700;margin-bottom:4px}
+.goal-card p{font-size:11px;color:var(--muted);line-height:1.4}
+
+/* Buttons */
+.btn-row{display:flex;gap:10px;margin-top:24px}
+.btn{flex:1;padding:14px;border-radius:12px;font-size:15px;font-weight:700;border:none;cursor:pointer;font-family:inherit;transition:all 0.3s}
+.btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;box-shadow:0 0 20px rgba(124,58,237,0.3)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 30px rgba(124,58,237,0.5)}
+.btn-secondary{background:transparent;border:1px solid var(--border);color:var(--muted)}
+.btn-secondary:hover{border-color:var(--accent);color:var(--text)}
+
+/* Finish */
+.finish-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:40px;text-align:center}
+.finish-icon{font-size:56px;margin-bottom:16px}
+.finish-card h2{font-size:24px;font-weight:900;margin-bottom:8px}
+.finish-card p{color:var(--muted);font-size:14px;margin-bottom:24px;line-height:1.6}
+.finish-stats{display:flex;justify-content:center;gap:24px;margin-bottom:24px}
+.finish-stat{text-align:center}
+.finish-stat .num{font-size:28px;font-weight:900;color:var(--accent2)}
+.finish-stat .label{font-size:11px;color:var(--muted)}
+
+@media(max-width:480px){.industry-grid,.plat-grid{grid-template-columns:repeat(2,1fr)}.goal-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="bg-grid"></div><div class="bg-glow"></div>
+<div class="container">
+
+<div class="progress-bar">
+<div class="progress-dot active" id="pd-1"></div>
+<div class="progress-dot" id="pd-2"></div>
+<div class="progress-dot" id="pd-3"></div>
+<div class="progress-dot" id="pd-4"></div>
+<div class="progress-dot" id="pd-5"></div>
+</div>
+
+<!-- Step 1: Industry -->
+<div class="step active" id="step-1">
+<div class="step-num">Step 1 of 5</div>
+<h1>What's your industry?</h1>
+<p>We'll customize everything — content style, hashtags, posting times — for your specific niche.</p>
+<div class="industry-grid">
+<div class="ind-card" onclick="selectInd(this,'contractor')"><div class="ind-icon">&#x1F528;</div><div class="ind-name">Contractor</div></div>
+<div class="ind-card" onclick="selectInd(this,'restaurant')"><div class="ind-icon">&#x1F37D;&#xFE0F;</div><div class="ind-name">Restaurant</div></div>
+<div class="ind-card" onclick="selectInd(this,'realtor')"><div class="ind-icon">&#x1F3E0;</div><div class="ind-name">Real Estate</div></div>
+<div class="ind-card" onclick="selectInd(this,'salon')"><div class="ind-icon">&#x1F487;</div><div class="ind-name">Salon / Beauty</div></div>
+<div class="ind-card" onclick="selectInd(this,'fitness')"><div class="ind-icon">&#x1F4AA;</div><div class="ind-name">Fitness</div></div>
+<div class="ind-card" onclick="selectInd(this,'auto')"><div class="ind-icon">&#x1F697;</div><div class="ind-name">Auto Shop</div></div>
+<div class="ind-card" onclick="selectInd(this,'lawyer')"><div class="ind-icon">&#x2696;&#xFE0F;</div><div class="ind-name">Law Firm</div></div>
+<div class="ind-card" onclick="selectInd(this,'dentist')"><div class="ind-icon">&#x1F9B7;</div><div class="ind-name">Dental</div></div>
+<div class="ind-card" onclick="selectInd(this,'ecommerce')"><div class="ind-icon">&#x1F6CD;&#xFE0F;</div><div class="ind-name">E-Commerce</div></div>
+</div>
+<div class="form-group"><label class="form-label">Or type your industry</label><input class="form-input" id="custom-industry" placeholder="e.g. Dog grooming, Photography, Accounting..."></div>
+<div class="btn-row"><div></div><button class="btn btn-primary" onclick="nextStep(2)">Continue →</button></div>
+</div>
+
+<!-- Step 2: Business Info -->
+<div class="step" id="step-2">
+<div class="step-num">Step 2 of 5</div>
+<h1>Tell us about your business</h1>
+<p>The more we know, the better your content will be. AI learns your voice.</p>
+<div class="form-group"><label class="form-label">Business Name</label><input class="form-input" id="ob-name" placeholder="e.g. Valencia Construction"></div>
+<div class="form-group"><label class="form-label">Location</label><input class="form-input" id="ob-location" placeholder="e.g. Chicago, IL"></div>
+<div class="form-group"><label class="form-label">What do you do? (services/products)</label><textarea class="form-input" id="ob-services" placeholder="e.g. Kitchen remodeling, bathroom renovation, painting, flooring. We specialize in full gut remodels for older Chicago homes."></textarea></div>
+<div class="btn-row"><button class="btn btn-secondary" onclick="prevStep(1)">← Back</button><button class="btn btn-primary" onclick="nextStep(3)">Continue →</button></div>
+</div>
+
+<!-- Step 3: Platforms -->
+<div class="step" id="step-3">
+<div class="step-num">Step 3 of 5</div>
+<h1>Where do you post?</h1>
+<p>Select all platforms you use or want to start using. We'll optimize content for each one.</p>
+<div class="plat-grid">
+<div class="plat-card" onclick="togglePlat(this,'instagram')"><div class="plat-icon">&#x1F4F8;</div><div class="plat-name">Instagram</div></div>
+<div class="plat-card" onclick="togglePlat(this,'facebook')"><div class="plat-icon">&#x1F4D8;</div><div class="plat-name">Facebook</div></div>
+<div class="plat-card" onclick="togglePlat(this,'twitter')"><div class="plat-icon">X</div><div class="plat-name">X / Twitter</div></div>
+<div class="plat-card" onclick="togglePlat(this,'linkedin')"><div class="plat-icon">&#x1F4BC;</div><div class="plat-name">LinkedIn</div></div>
+<div class="plat-card" onclick="togglePlat(this,'tiktok')"><div class="plat-icon">&#x1F3B5;</div><div class="plat-name">TikTok</div></div>
+<div class="plat-card" onclick="togglePlat(this,'youtube')"><div class="plat-icon">&#x25B6;&#xFE0F;</div><div class="plat-name">YouTube</div></div>
+</div>
+<div class="btn-row"><button class="btn btn-secondary" onclick="prevStep(2)">← Back</button><button class="btn btn-primary" onclick="nextStep(4)">Continue →</button></div>
+</div>
+
+<!-- Step 4: Goals -->
+<div class="step" id="step-4">
+<div class="step-num">Step 4 of 5</div>
+<h1>What's your #1 goal?</h1>
+<p>We'll prioritize the content types that get you there fastest.</p>
+<div class="goal-grid">
+<div class="goal-card" onclick="selectGoal(this,'leads')"><h3>&#x1F3AF; Get More Leads</h3><p>Turn followers into paying customers</p></div>
+<div class="goal-card" onclick="selectGoal(this,'awareness')"><h3>&#x1F4E2; Build Awareness</h3><p>Get your name out there locally</p></div>
+<div class="goal-card" onclick="selectGoal(this,'engagement')"><h3>&#x1F4AC; Grow Engagement</h3><p>Build a community around your brand</p></div>
+<div class="goal-card" onclick="selectGoal(this,'authority')"><h3>&#x1F3C6; Establish Authority</h3><p>Become the go-to expert in your niche</p></div>
+</div>
+<div class="form-group"><label class="form-label">How often do you want to post?</label>
+<select class="form-input" id="ob-frequency">
+<option value="daily">Every day (recommended)</option>
+<option value="5x">5x per week</option>
+<option value="3x">3x per week</option>
+<option value="weekly">Once a week</option>
+</select>
+</div>
+<div class="btn-row"><button class="btn btn-secondary" onclick="prevStep(3)">← Back</button><button class="btn btn-primary" onclick="nextStep(5)">Continue →</button></div>
+</div>
+
+<!-- Step 5: Complete -->
+<div class="step" id="step-5">
+<div class="finish-card">
+<div class="finish-icon">&#x1F680;</div>
+<h2>You're all set!</h2>
+<p>PostForge has everything it needs to create amazing content for your business. Here's what's ready:</p>
+<div class="finish-stats">
+<div class="finish-stat"><div class="num" id="fin-posts">30</div><div class="label">posts/month</div></div>
+<div class="finish-stat"><div class="num" id="fin-platforms">2</div><div class="label">platforms</div></div>
+<div class="finish-stat"><div class="num" id="fin-saved">40+</div><div class="label">hours saved</div></div>
+</div>
+<button class="btn btn-primary" style="width:100%" onclick="finishOnboarding()">Start Creating Content →</button>
+</div>
+</div>
+
+</div>
+<script>
+var obData={industry:'',name:'',location:'',services:'',platforms:[],goal:'',frequency:'daily'};
+var currentStep=1;
+
+function selectInd(el,ind){
+  document.querySelectorAll('.ind-card').forEach(function(c){c.classList.remove('selected')});
+  el.classList.add('selected');obData.industry=ind;
+}
+function togglePlat(el,p){
+  el.classList.toggle('selected');
+  var idx=obData.platforms.indexOf(p);
+  if(idx>-1)obData.platforms.splice(idx,1);else obData.platforms.push(p);
+}
+function selectGoal(el,g){
+  document.querySelectorAll('.goal-card').forEach(function(c){c.classList.remove('selected')});
+  el.classList.add('selected');obData.goal=g;
+}
+
+function nextStep(n){
+  // Validate
+  if(n===2&&!obData.industry&&!document.getElementById('custom-industry').value){alert('Pick an industry first');return}
+  if(n===2&&!obData.industry)obData.industry=document.getElementById('custom-industry').value;
+  if(n===3){obData.name=document.getElementById('ob-name').value;obData.location=document.getElementById('ob-location').value;obData.services=document.getElementById('ob-services').value;if(!obData.name){alert('Enter your business name');return}}
+  if(n===4&&obData.platforms.length===0){alert('Select at least one platform');return}
+  if(n===5){obData.frequency=document.getElementById('ob-frequency').value;updateFinish()}
+
+  document.getElementById('step-'+currentStep).classList.remove('active');
+  document.getElementById('step-'+n).classList.add('active');
+  for(var i=1;i<=5;i++){
+    var d=document.getElementById('pd-'+i);
+    d.className='progress-dot'+(i<n?' done':(i===n?' active':''));
+  }
+  currentStep=n;
+}
+function prevStep(n){
+  document.getElementById('step-'+currentStep).classList.remove('active');
+  document.getElementById('step-'+n).classList.add('active');
+  for(var i=1;i<=5;i++){
+    var d=document.getElementById('pd-'+i);
+    d.className='progress-dot'+(i<n?' done':(i===n?' active':''));
+  }
+  currentStep=n;
+}
+
+function updateFinish(){
+  var postsMap={daily:30,'5x':22,'3x':13,weekly:4};
+  document.getElementById('fin-posts').textContent=postsMap[obData.frequency]||30;
+  document.getElementById('fin-platforms').textContent=obData.platforms.length;
+  var hours=Math.round((postsMap[obData.frequency]||30)*1.5);
+  document.getElementById('fin-saved').textContent=hours+'+';
+}
+
+async function finishOnboarding(){
+  localStorage.setItem('pf_onboarding',JSON.stringify(obData));
+  var token=localStorage.getItem('pf_token');
+  if(token){
+    var hd={'Content-Type':'application/json','Authorization':'Bearer '+token};
+    try{
+      await fetch('/api/onboarding',{method:'POST',headers:hd,body:JSON.stringify(obData)});
+      // Teach the agent from onboarding data
+      await fetch('/api/agent/teach',{method:'POST',headers:hd,body:JSON.stringify({
+        name:obData.businessName||'',
+        industry:obData.industry||'',
+        services:obData.businessType||'',
+        location:obData.location||'',
+        voice:obData.voice||'professional',
+        goal:obData.goal||''
+      })});
+    }catch(e){}
+  }
+  // Send to agent dashboard instead of create page
+  window.location='/agent';
+}
+</script>
+</body>
+</html>

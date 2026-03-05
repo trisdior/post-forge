@@ -1,0 +1,98 @@
+[
+  {
+    "id": "1rhwxiw",
+    "title": "I tracked every hour I worked for a week, and honestly it was kind of embarrassing.",
+    "type": "saas_webapp",
+    "project_dir": "C:\\Users\\trisd\\clawd\\cve\\projects\\i-tracked-every-hour-i-worked-for-a-week",
+    "built_at": "2026-03-04T17:12:55.039091",
+    "status": "scaffold_ready"
+  },
+  {
+    "id": "1rjv2q4",
+    "title": "Why AI Can't Stop Using Em Dashes \u2014 And Why Nobody Can Fix It",
+    "type": "agent_skill",
+    "project_dir": "C:\\Users\\trisd\\clawd\\cve\\projects\\why-ai-can-t-stop-using-em-dashes-\u2014-and-",
+    "built_at": "2026-03-04T17:12:55.040091",
+    "status": "scaffold_ready"
+  },
+  {
+    "id": "1ri53j1",
+    "title": "I built a 100% offline, free loyalty card wallet because I hated holding up the checkout line.",
+    "type": "web_app",
+    "project_dir": "C:\\Users\\trisd\\clawd\\cve\\projects\\i-built-a-100%-offline-free-loyalty-card",
+    "built_at": "2026-03-04T17:12:55.043091",
+    "status": "scaffold_ready"
+  },
+  {
+    "id": "1rkfek2",
+    "title": "Switching to claude from chatgpt was fun for 3 days",
+    "type": "saas_webapp",
+    "project_dir": "C:\\Users\\trisd\\clawd\\cve\\projects\\switching-to-claude-from-chatgpt-was-fun",
+    "built_at": "2026-03-04T17:12:55.044728",
+    "status": "scaffold_ready"
+  },
+  {
+    "id": "1qoxwdt",
+    "title": "State of the Subreddit (January 2027): Mods applications and rules updates",
+    "type": "web_app",
+    "project_dir": "C:\\Users\\trisd\\clawd\\cve\\projects\\state-of-the-subreddit-january-2027-mods",
+    "built_at": "2026-03-04T17:12:55.047580",
+    "status": "scaffold_ready"
+  },
+  {
+    "id": "47247645",
+    "title": "MacBook Neo",
+    "type": "web_app",
+    "project_dir": "C:\\Users\\trisd\\clawd\\cve\\projects\\macbook-neo",
+    "built_at": "2026-03-04T17:12:55.049591",
+    "status": "scaffold_ready"
+  },
+  {
+    "id": "1pku5yi",
+    "title": "Lost potential clients because my Instagram looked \"inactive.\" Now I'm spending entire Sundays filming reels.",
+    "type": "web_app",
+    "project_dir": "C:\\Users\\trisd\\clawd\\cve\\projects\\lost-potential-clients-because-my-instag",
+    "built_at": "2026-03-04T17:12:55.052588",
+    "status": "scaffold_ready"
+  },
+  {
+    "id": "47224295",
+    "title": "Show HN: I built a sub-500ms latency voice agent from scratch",
+    "type": "web_app",
+    "project_dir": "C:\\Users\\trisd\\clawd\\cve\\projects\\show-hn-i-built-a-sub-500ms-latency-voic",
+    "built_at": "2026-03-04T17:12:55.054586",
+    "status": "scaffold_ready"
+  },
+  {
+    "id": "1riyr34",
+    "title": "Went from $0 to $1k MRR. If I started my SaaS over, here's exactly what I'd do",
+    "type": "saas_webapp",
+    "project_dir": "C:\\Users\\trisd\\clawd\\cve\\projects\\went-from-$0-to-$1k-mrr-if-i-started-my-",
+    "built_at": "2026-03-04T17:12:55.057585",
+    "status": "scaffold_ready"
+  },
+  {
+    "id": "47215427",
+    "title": "Show HN: Omni \u2013 Open-source workplace search and chat, built on Postgres",
+    "type": "web_app",
+    "project_dir": "C:\\Users\\trisd\\clawd\\cve\\projects\\show-hn-omni-\u2013-open-source-workplace-sea",
+    "built_at": "2026-03-04T17:12:55.060096",
+    "status": "scaffold_ready"
+  },
+  {
+    "id": "47219668",
+    "title": "Ask HN: Who is hiring? (March 2026)",
+    "type": "saas_webapp",
+    "project_dir": "C:\\Users\\trisd\\clawd\\cve\\projects\\ask-hn-who-is-hiring-march-2026",
+    "built_at": "2026-03-04T17:12:55.062098",
+    "status": "scaffold_ready"
+  },
+  {
+    "id": "1rju16k",
+    "title": "Am I the only one tired of juggling 10 tools to build one startup? I will not promote.",
+    "type": "tool",
+    "project_dir": "C:\\Users\\trisd\\clawd\\cve\\projects\\am-i-the-only-one-tired-of-juggling-10-t",
+    "built_at": "2026-03-04T17:12:55.065097",
+    "status": "scaffold_ready"
+  }
+]

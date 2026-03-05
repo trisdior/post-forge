@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valencia Construction - Landing Page Mockup</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: #1f2937; line-height: 1.6; }
+    
+    /* Hero Section */
+    .hero {
+      position: relative;
+      min-height: 500px;
+      background: linear-gradient(135deg, rgba(30, 58, 138, 0.92) 0%, rgba(30, 64, 175, 0.88) 100%),
+                  url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200') center/cover;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 20px;
+    }
+    .hero-content { max-width: 800px; }
+    .hero h1 { font-size: 2.8em; font-weight: 700; margin-bottom: 20px; line-height: 1.2; }
+    .hero .subtitle { font-size: 1.25em; opacity: 0.95; margin-bottom: 30px; }
+    .hero .phone-btn {
+      display: inline-block;
+      background: white;
+      color: #1e3a8a;
+      font-size: 1.5em;
+      font-weight: 700;
+      padding: 18px 40px;
+      border-radius: 10px;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .hero .phone-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 25px rgba(0,0,0,0.3); }
+    .hero .cta-subtext { margin-top: 15px; font-size: 0.95em; opacity: 0.9; }
+
+    /* Trust Bar */
+    .trust-bar {
+      background: #f8fafc;
+      padding: 40px 20px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .trust-bar-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .trust-item {
+      text-align: center;
+      padding: 10px 20px;
+    }
+    .trust-item .icon { font-size: 2.5em; margin-bottom: 8px; }
+    .trust-item strong { display: block; color: #1e3a8a; font-size: 1em; }
+
+    /* Services Preview */
+    .services {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .services h2 {
+      text-align: center;
+      font-size: 2em;
+      color: #1e3a8a;
+      margin-bottom: 40px;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+    .service-card {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+    .service-card:hover { transform: translateY(-5px); }
+    .service-card img { width: 100%; height: 200px; object-fit: cover; }
+    .service-card .card-content { padding: 20px; }
+    .service-card h3 { color: #1e3a8a; margin-bottom: 8px; }
+    .service-card p { font-size: 0.95em; color: #64748b; }
+
+    /* Why Choose Us */
+    .why-us {
+      background: linear-gradient(to right, #1e3a8a, #1e40af);
+      color: white;
+      padding: 60px 20px;
+    }
+    .why-us-inner { max-width: 800px; margin: 0 auto; }
+    .why-us h2 { text-align: center; font-size: 2em; margin-bottom: 40px; }
+    .why-us ul { list-style: none; }
+    .why-us li {
+      padding: 20px 0;
+      padding-left: 50px;
+      position: relative;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+    }
+    .why-us li:last-child { border-bottom: none; }
+    .why-us li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      top: 20px;
+      width: 30px;
+      height: 30px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+    .why-us li strong { font-size: 1.1em; display: block; margin-bottom: 5px; }
+    .why-us li span { opacity: 0.9; font-size: 0.95em; }
+
+    /* Form Section */
+    .form-section {
+      padding: 60px 20px;
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .form-section h2 { font-size: 2em; color: #1e3a8a; margin-bottom: 10px; }
+    .form-section .form-subtitle { color: #64748b; margin-bottom: 30px; }
+    .form-placeholder {
+      background: #f1f5f9;
+      border: 2px dashed #cbd5e1;
+      border-radius: 12px;
+      padding: 60px 40px;
+      color: #64748b;
+    }
+
+    /* Footer CTA */
+    .footer-cta {
+      background: #0f172a;
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    .footer-cta p { margin-bottom: 15px; font-size: 1.1em; }
+    .footer-cta a { color: #60a5fa; font-size: 1.5em; font-weight: 700; text-decoration: none; }
+
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 1.8em; }
+      .hero .phone-btn { font-size: 1.2em; padding: 15px 30px; }
+      .trust-bar-inner { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Chicago's Premier Kitchen & Bathroom Remodeling Experts</h1>
+      <p class="subtitle">Award-winning design-build services for homeowners across Chicagoland. Licensed, insured, and committed to exceptional craftsmanship.</p>
+      <a href="tel:7736827788" class="phone-btn">📞 (773) 682-7788</a>
+      <p class="cta-subtext">Call for a FREE consultation — or schedule online below</p>
+    </div>
+  </section>
+
+  <!-- Trust Bar -->
+  <section class="trust-bar">
+    <div class="trust-bar-inner">
+      <div class="trust-item">
+        <div class="icon">🛡️</div>
+        <strong>Fully Licensed & Insured</strong>
+      </div>
+      <div class="trust-item">
+        <div class="icon">⭐</div>
+        <strong>5-Star Google Rating</strong>
+      </div>
+      <div class="trust-item">
+        <div class="icon">📋</div>
+        <strong>Free Detailed Estimates</strong>
+      </div>
+      <div class="trust-item">
+        <div class="icon">🏆</div>
+        <strong>Locally Owned & Operated</strong>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Preview -->
+  <section class="services">
+    <h2>Our Remodeling Services</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600" alt="Kitchen Remodeling">
+        <div class="card-content">
+          <h3>Kitchen Remodeling</h3>
+          <p>Custom cabinetry, countertops, islands, and complete kitchen transformations.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=600" alt="Bathroom Renovation">
+        <div class="card-content">
+          <h3>Bathroom Renovation</h3>
+          <p>Luxury showers, vanities, tile work, and spa-inspired bathroom designs.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=600" alt="Full Home Remodels">
+        <div class="card-content">
+          <h3>Full Home Remodels</h3>
+          <p>Complete interior renovations, additions, and whole-home transformations.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="why-us">
+    <div class="why-us-inner">
+      <h2>Why Homeowners Choose Valencia Construction</h2>
+      <ul>
+        <li>
+          <strong>Direct Communication with Ownership</strong>
+          <span>Work directly with the company owner throughout your project — no middlemen, no miscommunication.</span>
+        </li>
+        <li>
+          <strong>Transparent, Fixed-Price Quotes</strong>
+          <span>Receive a comprehensive written estimate upfront with no hidden fees or unexpected charges.</span>
+        </li>
+        <li>
+          <strong>Premium Materials & Expert Craftsmanship</strong>
+          <span>We source high-quality materials and employ skilled tradespeople who take pride in their work.</span>
+        </li>
+        <li>
+          <strong>On-Schedule Project Completion</strong>
+          <span>We establish clear timelines and maintain consistent progress to minimize disruption to your home.</span>
+        </li>
+        <li>
+          <strong>Respectful, Clean Worksite</strong>
+          <span>Daily cleanup and protective measures ensure your home remains livable throughout the renovation.</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Form Section -->
+  <section class="form-section">
+    <h2>Schedule Your Free Consultation</h2>
+    <p class="form-subtitle">Tell us about your project and we'll respond within 24 hours with next steps.</p>
+    <div class="form-placeholder">
+      [ Your existing consultation form goes here ]
+    </div>
+  </section>
+
+  <!-- Footer CTA -->
+  <section class="footer-cta">
+    <p>Ready to start your renovation?</p>
+    <a href="tel:7736827788">(773) 682-7788</a>
+  </section>
+
+</body>
+</html>

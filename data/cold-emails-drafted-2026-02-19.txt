@@ -1,0 +1,71 @@
+🎯 COLD EMAIL OUTREACH — February 19, 2026
+
+3 emails drafted and ready to send. Copy each TO/SUBJECT/BODY and paste into Gmail or your email client.
+
+---
+
+EMAIL 1: Chicago Central Property Management (Serena)
+=====================================
+TO: chicagocentralpm@gmail.com
+SUBJECT: Contractor for your 2-flats & small buildings
+
+Hi Serena,
+
+I run Valencia Construction — licensed and insured GC here in Chicago. I reached out because Chicago Central PM is exactly the kind of operation we love working with: small, family-owned, hands-on.
+
+We handle everything your portfolio needs: unit turnovers, kitchen and bathroom remodels, plumbing, electrical, flooring, drywall. Fast turnaround, transparent pricing, you deal directly with me (the owner).
+
+I know you're active in the landlord groups — figured you might be looking for a reliable contractor you can trust. Happy to do a free walkthrough of any upcoming projects.
+
+Worth a quick call?
+
+Best,
+Valencia Construction
+(773) 682-7788
+valenciaconstructionchi.com
+
+---
+
+EMAIL 2: Chicago Style Management
+=====================================
+TO: info@chicagostylemanagement.com
+SUBJECT: Contractor for your South Side rental portfolio
+
+Hi there,
+
+I'm reaching out from Valencia Construction — licensed and insured GC serving all of Chicago. I saw Chicago Style Management is active in the landlord groups and manages properties across the South Side. We'd love to be your go-to contractor.
+
+We specialize in what PMs need: unit turnovers, kitchen/bath remodels, maintenance repairs, fast turnaround. Upfront pricing, owner-operated, no surprises.
+
+If you've got upcoming projects or maintenance, I'd be happy to give you a free estimate.
+
+Best,
+Valencia Construction
+(773) 682-7788
+valenciaconstructionchi.com
+
+---
+
+EMAIL 3: Property Hill Management (Edin)
+=====================================
+TO: [Need to find email — call (312) 414-1105 and ask for it, or check their website]
+SUBJECT: Licensed contractor — maintenance & remodels for Property Hill
+
+Hi Edin,
+
+I run Valencia Construction — licensed and insured general contractor in Chicago. I'm reaching out because Property Hill specializes in small and mid-size properties, and that's exactly our sweet spot too.
+
+We handle unit turnovers, remodels, plumbing, electrical, flooring, painting — the full range. Owner-operated, transparent pricing, fast turnaround for PM clients.
+
+Would love to be a reliable contractor resource for your portfolio. Happy to start with a small job so you can see our quality.
+
+Worth a conversation?
+
+Best,
+Valencia Construction
+(773) 682-7788
+valenciaconstructionchi.com
+
+---
+
+Next: Update outreach-log.json with these three contacts as "email_drafted" type

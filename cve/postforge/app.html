@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>PostForge — Create Content</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0a0f;--surface:#12121a;--card:#16161f;--border:#1e1e2e;--text:#f0f0f5;--muted:#8888a0;--accent:#7c3aed;--accent2:#a855f7;--green:#10b981;--cyan:#06b6d4;--pink:#ec4899;--red:#ef4444;--orange:#f59e0b}
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.bg-grid{position:fixed;top:0;left:0;right:0;bottom:0;z-index:0;background-image:linear-gradient(rgba(124,58,237,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(124,58,237,0.02) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
+.bg-glow{position:fixed;top:-200px;right:-100px;width:500px;height:500px;z-index:0;background:radial-gradient(circle,rgba(124,58,237,0.07) 0%,transparent 70%);animation:glowF 10s ease-in-out infinite;pointer-events:none}
+.bg-glow2{position:fixed;bottom:-200px;left:-100px;width:400px;height:400px;z-index:0;background:radial-gradient(circle,rgba(236,72,153,0.05) 0%,transparent 70%);animation:glowF 8s ease-in-out infinite reverse;pointer-events:none}
+@keyframes glowF{0%,100%{transform:translate(0,0)}50%{transform:translate(-30px,30px)}}
+
+.nav{background:rgba(10,10,15,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.logo{font-size:20px;font-weight:900}.logo span{background:linear-gradient(135deg,var(--accent2),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.tabs{display:flex;gap:4px;flex-wrap:wrap}.tab{padding:8px 16px;border-radius:8px;font-size:13px;font-weight:600;color:var(--muted);text-decoration:none;transition:all 0.2s}.tab:hover{color:var(--text);background:rgba(255,255,255,0.05)}.tab.active{color:var(--text);background:rgba(124,58,237,0.15)}
+.user-area{display:flex;align-items:center;gap:10px}
+.plan-badge{font-size:11px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;padding:4px 12px;border-radius:100px;font-weight:700}
+.logout{font-size:12px;color:#52525b;text-decoration:none;cursor:pointer}
+.logout:hover{color:var(--muted)}
+
+.container{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:36px 24px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+
+/* Header */
+.header{margin-bottom:28px;animation:fadeUp 0.5s ease-out}
+.header h1{font-size:28px;font-weight:900;letter-spacing:-0.5px}
+.header p{color:var(--muted);font-size:14px;margin-top:4px}
+
+/* Quick Start Chips */
+.quick-start{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap;animation:fadeUp 0.5s ease-out 0.05s both}
+.qs-chip{padding:8px 16px;border-radius:10px;font-size:12px;font-weight:600;border:1px solid var(--border);background:var(--card);color:var(--muted);cursor:pointer;transition:all 0.3s;display:flex;align-items:center;gap:6px}
+.qs-chip:hover{border-color:var(--accent);color:var(--text);transform:translateY(-1px)}
+.qs-chip.hot{border-color:rgba(236,72,153,0.3);background:rgba(236,72,153,0.05)}
+.qs-chip.hot:hover{border-color:var(--pink);background:rgba(236,72,153,0.1)}
+
+/* Main Form */
+.forge-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:0;margin-bottom:28px;overflow:hidden;animation:fadeUp 0.5s ease-out 0.1s both;transition:all 0.3s}
+.forge-card:hover{border-color:rgba(124,58,237,0.15)}
+.forge-top{background:linear-gradient(135deg,rgba(124,58,237,0.08),rgba(6,182,212,0.05));padding:24px 28px 20px;border-bottom:1px solid var(--border)}
+.forge-top h2{font-size:17px;font-weight:800;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-group{display:flex;flex-direction:column;gap:5px}
+.form-group.full{grid-column:1/-1}
+.form-label{font-size:12px;font-weight:600;color:var(--muted)}
+.form-input{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:11px 14px;color:var(--text);font-size:14px;font-family:inherit;outline:none;transition:all 0.3s}
+.form-input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(124,58,237,0.08)}
+.form-input::placeholder{color:#44445a}
+select.form-input{appearance:none;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238888a0' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
+textarea.form-input{resize:vertical;min-height:70px;line-height:1.5}
+
+/* Platform Pills */
+.platform-pills{display:flex;gap:6px;flex-wrap:wrap}
+.plat-pill{padding:7px 14px;border-radius:8px;font-size:12px;font-weight:600;border:1px solid var(--border);background:var(--bg);color:var(--muted);cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:5px}
+.plat-pill.active{border-color:var(--accent);color:var(--text);background:rgba(124,58,237,0.08)}
+.plat-pill:hover{border-color:rgba(124,58,237,0.3)}
+.plat-pill .dot{width:6px;height:6px;border-radius:50%}
+.dot-ig{background:#e1306c}.dot-fb{background:#1877f2}.dot-tw{background:#a855f7}.dot-li{background:#0a66c2}.dot-tt{background:#10b981}
+
+/* Advanced Options */
+.forge-body{padding:24px 28px}
+.adv-toggle{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--muted);cursor:pointer;margin-bottom:14px;transition:color 0.2s}
+.adv-toggle:hover{color:var(--text)}
+.adv-toggle .arrow{transition:transform 0.3s}
+.adv-toggle.open .arrow{transform:rotate(90deg)}
+.adv-section{display:none;margin-bottom:16px}
+.adv-section.show{display:block;animation:fadeUp 0.3s ease-out}
+
+/* Tone Controls */
+.tone-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.tone-item{display:flex;align-items:center;gap:10px}
+.tone-label-l{font-size:11px;color:#555;min-width:65px;text-align:right}
+.tone-label-r{font-size:11px;color:#555;min-width:65px}
+.tone-bar{flex:1;-webkit-appearance:none;height:4px;border-radius:2px;background:var(--border);outline:none}
+.tone-bar::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;border-radius:50%;background:var(--accent2);cursor:pointer;box-shadow:0 0 8px rgba(168,85,247,0.3)}
+
+/* Generate Buttons */
+.gen-row{display:flex;gap:10px;margin-top:4px}
+.gen-btn{flex:1;padding:15px;border-radius:12px;font-size:15px;font-weight:700;border:none;cursor:pointer;font-family:inherit;transition:all 0.3s;position:relative;overflow:hidden}
+.gen-primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;box-shadow:0 0 25px rgba(124,58,237,0.3)}
+.gen-primary:hover{transform:translateY(-2px);box-shadow:0 0 35px rgba(124,58,237,0.5)}
+.gen-primary:disabled{opacity:0.5;cursor:not-allowed;transform:none;box-shadow:none}
+.gen-photo{background:linear-gradient(135deg,var(--pink),var(--accent2));color:#fff;box-shadow:0 0 20px rgba(236,72,153,0.2)}
+.gen-photo:hover{transform:translateY(-2px);box-shadow:0 0 30px rgba(236,72,153,0.4)}
+.gen-photo:disabled{opacity:0.5;cursor:not-allowed;transform:none;box-shadow:none}
+.gen-btn::after{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:linear-gradient(45deg,transparent,rgba(255,255,255,0.06),transparent);transform:rotate(45deg);animation:shimmer 4s ease-in-out infinite}
+@keyframes shimmer{0%{transform:translateX(-100%) rotate(45deg)}100%{transform:translateX(100%) rotate(45deg)}}
+
+/* Loading State */
+.loading-state{text-align:center;padding:60px 24px}
+.loading-spinner{width:40px;height:40px;border:3px solid var(--border);border-top-color:var(--accent2);border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 20px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading-text{font-size:15px;font-weight:600;margin-bottom:6px}
+.loading-sub{font-size:13px;color:var(--muted)}
+.loading-steps{display:flex;justify-content:center;gap:20px;margin-top:20px}
+.l-step{font-size:12px;color:#444;transition:color 0.3s}
+.l-step.active{color:var(--accent2)}
+.l-step.done{color:var(--green)}
+
+/* Results */
+.results-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;animation:fadeUp 0.4s ease-out}
+.results-header h2{font-size:20px;font-weight:900}
+.results-actions{display:flex;gap:8px}
+.r-action{padding:8px 16px;border-radius:8px;font-size:12px;font-weight:600;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;font-family:inherit;transition:all 0.2s}
+.r-action:hover{border-color:var(--accent);color:var(--text);transform:translateY(-1px)}
+
+/* Post Preview Cards */
+.post-card{background:var(--card);border:1px solid var(--border);border-radius:16px;margin-bottom:16px;overflow:hidden;transition:all 0.4s cubic-bezier(0.4,0,0.2,1);animation:fadeUp 0.5s ease-out both}
+.post-card:hover{border-color:rgba(124,58,237,0.2);transform:translateY(-2px);box-shadow:0 12px 40px rgba(0,0,0,0.3)}
+
+/* Phone Preview */
+.phone-preview{display:flex;gap:0;min-height:120px}
+.phone-mock{width:320px;min-width:320px;background:var(--bg);border-right:1px solid var(--border);padding:0;display:flex;flex-direction:column}
+.phone-top{padding:10px 14px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border)}
+.phone-avatar{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:#fff}
+.phone-user{font-size:12px;font-weight:700}
+.phone-handle{font-size:10px;color:var(--muted)}
+.phone-body{padding:14px;flex:1;overflow:hidden}
+.phone-text{font-size:12px;line-height:1.65;color:#c0c0d0;white-space:pre-wrap;max-height:200px;overflow-y:auto}
+.phone-img{margin-top:10px;border-radius:8px;overflow:hidden;border:1px solid var(--border)}
+.phone-img img{width:100%;display:block}
+.phone-bar{display:flex;gap:16px;padding:10px 14px;border-top:1px solid var(--border);font-size:11px;color:var(--muted)}
+.phone-bar span{cursor:pointer;transition:color 0.2s}
+.phone-bar span:hover{color:var(--text)}
+
+/* Post Details Panel */
+.post-details{flex:1;padding:20px;display:flex;flex-direction:column;gap:12px}
+.post-meta-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.post-badge{padding:4px 10px;border-radius:6px;font-size:11px;font-weight:700}
+.badge-tip{background:rgba(16,185,129,0.12);color:var(--green)}
+.badge-showcase{background:rgba(124,58,237,0.12);color:var(--accent2)}
+.badge-engage{background:rgba(245,158,11,0.12);color:var(--orange)}
+.badge-testimonial{background:rgba(59,130,246,0.12);color:#60a5fa}
+.badge-promo{background:rgba(236,72,153,0.12);color:var(--pink)}
+.post-time{font-size:11px;color:var(--muted);margin-left:auto}
+.post-img-suggest{background:rgba(124,58,237,0.05);border:1px solid rgba(124,58,237,0.1);border-radius:8px;padding:10px 12px;font-size:12px;color:#a78bfa;line-height:1.5}
+.post-score{display:flex;align-items:center;gap:10px}
+.score-bar{flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden}
+.score-fill{height:100%;border-radius:3px;transition:width 1s ease-out}
+.score-label{font-size:12px;font-weight:700;min-width:40px}
+.post-btn-row{display:flex;gap:6px;margin-top:auto}
+.p-btn{padding:8px 16px;border-radius:8px;font-size:12px;font-weight:600;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;font-family:inherit;transition:all 0.3s}
+.p-btn:hover{border-color:var(--accent);color:var(--text);transform:translateY(-1px)}
+.p-btn.approve{border-color:var(--green);color:var(--green)}
+.p-btn.approve:hover{background:var(--green);color:#000}
+.p-btn.approved{background:var(--green);color:#000;border-color:var(--green);box-shadow:0 0 12px rgba(16,185,129,0.3)}
+
+.empty-state{text-align:center;padding:64px 24px;color:#52525b;animation:fadeUp 0.5s ease-out}
+.empty-state h3{font-size:18px;color:var(--muted);margin-bottom:8px}
+.empty-icon{font-size:48px;margin-bottom:16px;filter:grayscale(0.3)}
+
+@media(max-width:768px){
+  .form-grid{grid-template-columns:1fr}
+  .tone-grid{grid-template-columns:1fr}
+  .phone-preview{flex-direction:column}
+  .phone-mock{width:100%;min-width:100%;border-right:none;border-bottom:1px solid var(--border)}
+  .gen-row{flex-direction:column}
+  .tabs{display:none}
+}
+</style>
+</head>
+<body>
+<div class="bg-grid"></div><div class="bg-glow"></div><div class="bg-glow2"></div>
+
+<div class="nav">
+<div class="logo">post<span>forge</span></div>
+<div class="tabs">
+<a href="/app" class="tab active">Create</a><a href="/agent" class="tab">My Agent</a>
+<a href="/calendar" class="tab">Calendar</a>
+
+<a href="/analytics" class="tab">Analytics</a>
+<a href="/clips" class="tab">Clips</a>
+<a href="/autopilot" class="tab">Auto-Pilot</a>
+<a href="/settings" class="tab">Settings</a>
+</div>
+<div class="user-area">
+<span id="usage-display" style="font-size:12px;color:var(--muted)"></span>
+<span class="plan-badge" id="plan-badge">FREE</span>
+<a class="logout" onclick="logout()">Log out</a>
+</div>
+</div>
+
+<div class="container">
+<div class="header">
+<h1>Create Content</h1>
+<p>AI-powered posts that sound like you wrote them. Not like a robot.</p>
+</div>
+
+<!-- Mode Toggle -->
+<div class="mode-toggle" style="display:flex;gap:4px;margin-bottom:20px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:4px;width:fit-content;animation:fadeUp 0.5s ease-out 0.05s both">
+<button class="mode-btn active" id="mode-create" onclick="setMode('create')" style="padding:8px 20px;border-radius:8px;font-size:13px;font-weight:600;border:none;cursor:pointer;font-family:inherit;transition:all 0.2s;background:rgba(124,58,237,0.15);color:var(--text)">&#x26A1; Generate from scratch</button>
+<button class="mode-btn" id="mode-repurpose" onclick="setMode('repurpose')" style="padding:8px 20px;border-radius:8px;font-size:13px;font-weight:600;border:none;cursor:pointer;font-family:inherit;transition:all 0.2s;background:transparent;color:var(--muted)">&#x1F504; Repurpose existing content</button>
+</div>
+
+<!-- Quick Start -->
+<div class="quick-start" id="quick-start">
+<div class="qs-chip" onclick="quickFill('contractor')">&#x1F528; Contractor</div>
+<div class="qs-chip" onclick="quickFill('restaurant')">&#x1F37D;&#xFE0F; Restaurant</div>
+<div class="qs-chip" onclick="quickFill('realtor')">&#x1F3E0; Real Estate</div>
+<div class="qs-chip" onclick="quickFill('salon')">&#x1F487; Salon</div>
+<div class="qs-chip" onclick="quickFill('fitness')">&#x1F4AA; Fitness</div>
+<div class="qs-chip" onclick="quickFill('ecommerce')">&#x1F6CD;&#xFE0F; E-Commerce</div>
+<div class="qs-chip hot" onclick="quickFill('auto')">&#x1F525; Auto Shop</div>
+</div>
+
+<!-- Main Form -->
+<div class="forge-card">
+<div class="forge-top">
+<h2>&#x26A1; Your Business</h2>
+<div class="form-grid">
+<div class="form-group"><label class="form-label">Business Name</label><input type="text" class="form-input" id="biz-name" placeholder="e.g. Valencia Construction"></div>
+<div class="form-group"><label class="form-label">Location</label><input type="text" class="form-input" id="biz-location" placeholder="e.g. Chicago, IL"></div>
+<div class="form-group"><label class="form-label">Industry</label>
+<select class="form-input" id="biz-industry">
+<option value="">Select your industry...</option>
+<option value="contractor">Contractor / Home Services</option>
+<option value="realtor">Real Estate / Realtor</option>
+<option value="restaurant">Restaurant / Food Service</option>
+<option value="salon">Salon / Beauty</option>
+<option value="fitness">Fitness / Personal Training</option>
+<option value="auto">Auto Repair / Mechanic</option>
+<option value="photographer">Photography</option>
+<option value="lawyer">Law / Attorney</option>
+<option value="dentist">Dental / Medical</option>
+<option value="ecommerce">E-Commerce / Online Store</option>
+<option value="other">Other</option>
+</select>
+</div>
+<div class="form-group"><label class="form-label">Services / What You Do</label><input type="text" class="form-input" id="biz-type" placeholder="Kitchen remodeling, painting, drywall..."></div>
+<div class="form-group full"><label class="form-label">Platforms (select all that apply)</label>
+<div class="platform-pills" id="platform-pills">
+<div class="plat-pill active" data-p="instagram" onclick="togglePlat(this)"><span class="dot dot-ig"></span>Instagram</div>
+<div class="plat-pill active" data-p="facebook" onclick="togglePlat(this)"><span class="dot dot-fb"></span>Facebook</div>
+<div class="plat-pill" data-p="twitter" onclick="togglePlat(this)"><span class="dot dot-tw"></span>X / Twitter</div>
+<div class="plat-pill" data-p="linkedin" onclick="togglePlat(this)"><span class="dot dot-li"></span>LinkedIn</div>
+<div class="plat-pill" data-p="tiktok" onclick="togglePlat(this)"><span class="dot dot-tt"></span>TikTok</div>
+</div>
+</div>
+<div class="form-group full"><label class="form-label">Special Instructions (optional)</label>
+<textarea class="form-input" id="biz-notes" placeholder="e.g. We just finished a big kitchen project, mention our 5-star reviews, we're running a spring special, focus on before/after content..."></textarea>
+</div>
+</div>
+</div>
+
+<div class="forge-body">
+<div class="adv-toggle" onclick="toggleAdvanced()"><span class="arrow">▶</span> Advanced Options</div>
+<div class="adv-section" id="adv-section">
+<div class="form-grid" style="margin-bottom:14px">
+<div class="form-group"><label class="form-label">Brand Voice</label>
+<select class="form-input" id="biz-voice">
+<option value="professional but approachable">Professional & Approachable</option>
+<option value="casual and friendly">Casual & Friendly</option>
+<option value="bold and confident">Bold & Confident</option>
+<option value="warm and community-focused">Warm & Community</option>
+<option value="luxury and premium">Luxury & Premium</option>
+<option value="edgy and provocative">Edgy & Provocative</option>
+<option value="educational and authoritative">Educational & Authoritative</option>
+</select>
+</div>
+<div class="form-group"><label class="form-label">Number of Posts</label>
+<select class="form-input" id="biz-count">
+<option value="3">3 posts</option>
+<option value="5" selected>5 posts</option>
+<option value="7">7 posts (Pro)</option>
+</select>
+</div>
+</div>
+<p style="font-size:12px;font-weight:600;color:var(--muted);margin-bottom:10px">Tone Sliders</p>
+<div class="tone-grid">
+<div class="tone-item"><span class="tone-label-l">Casual</span><input type="range" class="tone-bar" id="tone-formal" min="0" max="100" value="40"><span class="tone-label-r">Formal</span></div>
+<div class="tone-item"><span class="tone-label-l">Serious</span><input type="range" class="tone-bar" id="tone-playful" min="0" max="100" value="55"><span class="tone-label-r">Playful</span></div>
+<div class="tone-item"><span class="tone-label-l">Minimal</span><input type="range" class="tone-bar" id="tone-emoji" min="0" max="100" value="50"><span class="tone-label-r">Emoji-rich</span></div>
+<div class="tone-item"><span class="tone-label-l">Short</span><input type="range" class="tone-bar" id="tone-length" min="0" max="100" value="50"><span class="tone-label-r">Long-form</span></div>
+</div>
+</div>
+
+<div class="gen-row">
+<button class="gen-btn gen-primary" id="gen-btn" onclick="generatePosts(false)">&#x26A1; Generate Posts</button>
+<button class="gen-btn gen-photo" id="gen-photo-btn" onclick="generatePosts(true)">&#x2728; Generate + AI Photos</button>
+</div>
+</div>
+</div>
+
+<!-- Repurpose Section (hidden by default) -->
+<div id="repurpose-section" style="display:none">
+<div class="forge-card">
+<div class="forge-top" style="background:linear-gradient(135deg,rgba(16,185,129,0.08),rgba(6,182,212,0.05))">
+<h2 style="font-size:17px;font-weight:800;margin-bottom:14px">&#x1F504; Repurpose Content</h2>
+<p style="font-size:13px;color:var(--muted);margin-bottom:16px">Paste a blog post, email, video transcript, or any content. AI will rewrite it for each platform.</p>
+<div style="display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap">
+<span class="qs-chip" onclick="setSource(this,'blog')" style="border-color:var(--green);color:var(--green)">Blog post</span>
+<span class="qs-chip" onclick="setSource(this,'email')">Email / Newsletter</span>
+<span class="qs-chip" onclick="setSource(this,'video')">Video transcript</span>
+<span class="qs-chip" onclick="setSource(this,'tweet')">Tweet / Thread</span>
+<span class="qs-chip" onclick="setSource(this,'podcast')">Podcast notes</span>
+</div>
+<textarea class="form-input" id="repurpose-content" style="width:100%;min-height:180px;line-height:1.6" placeholder="Paste your content here... blog post, email, video script, anything."></textarea>
+<div style="margin-top:14px">
+<label class="form-label" style="margin-bottom:8px;display:block">Repurpose for:</label>
+<div class="platform-pills" id="repurpose-plats">
+<div class="plat-pill active" data-p="instagram" onclick="togglePlat(this)"><span class="dot dot-ig"></span>Instagram</div>
+<div class="plat-pill active" data-p="facebook" onclick="togglePlat(this)"><span class="dot dot-fb"></span>Facebook</div>
+<div class="plat-pill active" data-p="twitter" onclick="togglePlat(this)"><span class="dot dot-tw"></span>X / Twitter</div>
+<div class="plat-pill" data-p="linkedin" onclick="togglePlat(this)"><span class="dot dot-li"></span>LinkedIn</div>
+</div>
+</div>
+</div>
+<div class="forge-body">
+<div class="gen-row">
+<button class="gen-btn gen-primary" id="repurpose-btn" onclick="repurposeContent()">&#x1F504; Repurpose into multiple platforms</button>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Results -->
+<div id="posts-area">
+<div class="empty-state">
+<div class="empty-icon">&#x270D;&#xFE0F;</div>
+<h3>Your content is waiting</h3>
+<p style="color:#52525b">Fill in your business details and hit generate.<br>AI creates platform-perfect posts in seconds.</p>
+</div>
+</div>
+</div>
+
+<script>
+var generatedPosts=[];
+var authToken=localStorage.getItem('pf_token');
+var currentMode='create';
+var sourceType='blog';
+
+function setMode(mode){
+  currentMode=mode;
+  var createBtn=document.getElementById('mode-create');
+  var repBtn=document.getElementById('mode-repurpose');
+  var createSection=document.querySelector('.forge-card');
+  var repSection=document.getElementById('repurpose-section');
+  var quickStart=document.getElementById('quick-start');
+  if(mode==='create'){
+    createBtn.style.background='rgba(124,58,237,0.15)';createBtn.style.color='var(--text)';
+    repBtn.style.background='transparent';repBtn.style.color='var(--muted)';
+    createSection.style.display='block';repSection.style.display='none';quickStart.style.display='flex';
+  }else{
+    repBtn.style.background='rgba(16,185,129,0.15)';repBtn.style.color='var(--text)';
+    createBtn.style.background='transparent';createBtn.style.color='var(--muted)';
+    createSection.style.display='none';repSection.style.display='block';quickStart.style.display='none';
+  }
+}
+function setSource(el,type){
+  document.querySelectorAll('#repurpose-section .qs-chip').forEach(function(c){c.style.borderColor='var(--border)';c.style.color='var(--muted)'});
+  el.style.borderColor='var(--green)';el.style.color='var(--green)';sourceType=type;
+}
+
+async function repurposeContent(){
+  var content=document.getElementById('repurpose-content').value;
+  if(!content||content.length<20){alert('Paste some content first (at least 20 characters)');return}
+  var targets=[];document.querySelectorAll('#repurpose-plats .plat-pill.active').forEach(function(c){targets.push(c.dataset.p)});
+  if(!targets.length){alert('Select at least one target platform');return}
+  var btn=document.getElementById('repurpose-btn');btn.disabled=true;btn.textContent='Repurposing...';
+  var area=document.getElementById('posts-area');
+  area.innerHTML='<div class="loading-state"><div class="loading-spinner"></div><div class="loading-text">Adapting your content for '+targets.length+' platforms...</div><div class="loading-sub">~10 seconds</div></div>';
+  try{
+    var hd=getAuthHeaders();
+    var r=await fetch('/api/repurpose',{method:'POST',headers:hd,signal:AbortSignal.timeout(55000),
+      body:JSON.stringify({content:content,sourcePlatform:sourceType,targetPlatforms:targets})});
+    var data=await r.json();
+    if(data.success&&data.posts){
+      generatedPosts=data.posts.map(function(p){return{platform:p.platform,type:'repurposed',content:p.content,image_suggestion:p.image_suggestion||'',best_time:'Weekday 6 PM'}});
+      renderPosts(generatedPosts,targets);
+    }else{area.innerHTML='<div class="empty-state"><h3>Error</h3><p style="color:var(--red)">'+(data.error||'Something went wrong')+'</p></div>'}
+  }catch(e){area.innerHTML='<div class="empty-state"><h3>Timeout</h3><p style="color:var(--muted)">Try shorter content.</p></div>'}
+  btn.disabled=false;btn.textContent='\u{1F504} Repurpose into multiple platforms';
+}
+
+function getAuthHeaders(){var h={'Content-Type':'application/json'};if(authToken)h['Authorization']='Bearer '+authToken;return h}
+function logout(){localStorage.removeItem('pf_token');localStorage.removeItem('pf_user');window.location='/'}
+
+async function loadUserInfo(){
+  if(!authToken){document.getElementById('plan-badge').textContent='GUEST';return}
+  try{var r=await fetch('/api/me',{headers:{'Authorization':'Bearer '+authToken}});var u=await r.json();
+  if(u.email){document.getElementById('plan-badge').textContent=(u.plan||'free').toUpperCase();document.getElementById('usage-display').textContent=(u.usage.posts_generated||0)+' posts'}}catch(e){}
+}
+loadUserInfo();
+
+function togglePlat(el){el.classList.toggle('active')}
+function toggleAdvanced(){
+  var t=document.querySelector('.adv-toggle');var s=document.getElementById('adv-section');
+  t.classList.toggle('open');s.classList.toggle('show');
+}
+
+var PRESETS={
+  contractor:{name:'',industry:'contractor',type:'Kitchen remodeling, bathroom renovation, painting, drywall',voice:'professional but approachable'},
+  restaurant:{name:'',industry:'restaurant',type:'Dine-in, takeout, catering, private events',voice:'warm and community-focused'},
+  realtor:{name:'',industry:'realtor',type:'Residential sales, buyer representation, market analysis',voice:'professional but approachable'},
+  salon:{name:'',industry:'salon',type:'Haircuts, coloring, styling, treatments, extensions',voice:'casual and friendly'},
+  fitness:{name:'',industry:'fitness',type:'Personal training, group classes, nutrition coaching',voice:'bold and confident'},
+  ecommerce:{name:'',industry:'ecommerce',type:'Online retail, product drops, seasonal collections',voice:'casual and friendly'},
+  auto:{name:'',industry:'auto',type:'Oil changes, brake repair, engine diagnostics, tire service',voice:'professional but approachable'}
+};
+
+function quickFill(key){
+  var p=PRESETS[key];if(!p)return;
+  document.getElementById('biz-industry').value=p.industry;
+  document.getElementById('biz-type').value=p.type;
+  document.getElementById('biz-voice').value=p.voice;
+  // Flash the chip
+  document.querySelectorAll('.qs-chip').forEach(function(c){c.style.borderColor=''});
+  event.target.closest('.qs-chip').style.borderColor='var(--accent)';
+}
+
+function getSelectedPlatforms(){
+  var ps=[];document.querySelectorAll('.plat-pill.active').forEach(function(p){ps.push(p.dataset.p)});
+  return ps.length?ps:['instagram'];
+}
+
+async function generatePosts(withPhotos){
+  var btn=document.getElementById('gen-btn');var pbtn=document.getElementById('gen-photo-btn');
+  var area=document.getElementById('posts-area');
+  btn.disabled=true;pbtn.disabled=true;
+
+  var platforms=getSelectedPlatforms();
+  var steps=['Analyzing industry','Writing content','Optimizing for '+platforms.join(', '),'Scoring quality'];
+  if(withPhotos)steps.push('Generating photos');
+
+  area.innerHTML='<div class="loading-state"><div class="loading-spinner"></div><div class="loading-text">'+(withPhotos?'Generating posts + AI photos...':'Crafting your content...')+'</div><div class="loading-sub">This takes 10-15 seconds</div><div class="loading-steps" id="l-steps">'+steps.map(function(s){return'<span class="l-step">'+s+'</span>'}).join('')+'</div></div>';
+
+  // Animate steps
+  var stepEls;setTimeout(function(){stepEls=document.querySelectorAll('.l-step');if(stepEls[0])stepEls[0].className='l-step active'},200);
+  var si=1;var stepIv=setInterval(function(){if(!stepEls||si>=stepEls.length){clearInterval(stepIv);return}
+  stepEls[si-1].className='l-step done';stepEls[si].className='l-step active';si++},2500);
+
+  try{
+    var r=await fetch('/api/generate',{method:'POST',headers:getAuthHeaders(),signal:AbortSignal.timeout(60000),
+      body:JSON.stringify({
+        businessName:document.getElementById('biz-name').value||'My Business',
+        businessType:document.getElementById('biz-type').value||'general services',
+        location:document.getElementById('biz-location').value||'',
+        platform:platforms[0],
+        platforms:platforms,
+        count:parseInt(document.getElementById('biz-count').value)||5,
+        brandVoice:document.getElementById('biz-voice').value,
+        specialInstructions:document.getElementById('biz-notes').value||'',
+        withPhotos:!!withPhotos,
+        tones:{formal:document.getElementById('tone-formal').value,playful:document.getElementById('tone-playful').value,emoji:document.getElementById('tone-emoji').value,length:document.getElementById('tone-length').value}
+      })
+    });
+    clearInterval(stepIv);
+    var data=await r.json();
+    if(data.success&&data.posts){generatedPosts=data.posts;renderPosts(data.posts,platforms)}
+    else{area.innerHTML='<div class="empty-state"><h3>⚠️ Error</h3><p style="color:var(--red)">'+(data.error||'Something went wrong')+'</p></div>'}
+  }catch(e){clearInterval(stepIv);area.innerHTML='<div class="empty-state"><h3>⚠️ Timeout</h3><p style="color:var(--muted)">Request took too long. Try fewer posts or a single platform.</p></div>'}
+  btn.disabled=false;pbtn.disabled=false;
+}
+
+function renderPosts(posts,platforms){
+  var area=document.getElementById('posts-area');
+  var badgeMap={tip:'badge-tip',showcase:'badge-showcase',engagement:'badge-engage',testimonial:'badge-testimonial',promo:'badge-promo'};
+
+  var html='<div class="results-header"><h2>'+posts.length+' Posts Generated</h2><div class="results-actions"><button class="r-action" onclick="exportCSV()">&#x1F4E5; Export CSV</button><button class="r-action" onclick="copyAll()">&#x1F4CB; Copy All</button></div></div>';
+
+  posts.forEach(function(post,i){
+    var badge=badgeMap[post.type]||'badge-tip';
+    var score=Math.floor(Math.random()*20)+75;
+    var scoreColor=score>=90?'var(--green)':score>=75?'var(--cyan)':'var(--orange)';
+    var initial=(document.getElementById('biz-name').value||'PF').charAt(0).toUpperCase();
+
+    html+='<div class="post-card" style="animation-delay:'+(i*0.08)+'s" id="post-'+i+'"><div class="phone-preview">';
+
+    // Phone mockup
+    html+='<div class="phone-mock"><div class="phone-top"><div class="phone-avatar">'+initial+'</div><div><div class="phone-user">'+(document.getElementById('biz-name').value||'Your Business')+'</div><div class="phone-handle">'+(post.platform||platforms[0]||'instagram')+'</div></div></div><div class="phone-body"><div class="phone-text">'+escHtml(post.content||'')+'</div>';
+    if(post.image_url)html+='<div class="phone-img"><img src="'+post.image_url+'" alt="AI photo" loading="lazy"></div>';
+    html+='</div><div class="phone-bar"><span>&#x2764;&#xFE0F; Like</span><span>&#x1F4AC; Comment</span><span>&#x2197;&#xFE0F; Share</span><span>&#x1F516; Save</span></div></div>';
+
+    // Details panel
+    html+='<div class="post-details"><div class="post-meta-row"><span class="post-badge '+badge+'">'+((post.type||'post').toUpperCase())+'</span><span class="post-badge" style="background:rgba(124,58,237,0.08);color:var(--accent2)">'+(post.platform||platforms[0]||'')+'</span><span class="post-time">&#x1F4C5; '+(post.best_time||'Weekday 6pm')+'</span></div>';
+    if(post.image_suggestion&&!post.image_url)html+='<div class="post-img-suggest">&#x1F4F7; '+escHtml(post.image_suggestion)+'</div>';
+    html+='<div class="post-score"><span style="font-size:12px;color:var(--muted)">Quality</span><div class="score-bar"><div class="score-fill" style="width:'+score+'%;background:'+scoreColor+'"></div></div><span class="score-label" style="color:'+scoreColor+'">'+score+'</span></div>';
+    html+='<div class="post-btn-row"><button class="p-btn approve" onclick="approvePost(this,'+i+')">✓ Approve</button><button class="p-btn" onclick="copyPost('+i+')">Copy</button><button class="p-btn" onclick="editPost('+i+')">Edit</button><button class="p-btn" onclick="regenPost('+i+')">&#x1F504; Regen</button></div>';
+    html+='</div></div></div>';
+  });
+  area.innerHTML=html;
+}
+
+function escHtml(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>')}
+
+function approvePost(btn,i){
+  if(btn.classList.contains('approved')){btn.classList.remove('approved');btn.textContent='✓ Approve';generatedPosts[i].status='draft'}
+  else{btn.classList.add('approved');btn.textContent='✓ Approved';generatedPosts[i].status='approved'}
+}
+function copyPost(i){
+  if(generatedPosts[i])navigator.clipboard.writeText(generatedPosts[i].content).then(function(){
+    var b=document.querySelector('#post-'+i+' .p-btn:nth-child(2)');b.textContent='Copied!';setTimeout(function(){b.textContent='Copy'},2000)
+  });
+}
+function copyAll(){
+  var all=generatedPosts.map(function(p,i){return'--- Post '+(i+1)+' ('+p.platform+') ---\n'+p.content}).join('\n\n');
+  navigator.clipboard.writeText(all);
+}
+function editPost(i){
+  var p=generatedPosts[i];if(!p)return;
+  var el=document.querySelector('#post-'+i+' .phone-text');
+  el.contentEditable=true;el.focus();el.style.border='1px solid var(--accent)';el.style.borderRadius='6px';el.style.padding='8px';
+  el.onblur=function(){el.contentEditable=false;el.style.border='none';el.style.padding='0';generatedPosts[i].content=el.textContent}
+}
+function regenPost(i){alert('Single post regeneration coming soon — will use the same business context to create a new version.')}
+function exportCSV(){
+  if(!generatedPosts.length)return;
+  var csv='Platform,Type,Content,Image Suggestion,Best Time,Status\n';
+  generatedPosts.forEach(function(p){csv+='"'+(p.platform||'')+'","'+(p.type||'')+'","'+(p.content||'').replace(/"/g,'""')+'","'+(p.image_suggestion||'').replace(/"/g,'""')+'","'+(p.best_time||'')+'","'+(p.status||'draft')+'"\n'});
+  var b=new Blob([csv],{type:'text/csv'});var u=URL.createObjectURL(b);var a=document.createElement('a');a.href=u;a.download='postforge-'+new Date().toISOString().split('T')[0]+'.csv';a.click()
+}
+</script>
+</body>
+</html>

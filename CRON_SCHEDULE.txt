@@ -1,0 +1,43 @@
+VALENCIA CONSTRUCTION — DAILY CRON SCHEDULE (Updated Mar 2, 2026)
+
+===================================================================
+MORNING EXECUTION (7:00 AM - 7:30 AM) — Tris wakes at 7:00 AM
+===================================================================
+
+7:00 AM
+------
+Script: working-lead-hunter.py
+Action: Scan Craigslist for fresh homeowner leads (today's posts)
+Output: lead-hunt-report.json, lead-hunt updates to tracker
+
+7:15 AM
+------
+Script: integrate-scanner-leads.py
+Action: Score fresh leads, queue Hot/Warm for Karl (score >= 25)
+Output: agent-queue.json populated with new "new" status leads
+
+7:30 AM
+------
+Script: daily-business-check.py → Send brief to Tris via Telegram
+Output: "Hunter found 8 fresh leads. 3 Hot, 5 Warm. Karl ready to draft."
+
+===================================================================
+FOLLOW-UP (8:00 AM - 8:30 AM) — Tris after breakfast
+===================================================================
+
+8:00 AM
+------
+Karl starts drafting replies from agent-queue.json
+Send batches to Tris Telegram for approval
+
+8:30 AM
+------
+Tris approves/rejects via Telegram
+Karl posts approved replies
+
+===================================================================
+OLD SCHEDULE (DISABLED)
+===================================================================
+
+Former 8:00 AM Lead Gen Blitz (3 calls + 2 posts) → REPLACED with fresh lead workflow
+Former evening check-ins → Keep for evening logging only

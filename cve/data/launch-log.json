@@ -1,0 +1,338 @@
+[
+  {
+    "id": "1rhwxiw",
+    "title": "I tracked every hour I worked for a week, and honestly it was kind of embarrassing.",
+    "type": "saas_webapp",
+    "project_dir": "C:\\Users\\trisd\\clawd\\cve\\projects\\i-tracked-every-hour-i-worked-for-a-week",
+    "deployment": {
+      "platform": "vercel",
+      "status": "ready_to_deploy",
+      "url": null
+    },
+    "marketing": {
+      "posts_generated": 4,
+      "platforms": [
+        "x_twitter",
+        "reddit_post",
+        "product_hunt",
+        "hackernews"
+      ],
+      "status": "ready_to_post"
+    },
+    "revenue": {
+      "mrr": 0,
+      "customers": 0,
+      "status": "pre_launch"
+    },
+    "launched_at": null,
+    "created_at": "2026-03-04T17:12:58.702141"
+  },
+  {
+    "id": "1rjv2q4",
+    "title": "Why AI Can't Stop Using Em Dashes \u2014 And Why Nobody Can Fix It",
+    "type": "agent_skill",
+    "project_dir": "C:\\Users\\trisd\\clawd\\cve\\projects\\why-ai-can-t-stop-using-em-dashes-\u2014-and-",
+    "deployment": {
+      "platform": "vercel",
+      "status": "ready_to_deploy",
+      "url": null
+    },
+    "marketing": {
+      "posts_generated": 4,
+      "platforms": [
+        "x_twitter",
+        "reddit_post",
+        "product_hunt",
+        "hackernews"
+      ],
+      "status": "ready_to_post"
+    },
+    "revenue": {
+      "mrr": 0,
+      "customers": 0,
+      "status": "pre_launch"
+    },
+    "launched_at": null,
+    "created_at": "2026-03-04T17:12:58.703138"
+  },
+  {
+    "id": "1ri53j1",
+    "title": "I built a 100% offline, free loyalty card wallet because I hated holding up the checkout line.",
+    "type": "web_app",
+    "project_dir": "C:\\Users\\trisd\\clawd\\cve\\projects\\i-built-a-100%-offline-free-loyalty-card",
+    "deployment": {
+      "platform": "vercel",
+      "status": "ready_to_deploy",
+      "url": null
+    },
+    "marketing": {
+      "posts_generated": 4,
+      "platforms": [
+        "x_twitter",
+        "reddit_post",
+        "product_hunt",
+        "hackernews"
+      ],
+      "status": "ready_to_post"
+    },
+    "revenue": {
+      "mrr": 0,
+      "customers": 0,
+      "status": "pre_launch"
+    },
+    "launched_at": null,
+    "created_at": "2026-03-04T17:12:58.703138"
+  },
+  {
+    "id": "1rkfek2",
+    "title": "Switching to claude from chatgpt was fun for 3 days",
+    "type": "saas_webapp",
+    "project_dir": "C:\\Users\\trisd\\clawd\\cve\\projects\\switching-to-claude-from-chatgpt-was-fun",
+    "deployment": {
+      "platform": "vercel",
+      "status": "ready_to_deploy",
+      "url": null
+    },
+    "marketing": {
+      "posts_generated": 4,
+      "platforms": [
+        "x_twitter",
+        "reddit_post",
+        "product_hunt",
+        "hackernews"
+      ],
+      "status": "ready_to_post"
+    },
+    "revenue": {
+      "mrr": 0,
+      "customers": 0,
+      "status": "pre_launch"
+    },
+    "launched_at": null,
+    "created_at": "2026-03-04T17:12:58.704229"
+  },
+  {
+    "id": "1qoxwdt",
+    "title": "State of the Subreddit (January 2027): Mods applications and rules updates",
+    "type": "web_app",
+    "project_dir": "C:\\Users\\trisd\\clawd\\cve\\projects\\state-of-the-subreddit-january-2027-mods",
+    "deployment": {
+      "platform": "vercel",
+      "status": "ready_to_deploy",
+      "url": null
+    },
+    "marketing": {
+      "posts_generated": 4,
+      "platforms": [
+        "x_twitter",
+        "reddit_post",
+        "product_hunt",
+        "hackernews"
+      ],
+      "status": "ready_to_post"
+    },
+    "revenue": {
+      "mrr": 0,
+      "customers": 0,
+      "status": "pre_launch"
+    },
+    "launched_at": null,
+    "created_at": "2026-03-04T17:12:58.705229"
+  },
+  {
+    "id": "47247645",
+    "title": "MacBook Neo",
+    "type": "web_app",
+    "project_dir": "C:\\Users\\trisd\\clawd\\cve\\projects\\macbook-neo",
+    "deployment": {
+      "platform": "vercel",
+      "status": "ready_to_deploy",
+      "url": null
+    },
+    "marketing": {
+      "posts_generated": 4,
+      "platforms": [
+        "x_twitter",
+        "reddit_post",
+        "product_hunt",
+        "hackernews"
+      ],
+      "status": "ready_to_post"
+    },
+    "revenue": {
+      "mrr": 0,
+      "customers": 0,
+      "status": "pre_launch"
+    },
+    "launched_at": null,
+    "created_at": "2026-03-04T17:12:58.705229"
+  },
+  {
+    "id": "1pku5yi",
+    "title": "Lost potential clients because my Instagram looked \"inactive.\" Now I'm spending entire Sundays filming reels.",
+    "type": "web_app",
+    "project_dir": "C:\\Users\\trisd\\clawd\\cve\\projects\\lost-potential-clients-because-my-instag",
+    "deployment": {
+      "platform": "vercel",
+      "status": "ready_to_deploy",
+      "url": null
+    },
+    "marketing": {
+      "posts_generated": 4,
+      "platforms": [
+        "x_twitter",
+        "reddit_post",
+        "product_hunt",
+        "hackernews"
+      ],
+      "status": "ready_to_post"
+    },
+    "revenue": {
+      "mrr": 0,
+      "customers": 0,
+      "status": "pre_launch"
+    },
+    "launched_at": null,
+    "created_at": "2026-03-04T17:12:58.706229"
+  },
+  {
+    "id": "47224295",
+    "title": "Show HN: I built a sub-500ms latency voice agent from scratch",
+    "type": "web_app",
+    "project_dir": "C:\\Users\\trisd\\clawd\\cve\\projects\\show-hn-i-built-a-sub-500ms-latency-voic",
+    "deployment": {
+      "platform": "vercel",
+      "status": "ready_to_deploy",
+      "url": null
+    },
+    "marketing": {
+      "posts_generated": 4,
+      "platforms": [
+        "x_twitter",
+        "reddit_post",
+        "product_hunt",
+        "hackernews"
+      ],
+      "status": "ready_to_post"
+    },
+    "revenue": {
+      "mrr": 0,
+      "customers": 0,
+      "status": "pre_launch"
+    },
+    "launched_at": null,
+    "created_at": "2026-03-04T17:12:58.706229"
+  },
+  {
+    "id": "1riyr34",
+    "title": "Went from $0 to $1k MRR. If I started my SaaS over, here's exactly what I'd do",
+    "type": "saas_webapp",
+    "project_dir": "C:\\Users\\trisd\\clawd\\cve\\projects\\went-from-$0-to-$1k-mrr-if-i-started-my-",
+    "deployment": {
+      "platform": "vercel",
+      "status": "ready_to_deploy",
+      "url": null
+    },
+    "marketing": {
+      "posts_generated": 4,
+      "platforms": [
+        "x_twitter",
+        "reddit_post",
+        "product_hunt",
+        "hackernews"
+      ],
+      "status": "ready_to_post"
+    },
+    "revenue": {
+      "mrr": 0,
+      "customers": 0,
+      "status": "pre_launch"
+    },
+    "launched_at": null,
+    "created_at": "2026-03-04T17:12:58.707733"
+  },
+  {
+    "id": "47215427",
+    "title": "Show HN: Omni \u2013 Open-source workplace search and chat, built on Postgres",
+    "type": "web_app",
+    "project_dir": "C:\\Users\\trisd\\clawd\\cve\\projects\\show-hn-omni-\u2013-open-source-workplace-sea",
+    "deployment": {
+      "platform": "vercel",
+      "status": "ready_to_deploy",
+      "url": null
+    },
+    "marketing": {
+      "posts_generated": 4,
+      "platforms": [
+        "x_twitter",
+        "reddit_post",
+        "product_hunt",
+        "hackernews"
+      ],
+      "status": "ready_to_post"
+    },
+    "revenue": {
+      "mrr": 0,
+      "customers": 0,
+      "status": "pre_launch"
+    },
+    "launched_at": null,
+    "created_at": "2026-03-04T17:12:58.708738"
+  },
+  {
+    "id": "47219668",
+    "title": "Ask HN: Who is hiring? (March 2026)",
+    "type": "saas_webapp",
+    "project_dir": "C:\\Users\\trisd\\clawd\\cve\\projects\\ask-hn-who-is-hiring-march-2026",
+    "deployment": {
+      "platform": "vercel",
+      "status": "ready_to_deploy",
+      "url": null
+    },
+    "marketing": {
+      "posts_generated": 4,
+      "platforms": [
+        "x_twitter",
+        "reddit_post",
+        "product_hunt",
+        "hackernews"
+      ],
+      "status": "ready_to_post"
+    },
+    "revenue": {
+      "mrr": 0,
+      "customers": 0,
+      "status": "pre_launch"
+    },
+    "launched_at": null,
+    "created_at": "2026-03-04T17:12:58.708738"
+  },
+  {
+    "id": "1rju16k",
+    "title": "Am I the only one tired of juggling 10 tools to build one startup? I will not promote.",
+    "type": "tool",
+    "project_dir": "C:\\Users\\trisd\\clawd\\cve\\projects\\am-i-the-only-one-tired-of-juggling-10-t",
+    "deployment": {
+      "platform": "vercel",
+      "status": "ready_to_deploy",
+      "url": null
+    },
+    "marketing": {
+      "posts_generated": 4,
+      "platforms": [
+        "x_twitter",
+        "reddit_post",
+        "product_hunt",
+        "hackernews"
+      ],
+      "status": "ready_to_post"
+    },
+    "revenue": {
+      "mrr": 0,
+      "customers": 0,
+      "status": "pre_launch"
+    },
+    "launched_at": null,
+    "created_at": "2026-03-04T17:12:58.710243"
+  }
+]

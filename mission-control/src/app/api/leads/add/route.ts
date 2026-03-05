@@ -1,0 +1,12 @@
+import { NextRequest, NextResponse } from 'next/server';
+import { addLead } from '@/lib/spreadsheet';
+
+export async function POST(req: NextRequest) {
+  try {
+    const body = await req.json();
+    const lead = addLead(body);
+    return NextResponse.json(lead);
+  } catch (e) {
+    return NextResponse.json({ error: String(e) }, { status: 500 });
+  }
+}

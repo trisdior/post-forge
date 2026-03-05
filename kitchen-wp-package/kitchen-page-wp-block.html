@@ -1,0 +1,510 @@
+<!-- wp:html -->
+<style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: #1f2937; line-height: 1.6; }
+    
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, rgba(30, 58, 138, 0.92) 0%, rgba(30, 64, 175, 0.85) 100%), 
+                  url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1600') center/cover;
+      color: white;
+      padding: 80px 20px;
+      text-align: center;
+    }
+    .hero-content { max-width: 900px; margin: 0 auto; }
+    .hero h1 { font-size: 2.8em; font-weight: 800; margin-bottom: 20px; line-height: 1.15; }
+    .hero .subtitle { font-size: 1.25em; opacity: 0.95; margin-bottom: 30px; max-width: 700px; margin-left: auto; margin-right: auto; }
+    .hero-cta { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary { background: white; color: #1e3a8a; font-size: 1.2em; font-weight: 700; padding: 18px 40px; border-radius: 10px; text-decoration: none; box-shadow: 0 4px 20px rgba(0,0,0,0.25); transition: transform 0.2s; display: inline-block; }
+    .btn-primary:hover { transform: translateY(-3px); }
+    .btn-secondary { background: transparent; color: white; font-size: 1.1em; font-weight: 600; padding: 16px 35px; border-radius: 10px; text-decoration: none; border: 2px solid white; transition: all 0.2s; display: inline-block; }
+    .btn-secondary:hover { background: white; color: #1e3a8a; }
+    .hero-trust { display: flex; justify-content: center; gap: 35px; margin-top: 40px; flex-wrap: wrap; }
+    .hero-trust-item { display: flex; align-items: center; gap: 8px; font-size: 0.95em; }
+    .hero-trust-item svg { width: 20px; height: 20px; }
+
+    /* Container */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+    /* Section Styling */
+    section { padding: 70px 0; }
+    .section-title { font-size: 2.2em; color: #1e3a8a; text-align: center; margin-bottom: 15px; font-weight: 700; }
+    .section-subtitle { text-align: center; color: #64748b; font-size: 1.1em; max-width: 650px; margin: 0 auto 50px; }
+
+    /* Trust Bar */
+    .trust-bar { background: #f8fafc; padding: 30px 0; border-bottom: 1px solid #e2e8f0; }
+    .trust-bar-inner { display: flex; justify-content: center; gap: 50px; flex-wrap: wrap; }
+    .trust-item { text-align: center; }
+    .trust-item .icon { font-size: 2em; margin-bottom: 5px; }
+    .trust-item strong { display: block; color: #1e3a8a; font-size: 0.9em; }
+
+    /* Why Valencia - The Differentiator */
+    .why-section { background: #f8fafc; }
+    .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+    .why-card { background: white; padding: 35px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
+    .why-card .icon { font-size: 2.5em; margin-bottom: 15px; }
+    .why-card h3 { color: #1e3a8a; font-size: 1.3em; margin-bottom: 12px; }
+    .why-card p { color: #64748b; font-size: 0.95em; }
+    .why-highlight { background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%); color: white; }
+    .why-highlight h3, .why-highlight p { color: white; }
+    .why-highlight p { opacity: 0.9; }
+
+    /* Services Grid */
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+    .service-card { border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1); transition: transform 0.3s; background: white; }
+    .service-card:hover { transform: translateY(-8px); }
+    .service-card img { width: 100%; height: 220px; object-fit: cover; }
+    .service-card-body { padding: 25px; }
+    .service-card h3 { color: #1e3a8a; margin-bottom: 10px; font-size: 1.25em; }
+    .service-card p { color: #64748b; font-size: 0.95em; margin-bottom: 15px; }
+    .service-card ul { list-style: none; padding: 0; }
+    .service-card li { padding: 6px 0; padding-left: 25px; position: relative; font-size: 0.9em; color: #475569; }
+    .service-card li::before { content: '&#10003;'; position: absolute; left: 0; color: #16a34a; font-weight: bold; }
+
+    /* Process Section */
+    .process-section { background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%); color: white; }
+    .process-section .section-title { color: white; }
+    .process-section .section-subtitle { color: rgba(255,255,255,0.85); }
+    .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+    .process-step { text-align: center; padding: 30px 20px; }
+    .process-number { width: 60px; height: 60px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5em; font-weight: 700; margin: 0 auto 20px; }
+    .process-step h3 { font-size: 1.2em; margin-bottom: 12px; }
+    .process-step p { font-size: 0.95em; opacity: 0.9; }
+
+    /* Pricing Section */
+    .pricing-section { background: #f8fafc; }
+    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+    .pricing-card { background: white; border-radius: 16px; padding: 35px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
+    .pricing-card.featured { border: 3px solid #1e3a8a; position: relative; }
+    .pricing-card.featured::before { content: 'Most Popular'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: #1e3a8a; color: white; padding: 5px 20px; border-radius: 20px; font-size: 0.85em; font-weight: 600; }
+    .pricing-card h3 { color: #1e3a8a; font-size: 1.4em; margin-bottom: 10px; }
+    .pricing-card .price { font-size: 2em; font-weight: 700; color: #1f2937; margin-bottom: 5px; }
+    .pricing-card .price-note { font-size: 0.85em; color: #64748b; margin-bottom: 20px; }
+    .pricing-card ul { list-style: none; padding: 0; margin-bottom: 25px; }
+    .pricing-card li { padding: 10px 0; padding-left: 28px; position: relative; border-bottom: 1px solid #f1f5f9; }
+    .pricing-card li::before { content: '&#10003;'; position: absolute; left: 0; color: #16a34a; font-weight: bold; }
+    .pricing-card li:last-child { border-bottom: none; }
+    .pricing-cta { display: block; text-align: center; background: #1e3a8a; color: white; padding: 14px 25px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: background 0.2s; }
+    .pricing-cta:hover { background: #1e40af; }
+
+    /* Testimonials */
+    .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 25px; }
+    .testimonial-card { background: white; padding: 30px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
+    .testimonial-stars { color: #fbbf24; font-size: 1.2em; margin-bottom: 15px; }
+    .testimonial-text { font-style: italic; color: #475569; margin-bottom: 20px; font-size: 1.05em; line-height: 1.7; }
+    .testimonial-author { display: flex; align-items: center; gap: 12px; }
+    .testimonial-avatar { width: 50px; height: 50px; background: #e2e8f0; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; color: #1e3a8a; }
+    .testimonial-info strong { display: block; color: #1f2937; }
+    .testimonial-info span { font-size: 0.85em; color: #64748b; }
+
+    /* Areas Served */
+    .areas-section { background: #1f2937; color: white; }
+    .areas-section .section-title { color: white; }
+    .areas-section .section-subtitle { color: rgba(255,255,255,0.7); }
+    .areas-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
+    .area-tag { background: rgba(255,255,255,0.1); padding: 10px 20px; border-radius: 25px; font-size: 0.95em; }
+
+    /* FAQ Section */
+    .faq-grid { max-width: 800px; margin: 0 auto; }
+    .faq-item { background: white; margin-bottom: 15px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); overflow: hidden; }
+    .faq-question { padding: 20px 25px; font-weight: 600; color: #1e3a8a; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+    .faq-question::after { content: '+'; font-size: 1.5em; color: #1e3a8a; }
+    .faq-answer { padding: 0 25px 20px; color: #64748b; line-height: 1.7; }
+
+    /* CTA Section */
+    .cta-section { background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%); color: white; text-align: center; padding: 80px 20px; }
+    .cta-section h2 { font-size: 2.4em; margin-bottom: 15px; }
+    .cta-section p { font-size: 1.2em; opacity: 0.9; margin-bottom: 35px; max-width: 600px; margin-left: auto; margin-right: auto; }
+    .cta-buttons { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+    .cta-phone { font-size: 1.8em; font-weight: 700; margin-top: 30px; }
+    .cta-phone a { color: white; text-decoration: none; }
+
+    /* Gallery Grid */
+    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .gallery-item { border-radius: 12px; overflow: hidden; aspect-ratio: 4/3; }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
+    .gallery-item:hover img { transform: scale(1.05); }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2em; }
+      .hero .subtitle { font-size: 1.1em; }
+      .section-title { font-size: 1.8em; }
+      .hero-trust { gap: 20px; }
+      .trust-bar-inner { gap: 25px; }
+      .pricing-card.featured::before { font-size: 0.75em; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Chicago's Most Trusted Kitchen Remodeling Contractor</h1>
+      <p class="subtitle">Transform your outdated kitchen into a stunning, functional space. Work directly with the owner &mdash; not a salesperson. Licensed, insured, and committed to exceptional craftsmanship.</p>
+      <div class="hero-cta">
+        <a href="tel:7736827788" class="btn-primary">&#128222; (773) 682-7788</a>
+        <a href="/consultation/" class="btn-secondary">Get Free Estimate</a>
+      </div>
+      <div class="hero-trust">
+        <div class="hero-trust-item">&#10003; Licensed & Insured</div>
+        <div class="hero-trust-item">&#10003; Free Detailed Estimates</div>
+        <div class="hero-trust-item">&#10003; 5-Star Google Rating</div>
+        <div class="hero-trust-item">&#10003; Owner-Operated</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Bar -->
+  <div class="trust-bar">
+    <div class="trust-bar-inner">
+      <div class="trust-item"><div class="icon">&#128737;&#65039;</div><strong>Fully Licensed & Insured</strong></div>
+      <div class="trust-item"><div class="icon">&#128172;</div><strong>Direct Owner Communication</strong></div>
+      <div class="trust-item"><div class="icon">&#128203;</div><strong>Transparent Fixed Pricing</strong></div>
+      <div class="trust-item"><div class="icon">&#9201;&#65039;</div><strong>On-Time Completion</strong></div>
+    </div>
+  </div>
+
+  <!-- Why Valencia Section - Key Differentiator -->
+  <section class="why-section">
+    <div class="container">
+      <h2 class="section-title">Why Chicago Homeowners Choose Valencia Construction</h2>
+      <p class="section-subtitle">We're not a big design firm with salespeople and overhead. You work directly with the owner from first call to final walkthrough.</p>
+      
+      <div class="why-grid">
+        <div class="why-card why-highlight">
+          <div class="icon">&#128100;</div>
+          <h3>Talk to the Owner, Not a Salesperson</h3>
+          <p>When you call Valencia Construction, you talk to the person who will oversee your project. No runaround, no miscommunication, no game of telephone. Direct access means your vision is understood and executed correctly.</p>
+        </div>
+        <div class="why-card">
+          <div class="icon">&#128176;</div>
+          <h3>Fixed-Price Quotes, Zero Surprises</h3>
+          <p>We provide comprehensive written estimates upfront. The price we quote is the price you pay &mdash; no hidden fees, no "we found something" surprises, no budget overruns.</p>
+        </div>
+        <div class="why-card">
+          <div class="icon">&#9889;</div>
+          <h3>Fast Response & Quick Starts</h3>
+          <p>We respond to every inquiry within hours, not days. No waiting weeks for a quote. No 3-month backlog. When you're ready to start, we're ready to build.</p>
+        </div>
+        <div class="why-card">
+          <div class="icon">&#128241;</div>
+          <h3>Real-Time Project Updates</h3>
+          <p>Get daily photo updates and progress reports via text. Always know exactly where your project stands. Questions answered same-day, not "we'll get back to you."</p>
+        </div>
+        <div class="why-card">
+          <div class="icon">&#127942;</div>
+          <h3>Premium Materials, Fair Prices</h3>
+          <p>No design-firm markup. No showroom overhead passed to you. We source high-quality materials from trusted suppliers and pass the savings to our customers.</p>
+        </div>
+        <div class="why-card">
+          <div class="icon">&#129529;</div>
+          <h3>Respectful, Clean Worksites</h3>
+          <p>We treat your home like our own. Daily cleanup, protective coverings on floors and furniture, and courteous crews who respect your space and schedule.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kitchen Services Section -->
+  <section>
+    <div class="container">
+      <h2 class="section-title">Our Kitchen Remodeling Services</h2>
+      <p class="section-subtitle">From simple updates to complete gut renovations, we handle every aspect of your kitchen transformation.</p>
+      
+      <div class="services-grid">
+        <div class="service-card">
+          <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600" alt="Full Kitchen Renovation Chicago">
+          <div class="service-card-body">
+            <h3>Full Kitchen Renovations</h3>
+            <p>Complete kitchen transformations from demo to final detail. New layout, new everything.</p>
+            <ul>
+              <li>Custom layout design</li>
+              <li>Cabinet installation</li>
+              <li>Countertop fabrication & install</li>
+              <li>Electrical & plumbing updates</li>
+              <li>Flooring replacement</li>
+            </ul>
+          </div>
+        </div>
+        <div class="service-card">
+          <img src="https://images.unsplash.com/photo-1600489000022-c2086d79f9d4?w=600" alt="Kitchen Cabinet Installation Chicago">
+          <div class="service-card-body">
+            <h3>Cabinet Refacing & Installation</h3>
+            <p>Upgrade your storage with custom cabinetry that maximizes space and matches your style.</p>
+            <ul>
+              <li>Custom cabinet design</li>
+              <li>Soft-close hinges & drawers</li>
+              <li>Pull-out organizers</li>
+              <li>Cabinet refacing options</li>
+              <li>Hardware upgrades</li>
+            </ul>
+          </div>
+        </div>
+        <div class="service-card">
+          <img src="https://images.unsplash.com/photo-1604709177225-055f99402ea3?w=600" alt="Kitchen Countertops Chicago">
+          <div class="service-card-body">
+            <h3>Countertops & Islands</h3>
+            <p>Premium surfaces that combine beauty with durability. Quartz, granite, marble, and more.</p>
+            <ul>
+              <li>Quartz countertops</li>
+              <li>Granite installation</li>
+              <li>Custom island design</li>
+              <li>Butcher block surfaces</li>
+              <li>Waterfall edges</li>
+            </ul>
+          </div>
+        </div>
+        <div class="service-card">
+          <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=600" alt="Kitchen Backsplash Chicago">
+          <div class="service-card-body">
+            <h3>Backsplash & Tile Work</h3>
+            <p>Add personality and protection with expert tile installation and stunning designs.</p>
+            <ul>
+              <li>Subway tile installation</li>
+              <li>Mosaic designs</li>
+              <li>Natural stone tile</li>
+              <li>Floor-to-ceiling tile</li>
+              <li>Grout sealing</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="process-section">
+    <div class="container">
+      <h2 class="section-title">Our Simple 4-Step Process</h2>
+      <p class="section-subtitle">From first call to final walkthrough &mdash; here's how we make kitchen remodeling easy.</p>
+      
+      <div class="process-grid">
+        <div class="process-step">
+          <div class="process-number">1</div>
+          <h3>Free Consultation</h3>
+          <p>Call or fill out our form. We'll discuss your vision, visit your home, and provide a detailed written estimate &mdash; usually within 48 hours.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-number">2</div>
+          <h3>Design & Planning</h3>
+          <p>We finalize your layout, help you select materials, and create a clear project timeline. You'll know exactly what to expect.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-number">3</div>
+          <h3>Expert Construction</h3>
+          <p>Our skilled team handles everything &mdash; demo, framing, electrical, plumbing, installation. Daily updates keep you informed.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-number">4</div>
+          <h3>Final Walkthrough</h3>
+          <p>We review every detail together. We're not done until you're 100% satisfied with your new kitchen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="pricing-section">
+    <div class="container">
+      <h2 class="section-title">Kitchen Remodeling Packages</h2>
+      <p class="section-subtitle">Every project is unique. Here's what's typically included at each level &mdash; we'll customize based on your vision and budget.</p>
+      
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <h3>Kitchen Refresh</h3>
+          <div class="price-note" style="margin-top: 10px; margin-bottom: 20px; font-size: 1em; color: #475569;">Cosmetic updates, keep existing layout</div>
+          <ul>
+            <li>Cabinet refacing or painting</li>
+            <li>New countertops</li>
+            <li>Backsplash installation</li>
+            <li>Hardware replacement</li>
+            <li>Light fixture updates</li>
+          </ul>
+          <a href="/consultation/" class="pricing-cta">Get Free Estimate</a>
+        </div>
+        <div class="pricing-card featured">
+          <h3>Mid-Range Remodel</h3>
+          <div class="price-note" style="margin-top: 10px; margin-bottom: 20px; font-size: 1em; color: #475569;">New cabinets, counters, and appliances</div>
+          <ul>
+            <li>Custom cabinet installation</li>
+            <li>Quartz or granite countertops</li>
+            <li>New flooring</li>
+            <li>Electrical upgrades</li>
+            <li>Plumbing updates</li>
+            <li>New appliances (optional)</li>
+          </ul>
+          <a href="/consultation/" class="pricing-cta">Get Free Estimate</a>
+        </div>
+        <div class="pricing-card">
+          <h3>Full Gut Renovation</h3>
+          <div class="price-note" style="margin-top: 10px; margin-bottom: 20px; font-size: 1em; color: #475569;">Complete transformation, new layout</div>
+          <ul>
+            <li>Full demolition</li>
+            <li>Layout reconfiguration</li>
+            <li>Wall removal (if applicable)</li>
+            <li>Premium materials throughout</li>
+            <li>Custom island</li>
+            <li>High-end appliances</li>
+          </ul>
+          <a href="/consultation/" class="pricing-cta">Get Free Estimate</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section>
+    <div class="container">
+      <h2 class="section-title">Recent Kitchen Projects</h2>
+      <p class="section-subtitle">See our craftsmanship in action. Every project completed on time and on budget.</p>
+      
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600" alt="Modern Kitchen Remodel Chicago">
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600" alt="White Kitchen Renovation Chicago">
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=600" alt="Kitchen Countertop Installation">
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1604709177225-055f99402ea3?w=600" alt="Kitchen Island Chicago">
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600" alt="Luxury Kitchen Chicago">
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=600" alt="Kitchen Backsplash Installation">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section style="background: #f8fafc;">
+    <div class="container">
+      <h2 class="section-title">What Our Clients Say</h2>
+      <p class="section-subtitle">Don't just take our word for it &mdash; hear from Chicago homeowners who trusted us with their kitchens.</p>
+      
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-text">"Finally, a contractor who actually answers their phone! From the first call to the final walkthrough, I worked directly with the owner. No salespeople, no runaround. My kitchen looks incredible and the price was exactly what they quoted."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">MR</div>
+            <div class="testimonial-info">
+              <strong>Maria R.</strong>
+              <span>Lincoln Park Kitchen Remodel</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-text">"We got quotes from 5 contractors. Valencia was the most responsive, the most transparent about pricing, and delivered the best quality. They sent photo updates every day and finished ahead of schedule. Highly recommend!"</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">JT</div>
+            <div class="testimonial-info">
+              <strong>James T.</strong>
+              <span>Lakeview Full Kitchen Renovation</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-text">"The crew was respectful, cleaned up every day, and the attention to detail was impressive. No hidden costs, no surprises. Just a beautiful new kitchen delivered exactly as promised. Will definitely use them again."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">SK</div>
+            <div class="testimonial-info">
+              <strong>Sarah K.</strong>
+              <span>Wicker Park Kitchen Update</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Areas Served Section -->
+  <section class="areas-section">
+    <div class="container">
+      <h2 class="section-title">Kitchen Remodeling Throughout Chicagoland</h2>
+      <p class="section-subtitle">Proudly serving homeowners across Chicago and the surrounding suburbs.</p>
+      
+      <div class="areas-grid">
+        <span class="area-tag">Lincoln Park</span>
+        <span class="area-tag">Lakeview</span>
+        <span class="area-tag">Wicker Park</span>
+        <span class="area-tag">Logan Square</span>
+        <span class="area-tag">Bucktown</span>
+        <span class="area-tag">River North</span>
+        <span class="area-tag">Gold Coast</span>
+        <span class="area-tag">Old Town</span>
+        <span class="area-tag">Andersonville</span>
+        <span class="area-tag">Roscoe Village</span>
+        <span class="area-tag">Irving Park</span>
+        <span class="area-tag">Ravenswood</span>
+        <span class="area-tag">Edgewater</span>
+        <span class="area-tag">Rogers Park</span>
+        <span class="area-tag">Hyde Park</span>
+        <span class="area-tag">Bridgeport</span>
+        <span class="area-tag">Pilsen</span>
+        <span class="area-tag">Evanston</span>
+        <span class="area-tag">Oak Park</span>
+        <span class="area-tag">Skokie</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section>
+    <div class="container">
+      <h2 class="section-title">Kitchen Remodeling FAQs</h2>
+      <p class="section-subtitle">Common questions from Chicago homeowners about kitchen renovations.</p>
+      
+      <div class="faq-grid">
+        <div class="faq-item">
+          <div class="faq-question">How long does a kitchen remodel take?</div>
+          <div class="faq-answer">Most kitchen remodels take 4-8 weeks depending on scope. A cosmetic refresh (counters, backsplash, cabinet painting) can be done in 2-3 weeks. A full gut renovation with layout changes typically takes 6-8 weeks. We'll provide a detailed timeline before starting.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">How much does a kitchen remodel cost in Chicago?</div>
+          <div class="faq-answer">Kitchen remodel costs vary based on scope, materials, and layout changes. A cosmetic refresh costs less than a full gut renovation with custom cabinets and premium finishes. We provide detailed written estimates upfront so you know exactly what to expect &mdash; no surprises, no hidden fees.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Do I need permits for a kitchen remodel?</div>
+          <div class="faq-answer">Permits are required for electrical work, plumbing changes, and any structural modifications (like removing walls). Cosmetic updates like countertops and cabinet refacing don't require permits. We handle all permit acquisition for you &mdash; it's included in our service.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Can I use my kitchen during the remodel?</div>
+          <div class="faq-answer">For cosmetic updates, you'll have partial kitchen access throughout. For full renovations, plan to set up a temporary kitchen elsewhere in your home. We'll work with you to minimize disruption and complete the project as quickly as possible.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Do you help with design and material selection?</div>
+          <div class="faq-answer">Yes! We'll help you choose cabinets, countertops, backsplash, flooring, and hardware that fit your style and budget. We have relationships with local suppliers and can often get better pricing than retail stores.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">What's your warranty policy?</div>
+          <div class="faq-answer">We stand behind our work. All labor is warranted for one year after project completion. Manufacturer warranties on materials and appliances apply separately. If something isn't right, we'll make it right.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Ready to Transform Your Kitchen?</h2>
+      <p>Get a free, no-obligation estimate. We'll visit your home, discuss your vision, and provide a detailed quote &mdash; usually within 48 hours.</p>
+      <div class="cta-buttons">
+        <a href="/consultation/" class="btn-primary">Schedule Free Consultation</a>
+        <a href="tel:7736827788" class="btn-secondary">Call Now</a>
+      </div>
+      <div class="cta-phone">&#128222; <a href="tel:7736827788">(773) 682-7788</a></div>
+    </div>
+  </section>
+
+
+<!-- /wp:html -->

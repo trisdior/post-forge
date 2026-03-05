@@ -1,0 +1,27 @@
+{
+  "timestamp": "2026-03-03T01:27:31.193094Z",
+  "tracker": {
+    "total": 65,
+    "new": 65,
+    "contacted": 0,
+    "last_lead_date": "2026-03-02T12:51:25.751000"
+  },
+  "karl_queue": {
+    "total": 0,
+    "new": 0,
+    "pending_approval": 0,
+    "hot_leads": 0
+  },
+  "hunter": {
+    "status": "Running",
+    "last_run": "2026-02-27T21:26:47.532668",
+    "hours_ago": 76.0,
+    "posts_checked": 0,
+    "valid_leads": 0,
+    "quality": 0
+  },
+  "alerts": [
+    "[WARNING] Hunter hasn't run in 12+ hours",
+    "[ACTION] 65 new leads waiting for follow-up"
+  ]
+}

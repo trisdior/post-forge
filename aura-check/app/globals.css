@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background: #050508;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(139, 92, 246, 0.3); border-radius: 4px; }
+
+/* Glass */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-strong {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Score bar fill animation */
+@keyframes fill-bar {
+  from { width: 0%; }
+  to { width: var(--bar-width); }
+}
+
+.score-bar-fill {
+  animation: fill-bar 1s ease-out forwards;
+  animation-delay: var(--bar-delay, 0s);
+  width: 0%;
+}
+
+/* Scanning animation */
+@keyframes scan-line {
+  0% { top: 0%; }
+  50% { top: 90%; }
+  100% { top: 0%; }
+}
+
+.scan-line {
+  animation: scan-line 2s ease-in-out infinite;
+}
+
+/* Particle float */
+@keyframes particle-float {
+  0%, 100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.6; }
+  25% { transform: translateY(-30px) translateX(10px) scale(1.1); opacity: 1; }
+  50% { transform: translateY(-50px) translateX(-5px) scale(0.9); opacity: 0.4; }
+  75% { transform: translateY(-20px) translateX(-15px) scale(1.05); opacity: 0.8; }
+}
+
+/* Glow pulse for aura orb */
+@keyframes aura-pulse {
+  0%, 100% { transform: scale(1); filter: blur(60px); opacity: 0.4; }
+  50% { transform: scale(1.2); filter: blur(80px); opacity: 0.6; }
+}
+
+.aura-orb {
+  animation: aura-pulse 4s ease-in-out infinite;
+}
+
+/* Face outline for scanning */
+@keyframes face-trace {
+  0% { stroke-dashoffset: 1000; }
+  100% { stroke-dashoffset: 0; }
+}
+
+/* Camera shake for 9+ scores */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10% { transform: translateX(-3px) translateY(1px); }
+  20% { transform: translateX(3px) translateY(-1px); }
+  30% { transform: translateX(-2px); }
+  40% { transform: translateX(2px); }
+  50% { transform: translateX(0); }
+}
+
+.animate-shake {
+  animation: shake 0.5s ease-in-out;
+  animation-delay: 2s;
+}
+
+.face-trace {
+  stroke-dasharray: 1000;
+  animation: face-trace 3s ease-in-out forwards;
+}

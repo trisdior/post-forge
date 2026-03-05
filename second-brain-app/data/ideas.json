@@ -1,0 +1,551 @@
+[
+  {
+    "id": 1,
+    "title": "AI Agency — SaaS for Small Business Owners",
+    "category": "ai-agency",
+    "content": "Package everything built for Valencia (Mission Control, Hunter, lead gen, morning briefs, proposal templates) and sell to ANY small business owner grinding solo. Not just contractors — the pitch is universal: 'You're a 1-person operation drowning in admin. We give you an AI employee that works 24/7 for less than minimum wage.' That's a SaaS company.\n\nTarget niches:\n• Contractors & trades\n• Real estate agents — lead gen, follow-ups, listing descriptions\n• Auto shops — appointment reminders, parts ordering, customer follow-up\n• Restaurants — review management, social media, supplier tracking\n• Salons/barbers — booking automation, client retention, social content\n• Law firms — intake automation, case tracking, client communication\n• Dentists/doctors — appointment reminders, review requests, patient follow-up\n• Fitness trainers — client management, content calendar, lead gen\n• E-commerce — inventory alerts, customer service, marketing automation\n\nTwo business paths:\n1. Valencia Construction — boots on the ground, local revenue\n2. AI Agency / Online income — digital, scalable, no ceiling\n\nConstruction pays the bills now. Agency is the long-term play.",
+    "status": "planning",
+    "priority": "high",
+    "tags": [
+      "ai",
+      "agency",
+      "saas",
+      "revenue",
+      "scalable",
+      "startup"
+    ],
+    "createdAt": "2026-02-17T00:50:00Z",
+    "updatedAt": "2026-02-17T01:26:00Z"
+  },
+  {
+    "id": 2,
+    "title": "Lamborghini Urus by End of 2026",
+    "category": "personal-goals",
+    "content": "Buy a Lamborghini Urus by end of 2026. Need to build to $15-20K/month profit. Requires 2-3 kitchen remodels per month at current margins. Multiple revenue streams will accelerate this: Valencia + AI Agency + content/YouTube.",
+    "status": "active",
+    "priority": "high",
+    "tags": [
+      "goal",
+      "lifestyle",
+      "motivation"
+    ],
+    "createdAt": "2026-01-30T00:00:00Z",
+    "updatedAt": "2026-02-17T01:26:00Z"
+  },
+  {
+    "id": 3,
+    "title": "Viral Article: I'm 20 and Own a Construction Company",
+    "category": "valencia",
+    "content": "Write article #4 for the blog. High viral potential — young entrepreneur story. Could drive massive traffic and leads. Personal brand play.",
+    "status": "planned",
+    "priority": "high",
+    "tags": [
+      "content",
+      "marketing",
+      "viral",
+      "blog"
+    ],
+    "createdAt": "2026-02-15T00:00:00Z",
+    "updatedAt": "2026-02-15T00:00:00Z"
+  },
+  {
+    "id": 4,
+    "title": "Crypto / Meme Coin Tracking",
+    "category": "investing",
+    "content": "Tracking trending meme coins via DexScreener API. Added to morning brief — token-boosts/top/v1 + token-profiles/latest/v1 endpoints.",
+    "status": "active",
+    "priority": "medium",
+    "tags": [
+      "crypto",
+      "memecoins",
+      "dexscreener",
+      "investing"
+    ],
+    "createdAt": "2026-02-16T00:00:00Z",
+    "updatedAt": "2026-02-16T00:00:00Z"
+  },
+  {
+    "id": 5,
+    "title": "Hunter AI Lead Gen Bot",
+    "category": "valencia",
+    "content": "Dedicated lead gen agent @Hunterllcbot on Telegram. Runs on Gemini Flash (cheap). Scans Craigslist 4x/day (8am/12pm/4pm/8pm), sends leads to Telegram. Has own workspace at agents/hunter/.",
+    "status": "active",
+    "priority": "high",
+    "tags": [
+      "ai",
+      "leadgen",
+      "automation",
+      "telegram"
+    ],
+    "createdAt": "2026-02-15T00:00:00Z",
+    "updatedAt": "2026-02-15T00:00:00Z"
+  },
+  {
+    "id": 6,
+    "title": "Cold Outreach to Property Management Companies",
+    "category": "valencia",
+    "content": "20 small PM companies identified (small-pm-targets.md). Cold emails ready (cold-emails-ready.md). Need to actually send them. Also: Facebook group posts, Craigslist ads, Nextdoor.",
+    "status": "planned",
+    "priority": "high",
+    "tags": [
+      "leadgen",
+      "outreach",
+      "pm-companies",
+      "sales"
+    ],
+    "createdAt": "2026-01-30T00:00:00Z",
+    "updatedAt": "2026-02-16T00:00:00Z"
+  },
+  {
+    "id": 7,
+    "title": "Mission Control Dashboard",
+    "category": "valencia",
+    "content": "Next.js dashboard for Valencia operations. Lives at mission-control/. TypeScript + Tailwind. Needs persistent dev server (Windows service or startup script).",
+    "status": "active",
+    "priority": "medium",
+    "tags": [
+      "dashboard",
+      "nextjs",
+      "internal-tool"
+    ],
+    "createdAt": "2026-02-15T00:00:00Z",
+    "updatedAt": "2026-02-16T00:00:00Z"
+  },
+  {
+    "id": 8,
+    "title": "Google Business Profile Optimization",
+    "category": "valencia",
+    "content": "GBP is set up but needs reviews. Critical for local SEO. Need to get first clients and ask for reviews. Also need to optimize listing with photos, services, Q&A.",
+    "status": "planned",
+    "priority": "high",
+    "tags": [
+      "seo",
+      "google",
+      "reviews",
+      "marketing"
+    ],
+    "createdAt": "2026-01-27T00:00:00Z",
+    "updatedAt": "2026-01-27T00:00:00Z"
+  },
+  {
+    "id": 9,
+    "title": "3-Tier Proposal PDF Template",
+    "category": "valencia",
+    "content": "Tris has a customizable 3-tier proposal PDF (Essential/Recommended/Premium). Hasn't sent it yet — need his labor rates and target margins to generate estimates.",
+    "status": "blocked",
+    "priority": "medium",
+    "tags": [
+      "proposals",
+      "pricing",
+      "sales",
+      "templates"
+    ],
+    "createdAt": "2026-02-15T00:00:00Z",
+    "updatedAt": "2026-02-15T00:00:00Z"
+  },
+  {
+    "id": 10,
+    "title": "Scale Valencia to $1M/year Revenue",
+    "category": "valencia",
+    "content": "4-stage scaling plan discussed. Currently at $0. Need first client, then build systems to handle volume. Target: 2-3 kitchen remodels/month as baseline.",
+    "status": "planning",
+    "priority": "high",
+    "tags": [
+      "scaling",
+      "revenue",
+      "growth",
+      "strategy"
+    ],
+    "createdAt": "2026-02-15T00:00:00Z",
+    "updatedAt": "2026-02-15T00:00:00Z"
+  },
+  {
+    "id": 11,
+    "title": "Valencia Media Discord Server",
+    "category": "content",
+    "content": "Discord server created for Valencia Media community. Need to set up channels and organize content. Discord bot created (Client ID: 1473216533860847691) — needs Message Content intent enabled in developer portal.",
+    "status": "in-progress",
+    "priority": "medium",
+    "tags": [
+      "discord",
+      "community",
+      "bot",
+      "media"
+    ],
+    "createdAt": "2026-02-17T01:06:00Z",
+    "updatedAt": "2026-02-17T01:26:00Z"
+  },
+  {
+    "id": 12,
+    "title": "Custom Email Domain for Resend",
+    "category": "valencia",
+    "content": "Currently using onboarding@resend.dev for WordPress emails. Need to set up custom domain for professional appearance. Resend API already integrated via WPCode snippet.",
+    "status": "planned",
+    "priority": "low",
+    "tags": [
+      "email",
+      "branding",
+      "professional"
+    ],
+    "createdAt": "2026-02-15T00:00:00Z",
+    "updatedAt": "2026-02-15T00:00:00Z"
+  },
+  {
+    "id": 13,
+    "title": "Faceless YouTube Channel — True Crime / Bodycam",
+    "category": "content",
+    "content": "Dr Insanity-style channel: true crime compilations with Google Earth visuals, bodycam footage, Reddit narration. 535K views in 11 hours on one video. High retention, huge audience, fully automatable.\n\nThe Stack:\n1. Script — AI writes from public court docs / news articles\n2. Voiceover — AI TTS (ElevenLabs) or own voice\n3. Visuals — Google Earth zoom-ins, street view, news screenshots, maps with red circles\n4. Editing — CapCut or DaVinci Resolve, mostly zooms and pans on images\n\nMonetization: YouTube AdSense, creator fund. These channels print money from ads alone.",
+    "status": "planning",
+    "priority": "high",
+    "tags": [
+      "youtube",
+      "faceless",
+      "true-crime",
+      "bodycam",
+      "monetization",
+      "content"
+    ],
+    "createdAt": "2026-02-17T01:00:00Z",
+    "updatedAt": "2026-02-17T01:26:00Z"
+  },
+  {
+    "id": 14,
+    "title": "Faceless YouTube Channel — Fern-Style Dark Stories",
+    "category": "content",
+    "content": "Fern-style channel: dark-themed story videos with smooth narration, Reddit stories, subtle background gameplay or animations. Really clean editing style, moody vibes. 3.4M views on 'How Were the Pyramids Actually Built?'\n\nTwo lanes:\n• Dr Insanity style — bodycam, crime, true crime\n• Fern style — Reddit stories, dark/mystery\n\nBoth are faceless and automatable. Could run two channels — one for each.",
+    "status": "planning",
+    "priority": "high",
+    "tags": [
+      "youtube",
+      "faceless",
+      "reddit",
+      "stories",
+      "dark",
+      "fern"
+    ],
+    "createdAt": "2026-02-17T01:01:00Z",
+    "updatedAt": "2026-02-17T01:26:00Z"
+  },
+  {
+    "id": 15,
+    "title": "AI Content Farm — Automated Social Media Posting",
+    "category": "content",
+    "content": "Have an AI agent post viral content clips/videos across all social media for monetization. Automated content farms powered by AI. Short-form clips on TikTok, YouTube Shorts, Instagram Reels, Facebook. Faceless channels that print money from creator funds. Doesn't have to be contractor related — pure online money.",
+    "status": "planning",
+    "priority": "high",
+    "tags": [
+      "ai",
+      "content-farm",
+      "tiktok",
+      "shorts",
+      "reels",
+      "automation",
+      "monetization"
+    ],
+    "createdAt": "2026-02-17T00:55:00Z",
+    "updatedAt": "2026-02-17T01:26:00Z"
+  },
+  {
+    "id": 16,
+    "title": "YouTube Content Bible & Production Workflow",
+    "category": "content",
+    "content": "Master document for faceless channel operations:\n\n1. Channel structure — what channels to create and what goes where\n2. Content bible — all formats, niches, what's working\n3. Bodycam sources — every PD that uploads regularly\n4. Fern-style topic ideas — 20+ viral-worthy concepts\n5. Other faceless formats killing it — full research\n6. Production workflow — tools, costs, timeline per video\n7. Script templates + first scripts\n\nBuilding this out as the operational playbook.",
+    "status": "in-progress",
+    "priority": "high",
+    "tags": [
+      "youtube",
+      "playbook",
+      "production",
+      "scripts",
+      "research"
+    ],
+    "createdAt": "2026-02-17T01:07:00Z",
+    "updatedAt": "2026-02-17T01:26:00Z"
+  },
+  {
+    "id": 17,
+    "title": "Construction / Renovation YouTube Content",
+    "category": "content",
+    "content": "Leverage real construction knowledge for content:\n• Construction/renovation satisfying videos — before/afters, demo clips, process footage\n• 'How much does X cost' explainers — kitchens, bathrooms, remodels\n• Real estate/flipping content — overlaps with construction world\n\nTris has an edge here with real industry knowledge. Could be faceless or personal brand.",
+    "status": "planned",
+    "priority": "medium",
+    "tags": [
+      "youtube",
+      "construction",
+      "educational",
+      "renovation"
+    ],
+    "createdAt": "2026-02-17T01:00:00Z",
+    "updatedAt": "2026-02-17T01:26:00Z"
+  },
+  {
+    "id": 18,
+    "title": "Luxury / Motivation Content Channel",
+    "category": "content",
+    "content": "Cars, lifestyle, motivation content. Fits the Urus goal perfectly. Could tie personal journey (20 y/o construction company owner → Lamborghini) into content.",
+    "status": "planned",
+    "priority": "low",
+    "tags": [
+      "youtube",
+      "luxury",
+      "motivation",
+      "cars",
+      "lifestyle"
+    ],
+    "createdAt": "2026-02-17T01:00:00Z",
+    "updatedAt": "2026-02-17T01:26:00Z"
+  },
+  {
+    "id": 19,
+    "title": "2nd Brain Web App",
+    "category": "tech",
+    "content": "Next.js app to organize ALL ideas, memories, documents, and tasks. Dashboard with stats, searchable ideas with categories/tags/priorities/statuses. Running at localhost:3000. Project dir: second-brain-app/",
+    "status": "active",
+    "priority": "medium",
+    "tags": [
+      "nextjs",
+      "dashboard",
+      "knowledge-base",
+      "internal-tool"
+    ],
+    "createdAt": "2026-02-17T01:22:00Z",
+    "updatedAt": "2026-02-17T01:26:00Z"
+  },
+  {
+    "id": 20,
+    "title": "Get First Paying Client",
+    "category": "valencia",
+    "content": "Revenue is at $0. Everything else is secondary until money comes in. Need to make calls, post in Facebook groups, send cold emails. Stop deferring. This is THE priority.",
+    "status": "active",
+    "priority": "high",
+    "tags": [
+      "revenue",
+      "sales",
+      "urgent",
+      "first-client"
+    ],
+    "createdAt": "2026-01-27T00:00:00Z",
+    "updatedAt": "2026-02-17T01:26:00Z"
+  },
+  {
+    "id": 21,
+    "title": "Buy 2 Properties by End of 2026 (Rental + Personal)",
+    "category": "personal-goals",
+    "content": "Buy TWO properties by end of 2026:\n1. Investment rental — cash flow, build wealth\n2. Personal spot — own place\n\nCould house-hack a multi-unit (live in one, rent the rest). Need revenue streams firing: Valencia + AI Agency + YouTube. Chicago market has good multi-unit options.",
+    "status": "active",
+    "priority": "high",
+    "tags": [
+      "real-estate",
+      "property",
+      "goal",
+      "2026",
+      "wealth"
+    ],
+    "createdAt": "2026-02-17T07:35:18.225Z",
+    "updatedAt": "2026-02-17T07:35:58.054Z"
+  },
+  {
+    "id": 22,
+    "title": "Cash Flow Automation Playbook — MASTER DOC",
+    "category": "other",
+    "content": "Full 47-page playbook at cashflow-playbook.md covering:\n\nOFFLINE: GBP domination, Facebook/IG lead machine, PM partnerships, handyman subscriptions (-399/mo), seasonal packages, automated follow-ups, review generation, referral programs.\n\nONLINE: Faceless YouTube (true crime + Reddit stories), AI content farm (TikTok/Shorts/Reels), AI Agency (GoHighLevel white-label -1997/mo), digital products, affiliate marketing.\n\nIncludes 90-day execution timeline, priority matrix, income projections (-40k/mo within 12 months). Every section has startup cost, time to first dollar, automation level.",
+    "status": "active",
+    "priority": "high",
+    "tags": [
+      "playbook",
+      "cashflow",
+      "automation",
+      "master-plan",
+      "strategy"
+    ],
+    "createdAt": "2026-02-17T07:43:23.647Z",
+    "updatedAt": "2026-02-17T07:43:23.647Z"
+  },
+  {
+    "id": 23,
+    "title": "VisionBuild — AI Remodel Visualizer App",
+    "category": "ai-agency",
+    "content": "Upload a photo of any room, AI generates multiple design variations (modern, farmhouse, contemporary, etc). Contractor shows client options at consultation. Client picks, contractor generates quote on the spot.\n\nFeatures: AI style variations from one photo, material/color swaps, auto cost estimates, client favorites/sharing, branded proposals with chosen design, before/after mockups.\n\nBuildable AND sellable through AI Agency.",
+    "status": "planning",
+    "priority": "high",
+    "tags": [
+      "app",
+      "ai",
+      "visualization",
+      "contractors",
+      "saas",
+      "product"
+    ],
+    "createdAt": "2026-02-17T07:59:07.432Z",
+    "updatedAt": "2026-02-17T07:59:07.432Z"
+  },
+  {
+    "id": 24,
+    "title": "InstaBid — 60-Second AI Proposal Generator",
+    "category": "ai-agency",
+    "content": "Contractor takes photos + measurements, AI generates full 3-tier proposal PDF in 60 seconds. Text to client before leaving the driveway. Massive close rate improvement.",
+    "status": "planned",
+    "priority": "high",
+    "tags": [
+      "app",
+      "proposals",
+      "ai",
+      "contractors",
+      "saas"
+    ],
+    "createdAt": "2026-02-17T07:59:07.432Z",
+    "updatedAt": "2026-02-17T07:59:07.432Z"
+  },
+  {
+    "id": 25,
+    "title": "CrewTrack — Subcontractor Management App",
+    "category": "ai-agency",
+    "content": "Simple app for managing subs. Clock in/out, daily photos, material requests, payment tracking. Every contractor needs this.",
+    "status": "planned",
+    "priority": "medium",
+    "tags": [
+      "app",
+      "management",
+      "contractors",
+      "saas"
+    ],
+    "createdAt": "2026-02-17T07:59:07.432Z",
+    "updatedAt": "2026-02-17T07:59:07.432Z"
+  },
+  {
+    "id": 26,
+    "title": "ReviewHero — Automated Review Collection",
+    "category": "ai-agency",
+    "content": "After every job, auto-texts client a link. Happy = Google review. Unhappy = private feedback. Solves the #1 problem contractors have: getting reviews.",
+    "status": "planned",
+    "priority": "medium",
+    "tags": [
+      "app",
+      "reviews",
+      "automation",
+      "saas"
+    ],
+    "createdAt": "2026-02-17T07:59:07.432Z",
+    "updatedAt": "2026-02-17T07:59:07.432Z"
+  },
+  {
+    "id": 27,
+    "title": "LeadSniper — Multi-Platform Lead Monitor",
+    "category": "ai-agency",
+    "content": "Monitors Craigslist, Facebook, Nextdoor, Thumbtack for people needing work. Instant alerts + auto-response templates. Like Hunter but as a product.",
+    "status": "planned",
+    "priority": "medium",
+    "tags": [
+      "app",
+      "leadgen",
+      "automation",
+      "saas"
+    ],
+    "createdAt": "2026-02-17T07:59:07.432Z",
+    "updatedAt": "2026-02-17T07:59:07.432Z"
+  },
+  {
+    "id": 28,
+    "title": "Amazon KDP — AI-Generated Books",
+    "category": "content",
+    "content": "Publish ebooks, journals, low-content books on Amazon KDP. AI writes content + generates covers. Zero startup cost. Each book makes -500/mo passively. Stack dozens of them.\n\nFully automatable with AI. Side income stream that compounds.",
+    "status": "planned",
+    "priority": "low",
+    "tags": [
+      "amazon",
+      "kdp",
+      "passive-income",
+      "books",
+      "automation"
+    ],
+    "createdAt": "2026-02-17T08:38:05.403Z",
+    "updatedAt": "2026-02-17T08:38:05.403Z"
+  },
+  {
+    "id": 29,
+    "title": "X Articles — Monetized Long-Form Content",
+    "category": "content",
+    "content": "Publish long-form articles on X (Twitter). X Premium pays based on engagement from verified users. People making -50K/month.\n\nStrategy: Repurpose book chapters and AI knowledge as standalone articles. Post daily. AI writes, Tris reviews, publish.\n\nAngle: 20 y/o contractor using AI — unique, authentic, high engagement potential.\n\nEach article also drives: book sales, AI Agency leads, personal brand growth. One piece of content = multiple revenue streams.",
+    "status": "planning",
+    "priority": "high",
+    "tags": [
+      "x",
+      "twitter",
+      "articles",
+      "monetization",
+      "content",
+      "passive-income"
+    ],
+    "createdAt": "2026-02-17T08:47:02.342Z",
+    "updatedAt": "2026-02-17T08:47:02.342Z"
+  },
+  {
+    "id": 30,
+    "title": "Aura Check — AI Aura/Energy Reader App",
+    "category": "tech",
+    "content": "Upload a selfie → AI reads your aura/energy/vibe. Generates beautiful shareable card (Spotify Wrapped style) with:\n- Aura color + meaning\n- Personality breakdown\n- Strengths and energy type\n- Compatibility scores\n- Daily energy forecast\n\nTarget: Gen Z, spirituality community, Instagram/TikTok users.\nMonetize: Freemium (free basic read, /mo for premium deep dives, daily readings, compatibility matching)\n\nViral mechanics: shareable cards on IG stories, TikTok creators react to their auras, friend comparison.\n\nMarket: Spirituality/wellness is +. No AI aura app exists. Massive gap.\nCompetition: basically zero.",
+    "status": "in-progress",
+    "priority": "high",
+    "tags": [
+      "app",
+      "viral",
+      "aura",
+      "spirituality",
+      "gen-z",
+      "saas",
+      "tiktok"
+    ],
+    "createdAt": "2026-02-17T09:05:23.951Z",
+    "updatedAt": "2026-02-17T09:05:23.951Z"
+  },
+  {
+    "id": 31,
+    "title": "Renovation Calculator — Lead Gen Tool",
+    "category": "valencia",
+    "content": "Free web tool: homeowner enters project details, gets instant cost estimate, Valencia captures the lead. Step-by-step form with cost breakdown. Double duty: lead gen for Valencia AND demo product for AI Agency.",
+    "status": "in-progress",
+    "priority": "high",
+    "tags": [
+      "leadgen",
+      "tool",
+      "website",
+      "valencia",
+      "calculator"
+    ],
+    "createdAt": "2026-02-17T09:29:22.467Z",
+    "updatedAt": "2026-02-17T09:29:22.467Z"
+  },
+  {
+    "id": 32,
+    "title": "X Articles — 3 Ready to Publish",
+    "category": "content",
+    "content": "3 monetized X Articles:\n1. \"I'm 20 and I Built AI Employees That Run My Business 24/7\"\n2. \"How to Build a Faceless YouTube Channel That Makes Money While You Sleep\"\n3. \"What It's Really Like to Own a Construction Company at 20\"\nEach 2,000-3,500 words. Ready for X Premium.",
+    "status": "in-progress",
+    "priority": "high",
+    "tags": [
+      "x",
+      "twitter",
+      "articles",
+      "content",
+      "monetization"
+    ],
+    "createdAt": "2026-02-17T09:29:22.467Z",
+    "updatedAt": "2026-02-17T09:29:22.467Z"
+  },
+  {
+    "id": 33,
+    "title": "Aura Check TikTok Marketing — Alexa Trigger",
+    "category": "content",
+    "content": "Say \"Alexa\" in TikTok video which triggers viewers' Alexa devices in comments. Pair with \"Alexa, what's my aura?\" and cut to app results. Instant engagement + rage shares = millions of views.",
+    "status": "planned",
+    "priority": "high",
+    "tags": [
+      "tiktok",
+      "marketing",
+      "viral",
+      "aura-check"
+    ],
+    "createdAt": "2026-02-17T09:29:22.467Z",
+    "updatedAt": "2026-02-17T09:29:22.467Z"
+  }
+]

@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Model Fleet — Valencia Mission Control</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+  
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  :root {
+    --gold: #d4a843;
+    --gold-dim: #d4a84333;
+    --gold-glow: #d4a84366;
+    --bg: #0a0a0a;
+    --card: #111111;
+    --card-border: #1a1a1a;
+    --text: #f5f5f7;
+    --text-secondary: #86868b;
+    --green: #30d158;
+    --green-dim: #30d15833;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 24px 80px;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  .header .label {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  .header h1 {
+    font-size: clamp(36px, 6vw, 56px);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+
+  .header h1 span { color: var(--gold); }
+
+  .header p {
+    font-size: 18px;
+    color: var(--text-secondary);
+    max-width: 540px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .stats-bar {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    margin-bottom: 56px;
+    flex-wrap: wrap;
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat-value {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--gold);
+  }
+
+  .stat-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-secondary);
+    margin-top: 4px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 20px;
+  }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: 32px;
+    position: relative;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+    border-color: #333;
+  }
+
+  .card.flagship {
+    border-color: var(--gold-dim);
+    background: linear-gradient(135deg, #111 0%, #161208 100%);
+    animation: flagship-pulse 4s ease-in-out infinite;
+  }
+
+  @keyframes flagship-pulse {
+    0%, 100% { box-shadow: 0 0 20px var(--gold-dim), inset 0 0 20px #d4a84308; }
+    50% { box-shadow: 0 0 40px var(--gold-glow), inset 0 0 40px #d4a84312; }
+  }
+
+  .card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  .model-icon {
+    font-size: 40px;
+    line-height: 1;
+  }
+
+  .badge {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    padding: 5px 12px;
+    border-radius: 100px;
+    background: var(--gold-dim);
+    color: var(--gold);
+    white-space: nowrap;
+  }
+
+  .card.flagship .badge {
+    background: var(--gold);
+    color: #0a0a0a;
+  }
+
+  .model-name {
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin-bottom: 2px;
+  }
+
+  .model-nickname {
+    font-size: 14px;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+
+  .model-desc {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  .card-meta {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--text-secondary);
+  }
+
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 6px var(--green-dim);
+    animation: dot-pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes dot-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  .cost-dots {
+    display: flex;
+    gap: 3px;
+  }
+
+  .cost-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+  }
+
+  .cost-dot.empty {
+    background: #333;
+  }
+
+  .agent-tag {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 100px;
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    color: var(--text-secondary);
+  }
+
+  .footer {
+    text-align: center;
+    margin-top: 64px;
+    padding-top: 32px;
+    border-top: 1px solid #1a1a1a;
+  }
+
+  .footer p {
+    font-size: 13px;
+    color: #444;
+  }
+
+  .footer span { color: var(--gold); }
+
+  @media (max-width: 720px) {
+    .container { padding: 40px 16px 60px; }
+    .grid { grid-template-columns: 1fr; }
+    .stats-bar { gap: 32px; }
+    .card { padding: 24px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header class="header">
+    <div class="label">Valencia Operations</div>
+    <h1>🧠 Model <span>Fleet</span></h1>
+    <p>The AI models powering every layer of the Valencia operation — from strategy to memory.</p>
+  </header>
+
+  <div class="stats-bar">
+    <div class="stat"><div class="stat-value">5</div><div class="stat-label">Models Active</div></div>
+    <div class="stat"><div class="stat-value">3</div><div class="stat-label">Agents Powered</div></div>
+    <div class="stat"><div class="stat-value">24/7</div><div class="stat-label">Uptime</div></div>
+    <div class="stat"><div class="stat-value">100%</div><div class="stat-label">Operational</div></div>
+  </div>
+
+  <div class="grid">
+
+    <div class="card flagship">
+      <div class="card-top">
+        <div class="model-icon">🧠</div>
+        <div class="badge">🏆 FLAGSHIP</div>
+      </div>
+      <div class="model-name">Claude Opus 4.6</div>
+      <div class="model-nickname">"The Brain"</div>
+      <div class="model-desc">Primary model for Steve. Handles strategy, estimates, content creation, and business operations. The command center of Valencia.</div>
+      <div class="card-meta">
+        <div class="meta-item"><div class="status-dot"></div> Active</div>
+        <div class="meta-item">Cost <div class="cost-dots"><div class="cost-dot"></div><div class="cost-dot"></div><div class="cost-dot"></div><div class="cost-dot"></div><div class="cost-dot"></div></div></div>
+        <div class="agent-tag">🤖 Steve</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <div class="model-icon">⚡</div>
+        <div class="badge">⚡ FAST</div>
+      </div>
+      <div class="model-name">Claude Sonnet 4.6</div>
+      <div class="model-nickname">"The Backup"</div>
+      <div class="model-desc">Fallback when Opus rate-limits. Fast, capable, and cost-effective. Steps in seamlessly to keep operations running.</div>
+      <div class="card-meta">
+        <div class="meta-item"><div class="status-dot"></div> Standby</div>
+        <div class="meta-item">Cost <div class="cost-dots"><div class="cost-dot"></div><div class="cost-dot"></div><div class="cost-dot"></div><div class="cost-dot empty"></div><div class="cost-dot empty"></div></div></div>
+        <div class="agent-tag">🤖 Steve (fallback)</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <div class="model-icon">🛡️</div>
+        <div class="badge">🛡️ RELIABLE</div>
+      </div>
+      <div class="model-name">Claude Opus 4.5</div>
+      <div class="model-nickname">"The Veteran"</div>
+      <div class="model-desc">Secondary fallback with proven reliability. Battle-tested across thousands of sessions. The safety net's safety net.</div>
+      <div class="card-meta">
+        <div class="meta-item"><div class="status-dot"></div> Standby</div>
+        <div class="meta-item">Cost <div class="cost-dots"><div class="cost-dot"></div><div class="cost-dot"></div><div class="cost-dot"></div><div class="cost-dot"></div><div class="cost-dot empty"></div></div></div>
+        <div class="agent-tag">🤖 Steve (fallback)</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <div class="model-icon">🔍</div>
+        <div class="badge">🔍 SCOUT</div>
+      </div>
+      <div class="model-name">Gemini 2.5 Flash</div>
+      <div class="model-nickname">"The Scout"</div>
+      <div class="model-desc">Powers Hunter, the lead gen agent. Monitors Craigslist, drafts outreach, scores leads. Always scanning for opportunity.</div>
+      <div class="card-meta">
+        <div class="meta-item"><div class="status-dot"></div> Active</div>
+        <div class="meta-item">Cost <div class="cost-dots"><div class="cost-dot"></div><div class="cost-dot"></div><div class="cost-dot empty"></div><div class="cost-dot empty"></div><div class="cost-dot empty"></div></div></div>
+        <div class="agent-tag">🎯 Hunter</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <div class="model-icon">💾</div>
+        <div class="badge">💾 MEMORY</div>
+      </div>
+      <div class="model-name">Gemini Embedding 001</div>
+      <div class="model-nickname">"The Memory"</div>
+      <div class="model-desc">Powers semantic memory search across all agents. Turns conversations into searchable knowledge. The connective tissue.</div>
+      <div class="card-meta">
+        <div class="meta-item"><div class="status-dot"></div> Active</div>
+        <div class="meta-item">Cost <div class="cost-dots"><div class="cost-dot"></div><div class="cost-dot empty"></div><div class="cost-dot empty"></div><div class="cost-dot empty"></div><div class="cost-dot empty"></div></div></div>
+        <div class="agent-tag">🌐 All Agents</div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    <p><span>Valencia Contracting</span> · Mission Control · Model Fleet</p>
+  </footer>
+</div>
+</body>
+</html>

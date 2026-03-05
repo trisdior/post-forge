@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trovva AI — Content Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+            color: #fff;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #00ff41;
+        }
+
+        .header h1 {
+            font-size: 36px;
+            color: #00ff41;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #888;
+            font-size: 14px;
+        }
+
+        /* TABS */
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 0;
+            flex-wrap: wrap;
+        }
+
+        .tab {
+            padding: 12px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid #333;
+            border-bottom: none;
+            color: #888;
+            cursor: pointer;
+            border-radius: 8px 8px 0 0;
+            transition: all 0.3s;
+        }
+
+        .tab:hover {
+            color: #00ff41;
+            border-color: #00ff41;
+        }
+
+        .tab.active {
+            background: rgba(0, 255, 65, 0.1);
+            color: #00ff41;
+            border-color: #00ff41;
+        }
+
+        /* CONTENT */
+        .content {
+            background: rgba(20, 20, 40, 0.8);
+            border: 1px solid #00ff41;
+            border-radius: 0 0 8px 8px;
+            padding: 30px;
+            display: none;
+        }
+
+        .content.active {
+            display: block;
+        }
+
+        .content h2 {
+            color: #00ff41;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .content h3 {
+            color: #00d4ff;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+            padding: 15px;
+            background: rgba(0, 255, 65, 0.05);
+            border-left: 3px solid #00ff41;
+            border-radius: 4px;
+        }
+
+        .copy-box {
+            background: #000;
+            border: 1px solid #333;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            max-height: 300px;
+            overflow-y: auto;
+            font-family: monospace;
+            font-size: 12px;
+            line-height: 1.6;
+            color: #0f0;
+        }
+
+        .copy-btn {
+            background: #00ff41;
+            color: #000;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: all 0.2s;
+        }
+
+        .copy-btn:hover {
+            background: #00dd33;
+            transform: scale(1.05);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid #00d4ff;
+            padding: 15px;
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 28px;
+            color: #00ff41;
+            font-weight: bold;
+        }
+
+        .stat-label {
+            color: #888;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #333;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00ff41, #00d4ff);
+            width: 0%;
+            transition: width 0.3s;
+        }
+
+        .idea-list {
+            list-style: none;
+        }
+
+        .idea-item {
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 3px solid #00ff41;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+
+        .idea-item strong {
+            color: #00ff41;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+            .tabs {
+                gap: 5px;
+            }
+            .tab {
+                padding: 8px 12px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎯 Trovva AI — Content Hub</h1>
+            <p>All your content. All your platforms. One dashboard.</p>
+        </div>
+
+        <!-- TABS -->
+        <div class="tabs">
+            <div class="tab active" onclick="switchTab('dashboard')">Dashboard</div>
+            <div class="tab" onclick="switchTab('content')">Content (5 Ideas)</div>
+            <div class="tab" onclick="switchTab('twitter')">Twitter Threads</div>
+            <div class="tab" onclick="switchTab('substack')">Substack Posts</div>
+            <div class="tab" onclick="switchTab('youtube')">YouTube Scripts</div>
+            <div class="tab" onclick="switchTab('calendar')">Publishing Calendar</div>
+            <div class="tab" onclick="switchTab('monetization')">Monetization</div>
+        </div>
+
+        <!-- DASHBOARD -->
+        <div id="dashboard" class="content active">
+            <h2>📊 Your Content Pipeline</h2>
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-value">5</div>
+                    <div class="stat-label">Ideas Ready This Week</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">15</div>
+                    <div class="stat-label">Total Ideas Available</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">Mon-Fri</div>
+                    <div class="stat-label">Publishing Schedule</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">$900-1.8k</div>
+                    <div class="stat-label">Monthly Revenue Potential</div>
+                </div>
+            </div>
+
+            <h3>📈 Week 1 Launch</h3>
+            <div class="section">
+                <p><strong>Monday, Mar 1:</strong> IDEA #1 — AI Employees</p>
+                <div class="progress-bar"><div class="progress-fill" style="width: 0%"></div></div>
+                <p style="font-size: 12px; color: #888; margin-top: 5px;">Blog post, Twitter thread, YouTube script, Substack newsletter — all ready to publish</p>
+            </div>
+
+            <div class="section">
+                <p><strong>Tuesday, Mar 2:</strong> IDEA #2 — 95% Cost Savings</p>
+                <div class="progress-bar"><div class="progress-fill" style="width: 0%"></div></div>
+            </div>
+
+            <div class="section">
+                <p><strong>Wednesday, Mar 3:</strong> IDEA #3 — Volume Over Perfection</p>
+                <div class="progress-bar"><div class="progress-fill" style="width: 0%"></div></div>
+            </div>
+
+            <div class="section">
+                <p><strong>Thursday, Mar 4:</strong> IDEA #4 — Recurring Revenue</p>
+                <div class="progress-bar"><div class="progress-fill" style="width: 0%"></div></div>
+            </div>
+
+            <div class="section">
+                <p><strong>Friday, Mar 5:</strong> IDEA #5 — Niche Domination</p>
+                <div class="progress-bar"><div class="progress-fill" style="width: 0%"></div></div>
+            </div>
+        </div>
+
+        <!-- CONTENT -->
+        <div id="content" class="content">
+            <h2>✍️ Your 5 Ideas (Week 1)</h2>
+            <p style="margin-bottom: 20px; color: #888; font-size: 12px;">Click on any idea to read the full blog post or thread</p>
+            <ul class="idea-list">
+                <li class="idea-item" onclick="openContent('idea1')" style="cursor: pointer; transition: all 0.2s;">
+                    <strong>#1: AI Employees</strong> — Why your staff is about to become obsolete (but it's good news)
+                    <br><small style="color: #888;">✓ Blog post | ✓ Twitter thread | ✓ YouTube script | ✓ Substack</small>
+                    <br><small style="color: #00ff41; margin-top: 5px; display: inline-block;">→ Click to read</small>
+                </li>
+                <li class="idea-item" onclick="openContent('idea2')" style="cursor: pointer; transition: all 0.2s;">
+                    <strong>#2: 95% Cost Savings Model</strong> — How AI labor costs 95% less than humans
+                    <br><small style="color: #888;">✓ Blog post | ✓ Twitter thread | ✓ YouTube script | ✓ Substack</small>
+                    <br><small style="color: #00ff41; margin-top: 5px; display: inline-block;">→ Click to read</small>
+                </li>
+                <li class="idea-item" onclick="openContent('idea3')" style="cursor: pointer; transition: all 0.2s;">
+                    <strong>#3: Volume Over Perfection</strong> — Why 10 decent posts beat 1 perfect one
+                    <br><small style="color: #888;">✓ Twitter thread | ✓ Substack post</small>
+                    <br><small style="color: #00ff41; margin-top: 5px; display: inline-block;">→ Click to read</small>
+                </li>
+                <li class="idea-item" onclick="openContent('idea4')" style="cursor: pointer; transition: all 0.2s;">
+                    <strong>#4: Recurring Revenue</strong> — How to turn one-time deals into lifetime money
+                    <br><small style="color: #888;">✓ Twitter thread | ✓ Substack post</small>
+                    <br><small style="color: #00ff41; margin-top: 5px; display: inline-block;">→ Click to read</small>
+                </li>
+                <li class="idea-item" onclick="openContent('idea5')" style="cursor: pointer; transition: all 0.2s;">
+                    <strong>#5: Niche Domination</strong> — Why dominating small niches beats serving everyone
+                    <br><small style="color: #888;">✓ Twitter thread | ✓ Substack post</small>
+                    <br><small style="color: #00ff41; margin-top: 5px; display: inline-block;">→ Click to read</small>
+                </li>
+            </ul>
+        </div>
+
+        <!-- TWITTER -->
+        <div id="twitter" class="content">
+            <h2>𝕏 Twitter Threads (Ready to Post)</h2>
+            <h3>IDEA #1: AI Employees</h3>
+            <div class="section">
+                <p>Copy the thread below. Paste into Twitter as a thread.</p>
+                <div class="copy-box">1/ Your employees are about to become obsolete. And that's actually good news. Here's why traditional jobs are already dead—and what's replacing them. 🧵
+
+2/ For 100 years, we had a deal: You show up → Do tasks → Get paid. That's breaking. AI doesn't just do tasks faster. It does entire JOB FUNCTIONS better than humans ever could.
+
+3/ Difference: TASK AUTOMATION saves 2 hrs/week. JOB FUNCTION AUTOMATION saves 20 hrs/week. Completely different ROI.
+
+4/ Real example: Contractor spending 10 hrs/week on emails, calendar, follow-ups, reviews. Built him an AI agent. Cost: $30/month. Result: Closed 3 more clients that month. ROI: 13,200%.
+
+5/ This is happening in EVERY industry. Companies that automate job functions win. The ones that don't become irrelevant.
+
+6/ In 2 years: 100k AI agents deployed, 500k jobs disappearing, 50k new jobs created. The gap between those who build NOW vs those who wait = massive.
+
+7/ So what do you do? Stop thinking about task automation. Start thinking: What's the ENTIRE JOB I need done? Then build an AI agent to do it.
+
+8/ You don't need to code. Tools like Make, Zapier, Claude handle 90%. $100-500/month per agent. Replaces $2,000-5,000/month in labor.
+
+9/ Read the full breakdown here: [link to blog post]
+
+Follow for more.</div>
+                <button class="copy-btn" onclick="copyToClipboard('Click in copy-box, Ctrl+C')">Copy Thread</button>
+            </div>
+
+            <p style="color: #888; font-size: 12px; margin-top: 20px;">
+                ✅ Ideas #2-5 threads are in: <code style="background: #000; padding: 2px 6px; border-radius: 3px;">IDEA-02-TWITTER-THREAD.md</code> and <code style="background: #000; padding: 2px 6px; border-radius: 3px;">IDEAS-03-04-05.md</code>
+            </p>
+        </div>
+
+        <!-- SUBSTACK -->
+        <div id="substack" class="content">
+            <h2>📮 Substack Posts (Ready to Publish)</h2>
+            <div class="section">
+                <p><strong>All 5 blog posts are written and formatted for Substack.</strong></p>
+                <p style="margin-top: 10px; color: #888;">Location: <code style="background: #000; padding: 2px 6px; border-radius: 3px;">mission-control/trovva-content/</code></p>
+                <p style="margin-top: 10px;">
+                    • IDEA-01-BLOG-POST.md (2,400 words)<br>
+                    • IDEA-02-BLOG-POST.md (1,400 words)<br>
+                    • IDEAS-03-04-05.md (combined)<br>
+                </p>
+                <p style="margin-top: 15px; color: #00ff41;"><strong>Setup:</strong> Go to trovvaai.substack.com, copy the content, paste, publish.</p>
+            </div>
+        </div>
+
+        <!-- YOUTUBE -->
+        <div id="youtube" class="content">
+            <h2>📺 YouTube Scripts (Faceless Format)</h2>
+            <div class="section">
+                <p><strong>5 video scripts written (6-10 minutes each, faceless format).</strong></p>
+                <p style="margin-top: 10px; color: #888;">
+                    Use: Synthesia, Descript, or text-to-speech AI<br>
+                    Add: Animated graphics, charts, B-roll<br>
+                    Post: 1 video/week to YouTube
+                </p>
+                <p style="margin-top: 15px;">Location: <code style="background: #000; padding: 2px 6px; border-radius: 3px;">mission-control/trovva-content/</code></p>
+            </div>
+        </div>
+
+        <!-- CALENDAR -->
+        <div id="calendar" class="content">
+            <h2>📅 Publishing Schedule (Week 1)</h2>
+            <div class="grid-2">
+                <div class="section">
+                    <h4 style="color: #00ff41;">Monday, Mar 1</h4>
+                    <p style="font-size: 12px;">IDEA #1: AI Employees</p>
+                    <p style="font-size: 11px; color: #888; margin-top: 5px;">• Twitter: 9 AM<br>• Substack: 9 AM<br>• YouTube: (TBD)</p>
+                </div>
+                <div class="section">
+                    <h4 style="color: #00ff41;">Tuesday, Mar 2</h4>
+                    <p style="font-size: 12px;">IDEA #2: 95% Cost Savings</p>
+                    <p style="font-size: 11px; color: #888; margin-top: 5px;">• Twitter: 9 AM<br>• Substack: 9 AM</p>
+                </div>
+                <div class="section">
+                    <h4 style="color: #00ff41;">Wednesday, Mar 3</h4>
+                    <p style="font-size: 12px;">IDEA #3: Volume Over Perfection</p>
+                    <p style="font-size: 11px; color: #888; margin-top: 5px;">• Twitter: 9 AM<br>• Substack: 9 AM</p>
+                </div>
+                <div class="section">
+                    <h4 style="color: #00ff41;">Thursday, Mar 4</h4>
+                    <p style="font-size: 12px;">IDEA #4: Recurring Revenue</p>
+                    <p style="font-size: 11px; color: #888; margin-top: 5px;">• Twitter: 9 AM<br>• Substack: 9 AM</p>
+                </div>
+                <div class="section">
+                    <h4 style="color: #00ff41;">Friday, Mar 5</h4>
+                    <p style="font-size: 12px;">IDEA #5: Niche Domination</p>
+                    <p style="font-size: 11px; color: #888; margin-top: 5px;">• Twitter: 9 AM<br>• Substack: 9 AM</p>
+                </div>
+                <div class="section">
+                    <h4 style="color: #00ff41;">Saturday, Mar 6</h4>
+                    <p style="font-size: 12px;">Repost Best Performer</p>
+                    <p style="font-size: 11px; color: #888; margin-top: 5px;">• Highest engagement idea<br>• 6 PM repost</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- MONETIZATION -->
+        <div id="monetization" class="content">
+            <h2>💰 Monetization Potential</h2>
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-value">5k</div>
+                    <div class="stat-label">Twitter Followers Goal (By June)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">$300-500</div>
+                    <div class="stat-label">Monthly from Twitter</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">100</div>
+                    <div class="stat-label">Newsletter Subs Goal</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">$500-1k</div>
+                    <div class="stat-label">Monthly from Substack</div>
+                </div>
+            </div>
+
+            <h3>Revenue Timeline</h3>
+            <div class="section">
+                <p><strong>March:</strong> 200+ followers, 50+ subs, $0 (building authority)</p>
+                <p style="margin-top: 10px;"><strong>April:</strong> 500+ followers, 100+ subs, ~$200 (early sponsorships)</p>
+                <p style="margin-top: 10px;"><strong>May:</strong> 2k followers, 200+ subs, $1-3k (course launch + sponsorships)</p>
+                <p style="margin-top: 10px;"><strong>June:</strong> 5k followers, 300+ subs, $3-8k (scaling)</p>
+            </div>
+
+            <h3>Revenue Streams</h3>
+            <div class="section">
+                <p>• <strong>Twitter:</strong> Sponsorships + organic ads ($0.50-1/thousand impressions)</p>
+                <p style="margin-top: 8px;">• <strong>Substack:</strong> Premium tier ($9/month = 100 subs = $900/month)</p>
+                <p style="margin-top: 8px;">• <strong>YouTube:</strong> AdSense + sponsorships ($100-300/mo at 10k subs)</p>
+                <p style="margin-top: 8px;">• <strong>Courses:</strong> "$197 How to Extract Business Ideas" (10-20 sales/month = $2-4k)</p>
+                <p style="margin-top: 8px;">• <strong>Consulting:</strong> "Help me extract ideas" ($2-5k/month)</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL -->
+    <div id="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000; overflow-y: auto; padding: 20px;">
+        <div style="max-width: 900px; margin: 0 auto; background: rgba(20, 20, 40, 0.95); border: 1px solid #00ff41; border-radius: 8px; padding: 30px; position: relative;">
+            <button onclick="closeModal()" style="position: absolute; top: 20px; right: 20px; background: #00ff41; color: #000; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-weight: bold;">Close</button>
+            <div id="modalContent" style="color: #ccc; line-height: 1.8; font-size: 14px;"></div>
+        </div>
+    </div>
+
+    <script>
+        // CONTENT DATA
+        const contentData = {
+            idea1: {
+                title: 'AI EMPLOYEES: Why Your Staff Is About to Become Obsolete',
+                content: `For 100 years, employment worked like this: You hired someone. They showed up. They did tasks. You paid them.
+
+Send emails? Task. Update spreadsheets? Task. Manage calendar? Task. Make calls? Task.
+
+Then AI arrived. And it didn't just do tasks faster. It did entire job functions better than any human ever could.
+
+That's a different problem.
+
+TASK AUTOMATION vs FUNCTION AUTOMATION
+
+Most people still think about automation the old way:
+- Task Automation: "Can we automate task X?" Saves 2-5 hours per week. Still need humans for most of the job.
+- Function Automation: "Can we automate an entire JOB FUNCTION?" Saves 20-40 hours per week. Humans become optional.
+
+THE REAL EXAMPLE
+
+My friend runs a construction company in Chicago. Small operation. No admin staff.
+
+He was spending roughly 10 hours per week on:
+- Answering customer emails (2-3 hours)
+- Managing his calendar and scheduling (1-2 hours)
+- Following up on leads (2-3 hours)
+- Collecting reviews and testimonials (1-2 hours)
+
+I built him an AI agent. Cost: $30/month. Result: 3 more clients that month. At $15,000 per job average. ROI: 15,000%.
+
+WHAT CHANGED
+
+The agent now:
+- Reads incoming emails instantly
+- Drafts responses in the customer's tone
+- Manages calendar and scheduling
+- Follows up on leads automatically
+- Collects reviews
+
+And it works 24/7. No mistakes. No vacations.
+
+THIS IS ALREADY HAPPENING
+
+Construction: Lead generation agents
+Sales: Prospect qualification agents
+Customer service: Support agents
+Operations: Scheduling agents
+
+Companies that automate job functions are dominating. The ones that don't will lose.
+
+THE UNCOMFORTABLE TRUTH
+
+In 2 years:
+- 100k AI agents deployed
+- 500k jobs disappearing
+- 50k new jobs created
+
+The people who see this NOW and build will win. Those who wait will scramble.
+
+HOW TO START (30 Minutes)
+
+You don't need to code.
+
+1. Identify the job function: What's taking you the most time that isn't you doing the work?
+2. Map the function: Write down every step
+3. Build the agent: Use Make, Zapier, Claude. $30-100/month.
+4. Iterate: Run it for 1 week, adjust, improve.
+
+THE NEXT STEP
+
+Stop thinking small. Don't automate one task. Automate the entire job function.
+
+Your competitors are building AI agents right now.
+
+Which one are you?`
+            },
+            idea2: {
+                title: 'THE 95% COST SAVINGS MODEL: How To Build A 98% Margin Business',
+                content: `AI labor costs 95-99% less than human labor.
+
+Not 50% less. Not 70% less.
+
+95% LESS.
+
+And it works better.
+
+THE ACTUAL MATH
+
+Let's say you're a contractor doing $100k/year in revenue.
+
+Traditional model:
+- You + 1 admin VA: $2,500/month = $30k/year
+- Other overhead: $10k/year
+- Total costs: $40k/year
+- Profit: $60k/year
+- Margin: 60%
+
+AI-powered model:
+- You + AI agents: $100-200/month = $1,500/year
+- Other overhead: $10k/year
+- Total costs: $11.5k/year
+- Profit: $88.5k/year
+- Margin: 88.5%
+
+Same revenue. $28.5k more in profit. Without working harder.
+
+THE DANGEROUS PART
+
+What if you keep revenue the same and cut prices?
+
+AI business undercuts on price:
+- Revenue: $80k (20% cheaper)
+- Costs: $11.5k
+- Profit: $68.5k
+- Margin: 85%
+
+Traditional business:
+- Revenue: $100k (at original price)
+- Costs: $40k
+- Profit: $60k
+- Margin: 60%
+
+The AI business charges less, makes MORE profit, and steals your customers.
+
+You can't compete.
+
+THIS IS ALREADY HAPPENING
+
+I know a contractor who runs $500k/year revenue with:
+- Zero employees
+- Six AI agents
+- Total agent cost: $600/month = $7,200/year
+- Overhead: $15k/year
+- Total costs: $22.2k/year
+- Profit: $477.8k/year
+- Margin: 95.5%
+
+He charges 30% less than competitors. And makes 8x more money.
+
+THREE PATHS FORWARD
+
+Path 1: Keep Everything Manual
+- Stay as you are
+- Lose pricing power
+- Lose margins
+- Lose to AI competitors
+- Result: Death
+
+Path 2: Automate Ruthlessly
+- Replace all non-core functions with AI
+- Cut overhead 80%
+- Keep same prices
+- Margin jumps to 80-90%
+- Result: Win
+
+Path 3: Automate + Scale
+- Automate all operations
+- Hire specialists (sales, project managers)
+- Revenue: $500k-2M/year
+- Profit: 75-85%
+- Result: Empire
+
+THE UNCOMFORTABLE TRUTH
+
+By 2027, average profit margin in contracting will be 15-20% (those still using people).
+
+AI-native contractors will have 70-85% margins.
+
+It's not a competitive advantage anymore. It's a requirement.
+
+WHAT THIS MEANS
+
+If you run any kind of service business:
+- Stop thinking about hiring more people
+- Start thinking about deploying more agents
+- The path to profitability is through automation
+- Speed matters. Get ahead now or lose forever.`
+            },
+            idea3: {
+                title: 'VOLUME OVER PERFECTION: Why 10 Decent Posts Beat 1 Perfect One',
+                content: `I used to write one perfect blog post per month.
+
+Then I started writing 4 okay ones.
+
+Engagement went 10x.
+
+Here's why.
+
+THE PERFECTION TRAP
+
+Perfectionists think: "1 masterpiece > 10 decent posts"
+
+Markets disagree.
+
+Because:
+- 1 perfect post reaches 100 people (if you're lucky)
+- 10 decent posts reach 1,000 people
+- At least 1 of the 10 resonates deeply
+
+Volume wins.
+
+THE CREATOR MATH
+
+1 perfect post/month:
+- Quality: 9/10
+- Reach: 100
+- Engagement: 50
+- Return: $0
+
+10 okay posts/month:
+- Quality: 6/10
+- Reach: 1,000
+- Engagement: 200
+- Return: $5,000
+
+4 decent posts per perfect post = 100x more return.
+
+WHY?
+
+Because most people don't want perfection. They want REAL.
+
+A rough video that's honest > A polished video that's boring.
+An imperfect thread that resonates > A perfect thread that's generic.
+Authenticity beats perfection.
+
+THE MOVE
+
+Stop waiting for "ready." Ship now. Iterate later.
+
+You'll learn more from 10 posts of feedback than 1 perfect post of silence.
+
+This is your permission to ship.`
+            },
+            idea4: {
+                title: 'RECURRING REVENUE: The Difference Between $10k/Year And $1M/Year',
+                content: `One-time sales feel great.
+
+Close a $50k project. Get paid. Feel rich.
+
+But it's an illusion. Because next month, you have zero revenue again.
+
+Recurring revenue is different.
+
+THE NUMBERS
+
+One-time model:
+- Close 20 deals/year at $10k each = $200k revenue
+- But highly variable (some months 5 deals, some months 1)
+- Stressful
+- Unpredictable
+
+Recurring model:
+- Close 40 deals/year at $500/month each = $240k revenue IMMEDIATELY
+- Grows to $480k by year 2
+- Grows to $720k by year 3
+- Predictable
+- Low stress
+
+THE COMPOUNDING EFFECT
+
+Month 1: 1 client × $500 = $500
+Month 2: 2 clients × $500 = $1,000
+Month 3: 3 clients × $500 = $1,500
+Month 6: 10 clients × $500 = $5,000
+Month 12: 20 clients × $500 = $10,000
+
+You added only 20 clients. But revenue is now $10k/month.
+
+NOW CONTRAST WITH ONE-TIME
+
+Month 1: Close 1 deal = $10k revenue
+Month 2: Close 1 deal = $10k revenue
+Month 3: Lose deal from month 1. Revenue drops.
+
+You're on a hamster wheel.
+
+HOW TO CONVERT YOUR BUSINESS TO RECURRING
+
+Old model: "Pay $5k for a remodel."
+New model: "Pay $200/month for quarterly maintenance + emergency response."
+
+Old model: "Pay $3k for HVAC service."
+New model: "Pay $50/month for HVAC monitoring + preventative maintenance."
+
+Same service. Recurring revenue.
+
+THE FUTURE
+
+By 2027, every successful business will have a recurring revenue component.
+
+It won't be optional. It'll be table stakes.`
+            },
+            idea5: {
+                title: 'NICHE DOMINATION: Why Serving "Everyone" Means Serving No One',
+                content: `The Internet promises unlimited scale.
+
+"Build something. Sell to the world."
+
+It's a lie.
+
+The most successful businesses don't serve everyone.
+
+They dominate a small niche.
+
+WHY NICHE BEATS SCALE
+
+Everyone market:
+- 1,000 competitors
+- Race to the bottom on price
+- Margin: 20%
+- Revenue: $100k/year
+- Effort: Exhausting
+
+Niche market:
+- 10 competitors
+- Only competitor on certain angle
+- Margin: 70%
+- Revenue: $50k/year
+- Effort: Focused
+
+Same effort. Different results.
+
+THE NICHE DOMINATION PLAYBOOK
+
+Step 1: Pick your niche
+- Not too broad ("construction")
+- Not too narrow ("kitchens in Chicago under 5k")
+- Just right ("high-end kitchen remodels, Chicago area")
+
+Step 2: Become the expert
+- Content about THIS niche
+- Case studies from THIS niche
+- Testimonials from THIS niche
+
+Step 3: Charge premium
+- You're the expert
+- You deserve premium prices
+- Your niche will pay
+
+Step 4: Dominate
+- Become synonymous with your niche
+- When someone needs you, you're the default
+
+Step 5: Expand
+- Once you dominate niche A, expand to adjacent niche B
+- Leverage your expertise
+
+THE REAL WIN
+
+Niching isn't about being small.
+
+It's about being THE BEST in a specific domain.
+
+That's how you win.`
+            }
+        };
+
+        function openContent(ideaId) {
+            const data = contentData[ideaId];
+            const modal = document.getElementById('modal');
+            const modalContent = document.getElementById('modalContent');
+            
+            let html = `<h2 style="color: #00ff41; margin-bottom: 20px;">${data.title}</h2>`;
+            html += `<div style="white-space: pre-wrap; font-family: 'Segoe UI', sans-serif;">${data.content}</div>`;
+            
+            modalContent.innerHTML = html;
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        function switchTab(tabName) {
+            // Hide all content
+            const contents = document.querySelectorAll('.content');
+            contents.forEach(c => c.classList.remove('active'));
+
+            // Remove active from all tabs
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(t => t.classList.remove('active'));
+
+            // Show selected content
+            document.getElementById(tabName).classList.add('active');
+
+            // Add active to clicked tab
+            event.target.classList.add('active');
+        }
+
+        function copyToClipboard(text) {
+            alert('Select the text in the box above, then press Ctrl+C to copy.');
+        }
+    </script>
+</body>
+</html>

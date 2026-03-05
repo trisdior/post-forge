@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>PostForge — Admin Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0a0f;--card:#16161f;--border:#1e1e2e;--text:#f0f0f5;--muted:#8888a0;--accent:#7c3aed;--accent2:#a855f7;--green:#10b981;--cyan:#06b6d4;--pink:#ec4899;--red:#ef4444;--orange:#f59e0b}
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+.container{max-width:1100px;margin:0 auto;padding:40px 24px}
+h1{font-size:28px;font-weight:900;margin-bottom:4px}
+.sub{color:var(--muted);font-size:14px;margin-bottom:32px}
+.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:32px}
+.stat{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;position:relative;overflow:hidden}
+.stat::after{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+.stat:nth-child(1)::after{background:var(--accent2)}.stat:nth-child(2)::after{background:var(--green)}.stat:nth-child(3)::after{background:var(--cyan)}.stat:nth-child(4)::after{background:var(--pink)}.stat:nth-child(5)::after{background:var(--orange)}
+.stat-label{font-size:11px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:0.5px}
+.stat-value{font-size:32px;font-weight:900;margin:6px 0 2px;letter-spacing:-1px}
+.stat-change{font-size:12px;font-weight:600}
+.up{color:var(--green)}.down{color:var(--red)}
+
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px}
+.card h2{font-size:15px;font-weight:700;margin-bottom:16px}
+
+table{width:100%;border-collapse:collapse}
+th{text-align:left;font-size:11px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:0.5px;padding:8px 10px;border-bottom:1px solid var(--border)}
+td{padding:10px;font-size:13px;border-bottom:1px solid rgba(30,30,46,0.5)}
+
+.user-row{display:flex;align-items:center;gap:10px}
+.user-avatar{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff}
+.badge{padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700}
+.b-free{background:rgba(136,136,160,0.12);color:var(--muted)}
+.b-pro{background:rgba(16,185,129,0.12);color:var(--green)}
+.b-biz{background:rgba(6,182,212,0.12);color:var(--cyan)}
+
+.metric-row{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(30,30,46,0.4)}
+.metric-row:last-child{border:none}
+.metric-name{font-size:13px;font-weight:600}
+.metric-val{font-size:14px;font-weight:800}
+
+.login-gate{display:flex;align-items:center;justify-content:center;min-height:100vh;text-align:center}
+.login-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:40px;max-width:360px}
+.login-card h2{font-size:20px;font-weight:800;margin-bottom:16px}
+.login-card input{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:12px;color:var(--text);font-family:inherit;font-size:14px;margin-bottom:12px;outline:none}
+.login-card button{width:100%;padding:12px;border-radius:8px;background:var(--accent);color:#fff;font-size:14px;font-weight:600;border:none;cursor:pointer;font-family:inherit}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+var ADMIN_PASS='postforge2026';
+
+function showLogin(){
+  document.getElementById('app').innerHTML='<div class="login-gate"><div class="login-card"><h2>&#x1F510; Admin Access</h2><input type="password" id="admin-pw" placeholder="Admin password" onkeyup="if(event.key===\'Enter\')checkLogin()"><button onclick="checkLogin()">Enter</button></div></div>';
+}
+
+function checkLogin(){
+  if(document.getElementById('admin-pw').value===ADMIN_PASS){sessionStorage.setItem('pf_admin','1');loadDashboard()}
+  else{alert('Wrong password')}
+}
+
+async function loadDashboard(){
+  document.getElementById('app').innerHTML='<div class="container"><h1>PostForge Admin</h1><p class="sub">Business metrics for YC application</p><div class="stats" id="stats"></div><div class="grid2"><div class="card"><h2>Recent Users</h2><table><thead><tr><th>User</th><th>Plan</th><th>Posts</th><th>Joined</th></tr></thead><tbody id="users-table"></tbody></table></div><div class="card"><h2>Key Metrics</h2><div id="metrics"></div></div></div><div class="card"><h2>API Usage (Last 24h)</h2><div id="api-usage"></div></div></div>';
+  
+  try{
+    var r=await fetch('/api/admin/stats',{headers:{'x-admin-key':ADMIN_PASS}});
+    var data=await r.json();
+    if(!data.success){document.getElementById('stats').innerHTML='<p style="color:var(--red)">Error loading stats</p>';return}
+    var s=data.stats;
+
+    document.getElementById('stats').innerHTML=`
+      <div class="stat"><div class="stat-label">Total Users</div><div class="stat-value">${s.totalUsers}</div><div class="stat-change up">↑ all time</div></div>
+      <div class="stat"><div class="stat-label">Posts Generated</div><div class="stat-value">${s.totalPosts}</div><div class="stat-change up">↑ all time</div></div>
+      <div class="stat"><div class="stat-label">Active Today</div><div class="stat-value">${s.activeToday||0}</div></div>
+      <div class="stat"><div class="stat-label">Pro Users</div><div class="stat-value">${s.proUsers||0}</div></div>
+      <div class="stat"><div class="stat-label">MRR</div><div class="stat-value">$${s.mrr||0}</div></div>
+    `;
+
+    var ut=document.getElementById('users-table');ut.innerHTML='';
+    (s.recentUsers||[]).forEach(function(u){
+      var planClass=u.plan==='pro'?'b-pro':(u.plan==='business'?'b-biz':'b-free');
+      ut.innerHTML+='<tr><td><div class="user-row"><div class="user-avatar">'+u.email.charAt(0).toUpperCase()+'</div><span>'+u.email+'</span></div></td><td><span class="badge '+planClass+'">'+u.plan.toUpperCase()+'</span></td><td>'+u.posts+'</td><td>'+new Date(u.created).toLocaleDateString()+'</td></tr>';
+    });
+
+    var m=document.getElementById('metrics');
+    var metrics=[
+      {name:'Avg posts per user',val:(s.totalPosts/Math.max(s.totalUsers,1)).toFixed(1)},
+      {name:'Signup→Generate rate',val:Math.round((s.usersWhoGenerated||0)/Math.max(s.totalUsers,1)*100)+'%'},
+      {name:'Free→Pro conversion',val:Math.round((s.proUsers||0)/Math.max(s.totalUsers,1)*100)+'%'},
+      {name:'API calls today',val:s.apiCallsToday||0},
+      {name:'Avg response time',val:(s.avgResponseTime||0)+'ms'}
+    ];
+    m.innerHTML='';
+    metrics.forEach(function(mt){m.innerHTML+='<div class="metric-row"><span class="metric-name">'+mt.name+'</span><span class="metric-val">'+mt.val+'</span></div>'});
+
+  }catch(e){document.getElementById('stats').innerHTML='<p style="color:var(--red)">'+e.message+'</p>'}
+}
+
+if(sessionStorage.getItem('pf_admin')==='1'){loadDashboard()}else{showLogin()}
+</script>
+</body>
+</html>

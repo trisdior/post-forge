@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>PostForge - Content Calendar</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0a0f;--surface:#12121a;--card:#16161f;--border:#1e1e2e;--text:#f0f0f5;--muted:#8888a0;--accent:#7c3aed;--accent2:#a855f7;--green:#10b981;--cyan:#06b6d4;--pink:#ec4899;--orange:#f59e0b}
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.bg-grid{position:fixed;top:0;left:0;right:0;bottom:0;z-index:0;background-image:linear-gradient(rgba(124,58,237,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(124,58,237,0.02) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.nav{background:rgba(10,10,15,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.logo{font-size:20px;font-weight:900}.logo span{background:linear-gradient(135deg,var(--accent2),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.tabs{display:flex;gap:4px}.tab{padding:8px 16px;border-radius:8px;font-size:13px;font-weight:600;color:var(--muted);text-decoration:none;transition:all 0.2s}.tab:hover{color:var(--text);background:rgba(255,255,255,0.05)}.tab.active{color:var(--text);background:rgba(124,58,237,0.15)}
+.container{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:32px 24px}
+
+/* Header */
+.header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;animation:fadeUp 0.4s ease-out}
+.month{font-size:26px;font-weight:900;letter-spacing:-0.5px}
+.nav-btns{display:flex;gap:8px}
+.nav-btns button{background:var(--card);border:1px solid var(--border);color:var(--text);width:36px;height:36px;border-radius:8px;cursor:pointer;font-size:16px;font-family:inherit;transition:all 0.2s}
+.nav-btns button:hover{border-color:var(--accent);transform:translateY(-1px)}
+
+/* Action Bar */
+.actions{display:flex;gap:10px;margin-bottom:24px;flex-wrap:wrap;animation:fadeUp 0.4s ease-out 0.05s both}
+.btn{padding:10px 20px;border-radius:10px;font-size:13px;font-weight:600;border:none;cursor:pointer;font-family:inherit;transition:all 0.3s}
+.btn-p{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;box-shadow:0 0 20px rgba(124,58,237,0.3);display:flex;align-items:center;gap:6px}
+.btn-p:hover{box-shadow:0 0 30px rgba(124,58,237,0.5);transform:translateY(-2px)}
+.btn-s{background:var(--card);border:1px solid var(--border);color:var(--text)}
+.btn-s:hover{border-color:var(--accent)}
+.btn:disabled{opacity:0.5;cursor:not-allowed;transform:none}
+
+/* Calendar Grid */
+.grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;animation:fadeUp 0.4s ease-out 0.1s both}
+.dh{text-align:center;padding:12px 4px;font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+.day{background:var(--card);border:1px solid var(--border);border-radius:10px;min-height:120px;padding:10px;transition:all 0.3s;cursor:pointer}
+.day:hover{border-color:rgba(124,58,237,0.3);transform:translateY(-1px)}
+.day.today{border-color:var(--accent);box-shadow:0 0 15px rgba(124,58,237,0.15)}
+.day.om{opacity:0.3}
+.dn{font-size:13px;font-weight:700;margin-bottom:6px}
+.cp{padding:4px 8px;border-radius:6px;font-size:10px;font-weight:600;margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer;transition:all 0.2s}
+.cp:hover{filter:brightness(1.2)}
+.cp.instagram{background:rgba(236,72,153,0.15);color:#f472b6}
+.cp.facebook{background:rgba(59,130,246,0.15);color:#60a5fa}
+.cp.twitter{background:rgba(168,85,247,0.15);color:#c084fc}
+.cp.linkedin{background:rgba(6,182,212,0.15);color:#22d3ee}
+.cp.tiktok{background:rgba(16,185,129,0.15);color:#34d399}
+.cp.placeholder{background:rgba(136,136,160,0.1);color:var(--muted);border:1px dashed rgba(136,136,160,0.2)}
+
+/* Fill Modal */
+.modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);backdrop-filter:blur(4px);z-index:300;display:none;align-items:center;justify-content:center;padding:24px}
+.modal-overlay.open{display:flex}
+.modal{background:var(--surface);border:1px solid var(--border);border-radius:20px;max-width:520px;width:100%;max-height:90vh;overflow-y:auto;animation:fadeUp 0.3s ease-out}
+.modal-header{padding:24px 28px 0;display:flex;align-items:center;justify-content:space-between}
+.modal-header h2{font-size:20px;font-weight:900}
+.modal-close{background:none;border:none;color:var(--muted);font-size:24px;cursor:pointer;padding:4px}
+.modal-body{padding:20px 28px 28px}
+
+.config-group{margin-bottom:18px}
+.config-label{font-size:12px;font-weight:600;color:var(--muted);margin-bottom:8px;display:block}
+.config-input{width:100%;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 14px;color:var(--text);font-size:14px;font-family:inherit;outline:none;transition:all 0.3s}
+.config-input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(124,58,237,0.08)}
+.config-input::placeholder{color:#44445a}
+select.config-input{appearance:none;cursor:pointer}
+textarea.config-input{min-height:70px;resize:vertical;line-height:1.5}
+
+/* Platform checkboxes */
+.plat-checks{display:flex;flex-wrap:wrap;gap:8px}
+.plat-check{padding:8px 14px;border-radius:8px;font-size:12px;font-weight:600;border:1px solid var(--border);background:var(--card);color:var(--muted);cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:5px}
+.plat-check.active{border-color:var(--accent);color:var(--text);background:rgba(124,58,237,0.08)}
+.plat-check:hover{border-color:rgba(124,58,237,0.3)}
+
+/* Frequency selector */
+.freq-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.freq-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px;text-align:center;cursor:pointer;transition:all 0.2s}
+.freq-card:hover{border-color:rgba(124,58,237,0.3)}
+.freq-card.active{border-color:var(--accent);background:rgba(124,58,237,0.06)}
+.freq-num{font-size:24px;font-weight:900;margin-bottom:2px}
+.freq-label{font-size:11px;color:var(--muted)}
+
+/* Summary */
+.fill-summary{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:20px}
+.summary-row{display:flex;justify-content:space-between;padding:6px 0;font-size:13px}
+.summary-row .label{color:var(--muted)}
+.summary-row .value{font-weight:700}
+
+.fill-btn{width:100%;padding:14px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-size:15px;font-weight:700;border:none;cursor:pointer;font-family:inherit;transition:all 0.3s;box-shadow:0 0 20px rgba(124,58,237,0.3)}
+.fill-btn:hover{transform:translateY(-2px);box-shadow:0 0 30px rgba(124,58,237,0.5)}
+.fill-btn:disabled{opacity:0.5;cursor:not-allowed;transform:none}
+
+/* Progress overlay */
+.fill-progress{text-align:center;padding:20px 0}
+.fill-progress .spinner{width:36px;height:36px;border:3px solid var(--border);border-top-color:var(--accent2);border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 16px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.fill-progress .status{font-size:14px;font-weight:600;margin-bottom:4px}
+.fill-progress .sub{font-size:12px;color:var(--muted)}
+.prog-bar{width:100%;height:4px;background:var(--border);border-radius:2px;margin-top:12px;overflow:hidden}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:2px;transition:width 0.5s}
+
+/* Sidebar */
+.sb{position:fixed;top:0;right:-440px;width:440px;height:100vh;background:var(--surface);border-left:1px solid var(--border);z-index:200;transition:right 0.3s ease-out;overflow-y:auto;padding:24px}
+.sb.open{right:0}
+.ov{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);z-index:199;display:none}.ov.open{display:block}
+
+/* Sidebar post cards */
+.sb-post{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:12px;transition:all 0.3s}
+.sb-post:hover{border-color:rgba(124,58,237,0.2)}
+.sb-post-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.sb-post-content{font-size:13px;color:#b0b0c0;line-height:1.6;white-space:pre-wrap;max-height:150px;overflow-y:auto}
+.sb-post-actions{display:flex;gap:6px;margin-top:10px}
+.sb-action{padding:6px 12px;border-radius:6px;font-size:11px;font-weight:600;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;font-family:inherit;transition:all 0.2s}
+.sb-action:hover{border-color:var(--accent);color:var(--text)}
+
+@media(max-width:768px){.day{min-height:60px;padding:6px}.cp{font-size:9px;padding:2px 4px}.tabs{display:none}.sb{width:100%;right:-100%}.modal{margin:0;border-radius:0;max-height:100vh}.freq-grid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="bg-grid"></div>
+<div class="nav"><div class="logo">post<span>forge</span></div><div class="tabs"><a href="/app" class="tab">Create</a><a href="/agent" class="tab">My Agent</a><a href="/calendar" class="tab active">Calendar</a><a href="/analytics" class="tab">Analytics</a><a href="/clips" class="tab">Clips</a><a href="/autopilot" class="tab">Auto-Pilot</a><a href="/settings" class="tab">Settings</a></div><div></div></div>
+
+<div class="container">
+<div class="header"><div class="month" id="mo"></div><div class="nav-btns"><button onclick="ch(-1)">&larr;</button><button onclick="goT()">Today</button><button onclick="ch(1)">&rarr;</button></div></div>
+<div class="actions">
+<button class="btn btn-p" onclick="openFillModal()">&#x26A1; AI Fill Calendar</button>
+<button class="btn btn-s" onclick="clearCal()">Clear All</button>
+<button class="btn btn-s" onclick="exportCal()">&#x1F4E5; Export</button>
+</div>
+<div class="grid" id="gr"></div>
+</div>
+
+<!-- Fill Modal -->
+<div class="modal-overlay" id="fill-modal">
+<div class="modal">
+<div class="modal-header"><h2>&#x26A1; AI Fill Calendar</h2><button class="modal-close" onclick="closeFillModal()">&times;</button></div>
+<div class="modal-body" id="fill-body">
+<p style="color:var(--muted);font-size:13px;margin-bottom:20px">Tell PostForge about your business and it'll fill your entire calendar with platform-optimized content.</p>
+
+<div class="config-group"><label class="config-label">Business Name</label><input class="config-input" id="fill-name" placeholder="e.g. Valencia Construction"></div>
+<div class="config-group"><label class="config-label">Industry / Services</label><input class="config-input" id="fill-services" placeholder="e.g. Kitchen remodeling, painting, flooring"></div>
+<div class="config-group"><label class="config-label">Location</label><input class="config-input" id="fill-location" placeholder="e.g. Chicago, IL"></div>
+
+<div class="config-group"><label class="config-label">Platforms</label>
+<div class="plat-checks">
+<div class="plat-check active" data-p="instagram" onclick="this.classList.toggle('active')">&#x1F4F8; Instagram</div>
+<div class="plat-check active" data-p="facebook" onclick="this.classList.toggle('active')">&#x1F4D8; Facebook</div>
+<div class="plat-check" data-p="twitter" onclick="this.classList.toggle('active')">X Twitter</div>
+<div class="plat-check" data-p="linkedin" onclick="this.classList.toggle('active')">&#x1F4BC; LinkedIn</div>
+<div class="plat-check" data-p="tiktok" onclick="this.classList.toggle('active')">&#x1F3B5; TikTok</div>
+</div>
+</div>
+
+<div class="config-group"><label class="config-label">Posts per day</label>
+<div class="freq-grid">
+<div class="freq-card" onclick="setFreq(this,1)"><div class="freq-num">1</div><div class="freq-label">post/day</div></div>
+<div class="freq-card active" onclick="setFreq(this,2)"><div class="freq-num">2</div><div class="freq-label">posts/day</div></div>
+<div class="freq-card" onclick="setFreq(this,3)"><div class="freq-num">3</div><div class="freq-label">posts/day</div></div>
+</div>
+</div>
+
+<div class="config-group"><label class="config-label">Special focus (optional)</label>
+<textarea class="config-input" id="fill-focus" placeholder="e.g. We just finished a big project, running a spring special, want to highlight our 5-star reviews, focus on before/after content..."></textarea>
+</div>
+
+<div class="fill-summary" id="fill-summary">
+<div class="summary-row"><span class="label">Days to fill</span><span class="value" id="sum-days">—</span></div>
+<div class="summary-row"><span class="label">Total posts</span><span class="value" id="sum-posts">—</span></div>
+<div class="summary-row"><span class="label">Platforms</span><span class="value" id="sum-plats">—</span></div>
+<div class="summary-row"><span class="label">Estimated time</span><span class="value" id="sum-time">—</span></div>
+</div>
+
+<button class="fill-btn" id="fill-go" onclick="startFill()">Generate Entire Month →</button>
+</div>
+</div>
+</div>
+
+<!-- Sidebar -->
+<div class="ov" id="ov" onclick="csb()"></div>
+<div class="sb" id="sb">
+<button onclick="csb()" style="float:right;background:none;border:none;color:var(--muted);font-size:24px;cursor:pointer">&times;</button>
+<h3 id="st" style="font-size:18px;font-weight:800;margin-bottom:20px"></h3>
+<div id="sc"></div>
+</div>
+
+<script>
+var cM=new Date().getMonth(),cY=new Date().getFullYear(),sp=JSON.parse(localStorage.getItem('pf_cal')||'{}');
+var P=['instagram','facebook','twitter','linkedin','tiktok'];
+var PE={instagram:'IG',facebook:'FB',twitter:'X',linkedin:'LI',tiktok:'TT'};
+var MN=['January','February','March','April','May','June','July','August','September','October','November','December'];
+var fillFreq=2;
+
+function R(){
+  var g=document.getElementById('gr');document.getElementById('mo').textContent=MN[cM]+' '+cY;
+  var fd=new Date(cY,cM,1).getDay(),dm=new Date(cY,cM+1,0).getDate(),td=new Date();
+  var h='';['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].forEach(function(d){h+='<div class="dh">'+d+'</div>';});
+  var pd=new Date(cY,cM,0).getDate();
+  for(var i=fd-1;i>=0;i--)h+='<div class="day om"><div class="dn">'+(pd-i)+'</div></div>';
+  for(var d=1;d<=dm;d++){
+    var dk=cY+'-'+String(cM+1).padStart(2,'0')+'-'+String(d).padStart(2,'0');
+    var it=d===td.getDate()&&cM===td.getMonth()&&cY===td.getFullYear();
+    var ps=sp[dk]||[];
+    h+='<div class="day'+(it?' today':'')+'" onclick="oD(\''+dk+'\','+d+')">';
+    h+='<div class="dn">'+d+'</div>';
+    ps.slice(0,3).forEach(function(p){
+      var cls=p.status==='placeholder'?'placeholder':p.platform;
+      h+='<div class="cp '+cls+'">'+PE[p.platform]+': '+(p.status==='placeholder'?'&#x1F504; pending':p.type)+'</div>';
+    });
+    if(ps.length>3)h+='<div style="font-size:10px;color:var(--muted);margin-top:2px">+'+(ps.length-3)+' more</div>';
+    h+='</div>';
+  }
+  var tot=fd+dm,rem=7-(tot%7);if(rem<7)for(var i=1;i<=rem;i++)h+='<div class="day om"><div class="dn">'+i+'</div></div>';
+  g.innerHTML=h;
+  updateSummary();
+}
+
+function ch(d){cM+=d;if(cM>11){cM=0;cY++;}if(cM<0){cM=11;cY--;}R();}
+function goT(){cM=new Date().getMonth();cY=new Date().getFullYear();R();}
+
+// Fill Modal
+function openFillModal(){
+  // Load saved business info if exists
+  var ob=JSON.parse(localStorage.getItem('pf_onboarding')||'{}');
+  if(ob.name)document.getElementById('fill-name').value=ob.name;
+  if(ob.services)document.getElementById('fill-services').value=ob.services;
+  if(ob.location)document.getElementById('fill-location').value=ob.location;
+  updateSummary();
+  document.getElementById('fill-modal').classList.add('open');
+}
+function closeFillModal(){document.getElementById('fill-modal').classList.remove('open')}
+
+function setFreq(el,n){
+  document.querySelectorAll('.freq-card').forEach(function(c){c.classList.remove('active')});
+  el.classList.add('active');fillFreq=n;updateSummary();
+}
+
+function getSelectedPlats(){
+  var ps=[];document.querySelectorAll('.plat-check.active').forEach(function(c){ps.push(c.dataset.p)});
+  return ps.length?ps:['instagram'];
+}
+
+function updateSummary(){
+  var dm=new Date(cY,cM+1,0).getDate();
+  var today=new Date();var startDay=(cM===today.getMonth()&&cY===today.getFullYear())?today.getDate():1;
+  var daysLeft=dm-startDay+1;
+  var totalPosts=daysLeft*fillFreq;
+  var plats=getSelectedPlats();
+  document.getElementById('sum-days').textContent=daysLeft+' days';
+  document.getElementById('sum-posts').textContent=totalPosts+' posts';
+  document.getElementById('sum-plats').textContent=plats.map(function(p){return PE[p]}).join(', ');
+  var batches=Math.ceil(totalPosts/5);
+  document.getElementById('sum-time').textContent='~'+(batches*12)+' seconds';
+}
+
+async function startFill(){
+  var name=document.getElementById('fill-name').value||'My Business';
+  var services=document.getElementById('fill-services').value||'general services';
+  var location=document.getElementById('fill-location').value||'';
+  var focus=document.getElementById('fill-focus').value||'';
+  var plats=getSelectedPlats();
+  var dm=new Date(cY,cM+1,0).getDate();
+  var today=new Date();var startDay=(cM===today.getMonth()&&cY===today.getFullYear())?today.getDate():1;
+
+  var body=document.getElementById('fill-body');
+  var totalPosts=(dm-startDay+1)*fillFreq;
+  var batches=Math.ceil(totalPosts/5);
+
+  body.innerHTML='<div class="fill-progress"><div class="spinner"></div><div class="status" id="fp-status">Generating content...</div><div class="sub" id="fp-sub">Batch 1 of '+batches+'</div><div class="prog-bar"><div class="prog-fill" id="fp-bar" style="width:0%"></div></div></div>';
+
+  var token=localStorage.getItem('pf_token');
+  var hd={'Content-Type':'application/json'};if(token)hd['Authorization']='Bearer '+token;
+
+  var dayIdx=startDay;var batchNum=0;
+  while(dayIdx<=dm){
+    batchNum++;
+    var postsNeeded=Math.min(5,fillFreq*(dm-dayIdx+1));
+    var platform=plats[(batchNum-1)%plats.length];
+    var pct=Math.round(batchNum/batches*100);
+
+    document.getElementById('fp-status').textContent='Writing '+platform+' content...';
+    document.getElementById('fp-sub').textContent='Batch '+batchNum+' of '+batches+' ('+pct+'%)';
+    document.getElementById('fp-bar').style.width=pct+'%';
+
+    try{
+      var r=await fetch('/api/generate',{method:'POST',headers:hd,signal:AbortSignal.timeout(55000),
+        body:JSON.stringify({businessName:name,businessType:services,location:location,platform:platform,count:postsNeeded,brandVoice:'professional but approachable',specialInstructions:focus})
+      });
+      var data=await r.json();
+      if(data.success&&data.posts){
+        var pi=0;
+        while(pi<data.posts.length&&dayIdx<=dm){
+          var dk=cY+'-'+String(cM+1).padStart(2,'0')+'-'+String(dayIdx).padStart(2,'0');
+          if(!sp[dk])sp[dk]=[];
+          var post=data.posts[pi];
+          sp[dk].push({platform:platform,type:post.type||'tip',content:post.content||'',time:post.best_time||'9 AM',status:'draft',image:post.image_suggestion||''});
+          pi++;
+          if(pi%fillFreq===0)dayIdx++;
+        }
+        if(pi%fillFreq!==0)dayIdx++;
+      } else { dayIdx+=Math.ceil(postsNeeded/fillFreq); }
+    }catch(e){ dayIdx+=Math.ceil(postsNeeded/fillFreq); }
+  }
+
+  localStorage.setItem('pf_cal',JSON.stringify(sp));
+  document.getElementById('fp-status').textContent='Done! 🎉';
+  document.getElementById('fp-sub').textContent=totalPosts+' posts generated for '+MN[cM];
+  document.getElementById('fp-bar').style.width='100%';
+
+  setTimeout(function(){closeFillModal();R();
+    // Reset modal body for next time
+    location.reload();
+  },1500);
+}
+
+// Day Sidebar
+function oD(dk,day){
+  document.getElementById('st').textContent=MN[cM]+' '+day;
+  var ps=sp[dk]||[];var h='';
+  if(!ps.length){
+    h='<p style="color:var(--muted);margin-bottom:16px">No posts scheduled for this day.</p>';
+    h+='<button class="btn btn-p" style="width:100%" onclick="genDay(\''+dk+'\','+day+')">&#x26A1; Generate posts for this day</button>';
+  } else {
+    ps.forEach(function(p,i){
+      h+='<div class="sb-post"><div class="sb-post-header"><span class="cp '+p.platform+'" style="margin:0">'+PE[p.platform]+' '+p.platform+'</span><span style="font-size:11px;color:var(--muted)">'+p.time+'</span></div>';
+      h+='<div class="sb-post-content">'+escHtml(p.content)+'</div>';
+      if(p.image)h+='<div style="margin-top:8px;padding:8px 10px;background:rgba(124,58,237,0.05);border:1px solid rgba(124,58,237,0.1);border-radius:6px;font-size:11px;color:#a78bfa">&#x1F4F7; '+escHtml(p.image)+'</div>';
+      h+='<div class="sb-post-actions"><button class="sb-action" onclick="copyDayPost(\''+dk+'\','+i+')">Copy</button><button class="sb-action" onclick="removeDayPost(\''+dk+'\','+i+')">Remove</button></div></div>';
+    });
+    h+='<button class="btn btn-p" style="width:100%;margin-top:12px" onclick="genDay(\''+dk+'\','+day+')">+ Generate more</button>';
+  }
+  document.getElementById('sc').innerHTML=h;
+  document.getElementById('sb').classList.add('open');document.getElementById('ov').classList.add('open');
+}
+function csb(){document.getElementById('sb').classList.remove('open');document.getElementById('ov').classList.remove('open')}
+function escHtml(t){return(t||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>')}
+
+function copyDayPost(dk,i){
+  var ps=sp[dk]||[];if(ps[i])navigator.clipboard.writeText(ps[i].content);
+}
+function removeDayPost(dk,i){
+  if(!sp[dk])return;sp[dk].splice(i,1);if(!sp[dk].length)delete sp[dk];
+  localStorage.setItem('pf_cal',JSON.stringify(sp));R();csb();
+}
+
+async function genDay(dk,day){
+  var plats=getSelectedPlats();var platform=plats[0];
+  var ob=JSON.parse(localStorage.getItem('pf_onboarding')||'{}');
+  var sc=document.getElementById('sc');
+  sc.innerHTML='<div class="fill-progress"><div class="spinner"></div><div class="status">Generating...</div></div>';
+  try{
+    var token=localStorage.getItem('pf_token'),hd={'Content-Type':'application/json'};if(token)hd['Authorization']='Bearer '+token;
+    var r=await fetch('/api/generate',{method:'POST',headers:hd,signal:AbortSignal.timeout(55000),
+      body:JSON.stringify({businessName:ob.name||'My Business',businessType:ob.services||'services',location:ob.location||'',platform:platform,count:2,brandVoice:'professional but approachable'})
+    });
+    var data=await r.json();
+    if(data.success&&data.posts){
+      if(!sp[dk])sp[dk]=[];
+      data.posts.forEach(function(p){sp[dk].push({platform:platform,type:p.type,content:p.content,time:p.best_time||'9 AM',status:'draft',image:p.image_suggestion||''})});
+      localStorage.setItem('pf_cal',JSON.stringify(sp));R();oD(dk,day);
+    }
+  }catch(e){sc.innerHTML='<p style="color:var(--pink)">Error generating. Try again.</p>';}
+}
+
+function clearCal(){if(!confirm('Clear all scheduled posts?'))return;sp={};localStorage.setItem('pf_cal','{}');R();}
+function exportCal(){
+  var csv='Date,Platform,Type,Time,Content,Image\n';
+  Object.keys(sp).sort().forEach(function(dk){
+    (sp[dk]||[]).forEach(function(p){
+      csv+='"'+dk+'","'+p.platform+'","'+p.type+'","'+p.time+'","'+(p.content||'').replace(/"/g,'""')+'","'+(p.image||'').replace(/"/g,'""')+'"\n';
+    });
+  });
+  var b=new Blob([csv],{type:'text/csv'});var u=URL.createObjectURL(b);var a=document.createElement('a');
+  a.href=u;a.download='postforge-calendar-'+MN[cM]+'-'+cY+'.csv';a.click();
+}
+
+R();
+</script>
+</body>
+</html>

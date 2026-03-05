@@ -1,0 +1,77 @@
+🎯 COLD EMAIL OUTREACH DRAFTS — Saturday, February 21, 2026
+
+Ready-to-send emails for 3 property management companies.
+
+================================================================================
+
+EMAIL 1 — Inter Properties Management
+TO: Contact via Yelp for Konstantin Shelegeda
+SUBJECT: Reliable contractor for Inter Properties clients
+
+Hi Konstantin,
+
+I'm Tris with Valencia Construction — licensed and insured GC here in Chicago. I know you focus on hands-on property management with performance-based fees, and I think we'd be a solid fit for your client portfolio.
+
+We handle unit turnovers, maintenance repairs, kitchen/bath remodels, flooring, electrical, plumbing — everything small-to-mid PMs need done right and fast. You deal directly with me (the owner), pricing is transparent, and we prioritize quick turnarounds because we know vacancy costs money.
+
+Would love to be a go-to contractor for Inter Properties. Happy to start with a walkthrough of any upcoming projects for a free estimate.
+
+Worth a quick call?
+
+Best,
+Tris
+Valencia Construction
+(773) 682-7788
+valenciaconstructionchi.com
+
+================================================================================
+
+EMAIL 2 — Open Path Realty
+TO: info@openpathrealty.com
+SUBJECT: Contractor partner for Open Path properties
+
+Hi there,
+
+I'm Tris, owner of Valencia Construction. I'm reaching out to property management companies across Chicago — Open Path Realty caught my eye because you've been doing solid work in Ukrainian Village and surrounding areas for over a decade.
+
+We're a licensed and insured contracting company that specializes in residential renovations, unit turnovers, and maintenance. What sets us apart: direct owner communication, transparent pricing, and we get it done on schedule so your properties stay occupied and profitable.
+
+Whether you've got upcoming remodels, turnover work, or quick maintenance repairs, I'd love to be a resource you can rely on.
+
+Can we set up a quick call?
+
+Best,
+Tris
+Valencia Construction
+(773) 682-7788
+valenciaconstructionchi.com
+
+================================================================================
+
+EMAIL 3 — Drexel Properties
+TO: help@drexelproperties.com
+SUBJECT: Contractor for Drexel Properties portfolio
+
+Hi Jeff,
+
+I'm Tris from Valencia Construction. I saw you've been active in Chicago landlord groups and manage a solid portfolio on the West Side. I'm reaching out because we specialize in exactly what PM companies need: reliable contractor work that doesn't slow you down.
+
+We handle turnovers, remodels, maintenance repairs, plumbing, electrical, flooring — the full range. Owner-operated (that's me), transparent pricing, and fast turnarounds.
+
+I'd love to be your go-to contractor for any upcoming projects. Happy to do a free walkthrough to show what we can deliver.
+
+Worth connecting?
+
+Best,
+Tris
+Valencia Construction
+(773) 682-7788
+valenciaconstructionchi.com
+
+================================================================================
+
+NOTES:
+- All 3 emails personalized with company details, portfolio size, & neighborhood specifics
+- Follow-ups scheduled for Feb 28 (7 days out)
+- Contact info logged in outreach-log.json
+- Tris: just copy-paste each email body and hit send

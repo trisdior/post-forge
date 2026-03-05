@@ -1,0 +1,42 @@
+[
+  {
+    "id": "26ba53c7-9b74-4821-8a66-203563200482",
+    "source": "Nextdoor",
+    "leadName": "(from lead hunter)",
+    "postUrl": "https://nextdoor.com/pages/js-painting-remodeling-services-chicago-il/",
+    "score": 50,
+    "status": "rejected",
+    "draftReply": "Kitchen remodel specialist here in the neighborhood! Licensed & insured. Free estimates. Let's talk about your project!",
+    "assignedTo": "karl",
+    "createdAt": "2026-03-03T13:30:00Z",
+    "updatedAt": "2026-03-03T19:41:31.000Z",
+    "draftedAt": "2026-03-03T19:30:38.551601Z",
+    "rejectionReason": "Contractor ad, not a lead"
+  },
+  {
+    "id": "2380bc6b-6b9f-43d9-b614-776a311ce4ca",
+    "source": "facebook",
+    "leadName": "Richard Shields",
+    "postUrl": "https://www.facebook.com/groups/464809784881517/posts/1682094236486393/",
+    "score": 35,
+    "status": "rejected",
+    "draftReply": null,
+    "assignedTo": "karl",
+    "createdAt": "2026-03-04T21:04:19.462768Z",
+    "updatedAt": "2026-03-05T12:37:00.000Z",
+    "rejectionReason": "Home listing, not a construction lead"
+  },
+  {
+    "id": "65f6c9a5-35b7-4edc-afdc-c1c2e4045888",
+    "source": "facebook",
+    "leadName": "Anonymous participant 598",
+    "postUrl": "https://www.facebook.com/groups/thenorthbrookneighbors/posts/1857700868218863/",
+    "score": 30,
+    "status": "rejected",
+    "draftReply": null,
+    "assignedTo": "karl",
+    "createdAt": "2026-03-04T21:04:19.471762Z",
+    "updatedAt": "2026-03-05T12:37:00.000Z",
+    "rejectionReason": "Gym membership sale, not a construction lead"
+  }
+]

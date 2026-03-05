@@ -1,0 +1,1697 @@
+[
+  {
+    "id": "1rhwxiw",
+    "source": "reddit",
+    "title": "I tracked every hour I worked for a week, and honestly it was kind of embarrassing.",
+    "url": "https://reddit.com/r/productivity/comments/1rhwxiw/i_tracked_every_hour_i_worked_for_a_week_and/",
+    "scores": {
+      "demand": 10,
+      "pain": 4,
+      "buildability": 9,
+      "revenue": 6,
+      "overall": 72
+    },
+    "overall_score": 72,
+    "recommendation": "BUILD",
+    "analyzed_at": "2026-03-04T16:57:04.602526",
+    "signals": [
+      "broken"
+    ],
+    "engagement": {
+      "upvotes": 1450,
+      "comments": 73
+    },
+    "snippet": "at one point in my life i was working like 70+ hour weeks and couldn't figure out why nothing was getting done. (i had a corporate job plus i was freelancing on the side, hence the crazy hours)\n\nso i was working until midnight most days, and weekends were also spent working on freelance projects.  \n"
+  },
+  {
+    "id": "1rjv2q4",
+    "source": "reddit",
+    "title": "Why AI Can't Stop Using Em Dashes \u2014 And Why Nobody Can Fix It",
+    "url": "https://reddit.com/r/ChatGPT/comments/1rjv2q4/why_ai_cant_stop_using_em_dashes_and_why_nobody/",
+    "scores": {
+      "demand": 10,
+      "pain": 4,
+      "buildability": 9,
+      "revenue": 4,
+      "overall": 68
+    },
+    "overall_score": 68,
+    "recommendation": "BUILD",
+    "analyzed_at": "2026-03-04T16:57:04.602526",
+    "signals": [
+      "broken"
+    ],
+    "engagement": {
+      "upvotes": 615,
+      "comments": 300
+    },
+    "snippet": "Every AI writes like this \u2014 mid-thought, clause inserted, dash deployed. You've noticed it. Everyone has. Em dashes have become the single most reliable tell of AI-generated text, to the point where human writers have started avoiding them out of fear of being mistaken for a chatbot.\n\nHere's the int"
+  },
+  {
+    "id": "1ri53j1",
+    "source": "reddit",
+    "title": "I built a 100% offline, free loyalty card wallet because I hated holding up the checkout line.",
+    "url": "https://reddit.com/r/apple/comments/1ri53j1/i_built_a_100_offline_free_loyalty_card_wallet/",
+    "scores": {
+      "demand": 10,
+      "pain": 4,
+      "buildability": 9,
+      "revenue": 6,
+      "overall": 72
+    },
+    "overall_score": 72,
+    "recommendation": "BUILD",
+    "analyzed_at": "2026-03-04T16:57:04.602526",
+    "signals": [
+      "tired of"
+    ],
+    "engagement": {
+      "upvotes": 408,
+      "comments": 129
+    },
+    "snippet": "I\u2019m the developer of Offline Cards. I built this app out of sheer personal frustration. I was so tired of standing at the register, waiting for a store's official app to load on spotty cell service, and feeling like a fool while the line behind me grew.\n\nI just wanted a lightning-fast solution that "
+  },
+  {
+    "id": "1rkfek2",
+    "source": "reddit",
+    "title": "Switching to claude from chatgpt was fun for 3 days",
+    "url": "https://reddit.com/r/ChatGPT/comments/1rkfek2/switching_to_claude_from_chatgpt_was_fun_for_3/",
+    "scores": {
+      "demand": 10,
+      "pain": 4,
+      "buildability": 9,
+      "revenue": 4,
+      "overall": 68
+    },
+    "overall_score": 68,
+    "recommendation": "BUILD",
+    "analyzed_at": "2026-03-04T16:57:04.602526",
+    "signals": [
+      "unusable"
+    ],
+    "engagement": {
+      "upvotes": 154,
+      "comments": 419
+    },
+    "snippet": "First things first, claude is much better at just talking, it understands context, has jokes and tries to swing you the right way if you\u2019re spiraling or wasting time instead instead of just fueling it like chatGPT does, it\u2019s genuinely more fun to talk to. \n\nHowever all the fun ends here.\n\nAs soon as"
+  },
+  {
+    "id": "1qoxwdt",
+    "source": "reddit",
+    "title": "State of the Subreddit (January 2027): Mods applications and rules updates",
+    "url": "https://reddit.com/r/programming/comments/1qoxwdt/state_of_the_subreddit_january_2027_mods/",
+    "scores": {
+      "demand": 7,
+      "pain": 7,
+      "buildability": 9,
+      "revenue": 4,
+      "overall": 68
+    },
+    "overall_score": 68,
+    "recommendation": "BUILD",
+    "analyzed_at": "2026-03-04T16:57:04.602526",
+    "signals": [
+      "broken",
+      "sucks"
+    ],
+    "engagement": {
+      "upvotes": 116,
+      "comments": 74
+    },
+    "snippet": "tl;dr: mods applications and minor rules changes. Also it's 2026, lol.\n\nHello fellow programs!\n\nIt's been a while since I've [checked in](https://old.reddit.com/r/programming/comments/1chs4ib/the_state_of_the_subreddit_may_2024/) and I wanted to give an update on the state of affairs. I won't be abl"
+  },
+  {
+    "id": "47247645",
+    "source": "hackernews",
+    "title": "MacBook Neo",
+    "url": "https://www.apple.com/newsroom/2026/03/say-hello-to-macbook-neo/",
+    "scores": {
+      "demand": 10,
+      "pain": 4,
+      "buildability": 9,
+      "revenue": 4,
+      "overall": 68
+    },
+    "overall_score": 68,
+    "recommendation": "BUILD",
+    "analyzed_at": "2026-03-04T16:57:04.602526",
+    "signals": [],
+    "engagement": {
+      "upvotes": 1345,
+      "comments": 1693
+    },
+    "snippet": "<a href=\"https:&#x2F;&#x2F;www.apple.com&#x2F;macbook-neo&#x2F;\" rel=\"nofollow\">https:&#x2F;&#x2F;www.apple.com&#x2F;macbook-neo&#x2F;</a>"
+  },
+  {
+    "id": "1pku5yi",
+    "source": "reddit",
+    "title": "Lost potential clients because my Instagram looked \"inactive.\" Now I'm spending entire Sundays filming reels.",
+    "url": "https://reddit.com/r/freelance/comments/1pku5yi/lost_potential_clients_because_my_instagram/",
+    "scores": {
+      "demand": 7,
+      "pain": 4,
+      "buildability": 9,
+      "revenue": 6,
+      "overall": 65
+    },
+    "overall_score": 65,
+    "recommendation": "BUILD",
+    "analyzed_at": "2026-03-04T16:57:04.602526",
+    "signals": [
+      "broken"
+    ],
+    "engagement": {
+      "upvotes": 102,
+      "comments": 55
+    },
+    "snippet": "I just spent my entire Sunday filming Instagram reels and I'm losing my mind.\n\nFreelance brand designer, three years in. Work is fine. But somehow I became a content creator along the way and I don't remember signing up for that.\n\nI spend 6-8 hours a week shooting reels for Instagram because apparen"
+  },
+  {
+    "id": "1rksn4p",
+    "source": "reddit",
+    "title": "Tired of getting destroyed by cold call rejections",
+    "url": "https://reddit.com/r/SaaS/comments/1rksn4p/tired_of_getting_destroyed_by_cold_call_rejections/",
+    "scores": {
+      "demand": 7,
+      "pain": 4,
+      "buildability": 6,
+      "revenue": 4,
+      "overall": 52
+    },
+    "overall_score": 52,
+    "recommendation": "WATCH",
+    "analyzed_at": "2026-03-04T16:57:04.602526",
+    "signals": [
+      "tired of"
+    ],
+    "engagement": {
+      "upvotes": 91,
+      "comments": 34
+    },
+    "snippet": "Been doing sales for about 4 months now and honestly the rejections are starting to get to me. i know everyone says it's a part of the game but when you hear no 50 times a day it really wears you down. yesterday i had a guy laugh at me and hang up before i even finished my intro.\n\nhow do you guys st"
+  },
+  {
+    "id": "1popzqt",
+    "source": "reddit",
+    "title": "I blamed myself for undercharging and ghosting clients for a long time",
+    "url": "https://reddit.com/r/freelance/comments/1popzqt/i_blamed_myself_for_undercharging_and_ghosting/",
+    "scores": {
+      "demand": 7,
+      "pain": 4,
+      "buildability": 6,
+      "revenue": 6,
+      "overall": 57
+    },
+    "overall_score": 57,
+    "recommendation": "WATCH",
+    "analyzed_at": "2026-03-04T16:57:04.602526",
+    "signals": [
+      "broken"
+    ],
+    "engagement": {
+      "upvotes": 71,
+      "comments": 55
+    },
+    "snippet": "I spent months thinking I was bad at freelancing.\n\nEvery time a client asked about price or changes, my body reacted before my brain did.  \nChest tight. Breathing shallow. Mind blank.\n\nI\u2019d delay replies, rewrite the same message over and over, or undercharge just to end the discomfort.\n\nI told mysel"
+  },
+  {
+    "id": "1pe8244",
+    "source": "reddit",
+    "title": "Client used my personal card for billing after I left",
+    "url": "https://reddit.com/r/freelance/comments/1pe8244/client_used_my_personal_card_for_billing_after_i/",
+    "scores": {
+      "demand": 5,
+      "pain": 4,
+      "buildability": 6,
+      "revenue": 4,
+      "overall": 48
+    },
+    "overall_score": 48,
+    "recommendation": "WATCH",
+    "analyzed_at": "2026-03-04T16:57:04.602526",
+    "signals": [
+      "broken"
+    ],
+    "engagement": {
+      "upvotes": 49,
+      "comments": 38
+    },
+    "snippet": "Hey all, I'm sure I'm not the only one who's been through this and I'm keen to know how you dealt with it.\n\nLong story short, one of my (working through an ltd) clients (small, early-stage VC backed startup) needed a new cloud account to deploy infrastructure for one of their clients - one of those "
+  },
+  {
+    "id": "47224295",
+    "source": "hackernews",
+    "title": "Show HN: I built a sub-500ms latency voice agent from scratch",
+    "url": "https://www.ntik.me/posts/voice-agent",
+    "scores": {
+      "demand": 10,
+      "pain": 4,
+      "buildability": 9,
+      "revenue": 4,
+      "overall": 68
+    },
+    "overall_score": 68,
+    "recommendation": "BUILD",
+    "analyzed_at": "2026-03-04T16:57:04.602526",
+    "signals": [],
+    "engagement": {
+      "upvotes": 561,
+      "comments": 153
+    },
+    "snippet": "I built a voice agent from scratch that averages ~400ms end-to-end latency (phone stop \u2192 first syllable). That\u2019s with full STT \u2192 LLM \u2192 TTS in the loop, clean barge-ins, and no precomputed responses.<p>What moved the needle:<p>Voice is a turn-taking problem, not a transcription problem. VAD alone fai"
+  },
+  {
+    "id": "1r7aua1",
+    "source": "reddit",
+    "title": "I\u2019m tired of building in my basement alone",
+    "url": "https://reddit.com/r/indiehackers/comments/1r7aua1/im_tired_of_building_in_my_basement_alone/",
+    "scores": {
+      "demand": 7,
+      "pain": 4,
+      "buildability": 6,
+      "revenue": 4,
+      "overall": 52
+    },
+    "overall_score": 52,
+    "recommendation": "WATCH",
+    "analyzed_at": "2026-03-04T16:57:04.602526",
+    "signals": [
+      "tired of"
+    ],
+    "engagement": {
+      "upvotes": 36,
+      "comments": 108
+    },
+    "snippet": "I have a 9-5, I spend my nights \"tinkering,\" and honestly? It\u2019s getting lonely. I\u2019m stuck in this loop where I keep adding features because if I don\u2019t \"launch,\" I can\u2019t \"fail.\"\n\nI realized I need to hear from people who have actually messed up. Like, spectacularly. Not the LinkedIn \"I failed and the"
+  },
+  {
+    "id": "47252049",
+    "source": "hackernews",
+    "title": "An interactive map of Flock Cams",
+    "url": "https://deflock.org/map#map=5/37.125286/-96.284180",
+    "scores": {
+      "demand": 10,
+      "pain": 4,
+      "buildability": 6,
+      "revenue": 4,
+      "overall": 60
+    },
+    "overall_score": 60,
+    "recommendation": "WATCH",
+    "analyzed_at": "2026-03-04T16:57:04.602526",
+    "signals": [],
+    "engagement": {
+      "upvotes": 442,
+      "comments": 157
+    },
+    "snippet": ""
+  },
+  {
+    "id": "47249343",
+    "source": "hackernews",
+    "title": "Something is afoot in the land of Qwen",
+    "url": "https://simonwillison.net/2026/Mar/4/qwen/",
+    "scores": {
+      "demand": 10,
+      "pain": 4,
+      "buildability": 6,
+      "revenue": 4,
+      "overall": 60
+    },
+    "overall_score": 60,
+    "recommendation": "WATCH",
+    "analyzed_at": "2026-03-04T16:57:04.602526",
+    "signals": [],
+    "engagement": {
+      "upvotes": 438,
+      "comments": 210
+    },
+    "snippet": ""
+  },
+  {
+    "id": "1riyr34",
+    "source": "reddit",
+    "title": "Went from $0 to $1k MRR. If I started my SaaS over, here's exactly what I'd do",
+    "url": "https://reddit.com/r/indiehackers/comments/1riyr34/went_from_0_to_1k_mrr_if_i_started_my_saas_over/",
+    "scores": {
+      "demand": 7,
+      "pain": 4,
+      "buildability": 9,
+      "revenue": 6,
+      "overall": 65
+    },
+    "overall_score": 65,
+    "recommendation": "BUILD",
+    "analyzed_at": "2026-03-04T16:57:04.602526",
+    "signals": [
+      "broken"
+    ],
+    "engagement": {
+      "upvotes": 31,
+      "comments": 122
+    },
+    "snippet": "After going from $0 to $1K MRR, I've learned that what you focus on matters, but the order you focus on it matters even more.\n\nHere are the 7 steps, in the exact sequence I'd follow if I started over:\n\n**1) Solve a recurring painpoint**\n\nThis is a non-negotiable. My earlier projects solved one-time "
+  },
+  {
+    "id": "1r1a4yu",
+    "source": "reddit",
+    "title": "Rejected by Proxify despite years of professional experience - their assessment process is fundamentally broken",
+    "url": "https://reddit.com/r/freelance/comments/1r1a4yu/rejected_by_proxify_despite_years_of_professional/",
+    "scores": {
+      "demand": 5,
+      "pain": 4,
+      "buildability": 9,
+      "revenue": 4,
+      "overall": 55
+    },
+    "overall_score": 55,
+    "recommendation": "WATCH",
+    "analyzed_at": "2026-03-04T16:57:04.602526",
+    "signals": [
+      "broken"
+    ],
+    "engagement": {
+      "upvotes": 27,
+      "comments": 43
+    },
+    "snippet": "I just got rejected by Proxify. The email said my \"technical skills did not meet their requirements.\" I want to share my experience because I think it highlights a growing problem in our industry.\n\n**My background:**\u00a0I've worked at Amadeus, Alten, Reply. Built entire startup projects independently. "
+  },
+  {
+    "id": "1rjmzy0",
+    "source": "reddit",
+    "title": "Our parents judge us for working remotely. Anybody else\u2019s family not in support of them working remotely?",
+    "url": "https://reddit.com/r/remotework/comments/1rjmzy0/our_parents_judge_us_for_working_remotely_anybody/",
+    "scores": {
+      "demand": 5,
+      "pain": 4,
+      "buildability": 6,
+      "revenue": 6,
+      "overall": 52
+    },
+    "overall_score": 52,
+    "recommendation": "WATCH",
+    "analyzed_at": "2026-03-04T16:57:04.602526",
+    "signals": [
+      "sucks"
+    ],
+    "engagement": {
+      "upvotes": 27,
+      "comments": 32
+    },
+    "snippet": "Hi my husband and I have been working remotely since Covid.\n\nOur parents are completely against that despite us being adults.\n\nMy husband lost his remote job and they now use that to give us a lecture about it and judge us for losing our main income as I'm a freelancer.\n\nNow although I agree that th"
+  },
+  {
+    "id": "1rj0wko",
+    "source": "reddit",
+    "title": "Do you think it would be appropriate to ask for a raise?",
+    "url": "https://reddit.com/r/marketing/comments/1rj0wko/do_you_think_it_would_be_appropriate_to_ask_for_a/",
+    "scores": {
+      "demand": 5,
+      "pain": 4,
+      "buildability": 9,
+      "revenue": 6,
+      "overall": 60
+    },
+    "overall_score": 60,
+    "recommendation": "WATCH",
+    "analyzed_at": "2026-03-04T16:57:04.602526",
+    "signals": [
+      "terrible"
+    ],
+    "engagement": {
+      "upvotes": 25,
+      "comments": 41
+    },
+    "snippet": "I\u2019m the marketing director of a small law firm. I created and maintain the website, all social media, SEO, lead generation, blog posts, certain business communications, etc. Before I started, there was little to no online presence. I should also note that before I started, the business had less than"
+  },
+  {
+    "id": "1r2sles",
+    "source": "reddit",
+    "title": "I got tired of opening my own dashboard to schedule posts, so I made my AI agent do it instead",
+    "url": "https://reddit.com/r/indiehackers/comments/1r2sles/i_got_tired_of_opening_my_own_dashboard_to/",
+    "scores": {
+      "demand": 5,
+      "pain": 4,
+      "buildability": 9,
+      "revenue": 4,
+      "overall": 55
+    },
+    "overall_score": 55,
+    "recommendation": "WATCH",
+    "analyzed_at": "2026-03-04T16:57:04.602526",
+    "signals": [
+      "tired of"
+    ],
+    "engagement": {
+      "upvotes": 21,
+      "comments": 55
+    },
+    "snippet": "Okay, this is kind of strange. I use a social media scheduling tool and I still found myself putting off scheduling posts because I didn't want to context-switch out of whatever I was doing.\n\nSo I figured, I have OpenClaw running anyway, why not just make it handle posting for me?\n\nSpent a day wirin"
+  },
+  {
+    "id": "1rhsl2o",
+    "source": "reddit",
+    "title": "Sunday Rant - Get it out of your system! - March 01, 2026",
+    "url": "https://reddit.com/r/Entrepreneur/comments/1rhsl2o/sunday_rant_get_it_out_of_your_system_march_01/",
+    "scores": {
+      "demand": 3,
+      "pain": 7,
+      "buildability": 6,
+      "revenue": 6,
+      "overall": 55
+    },
+    "overall_score": 55,
+    "recommendation": "WATCH",
+    "analyzed_at": "2026-03-04T16:57:04.602526",
+    "signals": [
+      "sucks",
+      "terrible"
+    ],
+    "engagement": {
+      "upvotes": 10,
+      "comments": 8
+    },
+    "snippet": "Here's your chance to rant about how much this subreddit and Entrepreneurship in general sucks. Lets try to contain it to a single weekly thread - here. \n\nIndividual meta posts about the subreddit aren't allowed, but you're welcome to share constructive criticism here with the mod team. To be clear,"
+  },
+  {
+    "id": "1rkpj6o",
+    "source": "reddit",
+    "title": "I take it back",
+    "url": "https://reddit.com/r/ChatGPT/comments/1rkpj6o/i_take_it_back/",
+    "scores": {
+      "demand": 5,
+      "pain": 4,
+      "buildability": 6,
+      "revenue": 4,
+      "overall": 48
+    },
+    "overall_score": 48,
+    "recommendation": "WATCH",
+    "analyzed_at": "2026-03-04T16:57:04.602526",
+    "signals": [
+      "terrible"
+    ],
+    "engagement": {
+      "upvotes": 20,
+      "comments": 16
+    },
+    "snippet": "5.2 instant may be terrible for story writing, seems bland and void of character depth and story progression. HOWEVER after tweaking with 5.2 thinking, thats where it's at! it's memory is actually surprising and it's character depth and emotion is comparable to 4.o (could be a product of my story so"
+  },
+  {
+    "id": "1rjshs1",
+    "source": "reddit",
+    "title": "Burnt out from high paying software role",
+    "url": "https://reddit.com/r/remotework/comments/1rjshs1/burnt_out_from_high_paying_software_role/",
+    "scores": {
+      "demand": 5,
+      "pain": 4,
+      "buildability": 6,
+      "revenue": 6,
+      "overall": 52
+    },
+    "overall_score": 52,
+    "recommendation": "WATCH",
+    "analyzed_at": "2026-03-04T16:57:04.602526",
+    "signals": [
+      "tired of"
+    ],
+    "engagement": {
+      "upvotes": 20,
+      "comments": 34
+    },
+    "snippet": "This is gonna sound crazy but I am super burnt out from my job. I'm 25, about to be 26 this month and have worked in tech for about 4.5 years now. I started doing field IT work, and quickly moved through several IT roles and am now a software engineer role where I make well into six figures. \n\nLong "
+  },
+  {
+    "id": "1rko4qx",
+    "source": "reddit",
+    "title": "I got 2 users in 30 minutes with 0 marketing and my broken product actually proved my idea works",
+    "url": "https://reddit.com/r/SaaS/comments/1rko4qx/i_got_2_users_in_30_minutes_with_0_marketing_and/",
+    "scores": {
+      "demand": 3,
+      "pain": 7,
+      "buildability": 9,
+      "revenue": 4,
+      "overall": 57
+    },
+    "overall_score": 57,
+    "recommendation": "WATCH",
+    "analyzed_at": "2026-03-04T16:57:04.602526",
+    "signals": [
+      "broken",
+      "terrible"
+    ],
+    "engagement": {
+      "upvotes": 7,
+      "comments": 9
+    },
+    "snippet": "My onboarding was completely broken. Users still completed it manually.\n\nHere's what happened:\n\nI launched my FIRST EVER [SaaS ](https://tryleadrabbit.com/)yesterday it tooks 2 months to build (worked day and nyte) and yesterday I posted on X (I have just 15 followers) and unbelievably I got my firs"
+  },
+  {
+    "id": "47215427",
+    "source": "hackernews",
+    "title": "Show HN: Omni \u2013 Open-source workplace search and chat, built on Postgres",
+    "url": "https://github.com/getomnico/omni",
+    "scores": {
+      "demand": 7,
+      "pain": 4,
+      "buildability": 9,
+      "revenue": 6,
+      "overall": 65
+    },
+    "overall_score": 65,
+    "recommendation": "BUILD",
+    "analyzed_at": "2026-03-04T16:57:04.602526",
+    "signals": [
+      "alternative to"
+    ],
+    "engagement": {
+      "upvotes": 172,
+      "comments": 43
+    },
+    "snippet": "Hey HN!<p>Over the past few months, I&#x27;ve been working on building Omni - a workplace search and chat platform that connects to apps like Google Drive&#x2F;Gmail, Slack, Confluence, etc. Essentially an open-source alternative to Glean, fully self-hosted.<p>I noticed that some orgs find Glean to "
+  },
+  {
+    "id": "47244291",
+    "source": "hackernews",
+    "title": "RFC 9849. TLS Encrypted Client Hello",
+    "url": "https://www.rfc-editor.org/rfc/rfc9849.html",
+    "scores": {
+      "demand": 7,
+      "pain": 4,
+      "buildability": 6,
+      "revenue": 4,
+      "overall": 52
+    },
+    "overall_score": 52,
+    "recommendation": "WATCH",
+    "analyzed_at": "2026-03-04T16:57:04.602526",
+    "signals": [],
+    "engagement": {
+      "upvotes": 267,
+      "comments": 130
+    },
+    "snippet": ""
+  },
+  {
+    "id": "1rjpcoh",
+    "source": "reddit",
+    "title": "Change how you charge your phone, change the world",
+    "url": "https://reddit.com/r/productivity/comments/1rjpcoh/change_how_you_charge_your_phone_change_the_world/",
+    "scores": {
+      "demand": 3,
+      "pain": 4,
+      "buildability": 9,
+      "revenue": 4,
+      "overall": 50
+    },
+    "overall_score": 50,
+    "recommendation": "WATCH",
+    "analyzed_at": "2026-03-04T16:57:04.602526",
+    "signals": [
+      "switched from"
+    ],
+    "engagement": {
+      "upvotes": 13,
+      "comments": 5
+    },
+    "snippet": "I\u2019ve felt that my productivity has been limited by my phone usage for a while now. Not only how often I\u2019m on my phone but also what I\u2019m doing on it. I\u2019d get sucked into scrolling and lose track of time daily. It was especially affecting my sleep schedule. I decided the best thing I could do to limit"
+  },
+  {
+    "id": "47246296",
+    "source": "hackernews",
+    "title": "Qwen3.5 Fine-Tuning Guide \u2013 Unsloth Documentation",
+    "url": "https://unsloth.ai/docs/models/qwen3.5/fine-tune",
+    "scores": {
+      "demand": 7,
+      "pain": 4,
+      "buildability": 6,
+      "revenue": 4,
+      "overall": 52
+    },
+    "overall_score": 52,
+    "recommendation": "WATCH",
+    "analyzed_at": "2026-03-04T16:57:04.602526",
+    "signals": [],
+    "engagement": {
+      "upvotes": 231,
+      "comments": 58
+    },
+    "snippet": ""
+  },
+  {
+    "id": "47219668",
+    "source": "hackernews",
+    "title": "Ask HN: Who is hiring? (March 2026)",
+    "url": "https://news.ycombinator.com/item?id=47219668",
+    "scores": {
+      "demand": 10,
+      "pain": 4,
+      "buildability": 9,
+      "revenue": 4,
+      "overall": 68
+    },
+    "overall_score": 68,
+    "recommendation": "BUILD",
+    "analyzed_at": "2026-03-04T16:57:04.602526",
+    "signals": [],
+    "engagement": {
+      "upvotes": 239,
+      "comments": 351
+    },
+    "snippet": "Please state the location and include REMOTE for remote work, REMOTE (US)\nor similar if the country is restricted, and ONSITE when remote work is <i>not</i> an option.<p>Please only post if you personally are part of the hiring company\u2014no\nrecruiting firms or job boards. One post per company. If it i"
+  },
+  {
+    "id": "1rka553",
+    "source": "reddit",
+    "title": "From crickets to 41 signups in 2 days \u2014 the ethical launch booster I dogfooded (frontend demo live)",
+    "url": "https://reddit.com/r/apps/comments/1rka553/from_crickets_to_41_signups_in_2_days_the_ethical/",
+    "scores": {
+      "demand": 3,
+      "pain": 7,
+      "buildability": 9,
+      "revenue": 4,
+      "overall": 57
+    },
+    "overall_score": 57,
+    "recommendation": "WATCH",
+    "analyzed_at": "2026-03-04T16:57:04.602526",
+    "signals": [
+      "tired of",
+      "sucks"
+    ],
+    "engagement": {
+      "upvotes": 1,
+      "comments": 0
+    },
+    "snippet": "Hey r/apps,\n\nYou know that sinking feeling: you pour weeks into an MVP, ship it with excitement, post everywhere (PH / IH / X / Reddit), get a few nice comments\u2026 and then nothing. Dead quiet.  \nMy last three launches followed the exact same pattern:\n\n* 4\u20136 hours scrolling X / Reddit / IH looking for"
+  },
+  {
+    "id": "47248319",
+    "source": "hackernews",
+    "title": "\u201cIt turns out\u201d (2010)",
+    "url": "https://jsomers.net/blog/it-turns-out",
+    "scores": {
+      "demand": 7,
+      "pain": 4,
+      "buildability": 6,
+      "revenue": 4,
+      "overall": 52
+    },
+    "overall_score": 52,
+    "recommendation": "WATCH",
+    "analyzed_at": "2026-03-04T16:57:04.603524",
+    "signals": [],
+    "engagement": {
+      "upvotes": 219,
+      "comments": 72
+    },
+    "snippet": ""
+  },
+  {
+    "id": "47251480",
+    "source": "hackernews",
+    "title": "Making Firefox's right-click not suck with about:config",
+    "url": "https://joshua.hu/firefox-making-right-click-not-suck",
+    "scores": {
+      "demand": 7,
+      "pain": 4,
+      "buildability": 6,
+      "revenue": 4,
+      "overall": 52
+    },
+    "overall_score": 52,
+    "recommendation": "WATCH",
+    "analyzed_at": "2026-03-04T16:57:04.603524",
+    "signals": [],
+    "engagement": {
+      "upvotes": 216,
+      "comments": 154
+    },
+    "snippet": ""
+  },
+  {
+    "id": "1rju16k",
+    "source": "reddit",
+    "title": "Am I the only one tired of juggling 10 tools to build one startup? I will not promote.",
+    "url": "https://reddit.com/r/startups/comments/1rju16k/am_i_the_only_one_tired_of_juggling_10_tools_to/",
+    "scores": {
+      "demand": 5,
+      "pain": 7,
+      "buildability": 9,
+      "revenue": 6,
+      "overall": 68
+    },
+    "overall_score": 68,
+    "recommendation": "BUILD",
+    "analyzed_at": "2026-03-04T16:57:04.603524",
+    "signals": [
+      "tired of",
+      "broken"
+    ],
+    "engagement": {
+      "upvotes": 0,
+      "comments": 52
+    },
+    "snippet": "Why is there no \"one place\" for first-time founders? Seriously asking because this has been bugging me! You have an idea. cool. Now what?\n\nResearch the market? open ChatGPT, Google Trends, reddit... spend 3 hours and still not sure if anyone cares\n\nValidate? Everyone says \"talk to people,\" but like."
+  },
+  {
+    "id": "1rj3d59",
+    "source": "reddit",
+    "title": "LibreOffice Draw or PowerPoint as an alternative to Microsoft Publisher?",
+    "url": "https://reddit.com/r/software/comments/1rj3d59/libreoffice_draw_or_powerpoint_as_an_alternative/",
+    "scores": {
+      "demand": 5,
+      "pain": 4,
+      "buildability": 6,
+      "revenue": 4,
+      "overall": 48
+    },
+    "overall_score": 48,
+    "recommendation": "WATCH",
+    "analyzed_at": "2026-03-04T16:57:04.603524",
+    "signals": [
+      "alternative to"
+    ],
+    "engagement": {
+      "upvotes": 10,
+      "comments": 26
+    },
+    "snippet": "My workplace is looking for an alternative to Microsoft Publisher for printed documents. We're a small optometry office and often use it to make special charts, activities for kids, etc. I'm liking LibreOffice Draw, as we'll be able to convert out current files over with some formatting repairs as o"
+  },
+  {
+    "id": "47212576",
+    "source": "hackernews",
+    "title": "Show HN: Timber \u2013 Ollama for classical ML models, 336x faster than Python",
+    "url": "https://github.com/kossisoroyce/timber",
+    "scores": {
+      "demand": 7,
+      "pain": 4,
+      "buildability": 6,
+      "revenue": 4,
+      "overall": 52
+    },
+    "overall_score": 52,
+    "recommendation": "WATCH",
+    "analyzed_at": "2026-03-04T16:57:04.603524",
+    "signals": [],
+    "engagement": {
+      "upvotes": 203,
+      "comments": 34
+    },
+    "snippet": ""
+  },
+  {
+    "id": "1rhge0v",
+    "source": "reddit",
+    "title": "Serious early-stage founders, where do you actually look for execution help?",
+    "url": "https://reddit.com/r/Entrepreneur/comments/1rhge0v/serious_earlystage_founders_where_do_you_actually/",
+    "scores": {
+      "demand": 5,
+      "pain": 4,
+      "buildability": 6,
+      "revenue": 4,
+      "overall": 48
+    },
+    "overall_score": 48,
+    "recommendation": "WATCH",
+    "analyzed_at": "2026-03-04T16:57:04.603524",
+    "signals": [
+      "broken"
+    ],
+    "engagement": {
+      "upvotes": 9,
+      "comments": 43
+    },
+    "snippet": "I work with pre-PMF founders on GTM and execution structure.  \nNot growth hacks. Not \u201cmore outreach.\u201d  \nMostly fixing broken signal loops, messy outbound, unclear tracking, inconsistent follow-up, and momentum that dies after two weeks.\n\nWhat I\u2019ve noticed is that founders rarely look for \u201csystems he"
+  },
+  {
+    "id": "1rkifvd",
+    "source": "reddit",
+    "title": "Why is it so hard to get clients for a service-based startup in 2026?",
+    "url": "https://reddit.com/r/smallbusiness/comments/1rkifvd/why_is_it_so_hard_to_get_clients_for_a/",
+    "scores": {
+      "demand": 5,
+      "pain": 4,
+      "buildability": 9,
+      "revenue": 6,
+      "overall": 60
+    },
+    "overall_score": 60,
+    "recommendation": "WATCH",
+    "analyzed_at": "2026-03-04T16:57:04.603524",
+    "signals": [
+      "why is it so hard to"
+    ],
+    "engagement": {
+      "upvotes": 8,
+      "comments": 81
+    },
+    "snippet": "I started a small web development agency about a month ago. So far I\u2019ve reached out to around 500 businesses (mostly jewellery shops and online sellers in tier-1 cities from my state).\nMy goal was simple: offer affordable websites so businesses can showcase their products online.\nAt first I sent lon"
+  },
+  {
+    "id": "1rkqny2",
+    "source": "reddit",
+    "title": "The Best GGUF VRAM Calculator",
+    "url": "https://reddit.com/r/LocalLLaMA/comments/1rkqny2/the_best_gguf_vram_calculator/",
+    "scores": {
+      "demand": 3,
+      "pain": 4,
+      "buildability": 9,
+      "revenue": 4,
+      "overall": 50
+    },
+    "overall_score": 50,
+    "recommendation": "WATCH",
+    "analyzed_at": "2026-03-04T16:57:04.603524",
+    "signals": [
+      "broken"
+    ],
+    "engagement": {
+      "upvotes": 8,
+      "comments": 1
+    },
+    "snippet": "I've been using this for a while and just realized this sub seemed to have no post about this, as far as I know, this is the most accurate gguf vram calculator available, pulling metadata info directly from the model files and doing calculations based on the specific architecture of both the model a"
+  },
+  {
+    "id": "47204994",
+    "source": "hackernews",
+    "title": "Libre Solar \u2013 Open Hardware for Renewable Energy",
+    "url": "https://libre.solar",
+    "scores": {
+      "demand": 7,
+      "pain": 4,
+      "buildability": 3,
+      "revenue": 4,
+      "overall": 45
+    },
+    "overall_score": 45,
+    "recommendation": "WATCH",
+    "analyzed_at": "2026-03-04T16:57:04.603524",
+    "signals": [],
+    "engagement": {
+      "upvotes": 184,
+      "comments": 56
+    },
+    "snippet": ""
+  },
+  {
+    "id": "47247033",
+    "source": "hackernews",
+    "title": "Glaze by Raycast",
+    "url": "https://www.glazeapp.com/",
+    "scores": {
+      "demand": 7,
+      "pain": 4,
+      "buildability": 6,
+      "revenue": 4,
+      "overall": 52
+    },
+    "overall_score": 52,
+    "recommendation": "WATCH",
+    "analyzed_at": "2026-03-04T16:57:04.603524",
+    "signals": [],
+    "engagement": {
+      "upvotes": 176,
+      "comments": 103
+    },
+    "snippet": ""
+  },
+  {
+    "id": "1rk3ap8",
+    "source": "reddit",
+    "title": "Alternative to elevenlabs but free?",
+    "url": "https://reddit.com/r/software/comments/1rk3ap8/alternative_to_elevenlabs_but_free/",
+    "scores": {
+      "demand": 3,
+      "pain": 4,
+      "buildability": 6,
+      "revenue": 6,
+      "overall": 48
+    },
+    "overall_score": 48,
+    "recommendation": "WATCH",
+    "analyzed_at": "2026-03-04T16:57:04.603524",
+    "signals": [
+      "alternative to"
+    ],
+    "engagement": {
+      "upvotes": 6,
+      "comments": 14
+    },
+    "snippet": "I'm a student and I don't really have much to spend on softwares like elevenlabs for good quality voiceovers but I was hoping to start making videos and I really need some suggestions on some free and good softwares that work just as good as elevenlabs or better. Could someone please help me?"
+  },
+  {
+    "id": "47197218",
+    "source": "hackernews",
+    "title": "Show HN: Stacked Game of Life",
+    "url": "https://stacked-game-of-life.koenvangilst.nl/",
+    "scores": {
+      "demand": 7,
+      "pain": 4,
+      "buildability": 6,
+      "revenue": 4,
+      "overall": 52
+    },
+    "overall_score": 52,
+    "recommendation": "WATCH",
+    "analyzed_at": "2026-03-04T16:57:04.603524",
+    "signals": [],
+    "engagement": {
+      "upvotes": 163,
+      "comments": 26
+    },
+    "snippet": "<a href=\"https:&#x2F;&#x2F;github.com&#x2F;vnglst&#x2F;stacked-game-of-life\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;vnglst&#x2F;stacked-game-of-life</a>"
+  },
+  {
+    "id": "1rkqdca",
+    "source": "reddit",
+    "title": "How to stop spending so much time on my phone?",
+    "url": "https://reddit.com/r/productivity/comments/1rkqdca/how_to_stop_spending_so_much_time_on_my_phone/",
+    "scores": {
+      "demand": 3,
+      "pain": 4,
+      "buildability": 6,
+      "revenue": 4,
+      "overall": 42
+    },
+    "overall_score": 42,
+    "recommendation": "SKIP",
+    "analyzed_at": "2026-03-04T16:57:04.603524",
+    "signals": [
+      "tired of"
+    ],
+    "engagement": {
+      "upvotes": 5,
+      "comments": 9
+    },
+    "snippet": "I know the title sounds a bit ironic, but I am tired of the cycle of trying to make myself organized and productive for the day and instead doom scrolling on my phone all day until its time to sleep. Everyday I wake up, thinking I will have a routine to have less brain fog, but instead I end up scro"
+  },
+  {
+    "id": "1rkk98d",
+    "source": "reddit",
+    "title": "Microsoft Employee Monitoring - What can they see?",
+    "url": "https://reddit.com/r/remotework/comments/1rkk98d/microsoft_employee_monitoring_what_can_they_see/",
+    "scores": {
+      "demand": 5,
+      "pain": 4,
+      "buildability": 9,
+      "revenue": 4,
+      "overall": 55
+    },
+    "overall_score": 55,
+    "recommendation": "WATCH",
+    "analyzed_at": "2026-03-04T16:57:04.603524",
+    "signals": [
+      "sucks"
+    ],
+    "engagement": {
+      "upvotes": 5,
+      "comments": 18
+    },
+    "snippet": "Hello, my company just started moving us over to teams and since Microsoft completely sucks, I'm assuming this is so they can monitor us. I wanted to see if anyone knew the kind of info they see. \nI'm most worried about location sharing. Is that something they can track? They'll see my location anyw"
+  },
+  {
+    "id": "1rixawf",
+    "source": "reddit",
+    "title": "Need advice - alternative to adobe",
+    "url": "https://reddit.com/r/software/comments/1rixawf/need_advice_alternative_to_adobe/",
+    "scores": {
+      "demand": 3,
+      "pain": 4,
+      "buildability": 6,
+      "revenue": 6,
+      "overall": 48
+    },
+    "overall_score": 48,
+    "recommendation": "WATCH",
+    "analyzed_at": "2026-03-04T16:57:04.603524",
+    "signals": [
+      "alternative to"
+    ],
+    "engagement": {
+      "upvotes": 5,
+      "comments": 15
+    },
+    "snippet": "Cab anyone suggest alternatives to adobe? \n\nI'm refusing to pay $400 for adobe a year. I run my own company and are dependant on a few adobe solutions as a lot of stuff is pdf related. \n\nI basically need to be able to read, edit and save pdfs. Ideally also secure and sign. \n\nAlso need a function for"
+  },
+  {
+    "id": "1rkm884",
+    "source": "reddit",
+    "title": "Wrote our terms of service myself using templates. Lawyer found eleven problems",
+    "url": "https://reddit.com/r/SaaS/comments/1rkm884/wrote_our_terms_of_service_myself_using_templates/",
+    "scores": {
+      "demand": 3,
+      "pain": 4,
+      "buildability": 9,
+      "revenue": 6,
+      "overall": 55
+    },
+    "overall_score": 55,
+    "recommendation": "WATCH",
+    "analyzed_at": "2026-03-04T16:57:04.603524",
+    "signals": [
+      "terrible"
+    ],
+    "engagement": {
+      "upvotes": 4,
+      "comments": 0
+    },
+    "snippet": "Bootstrapping budget meant I used online templates to cobble together our terms of service, privacy policy, and subscription agreement. Looked professional enough and covered the basics. Ran that way for about a year and a half.\n\nWhen we finally had a lawyer review everything they found eleven issue"
+  },
+  {
+    "id": "1r8vpgz",
+    "source": "reddit",
+    "title": "I built Open source alternative to Raycast + Speechify + Wispr Flow with AI and Memory",
+    "url": "https://reddit.com/r/indiehackers/comments/1r8vpgz/i_built_open_source_alternative_to_raycast/",
+    "scores": {
+      "demand": 3,
+      "pain": 4,
+      "buildability": 6,
+      "revenue": 4,
+      "overall": 42
+    },
+    "overall_score": 42,
+    "recommendation": "SKIP",
+    "analyzed_at": "2026-03-04T16:57:04.603524",
+    "signals": [
+      "alternative to"
+    ],
+    "engagement": {
+      "upvotes": 4,
+      "comments": 6
+    },
+    "snippet": ""
+  },
+  {
+    "id": "47215569",
+    "source": "hackernews",
+    "title": "Ask HN: How are you all staying sane?",
+    "url": "https://news.ycombinator.com/item?id=47215569",
+    "scores": {
+      "demand": 7,
+      "pain": 4,
+      "buildability": 9,
+      "revenue": 4,
+      "overall": 60
+    },
+    "overall_score": 60,
+    "recommendation": "WATCH",
+    "analyzed_at": "2026-03-04T16:57:04.603524",
+    "signals": [],
+    "engagement": {
+      "upvotes": 144,
+      "comments": 145
+    },
+    "snippet": "Let&#x27;s start with the simplest: the AI - sometimes I feel like like ground is falling beneath my feet, no one can predict what can happen months in advance let alone years - the future is unknown. The Ukraine, the Iran, the Venezuela, Gaza&#x2F;Palestine, Israel, Russia - the Taiwan! The conflic"
+  },
+  {
+    "id": "1rkfj3y",
+    "source": "reddit",
+    "title": "WebAuthn is not supported on sites with TLS certificate errors.",
+    "url": "https://reddit.com/r/webdev/comments/1rkfj3y/webauthn_is_not_supported_on_sites_with_tls/",
+    "scores": {
+      "demand": 3,
+      "pain": 4,
+      "buildability": 9,
+      "revenue": 4,
+      "overall": 50
+    },
+    "overall_score": 50,
+    "recommendation": "WATCH",
+    "analyzed_at": "2026-03-04T16:57:04.603524",
+    "signals": [
+      "hate how"
+    ],
+    "engagement": {
+      "upvotes": 3,
+      "comments": 8
+    },
+    "snippet": "I have added changed my website from [https://localhost:3000](https://localhost:3000) to https://testsite.com:3000. (I hate how the host file doesn't get rid of the port number) I tried registering a new passkey, but lo and behold I get \"NotAllowedError: WebAuthn is not supported on sites with TLS c"
+  },
+  {
+    "id": "47253364",
+    "source": "hackernews",
+    "title": "Does that use a lot of energy?",
+    "url": "https://hannahritchie.github.io/energy-use-comparisons/",
+    "scores": {
+      "demand": 7,
+      "pain": 4,
+      "buildability": 6,
+      "revenue": 4,
+      "overall": 52
+    },
+    "overall_score": 52,
+    "recommendation": "WATCH",
+    "analyzed_at": "2026-03-04T16:57:04.603524",
+    "signals": [],
+    "engagement": {
+      "upvotes": 130,
+      "comments": 95
+    },
+    "snippet": ""
+  },
+  {
+    "id": "47245491",
+    "source": "hackernews",
+    "title": "Moss is a pixel canvas where every brush is a tiny program",
+    "url": "https://www.moss.town/",
+    "scores": {
+      "demand": 7,
+      "pain": 4,
+      "buildability": 6,
+      "revenue": 4,
+      "overall": 52
+    },
+    "overall_score": 52,
+    "recommendation": "WATCH",
+    "analyzed_at": "2026-03-04T16:57:04.603524",
+    "signals": [],
+    "engagement": {
+      "upvotes": 134,
+      "comments": 19
+    },
+    "snippet": ""
+  },
+  {
+    "id": "1rkfui9",
+    "source": "reddit",
+    "title": "Does switching to your own website reduce fear/anxiety?",
+    "url": "https://reddit.com/r/Entrepreneur/comments/1rkfui9/does_switching_to_your_own_website_reduce/",
+    "scores": {
+      "demand": 3,
+      "pain": 4,
+      "buildability": 9,
+      "revenue": 8,
+      "overall": 60
+    },
+    "overall_score": 60,
+    "recommendation": "WATCH",
+    "analyzed_at": "2026-03-04T16:57:04.603524",
+    "signals": [
+      "terrible"
+    ],
+    "engagement": {
+      "upvotes": 2,
+      "comments": 16
+    },
+    "snippet": "I'm currently selling on p2p marketplaces, I still have not made the switch to my own website because I didn't have a clear plan about how to advertise it but I'm considering it for the near future, I'm more experienced now. Marketplaces cause me a lot of anxiety/stress because one negative feedback"
+  },
+  {
+    "id": "1rkhxh0",
+    "source": "reddit",
+    "title": "Side project ui design taking longer than building features",
+    "url": "https://reddit.com/r/webdev/comments/1rkhxh0/side_project_ui_design_taking_longer_than/",
+    "scores": {
+      "demand": 5,
+      "pain": 4,
+      "buildability": 9,
+      "revenue": 4,
+      "overall": 55
+    },
+    "overall_score": 55,
+    "recommendation": "WATCH",
+    "analyzed_at": "2026-03-04T16:57:04.603524",
+    "signals": [
+      "terrible"
+    ],
+    "engagement": {
+      "upvotes": 2,
+      "comments": 25
+    },
+    "snippet": "Im building a side project and the actual coding takes me a few hours but then i spend days fighting with the design trying to make it not look terrible. This is backwards right? The UI should be quick but its becoming the bottleneck. I keep redesigning the same screens over and over because im not "
+  },
+  {
+    "id": "1rktuu4",
+    "source": "reddit",
+    "title": "I got tired of brain-training sites covered in ads or looking like they were built in 2010. So I built a clean, competitive cognitive tester. Roast my project.",
+    "url": "https://reddit.com/r/SideProject/comments/1rktuu4/i_got_tired_of_braintraining_sites_covered_in_ads/",
+    "scores": {
+      "demand": 3,
+      "pain": 4,
+      "buildability": 9,
+      "revenue": 6,
+      "overall": 55
+    },
+    "overall_score": 55,
+    "recommendation": "WATCH",
+    "analyzed_at": "2026-03-04T16:57:04.603524",
+    "signals": [
+      "tired of"
+    ],
+    "engagement": {
+      "upvotes": 2,
+      "comments": 2
+    },
+    "snippet": "Hey everyone,\n\nI\u2019ve been going down a rabbit hole recently researching mental agility and reaction times. I wanted a simple, daily way to track my baseline, but the existing free tools (like Human Benchmark) either look pretty dated, are littered with banner ads, or don't really have a good way to c"
+  },
+  {
+    "id": "47253177",
+    "source": "hackernews",
+    "title": "Building a new Flash",
+    "url": "https://bill.newgrounds.com/news/post/1607118",
+    "scores": {
+      "demand": 7,
+      "pain": 4,
+      "buildability": 6,
+      "revenue": 4,
+      "overall": 52
+    },
+    "overall_score": 52,
+    "recommendation": "WATCH",
+    "analyzed_at": "2026-03-04T16:57:04.603524",
+    "signals": [],
+    "engagement": {
+      "upvotes": 126,
+      "comments": 21
+    },
+    "snippet": ""
+  },
+  {
+    "id": "47219667",
+    "source": "hackernews",
+    "title": "Ask HN: Who wants to be hired? (March 2026)",
+    "url": "https://news.ycombinator.com/item?id=47219667",
+    "scores": {
+      "demand": 7,
+      "pain": 4,
+      "buildability": 6,
+      "revenue": 4,
+      "overall": 52
+    },
+    "overall_score": 52,
+    "recommendation": "WATCH",
+    "analyzed_at": "2026-03-04T16:57:04.603524",
+    "signals": [],
+    "engagement": {
+      "upvotes": 123,
+      "comments": 356
+    },
+    "snippet": "Share your information if you are looking for work. Please use this format:<p><pre><code>  Location:\n  Remote:\n  Willing to relocate:\n  Technologies:\n  R\u00e9sum\u00e9&#x2F;CV:\n  Email:\n</code></pre>\nPlease only post if you are personally looking for work. Agencies, recruiters, job boards,\nand so on, are off"
+  },
+  {
+    "id": "1rkzv0h",
+    "source": "reddit",
+    "title": "Roast My App - Recapp Sports Highlights",
+    "url": "https://reddit.com/r/apps/comments/1rkzv0h/roast_my_app_recapp_sports_highlights/",
+    "scores": {
+      "demand": 3,
+      "pain": 4,
+      "buildability": 9,
+      "revenue": 4,
+      "overall": 50
+    },
+    "overall_score": 50,
+    "recommendation": "WATCH",
+    "analyzed_at": "2026-03-04T16:57:04.603524",
+    "signals": [
+      "sucks"
+    ],
+    "engagement": {
+      "upvotes": 1,
+      "comments": 0
+    },
+    "snippet": "Hey,\n\nWe just launched Recapp Sports Highlights a couple weeks ago - with the premise of trying to give the user the perfect personalized feed of game recaps, highlights, memes, scores, injuries, and whatever viral sports stuff actually matters.\n\nI (and the team) poured way too many late nights into"
+  },
+  {
+    "id": "1rk30rn",
+    "source": "reddit",
+    "title": "Why does everyone say that Frix Labs is so good for answering calls for businesses?",
+    "url": "https://reddit.com/r/apps/comments/1rk30rn/why_does_everyone_say_that_frix_labs_is_so_good/",
+    "scores": {
+      "demand": 3,
+      "pain": 4,
+      "buildability": 6,
+      "revenue": 6,
+      "overall": 48
+    },
+    "overall_score": 48,
+    "recommendation": "WATCH",
+    "analyzed_at": "2026-03-04T16:57:04.603524",
+    "signals": [
+      "why does every"
+    ],
+    "engagement": {
+      "upvotes": 1,
+      "comments": 0
+    },
+    "snippet": ""
+  },
+  {
+    "id": "1rjj43s",
+    "source": "reddit",
+    "title": "We built an app for people tired of how are you?",
+    "url": "https://reddit.com/r/apps/comments/1rjj43s/we_built_an_app_for_people_tired_of_how_are_you/",
+    "scores": {
+      "demand": 3,
+      "pain": 4,
+      "buildability": 9,
+      "revenue": 4,
+      "overall": 50
+    },
+    "overall_score": 50,
+    "recommendation": "WATCH",
+    "analyzed_at": "2026-03-04T16:57:04.603524",
+    "signals": [
+      "tired of"
+    ],
+    "engagement": {
+      "upvotes": 1,
+      "comments": 1
+    },
+    "snippet": ""
+  },
+  {
+    "id": "1rl09b9",
+    "source": "reddit",
+    "title": "I got tired of realizing \u201cdiscounts\u201d weren\u2019t really discounts because of dynamic pricing. So we built a site that makes sure the price you see is really discounted \u2014 thoughts?",
+    "url": "https://reddit.com/r/SideProject/comments/1rl09b9/i_got_tired_of_realizing_discounts_werent_really/",
+    "scores": {
+      "demand": 3,
+      "pain": 4,
+      "buildability": 9,
+      "revenue": 6,
+      "overall": 55
+    },
+    "overall_score": 55,
+    "recommendation": "WATCH",
+    "analyzed_at": "2026-03-04T16:57:04.603524",
+    "signals": [
+      "tired of"
+    ],
+    "engagement": {
+      "upvotes": 1,
+      "comments": 0
+    },
+    "snippet": "https://reddit.com/link/1rl09b9/video/mw33bcl5x3ng1/player\n\nI kept running into \u201cdiscounts\u201d that weren\u2019t really discounts thanks to dynamic pricing, so we had an AI agent handle it automatically.\n\nIt checks live prices at major retailers and applies a funded discount instantly (there\u2019s a hard cap, s"
+  },
+  {
+    "id": "1rkxuol",
+    "source": "reddit",
+    "title": "Tired of slow Link-in-Bio tools? I created a high-end animated version for creators",
+    "url": "https://reddit.com/r/SideProject/comments/1rkxuol/tired_of_slow_linkinbio_tools_i_created_a_highend/",
+    "scores": {
+      "demand": 3,
+      "pain": 4,
+      "buildability": 9,
+      "revenue": 4,
+      "overall": 50
+    },
+    "overall_score": 50,
+    "recommendation": "WATCH",
+    "analyzed_at": "2026-03-04T16:57:04.603524",
+    "signals": [
+      "tired of"
+    ],
+    "engagement": {
+      "upvotes": 1,
+      "comments": 0
+    },
+    "snippet": ""
+  },
+  {
+    "id": "1rkxts2",
+    "source": "reddit",
+    "title": "I catalogued 1,200+ AI apps to understand what people are actually building \u2014 here's what surprised me",
+    "url": "https://reddit.com/r/SideProject/comments/1rkxts2/i_catalogued_1200_ai_apps_to_understand_what/",
+    "scores": {
+      "demand": 3,
+      "pain": 4,
+      "buildability": 9,
+      "revenue": 4,
+      "overall": 50
+    },
+    "overall_score": 50,
+    "recommendation": "WATCH",
+    "analyzed_at": "2026-03-04T16:57:04.603524",
+    "signals": [
+      "broken"
+    ],
+    "engagement": {
+      "upvotes": 1,
+      "comments": 1
+    },
+    "snippet": "    Over the past few months, I've been working on Stackhaus.ai \u2014 a marketplace/directory for AI-built apps. In the process of vetting and listing over 1,200 tools, I started noticing patterns that genuinely surprised me. Figured this was worth sharing.\n    \n    What I expected to find:\n    \u2022 ChatGP"
+  },
+  {
+    "id": "1rkj9g7",
+    "source": "reddit",
+    "title": "I was losing hours to the Paste &amp; Fix cycle. Here\u2019s a breakdown of the worst clipboard traps and a Windows utility I built to automate fixing them",
+    "url": "https://reddit.com/r/software/comments/1rkj9g7/i_was_losing_hours_to_the_paste_fix_cycle_heres_a/",
+    "scores": {
+      "demand": 3,
+      "pain": 4,
+      "buildability": 9,
+      "revenue": 4,
+      "overall": 50
+    },
+    "overall_score": 50,
+    "recommendation": "WATCH",
+    "analyzed_at": "2026-03-04T16:57:04.603524",
+    "signals": [
+      "tired of"
+    ],
+    "engagement": {
+      "upvotes": 1,
+      "comments": 0
+    },
+    "snippet": "Hey everyone, taking advantage of the Wednesday rule to share a tool I built to solve my own daily headaches. I'm a solo developer, and I built this because I was personally tired of fighting my clipboard.\n\nWe've all been there. You copy text from a website, a PDF, or an email, and what you get is a"
+  },
+  {
+    "id": "1rkfzgd",
+    "source": "reddit",
+    "title": "I built a \"gentle\" work tracker because rigid timers gave me anxiety. (Local-AI, AGPLv3)",
+    "url": "https://reddit.com/r/software/comments/1rkfzgd/i_built_a_gentle_work_tracker_because_rigid/",
+    "scores": {
+      "demand": 3,
+      "pain": 4,
+      "buildability": 9,
+      "revenue": 6,
+      "overall": 55
+    },
+    "overall_score": 55,
+    "recommendation": "WATCH",
+    "analyzed_at": "2026-03-04T16:57:04.603524",
+    "signals": [
+      "broken"
+    ],
+    "engagement": {
+      "upvotes": 1,
+      "comments": 0
+    },
+    "snippet": "I\u2019m a C# developer, and for years I\u2019ve struggled with a love/hate relationship with work tracking. I have \"time blindness\" (thanks, ADHD), so I need to track my work to know what I did all day.\n\nBut I found that almost every existing tool feels punitive.\n\nStopwatches create a background anxiety that"
+  },
+  {
+    "id": "1rjxsde",
+    "source": "reddit",
+    "title": "What actually breaks first when your company starts growing? it's probably not what you think (I will not promote)",
+    "url": "https://reddit.com/r/startups/comments/1rjxsde/what_actually_breaks_first_when_your_company/",
+    "scores": {
+      "demand": 5,
+      "pain": 4,
+      "buildability": 6,
+      "revenue": 4,
+      "overall": 48
+    },
+    "overall_score": 48,
+    "recommendation": "WATCH",
+    "analyzed_at": "2026-03-04T16:57:04.603524",
+    "signals": [
+      "why does every"
+    ],
+    "engagement": {
+      "upvotes": 0,
+      "comments": 21
+    },
+    "snippet": "I'm not talking about the early chaos stage where everything is on fire and you're just surviving. i mean that weird middle phase where things are kind of working, revenue is coming in, and then growth starts to stretch everything in ways you didn't plan for.\n\nin my experience it's rarely the obviou"
+  },
+  {
+    "id": "1rkvch8",
+    "source": "reddit",
+    "title": "web dev + automation saas for hire",
+    "url": "https://reddit.com/r/smallbusiness/comments/1rkvch8/web_dev_automation_saas_for_hire/",
+    "scores": {
+      "demand": 3,
+      "pain": 4,
+      "buildability": 9,
+      "revenue": 6,
+      "overall": 55
+    },
+    "overall_score": 55,
+    "recommendation": "WATCH",
+    "analyzed_at": "2026-03-04T16:57:04.603524",
+    "signals": [
+      "tired of"
+    ],
+    "engagement": {
+      "upvotes": 0,
+      "comments": 1
+    },
+    "snippet": "Stop losing time to \"busy work\" \u2013 Let\u2019s automate your business. \u2699\ufe0f\ud83e\udd16\n\n\u200e\n\n\u200eHi everyone! I\u2019m a developer looking to partner with 2-3 small business owners to build out my Automation and Systems Portfolio.\n\n\u200e\n\n\u200eInstead of a generic package, I want to solve your specific headaches. If there\u2019s a task that"
+  },
+  {
+    "id": "1rkiw6x",
+    "source": "reddit",
+    "title": "Building A Panic Attack App To $83K/month",
+    "url": "https://reddit.com/r/apps/comments/1rkiw6x/building_a_panic_attack_app_to_83kmonth/",
+    "scores": {
+      "demand": 3,
+      "pain": 4,
+      "buildability": 9,
+      "revenue": 6,
+      "overall": 55
+    },
+    "overall_score": 55,
+    "recommendation": "WATCH",
+    "analyzed_at": "2026-03-04T16:57:04.603524",
+    "signals": [
+      "broken"
+    ],
+    "engagement": {
+      "upvotes": 0,
+      "comments": 5
+    },
+    "snippet": "She had panic attacks at university.\n\nNo family doctor. No money. No app to help.\n\nSo she built one herself.\n\nHer name is Ania Wysocka. Her app is called Rootd. Today it has 4 million downloads, $1M+ in revenue, and she did it alone. No investors. No employees. No coding skills.\n\nHere's the part tha"
+  },
+  {
+    "id": "47246858",
+    "source": "hackernews",
+    "title": "MyFirst Kids Watch Hacked. Access to Camera and Microphone",
+    "url": "https://www.kth.se/en/om/nyheter/centrala-nyheter/kth-studenten-hackade-klocka-for-barn-1.1461249",
+    "scores": {
+      "demand": 7,
+      "pain": 4,
+      "buildability": 6,
+      "revenue": 4,
+      "overall": 52
+    },
+    "overall_score": 52,
+    "recommendation": "WATCH",
+    "analyzed_at": "2026-03-04T16:57:04.603524",
+    "signals": [],
+    "engagement": {
+      "upvotes": 101,
+      "comments": 28
+    },
+    "snippet": ""
+  },
+  {
+    "id": "47254873",
+    "source": "hackernews",
+    "title": "Show HN: Just Take A Note \u2013 browser notepad that stores everything locally",
+    "url": "https://chromewebstore.google.com/detail/just-take-a-note/pjidjoeplknpljmopemnhddajdcbhgbj",
+    "scores": {
+      "demand": 3,
+      "pain": 4,
+      "buildability": 9,
+      "revenue": 4,
+      "overall": 50
+    },
+    "overall_score": 50,
+    "recommendation": "WATCH",
+    "analyzed_at": "2026-03-04T16:57:04.603524",
+    "signals": [
+      "tired of"
+    ],
+    "engagement": {
+      "upvotes": 1,
+      "comments": 0
+    },
+    "snippet": "Show HN: Just Take A Note \u2013 browser notepad that stores everything locally, no cloud\nI built a Chrome extension for people who are tired of opening Notion&#x2F;Google Keep just to write a quick thought \u2014 only to get distracted by syncing, login prompts, or the app itself.\nWhat it does:<p>Rich text e"
+  },
+  {
+    "id": "47254845",
+    "source": "hackernews",
+    "title": "Show HN: Agentica \u2013 open-source coding agent with more models, less cost",
+    "url": "https://agentica.genlabs.dev",
+    "scores": {
+      "demand": 3,
+      "pain": 4,
+      "buildability": 6,
+      "revenue": 10,
+      "overall": 57
+    },
+    "overall_score": 57,
+    "recommendation": "WATCH",
+    "analyzed_at": "2026-03-04T16:57:04.603524",
+    "signals": [
+      "alternative to"
+    ],
+    "engagement": {
+      "upvotes": 2,
+      "comments": 0
+    },
+    "snippet": "Built this as a cheaper alternative to $20&#x2F;month agents. Free users get 100 requests&#x2F;day for our Deca models and other open source models."
+  },
+  {
+    "id": "47253193",
+    "source": "hackernews",
+    "title": "Show HN: Qlog \u2013 grep for logs, but 100x faster",
+    "url": "https://github.com/Cosm00/qlog",
+    "scores": {
+      "demand": 3,
+      "pain": 4,
+      "buildability": 6,
+      "revenue": 4,
+      "overall": 42
+    },
+    "overall_score": 42,
+    "recommendation": "SKIP",
+    "analyzed_at": "2026-03-04T16:57:04.603524",
+    "signals": [
+      "tired of"
+    ],
+    "engagement": {
+      "upvotes": 5,
+      "comments": 9
+    },
+    "snippet": "I built qlog because I got tired of waiting for grep to search through gigabytes of logs.<p>qlog uses an inverted index (like search engines) to search millions of log lines in milliseconds. It&#x27;s 10-100x faster than grep and way simpler than setting up Elasticsearch.<p>Features:\n- Lightning fas"
+  },
+  {
+    "id": "47253906",
+    "source": "hackernews",
+    "title": "Show HN: Gobble \u2013 Yet Another OSS Alternative to Google Analytics/PostHog, etc.",
+    "url": "https://github.com/inventhq/Gobble",
+    "scores": {
+      "demand": 3,
+      "pain": 4,
+      "buildability": 6,
+      "revenue": 4,
+      "overall": 42
+    },
+    "overall_score": 42,
+    "recommendation": "SKIP",
+    "analyzed_at": "2026-03-04T16:57:04.603524",
+    "signals": [
+      "alternative to"
+    ],
+    "engagement": {
+      "upvotes": 2,
+      "comments": 1
+    },
+    "snippet": ""
+  },
+  {
+    "id": "47247096",
+    "source": "hackernews",
+    "title": "Show HN: Not_pad: local idea hub, Windows, single .exe, no install, zip",
+    "url": "https://github.com/SylvaMoth/not_pad/releases/tag/v0.98.3-Beta",
+    "scores": {
+      "demand": 3,
+      "pain": 4,
+      "buildability": 9,
+      "revenue": 4,
+      "overall": 50
+    },
+    "overall_score": 50,
+    "recommendation": "WATCH",
+    "analyzed_at": "2026-03-04T16:57:04.603524",
+    "signals": [
+      "broken"
+    ],
+    "engagement": {
+      "upvotes": 2,
+      "comments": 1
+    },
+    "snippet": "I kept abandoning every note tool I tried \u2014 not because they were bad, but because they slowly became systems I had to maintain. At some point opening the app meant thinking about the app first. The idea could wait.<p>So I built something with no moving parts. One executable, no installer, no accoun"
+  }
+]

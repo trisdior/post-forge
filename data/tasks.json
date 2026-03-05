@@ -1,0 +1,102 @@
+[
+  {
+    "id": "init01",
+    "title": "Cold call 5 small PM companies",
+    "date": "2026-02-16",
+    "time": "10:00",
+    "category": "lead-gen",
+    "priority": "high",
+    "completed": false,
+    "recurring": "weekly",
+    "notes": "List in small-pm-targets.md",
+    "createdAt": "2026-02-15T21:00:00Z"
+  },
+  {
+    "id": "init02",
+    "title": "Post in 3 Facebook groups",
+    "date": "2026-02-16",
+    "time": "09:00",
+    "category": "marketing",
+    "priority": "high",
+    "completed": false,
+    "recurring": "daily",
+    "notes": "Templates in daily-system.md",
+    "createdAt": "2026-02-15T21:00:00Z"
+  },
+  {
+    "id": "init03",
+    "title": "Send personal network text blast",
+    "date": "2026-02-16",
+    "category": "lead-gen",
+    "priority": "high",
+    "completed": false,
+    "notes": "Friends, family, former coworkers",
+    "createdAt": "2026-02-15T21:00:00Z"
+  },
+  {
+    "id": "init05",
+    "title": "Post on Nextdoor",
+    "date": "2026-02-16",
+    "time": "11:00",
+    "category": "marketing",
+    "priority": "medium",
+    "completed": false,
+    "recurring": "weekly",
+    "notes": "Introduce Valencia Construction",
+    "createdAt": "2026-02-15T21:00:00Z"
+  },
+  {
+    "id": "init06",
+    "title": "Write viral article: 'I'm 20 and Own a Construction Company'",
+    "date": "2026-02-18",
+    "category": "marketing",
+    "priority": "medium",
+    "completed": false,
+    "notes": "Article #4 - viral potential",
+    "createdAt": "2026-02-15T21:00:00Z"
+  },
+  {
+    "id": "init07",
+    "title": "Set up Resend custom domain",
+    "date": "2026-02-19",
+    "category": "admin",
+    "priority": "low",
+    "completed": false,
+    "notes": "Currently using onboarding@resend.dev",
+    "createdAt": "2026-02-15T21:00:00Z"
+  },
+  {
+    "id": "init08",
+    "title": "Post Craigslist ad",
+    "date": "2026-02-16",
+    "time": "08:00",
+    "category": "lead-gen",
+    "priority": "medium",
+    "completed": false,
+    "recurring": "daily",
+    "notes": "Templates in craigslist-ads.md",
+    "createdAt": "2026-02-15T21:00:00Z"
+  },
+  {
+    "id": "init09",
+    "title": "Check & respond to leads",
+    "date": "2026-02-16",
+    "time": "08:30",
+    "category": "lead-gen",
+    "priority": "high",
+    "completed": true,
+    "recurring": "daily",
+    "notes": "Check Telegram, email, phone",
+    "createdAt": "2026-02-15T21:00:00Z"
+  },
+  {
+    "id": "init10",
+    "title": "Send 3-tier proposal template",
+    "date": "2026-02-16",
+    "category": "admin",
+    "priority": "medium",
+    "completed": false,
+    "notes": "Send to Steve so estimates can be generated",
+    "createdAt": "2026-02-15T21:00:00Z"
+  }
+]

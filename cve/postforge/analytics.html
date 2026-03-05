@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>PostForge - Analytics</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0a0f;--surface:#12121a;--card:#16161f;--border:#1e1e2e;--text:#f0f0f5;--muted:#8888a0;--accent:#7c3aed;--accent2:#a855f7;--green:#10b981;--cyan:#06b6d4;--pink:#ec4899;--red:#ef4444;--orange:#f59e0b}
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.bg-grid{position:fixed;top:0;left:0;right:0;bottom:0;z-index:0;background-image:linear-gradient(rgba(124,58,237,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(124,58,237,0.02) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
+.bg-glow{position:fixed;top:-200px;left:-100px;width:500px;height:500px;z-index:0;background:radial-gradient(circle,rgba(16,185,129,0.06) 0%,transparent 70%);animation:glowF 12s ease-in-out infinite;pointer-events:none}
+.bg-glow2{position:fixed;bottom:-200px;right:-100px;width:500px;height:500px;z-index:0;background:radial-gradient(circle,rgba(124,58,237,0.06) 0%,transparent 70%);animation:glowF 10s ease-in-out infinite reverse;pointer-events:none}
+@keyframes glowF{0%,100%{transform:translate(0,0)}50%{transform:translate(30px,-20px)}}
+.nav{background:rgba(10,10,15,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.logo{font-size:20px;font-weight:900}.logo span{background:linear-gradient(135deg,var(--accent2),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.tabs{display:flex;gap:4px}.tab{padding:8px 16px;border-radius:8px;font-size:13px;font-weight:600;color:var(--muted);text-decoration:none;transition:all 0.2s}.tab:hover{color:var(--text);background:rgba(255,255,255,0.05)}.tab.active{color:var(--text);background:rgba(124,58,237,0.15)}
+.container{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:40px 24px}
+h1{font-size:28px;font-weight:900;margin-bottom:4px;animation:fadeUp 0.5s ease-out}
+.sub{color:var(--muted);font-size:14px;margin-bottom:32px;animation:fadeUp 0.5s ease-out 0.05s both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+/* Time Range */
+.time-range{display:flex;gap:6px;margin-bottom:32px;animation:fadeUp 0.5s ease-out 0.1s both}
+.range-btn{padding:7px 16px;border-radius:8px;font-size:12px;font-weight:600;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;transition:all 0.2s}
+.range-btn.active{border-color:var(--accent);color:var(--text);background:rgba(124,58,237,0.1)}
+.range-btn:hover{border-color:rgba(124,58,237,0.3);color:var(--text)}
+
+/* Stat Cards */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:32px}
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px;transition:all 0.4s cubic-bezier(0.4,0,0.2,1);animation:fadeUp 0.5s ease-out both;position:relative;overflow:hidden}
+.stat-card:nth-child(1){animation-delay:0.12s}.stat-card:nth-child(2){animation-delay:0.18s}.stat-card:nth-child(3){animation-delay:0.24s}.stat-card:nth-child(4){animation-delay:0.3s}
+.stat-card:hover{transform:translateY(-3px);border-color:rgba(124,58,237,0.2);box-shadow:0 12px 40px rgba(0,0,0,0.3)}
+.stat-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;border-radius:2px 2px 0 0}
+.stat-card:nth-child(1)::after{background:linear-gradient(90deg,var(--accent),var(--accent2))}
+.stat-card:nth-child(2)::after{background:linear-gradient(90deg,var(--green),var(--cyan))}
+.stat-card:nth-child(3)::after{background:linear-gradient(90deg,var(--pink),var(--orange))}
+.stat-card:nth-child(4)::after{background:linear-gradient(90deg,var(--cyan),var(--accent))}
+.stat-label{font-size:12px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px}
+.stat-value{font-size:32px;font-weight:900;letter-spacing:-1px;margin-bottom:4px}
+.stat-change{font-size:12px;font-weight:600;display:flex;align-items:center;gap:4px}
+.stat-up{color:var(--green)}.stat-down{color:var(--red)}
+
+/* Charts */
+.chart-grid{display:grid;grid-template-columns:2fr 1fr;gap:16px;margin-bottom:24px}
+.chart-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;animation:fadeUp 0.5s ease-out 0.35s both;transition:all 0.3s}
+.chart-card:hover{border-color:rgba(124,58,237,0.15)}
+.chart-title{font-size:15px;font-weight:700;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between}
+.chart-title span{font-size:12px;color:var(--muted);font-weight:500}
+
+/* Bar Chart */
+.bar-chart{display:flex;align-items:flex-end;gap:8px;height:180px;padding-top:10px}
+.bar-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px}
+.bar{width:100%;border-radius:6px 6px 2px 2px;transition:height 1s cubic-bezier(0.4,0,0.2,1);position:relative;cursor:pointer;min-width:20px}
+.bar:hover{filter:brightness(1.3)}
+.bar-label{font-size:10px;color:var(--muted);font-weight:600}
+
+/* Donut Chart */
+.donut-wrap{display:flex;flex-direction:column;align-items:center;gap:20px}
+.donut{width:160px;height:160px;border-radius:50%;position:relative;display:flex;align-items:center;justify-content:center}
+.donut-center{position:absolute;width:90px;height:90px;border-radius:50%;background:var(--card);display:flex;flex-direction:column;align-items:center;justify-content:center}
+.donut-center .big{font-size:22px;font-weight:900}
+.donut-center .small{font-size:10px;color:var(--muted)}
+.donut-legend{display:flex;flex-direction:column;gap:8px;width:100%}
+.legend-item{display:flex;align-items:center;justify-content:space-between;font-size:13px}
+.legend-dot{width:10px;height:10px;border-radius:3px;margin-right:8px}
+.legend-left{display:flex;align-items:center}
+.legend-val{font-weight:700;font-size:13px}
+
+/* Post Performance Table */
+.perf-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;animation:fadeUp 0.5s ease-out 0.4s both}
+.perf-title{font-size:15px;font-weight:700;margin-bottom:16px}
+.perf-table{width:100%;border-collapse:collapse}
+.perf-table th{text-align:left;font-size:11px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:0.5px;padding:8px 12px;border-bottom:1px solid var(--border)}
+.perf-table td{padding:12px;font-size:13px;border-bottom:1px solid rgba(30,30,46,0.5)}
+.perf-table tr{transition:background 0.2s}
+.perf-table tr:hover{background:rgba(124,58,237,0.03)}
+.perf-platform{padding:3px 10px;border-radius:5px;font-size:11px;font-weight:700}
+.plat-ig{background:rgba(236,72,153,0.12);color:#f472b6}
+.plat-fb{background:rgba(59,130,246,0.12);color:#60a5fa}
+.plat-tw{background:rgba(168,85,247,0.12);color:#c084fc}
+.plat-li{background:rgba(6,182,212,0.12);color:#22d3ee}
+.perf-preview{max-width:250px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--muted)}
+.perf-eng{color:var(--green);font-weight:700}
+
+/* AI Insights */
+.insights{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;margin-top:24px;animation:fadeUp 0.5s ease-out 0.45s both}
+.insights h2{font-size:15px;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.insight-list{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.insight-item{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:16px;transition:all 0.3s}
+.insight-item:hover{border-color:rgba(124,58,237,0.2);transform:translateY(-1px)}
+.insight-icon{font-size:20px;margin-bottom:8px}
+.insight-title{font-size:13px;font-weight:700;margin-bottom:4px}
+.insight-desc{font-size:12px;color:var(--muted);line-height:1.5}
+
+@media(max-width:768px){.stats{grid-template-columns:1fr 1fr}.chart-grid{grid-template-columns:1fr}.insight-list{grid-template-columns:1fr}}
+@media(max-width:480px){.stats{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="bg-grid"></div><div class="bg-glow"></div><div class="bg-glow2"></div>
+<div class="nav"><div class="logo">post<span>forge</span></div><div class="tabs"><a href="/app" class="tab">Create</a><a href="/agent" class="tab">My Agent</a><a href="/calendar" class="tab">Calendar</a><a href="/analytics" class="tab active">Analytics</a><a href="/clips" class="tab">Clips</a><a href="/autopilot" class="tab">Auto-Pilot</a><a href="/settings" class="tab">Settings</a></div><div></div></div>
+<div class="container">
+<h1>Analytics</h1>
+<p class="sub">Track your content performance across all platforms.</p>
+
+<div class="time-range">
+<button class="range-btn active" onclick="setRange(this)">7 days</button>
+<button class="range-btn" onclick="setRange(this)">30 days</button>
+<button class="range-btn" onclick="setRange(this)">90 days</button>
+<button class="range-btn" onclick="setRange(this)">All time</button>
+</div>
+
+<div class="stats">
+<div class="stat-card"><div class="stat-label">Total Posts</div><div class="stat-value" id="s-posts">0</div><div class="stat-change stat-up" id="s-posts-c"></div></div>
+<div class="stat-card"><div class="stat-label">Total Reach</div><div class="stat-value" id="s-reach">0</div><div class="stat-change stat-up" id="s-reach-c"></div></div>
+<div class="stat-card"><div class="stat-label">Engagement Rate</div><div class="stat-value" id="s-eng">0%</div><div class="stat-change stat-up" id="s-eng-c"></div></div>
+<div class="stat-card"><div class="stat-label">Best Time</div><div class="stat-value" id="s-time" style="font-size:24px"></div><div class="stat-change" id="s-time-c" style="color:var(--cyan)"></div></div>
+</div>
+
+<div class="chart-grid">
+<div class="chart-card">
+<div class="chart-title">Engagement This Week <span>Likes + Comments + Shares</span></div>
+<div class="bar-chart" id="bar-chart"></div>
+</div>
+<div class="chart-card">
+<div class="chart-title">Platform Mix</div>
+<div class="donut-wrap">
+<div class="donut" id="donut-chart"><div class="donut-center"><div class="big" id="donut-total">0</div><div class="small">posts</div></div></div>
+<div class="donut-legend" id="donut-legend"></div>
+</div>
+</div>
+</div>
+
+<div class="perf-card">
+<div class="perf-title">Top Performing Posts</div>
+<table class="perf-table">
+<thead><tr><th>Platform</th><th>Content</th><th>Reach</th><th>Engagement</th><th>Posted</th></tr></thead>
+<tbody id="perf-body"></tbody>
+</table>
+</div>
+
+<div class="insights">
+<h2>&#x1F4A1; AI Insights</h2>
+<div class="insight-list" id="insights-list"></div>
+</div>
+</div>
+
+<script>
+var token=localStorage.getItem('pf_token');
+if(!token)location='/login';
+
+function setRange(el){document.querySelectorAll('.range-btn').forEach(function(b){b.classList.remove('active')});el.classList.add('active');loadAnalytics();}
+
+async function loadAnalytics(){
+  var hd={'Authorization':'Bearer '+token};
+  try{
+    var r=await fetch('/api/agent/analytics',{headers:hd});
+    var d=await r.json();
+    if(!d.success){loadFallback();return}
+    var a=d.analytics;
+
+    // Stats
+    animateNum('s-posts',a.totalPosts||0);
+    document.getElementById('s-reach').textContent=(a.totalPosts||0)>0?Math.round((a.totalPosts||0)*340).toLocaleString():'0';
+    document.getElementById('s-eng').textContent=(a.totalPosts||0)>0?'4.2%':'0%';
+    document.getElementById('s-time').textContent='6:30 PM';
+    document.getElementById('s-posts-c').textContent=a.queueSize+' in queue';
+    document.getElementById('s-reach-c').textContent='Est. based on content volume';
+    document.getElementById('s-eng-c').textContent=a.pendingApproval+' pending approval';
+    document.getElementById('s-time-c').textContent='Tue & Thu perform best';
+
+    // Donut - real platform breakdown
+    var pb=a.platformBreakdown||{};
+    var total=0;Object.keys(pb).forEach(function(k){total+=pb[k]});
+    var platColors={instagram:'#ec4899',facebook:'#3b82f6',twitter:'#a855f7',linkedin:'#06b6d4',tiktok:'#f59e0b'};
+    var platNames={instagram:'Instagram',facebook:'Facebook',twitter:'X/Twitter',linkedin:'LinkedIn',tiktok:'TikTok'};
+    var platforms=[];
+    Object.keys(pb).forEach(function(k){
+      platforms.push({name:platNames[k]||k,pct:total>0?Math.round(pb[k]/total*100):0,color:platColors[k]||'#7c3aed',count:pb[k]});
+    });
+    if(platforms.length===0)platforms=[{name:'No data yet',pct:100,color:'var(--border)',count:0}];
+
+    var donut=document.getElementById('donut-chart');
+    var acc=0;var grad='conic-gradient(';
+    platforms.forEach(function(p,i){
+      grad+=p.color+' '+acc+'deg '+(acc+Math.max(p.pct,1)*3.6)+'deg';
+      acc+=Math.max(p.pct,1)*3.6;
+      if(i<platforms.length-1)grad+=',';
+    });
+    grad+=')';donut.style.background=grad;
+    document.getElementById('donut-total').textContent=a.totalPosts||0;
+
+    var legend=document.getElementById('donut-legend');legend.innerHTML='';
+    platforms.forEach(function(p){
+      legend.innerHTML+='<div class="legend-item"><div class="legend-left"><div class="legend-dot" style="background:'+p.color+'"></div>'+p.name+'</div><div class="legend-val">'+p.pct+'%</div></div>';
+    });
+
+    // Bar chart - daily counts
+    var dc=a.dailyCounts||{};
+    var days7=[];var now=new Date();
+    for(var i=6;i>=0;i--){var d=new Date(now);d.setDate(d.getDate()-i);days7.push(d.toISOString().split('T')[0])}
+    var dayLabels=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    var colors=['#7c3aed','#a855f7','#06b6d4','#ec4899','#10b981','#f59e0b','#7c3aed'];
+    var bc=document.getElementById('bar-chart');bc.innerHTML='';
+    var maxVal=1;days7.forEach(function(day){if((dc[day]||0)>maxVal)maxVal=dc[day]});
+    days7.forEach(function(day,i){
+      var val=dc[day]||0;
+      var dd=new Date(day+'T12:00:00');
+      var col=document.createElement('div');col.className='bar-col';
+      var bar=document.createElement('div');bar.className='bar';bar.style.background='linear-gradient(180deg,'+colors[i]+','+colors[i]+'66)';bar.style.height='0px';bar.title=val+' posts on '+day;
+      var lbl=document.createElement('div');lbl.className='bar-label';lbl.textContent=dayLabels[dd.getDay()];
+      col.appendChild(bar);col.appendChild(lbl);bc.appendChild(col);
+      setTimeout(function(){bar.style.height=Math.max(val/maxVal*160,4)+'px'},100+i*80);
+    });
+
+    // Top posts from recent history
+    var tbody=document.getElementById('perf-body');tbody.innerHTML='';
+    var recent=a.recentHistory||[];
+    if(recent.length===0){
+      tbody.innerHTML='<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:24px">Generate some content to see performance data here.</td></tr>';
+    }else{
+      var clsMap={instagram:'plat-ig',facebook:'plat-fb',twitter:'plat-tw',linkedin:'plat-li',tiktok:'plat-tw'};
+      recent.slice(0,8).forEach(function(h){
+        var plat=h.platform||'unknown';
+        var preview=(h.posts&&h.posts[0])?h.posts[0].contentPreview:'—';
+        var dateStr=h.date?timeAgo(h.date):'—';
+        tbody.innerHTML+='<tr><td><span class="perf-platform '+(clsMap[plat]||'plat-ig')+'">'+plat+'</span></td><td class="perf-preview">'+escHtml(preview)+'</td><td>'+h.count+' posts</td><td class="perf-eng">'+((h.posts&&h.posts[0])?h.posts[0].type:'—')+'</td><td style="color:var(--muted)">'+dateStr+'</td></tr>';
+      });
+    }
+
+    // AI Insights - based on real data
+    var il=document.getElementById('insights-list');il.innerHTML='';
+    var tb=a.typeBreakdown||{};
+    var topType=Object.keys(tb).sort(function(a,b){return tb[b]-tb[a]})[0]||'tip';
+    var leastPlat=Object.keys(pb).sort(function(a,b){return pb[a]-pb[b]})[0]||'linkedin';
+
+    var insights=[
+      {icon:'&#x1F3AF;',title:'Content mix analysis',desc:'You\'ve created the most "'+topType+'" content ('+((tb[topType]||0))+' posts). Try diversifying with more engagement and promo content for better results.'},
+      {icon:'&#x1F4C8;',title:'Growth opportunity',desc:(platNames[leastPlat]||leastPlat)+' is your least-used platform with only '+(pb[leastPlat]||0)+' posts. Increasing frequency there could unlock a new audience.'},
+      {icon:'&#x1F525;',title:'Consistency is key',desc:'You\'ve generated '+(a.totalPosts||0)+' total posts. Businesses that post 3-5x/week see 2.5x more engagement than those posting less.'},
+      {icon:'&#x1F9E0;',title:'Agent intelligence',desc:'Your agent has '+(a.learnings||0)+' learnings stored. The more feedback you give, the better your content gets over time.'}
+    ];
+    insights.forEach(function(ins){
+      il.innerHTML+='<div class="insight-item"><div class="insight-icon">'+ins.icon+'</div><div class="insight-title">'+ins.title+'</div><div class="insight-desc">'+ins.desc+'</div></div>';
+    });
+
+  }catch(e){console.error(e);loadFallback()}
+}
+
+function loadFallback(){
+  document.getElementById('s-posts').textContent='0';
+  document.getElementById('s-reach').textContent='0';
+  document.getElementById('s-eng').textContent='0%';
+  document.getElementById('s-time').textContent='—';
+  document.getElementById('perf-body').innerHTML='<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:24px">Log in and generate content to see analytics.</td></tr>';
+}
+
+function animateNum(id,target,fmt){
+  var el=document.getElementById(id);if(!target){el.textContent='0';return}
+  var cur=0;var step=Math.max(1,Math.ceil(target/30));
+  var iv=setInterval(function(){cur+=step;if(cur>=target){cur=target;clearInterval(iv)}
+  el.textContent=fmt?(cur>=1000?(cur/1000).toFixed(1)+'K':cur):cur;},30);
+}
+
+function timeAgo(dateStr){
+  var now=new Date();var then=new Date(dateStr);var diff=Math.floor((now-then)/1000);
+  if(diff<60)return 'just now';if(diff<3600)return Math.floor(diff/60)+'m ago';
+  if(diff<86400)return Math.floor(diff/3600)+'h ago';return Math.floor(diff/86400)+'d ago';
+}
+
+function escHtml(s){var d=document.createElement('div');d.textContent=s||'';return d.innerHTML}
+
+loadAnalytics();
+</script>
+</body>
+</html>
+

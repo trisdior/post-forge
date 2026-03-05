@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  body { margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
+  .flyer {
+    width: 600px; margin: 0 auto; background: white;
+    border: 1px solid #e0e0e0; overflow: hidden;
+  }
+  .header {
+    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+    color: white; padding: 40px 30px; text-align: center;
+  }
+  .header h1 { font-size: 28px; margin: 0 0 5px; font-weight: 800; }
+  .header h2 { font-size: 16px; margin: 0; font-weight: 400; opacity: 0.9; }
+  .badge {
+    display: inline-block; background: rgba(255,255,255,0.2);
+    padding: 8px 20px; border-radius: 20px; margin-top: 15px;
+    font-size: 13px; font-weight: 600;
+  }
+  .services {
+    padding: 30px; background: #f8fafc;
+  }
+  .services h3 {
+    text-align: center; color: #1e3a8a; font-size: 20px;
+    margin: 0 0 20px;
+  }
+  .services-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+  }
+  .service-item {
+    background: white; padding: 12px 15px; border-radius: 8px;
+    font-size: 14px; color: #334155;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+  .service-item span { margin-right: 8px; }
+  .why-us { padding: 25px 30px; }
+  .why-us h3 {
+    text-align: center; color: #1e3a8a; font-size: 20px;
+    margin: 0 0 15px;
+  }
+  .why-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; }
+  .why-item { text-align: center; }
+  .why-item .icon { font-size: 28px; margin-bottom: 5px; }
+  .why-item strong { display: block; color: #1e3a8a; font-size: 13px; }
+  .why-item p { font-size: 11px; color: #64748b; margin: 5px 0 0; }
+  .cta {
+    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+    color: white; padding: 30px; text-align: center;
+  }
+  .cta h3 { font-size: 22px; margin: 0 0 8px; }
+  .cta p { font-size: 14px; opacity: 0.9; margin: 0 0 20px; }
+  .cta .phone {
+    font-size: 32px; font-weight: 800; margin: 0 0 10px;
+    letter-spacing: 1px;
+  }
+  .cta .website { font-size: 14px; opacity: 0.8; }
+  .cta .btn {
+    display: inline-block; background: white; color: #1e3a8a;
+    padding: 12px 30px; border-radius: 8px; font-weight: 700;
+    font-size: 15px; text-decoration: none; margin-top: 15px;
+  }
+  .footer {
+    background: #1f2937; color: rgba(255,255,255,0.7);
+    padding: 15px 30px; text-align: center; font-size: 12px;
+  }
+</style>
+</head>
+<body>
+<div class="flyer">
+  <div class="header">
+    <h1>Valencia Construction</h1>
+    <h2>Chicago's Trusted General Contractor</h2>
+    <div class="badge">Licensed &amp; Insured &bull; Owner-Operated</div>
+  </div>
+
+  <div class="services">
+    <h3>What We Do</h3>
+    <div class="services-grid">
+      <div class="service-item"><span>&#9654;</span> Kitchen Remodeling</div>
+      <div class="service-item"><span>&#9654;</span> Bathroom Renovations</div>
+      <div class="service-item"><span>&#9654;</span> Flooring Installation</div>
+      <div class="service-item"><span>&#9654;</span> Tile &amp; Backsplash</div>
+      <div class="service-item"><span>&#9654;</span> Painting &amp; Drywall</div>
+      <div class="service-item"><span>&#9654;</span> Plumbing &amp; Electrical</div>
+      <div class="service-item"><span>&#9654;</span> Cabinet Installation</div>
+      <div class="service-item"><span>&#9654;</span> General Handyman</div>
+    </div>
+  </div>
+
+  <div class="why-us">
+    <h3>Why Choose Valencia?</h3>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="icon">&#128100;</div>
+        <strong>Owner-Operated</strong>
+        <p>Talk directly to the person running your project</p>
+      </div>
+      <div class="why-item">
+        <div class="icon">&#128176;</div>
+        <strong>Fair Pricing</strong>
+        <p>Transparent quotes with no hidden fees</p>
+      </div>
+      <div class="why-item">
+        <div class="icon">&#9889;</div>
+        <strong>Fast Response</strong>
+        <p>We answer our phone and show up on time</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta">
+    <h3>Free Estimates</h3>
+    <p>Call or text us today &mdash; no pressure, just honest pricing.</p>
+    <div class="phone">(773) 682-7788</div>
+    <div class="website">valenciaconstructionchi.com</div>
+    <a href="tel:7736827788" class="btn">Call Now</a>
+  </div>
+
+  <div class="footer">
+    Serving All of Chicago &amp; Suburbs &bull; Licensed &bull; Insured &bull; Free Estimates
+  </div>
+</div>
+</body>
+</html>

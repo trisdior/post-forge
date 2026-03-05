@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>PostForge - Repurpose Content</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0a0f;--surface:#12121a;--card:#16161f;--border:#1e1e2e;--text:#f0f0f5;--muted:#8888a0;--accent:#7c3aed;--accent2:#a855f7;--green:#10b981;--cyan:#06b6d4;--pink:#ec4899}
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+.nav{background:rgba(10,10,15,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.logo{font-size:20px;font-weight:900}.logo span{background:linear-gradient(135deg,var(--accent2),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.tabs{display:flex;gap:4px}.tab{padding:8px 16px;border-radius:8px;font-size:13px;font-weight:600;color:var(--muted);text-decoration:none;transition:all 0.2s}.tab:hover{color:var(--text);background:rgba(255,255,255,0.05)}.tab.active{color:var(--text);background:rgba(124,58,237,0.15)}
+.container{max-width:900px;margin:0 auto;padding:48px 24px}
+h1{font-size:28px;font-weight:900;margin-bottom:8px}
+.sub{color:var(--muted);font-size:15px;margin-bottom:40px;line-height:1.6}
+.input-section{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px;margin-bottom:24px}
+.input-section h2{font-size:16px;font-weight:700;margin-bottom:16px}
+.source-select{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.source-chip{padding:8px 16px;border-radius:8px;font-size:13px;font-weight:600;border:1px solid var(--border);background:var(--bg);color:var(--muted);cursor:pointer;transition:all 0.2s}
+.source-chip.active{border-color:var(--accent);color:var(--text);background:rgba(124,58,237,0.1)}
+textarea{width:100%;min-height:200px;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;color:var(--text);font-family:inherit;font-size:14px;line-height:1.6;outline:none;resize:vertical}
+textarea:focus{border-color:var(--accent)}
+textarea::placeholder{color:#44445a}
+.target-section{margin-top:16px}
+.target-chips{display:flex;gap:8px;flex-wrap:wrap}
+.target-chip{padding:8px 16px;border-radius:8px;font-size:13px;font-weight:600;border:1px solid var(--border);background:var(--bg);color:var(--muted);cursor:pointer;transition:all 0.2s}
+.target-chip.active{border-color:var(--green);color:var(--green);background:rgba(16,185,129,0.08)}
+.btn{display:block;width:100%;padding:14px;border-radius:12px;font-size:15px;font-weight:700;border:none;cursor:pointer;font-family:inherit;margin-top:20px;transition:all 0.3s}
+.btn-p{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;box-shadow:0 0 20px rgba(124,58,237,0.3)}
+.btn-p:hover{box-shadow:0 0 30px rgba(124,58,237,0.5);transform:translateY(-2px)}
+.btn-p:disabled{opacity:0.5;cursor:not-allowed;transform:none}
+.results{margin-top:32px}
+.result-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px;margin-bottom:16px;transition:all 0.3s}
+.result-card:hover{border-color:rgba(124,58,237,0.2)}
+.result-platform{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.result-badge{padding:4px 12px;border-radius:6px;font-size:12px;font-weight:700}
+.result-badge.instagram{background:rgba(236,72,153,0.15);color:#f472b6}
+.result-badge.facebook{background:rgba(59,130,246,0.15);color:#60a5fa}
+.result-badge.twitter{background:rgba(168,85,247,0.15);color:#c084fc}
+.result-badge.linkedin{background:rgba(6,182,212,0.15);color:#22d3ee}
+.result-badge.tiktok{background:rgba(16,185,129,0.15);color:#34d399}
+.result-content{font-size:14px;color:var(--muted);line-height:1.7;white-space:pre-wrap}
+.result-meta{display:flex;gap:12px;margin-top:12px;font-size:12px;color:#52525b}
+.copy-btn{padding:6px 14px;border-radius:6px;font-size:12px;font-weight:600;background:var(--bg);border:1px solid var(--border);color:var(--muted);cursor:pointer;transition:all 0.2s}
+.copy-btn:hover{border-color:var(--accent);color:var(--text)}
+.spinner{width:28px;height:28px;border:3px solid var(--border);border-top-color:var(--accent2);border-radius:50%;animation:spin 0.8s linear infinite;margin:20px auto}
+@keyframes spin{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+<div class="nav"><div class="logo">post<span>forge</span></div><div class="tabs"><a href="/app" class="tab">Create</a><a href="/agent" class="tab">My Agent</a><a href="/calendar" class="tab">Calendar</a><a href="/analytics" class="tab">Analytics</a><a href="/clips" class="tab">Clips</a><a href="/autopilot" class="tab">Auto-Pilot</a><a href="/settings" class="tab">Settings</a></div><div></div></div>
+<div class="container">
+<h1>Content Repurposer</h1>
+<p class="sub">Paste one piece of content. Get platform-optimized versions for every channel. One blog post becomes a week of social media.</p>
+<div class="input-section">
+<h2>Source content</h2>
+<div class="source-select">
+<span class="source-chip active" onclick="selectSource(this,'blog')">Blog post</span>
+<span class="source-chip" onclick="selectSource(this,'email')">Email/Newsletter</span>
+<span class="source-chip" onclick="selectSource(this,'video')">Video transcript</span>
+<span class="source-chip" onclick="selectSource(this,'tweet')">Tweet/Thread</span>
+<span class="source-chip" onclick="selectSource(this,'podcast')">Podcast notes</span>
+</div>
+<textarea id="source-content" placeholder="Paste your blog post, email, transcript, or any content here..."></textarea>
+<div class="target-section">
+<h2 style="font-size:14px;font-weight:700;margin:16px 0 10px">Repurpose for:</h2>
+<div class="target-chips">
+<span class="target-chip active" data-platform="instagram" onclick="this.classList.toggle('active')">Instagram</span>
+<span class="target-chip active" data-platform="facebook" onclick="this.classList.toggle('active')">Facebook</span>
+<span class="target-chip active" data-platform="twitter" onclick="this.classList.toggle('active')">X / Twitter</span>
+<span class="target-chip active" data-platform="linkedin" onclick="this.classList.toggle('active')">LinkedIn</span>
+<span class="target-chip" data-platform="tiktok" onclick="this.classList.toggle('active')">TikTok</span>
+</div>
+</div>
+<button class="btn btn-p" id="repurpose-btn" onclick="repurpose()">Repurpose into 4 platforms</button>
+</div>
+<div class="results" id="results"></div>
+</div>
+<script>
+var sourcePlatform='blog';
+function selectSource(el,type){document.querySelectorAll('.source-chip').forEach(function(c){c.classList.remove('active')});el.classList.add('active');sourcePlatform=type;}
+async function repurpose(){
+  var content=document.getElementById('source-content').value;
+  if(!content||content.length<20){alert('Paste some content first (at least 20 characters)');return;}
+  var targets=[];document.querySelectorAll('.target-chip.active').forEach(function(c){targets.push(c.dataset.platform)});
+  if(!targets.length){alert('Select at least one target platform');return;}
+  var btn=document.getElementById('repurpose-btn');btn.disabled=true;btn.textContent='Repurposing...';
+  document.getElementById('results').innerHTML='<div style="text-align:center;padding:30px"><div class="spinner"></div><p style="color:var(--muted);font-size:14px;margin-top:12px">AI is adapting your content for '+targets.length+' platforms...</p></div>';
+  try{
+    var token=localStorage.getItem('pf_token'),hd={'Content-Type':'application/json'};if(token)hd['Authorization']='Bearer '+token;
+    var r=await fetch('/api/repurpose',{method:'POST',headers:hd,signal:AbortSignal.timeout(55000),body:JSON.stringify({content:content,sourcePlatform:sourcePlatform,targetPlatforms:targets})});
+    var data=await r.json();
+    if(data.success&&data.posts){
+      var html='';
+      data.posts.forEach(function(p,i){
+        html+='<div class="result-card"><div class="result-platform"><span class="result-badge '+p.platform+'">'+p.platform+'</span><button class="copy-btn" onclick="copyText(this,'+i+')">Copy</button></div>';
+        html+='<div class="result-content" id="rp-'+i+'">'+p.content.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</div>';
+        html+='<div class="result-meta"><span>'+p.character_count+' chars</span></div></div>';
+      });
+      document.getElementById('results').innerHTML=html;
+    } else {
+      document.getElementById('results').innerHTML='<div class="result-card"><p style="color:#ef4444">'+(data.error||'Error repurposing content')+'</p></div>';
+    }
+  }catch(e){document.getElementById('results').innerHTML='<div class="result-card"><p style="color:#ef4444">Request timed out. Try with shorter content.</p></div>';}
+  btn.disabled=false;btn.textContent='Repurpose into '+targets.length+' platforms';
+}
+function copyText(btn,i){var el=document.getElementById('rp-'+i);navigator.clipboard.writeText(el.textContent);btn.textContent='Copied!';setTimeout(function(){btn.textContent='Copy'},2000);}
+</script>
+</body>
+</html>
+

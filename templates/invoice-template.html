@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Invoice — Valencia Construction</title>
+<style>
+  @page { size: 8.5in 11in; margin: 0.5in; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', -apple-system, Arial, sans-serif; color: #1a1a1a; font-size: 14px; line-height: 1.5; background: #fff; }
+
+  .invoice { max-width: 8.5in; margin: 0 auto; padding: 40px; }
+
+  /* Header */
+  .header { display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 30px; border-bottom: 3px solid #D4A017; margin-bottom: 30px; }
+  .company-info { display: flex; align-items: flex-start; gap: 20px; }
+  .logo-placeholder { width: 70px; height: 70px; background: #000; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #D4A017; font-weight: 800; font-size: 24px; flex-shrink: 0; }
+  .company-name { font-size: 26px; font-weight: 800; color: #000; letter-spacing: -0.5px; }
+  .company-name span { color: #D4A017; }
+  .company-details { font-size: 12px; color: #555; margin-top: 4px; line-height: 1.6; }
+  .invoice-title { text-align: right; }
+  .invoice-title h1 { font-size: 36px; font-weight: 800; color: #D4A017; letter-spacing: 2px; }
+  .invoice-number { font-size: 14px; color: #555; margin-top: 5px; }
+
+  /* Info Row */
+  .info-row { display: flex; justify-content: space-between; margin-bottom: 35px; gap: 40px; }
+  .info-block h3 { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: #D4A017; margin-bottom: 8px; font-weight: 700; }
+  .info-block p { font-size: 13px; color: #333; line-height: 1.7; }
+  .info-block strong { color: #000; }
+
+  /* Table */
+  table { width: 100%; border-collapse: collapse; margin-bottom: 25px; }
+  thead th { background: #000; color: #D4A017; padding: 12px 15px; text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; }
+  thead th:last-child, thead th:nth-child(3), thead th:nth-child(4) { text-align: right; }
+  tbody td { padding: 14px 15px; border-bottom: 1px solid #eee; font-size: 13px; }
+  tbody td:last-child, tbody td:nth-child(3), tbody td:nth-child(4) { text-align: right; }
+  tbody tr:nth-child(even) { background: #fafafa; }
+  tbody tr:hover { background: #f5f0e0; }
+
+  /* Totals */
+  .totals { display: flex; justify-content: flex-end; margin-bottom: 35px; }
+  .totals-table { width: 300px; }
+  .totals-row { display: flex; justify-content: space-between; padding: 8px 0; font-size: 13px; border-bottom: 1px solid #eee; }
+  .totals-row.total { border-top: 2px solid #000; border-bottom: none; padding-top: 12px; margin-top: 5px; }
+  .totals-row.total span { font-size: 20px; font-weight: 800; }
+  .totals-row.total .amount { color: #D4A017; }
+
+  /* Payment & Notes */
+  .footer-section { display: flex; gap: 40px; margin-top: 20px; padding-top: 25px; border-top: 2px solid #f0f0f0; }
+  .footer-block { flex: 1; }
+  .footer-block h3 { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: #D4A017; margin-bottom: 10px; font-weight: 700; }
+  .footer-block p, .footer-block li { font-size: 12px; color: #555; line-height: 1.8; }
+  .footer-block ul { list-style: none; padding: 0; }
+  .footer-block li::before { content: "•"; color: #D4A017; font-weight: bold; margin-right: 8px; }
+
+  /* Thank You */
+  .thank-you { text-align: center; margin-top: 40px; padding: 25px; background: #000; border-radius: 8px; }
+  .thank-you p { color: #D4A017; font-size: 16px; font-weight: 600; }
+  .thank-you .sub { color: #999; font-size: 12px; font-weight: 400; margin-top: 5px; }
+
+  @media print {
+    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .invoice { padding: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="invoice">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="company-info">
+      <div class="logo-placeholder">VC</div>
+      <div>
+        <div class="company-name">Valencia <span>Construction</span></div>
+        <div class="company-details">
+          Chicago, IL<br>
+          (773) 682-7788<br>
+          info@valenciaconstructionchi.com<br>
+          valenciaconstructionchi.com
+        </div>
+      </div>
+    </div>
+    <div class="invoice-title">
+      <h1>INVOICE</h1>
+      <div class="invoice-number">
+        <strong>#VC-001</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- Invoice & Client Info -->
+  <div class="info-row">
+    <div class="info-block">
+      <h3>Bill To</h3>
+      <p>
+        <strong>Client Name</strong><br>
+        123 Main Street<br>
+        Chicago, IL 60614<br>
+        client@email.com<br>
+        (312) 555-0000
+      </p>
+    </div>
+    <div class="info-block">
+      <h3>Project</h3>
+      <p>
+        <strong>Kitchen Remodel</strong><br>
+        123 Main Street, Chicago
+      </p>
+    </div>
+    <div class="info-block" style="text-align: right;">
+      <h3>Invoice Details</h3>
+      <p>
+        <strong>Date:</strong> February 16, 2026<br>
+        <strong>Due Date:</strong> March 2, 2026<br>
+        <strong>Terms:</strong> Net 14
+      </p>
+    </div>
+  </div>
+
+  <!-- Line Items -->
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 50%;">Description</th>
+        <th style="width: 10%;">Qty</th>
+        <th style="width: 20%;">Unit Price</th>
+        <th style="width: 20%;">Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Kitchen demolition &amp; disposal</td>
+        <td>1</td>
+        <td>$2,500.00</td>
+        <td>$2,500.00</td>
+      </tr>
+      <tr>
+        <td>Custom cabinet installation (shaker style, soft-close)</td>
+        <td>1</td>
+        <td>$8,500.00</td>
+        <td>$8,500.00</td>
+      </tr>
+      <tr>
+        <td>Quartz countertop — fabrication &amp; installation (45 sq ft)</td>
+        <td>45</td>
+        <td>$85.00</td>
+        <td>$3,825.00</td>
+      </tr>
+      <tr>
+        <td>Subway tile backsplash — supply &amp; install</td>
+        <td>1</td>
+        <td>$1,800.00</td>
+        <td>$1,800.00</td>
+      </tr>
+      <tr>
+        <td>Electrical updates (outlets, under-cabinet lighting)</td>
+        <td>1</td>
+        <td>$1,200.00</td>
+        <td>$1,200.00</td>
+      </tr>
+      <tr>
+        <td>Plumbing — sink &amp; dishwasher hookup</td>
+        <td>1</td>
+        <td>$950.00</td>
+        <td>$950.00</td>
+      </tr>
+      <tr>
+        <td>LVP flooring — supply &amp; install (150 sq ft)</td>
+        <td>150</td>
+        <td>$12.00</td>
+        <td>$1,800.00</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Totals -->
+  <div class="totals">
+    <div class="totals-table">
+      <div class="totals-row">
+        <span>Subtotal</span>
+        <span>$20,575.00</span>
+      </div>
+      <div class="totals-row">
+        <span>Tax (10.25%)</span>
+        <span>$2,108.94</span>
+      </div>
+      <div class="totals-row">
+        <span>Deposit Paid</span>
+        <span>−$5,000.00</span>
+      </div>
+      <div class="totals-row total">
+        <span>Balance Due</span>
+        <span class="amount">$17,683.94</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Payment & Notes -->
+  <div class="footer-section">
+    <div class="footer-block">
+      <h3>Payment Methods</h3>
+      <ul>
+        <li>Check — payable to "Valencia Construction"</li>
+        <li>Zelle — info@valenciaconstructionchi.com</li>
+        <li>Cash</li>
+        <li>Credit/Debit card (ask for link)</li>
+      </ul>
+    </div>
+    <div class="footer-block">
+      <h3>Terms &amp; Notes</h3>
+      <p>
+        Payment due within 14 days of invoice date. A late fee of 1.5% per month applies to overdue balances. All work is warranted for one year from completion date. This invoice reflects the agreed-upon scope of work per the signed contract.
+      </p>
+    </div>
+  </div>
+
+  <!-- Thank You -->
+  <div class="thank-you">
+    <p>Thank you for choosing Valencia Construction!</p>
+    <p class="sub">(773) 682-7788 · valenciaconstructionchi.com</p>
+  </div>
+
+</div>
+</body>
+</html>

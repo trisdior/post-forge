@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materials Cost Calculator — Valencia Construction</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #333; background: #f5f5f5; padding: 20px; }
+        .container { max-width: 1000px; margin: 0 auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        
+        h1 { color: #1e3a8a; margin-bottom: 10px; }
+        .subtitle { color: #666; margin-bottom: 30px; font-size: 14px; }
+        
+        .project-selector { margin-bottom: 30px; }
+        .project-selector label { color: #1e3a8a; font-weight: 700; display: block; margin-bottom: 10px; font-size: 14px; }
+        .btn-group { display: flex; gap: 10px; flex-wrap: wrap; }
+        .btn { padding: 10px 18px; border: 2px solid #ddd; background: white; color: #333; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 13px; transition: all 0.2s; }
+        .btn:hover { border-color: #1e3a8a; color: #1e3a8a; }
+        .btn.active { background: #1e3a8a; color: white; border-color: #1e3a8a; }
+        
+        .calculator { background: #f8fafc; padding: 25px; border-radius: 8px; margin-top: 20px; }
+        .calculator h3 { color: #1e3a8a; margin-bottom: 20px; font-size: 16px; }
+        
+        .input-group { margin-bottom: 20px; }
+        .input-group label { display: block; color: #555; font-weight: 600; margin-bottom: 6px; font-size: 13px; }
+        .input-group input, .input-group select { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; font-family: 'Courier New', monospace; }
+        .input-group input:focus { outline: none; border-color: #1e3a8a; background: #f0f4ff; }
+        
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        
+        .results { background: white; padding: 20px; border-radius: 8px; margin-top: 20px; border-left: 4px solid #1e3a8a; }
+        .result-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #e2e8f0; font-size: 14px; }
+        .result-row strong { color: #1e3a8a; }
+        .result-row:last-child { border-bottom: none; }
+        .total { padding-top: 15px; font-size: 18px; font-weight: 700; color: #1e3a8a; border-top: 2px solid #1e3a8a; display: flex; justify-content: space-between; }
+        
+        .notes { background: #e0e7ff; border: 1px solid #c7d2fe; padding: 15px; border-radius: 6px; margin-top: 15px; font-size: 13px; color: #555; }
+        .notes strong { color: #1e3a8a; }
+        
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>💰 Materials Cost Calculator</h1>
+        <p class="subtitle">Quick estimates for common remodel projects — for quoting and planning</p>
+        
+        <div class="project-selector">
+            <label>Select Project Type:</label>
+            <div class="btn-group">
+                <button class="btn active" onclick="selectProject('kitchen')">Kitchen Remodel</button>
+                <button class="btn" onclick="selectProject('bathroom')">Bathroom Remodel</button>
+                <button class="btn" onclick="selectProject('flooring')">Flooring Installation</button>
+                <button class="btn" onclick="selectProject('custom')">Custom Build</button>
+            </div>
+        </div>
+        
+        <!-- KITCHEN CALCULATOR -->
+        <div id="kitchen" class="calculator">
+            <h3>🍳 Kitchen Remodel Cost Estimator</h3>
+            <div class="grid-2">
+                <div class="input-group">
+                    <label>Kitchen Square Footage</label>
+                    <input type="number" id="kitchen-sqft" value="150" oninput="calculateKitchen()">
+                </div>
+                <div class="input-group">
+                    <label>Scope Level</label>
+                    <select id="kitchen-scope" onchange="calculateKitchen()">
+                        <option value="budget">Budget ($15-25/sqft materials)</option>
+                        <option value="mid">Mid-Range ($25-40/sqft materials)</option>
+                        <option value="premium">Premium ($40-60/sqft materials)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="grid-2">
+                <div class="input-group">
+                    <label>Cabinets (yes/no + cost override)</label>
+                    <select id="kitchen-cabinets" onchange="calculateKitchen()">
+                        <option value="0">No cabinets</option>
+                        <option value="4000">Basic Cabinets ($4,000)</option>
+                        <option value="8000">Mid-Range Cabinets ($8,000)</option>
+                        <option value="15000">Premium Cabinets ($15,000)</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label>Countertops (material)</label>
+                    <select id="kitchen-counters" onchange="calculateKitchen()">
+                        <option value="2000">Laminate ($2,000)</option>
+                        <option value="4500">Quartz ($4,500)</option>
+                        <option value="7000">Granite ($7,000)</option>
+                        <option value="3500">Butcher Block ($3,500)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="grid-2">
+                <div class="input-group">
+                    <label>Appliances Package</label>
+                    <select id="kitchen-appliances" onchange="calculateKitchen()">
+                        <option value="0">No new appliances</option>
+                        <option value="2500">Basic ($2,500)</option>
+                        <option value="6000">Mid-Range ($6,000)</option>
+                        <option value="12000">Premium ($12,000)</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label>Flooring</label>
+                    <select id="kitchen-flooring" onchange="calculateKitchen()">
+                        <option value="0">Keep existing</option>
+                        <option value="1500">Vinyl Plank ($1,500)</option>
+                        <option value="3000">Tile ($3,000)</option>
+                        <option value="4500">Hardwood ($4,500)</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="results">
+                <div class="result-row">
+                    <strong>Scope-Based Materials:</strong>
+                    <span id="kitchen-scope-cost">$2,250</span>
+                </div>
+                <div class="result-row">
+                    <strong>Cabinetry:</strong>
+                    <span id="kitchen-cab-cost">$4,000</span>
+                </div>
+                <div class="result-row">
+                    <strong>Countertops:</strong>
+                    <span id="kitchen-counter-cost">$4,500</span>
+                </div>
+                <div class="result-row">
+                    <strong>Appliances:</strong>
+                    <span id="kitchen-app-cost">$0</span>
+                </div>
+                <div class="result-row">
+                    <strong>Flooring:</strong>
+                    <span id="kitchen-floor-cost">$0</span>
+                </div>
+                <div class="result-row">
+                    <strong>Miscellaneous (5%):</strong>
+                    <span id="kitchen-misc-cost">$544</span>
+                </div>
+                <div class="total">
+                    <div>ESTIMATED MATERIALS TOTAL</div>
+                    <div id="kitchen-total">$11,294</div>
+                </div>
+            </div>
+            <div class="notes">
+                <strong>💡 Note:</strong> These are material costs only. Labor typically adds 50-100% to material costs. This is for estimating material budgets and quoting purposes.
+            </div>
+        </div>
+        
+        <!-- BATHROOM CALCULATOR -->
+        <div id="bathroom" class="calculator hidden">
+            <h3>🚿 Bathroom Remodel Cost Estimator</h3>
+            <div class="grid-2">
+                <div class="input-group">
+                    <label>Bathroom Square Footage</label>
+                    <input type="number" id="bathroom-sqft" value="75" oninput="calculateBathroom()">
+                </div>
+                <div class="input-group">
+                    <label>Scope Level</label>
+                    <select id="bathroom-scope" onchange="calculateBathroom()">
+                        <option value="budget">Budget ($20-30/sqft)</option>
+                        <option value="mid">Mid-Range ($30-50/sqft)</option>
+                        <option value="premium">Premium ($50-80/sqft)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="grid-2">
+                <div class="input-group">
+                    <label>Shower/Tub System</label>
+                    <select id="bathroom-fixtures" onchange="calculateBathroom()">
+                        <option value="1500">Standard ($1,500)</option>
+                        <option value="3500">Mid-Range ($3,500)</option>
+                        <option value="7000">Luxury ($7,000)</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label>Flooring</label>
+                    <select id="bathroom-flooring" onchange="calculateBathroom()">
+                        <option value="1000">Ceramic Tile ($1,000)</option>
+                        <option value="1500">Porcelain ($1,500)</option>
+                        <option value="2000">Natural Stone ($2,000)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="grid-2">
+                <div class="input-group">
+                    <label>Vanity & Sink</label>
+                    <select id="bathroom-vanity" onchange="calculateBathroom()">
+                        <option value="800">Basic ($800)</option>
+                        <option value="2000">Mid-Range ($2,000)</option>
+                        <option value="4000">Premium ($4,000)</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label>Toilet</label>
+                    <select id="bathroom-toilet" onchange="calculateBathroom()">
+                        <option value="300">Standard ($300)</option>
+                        <option value="800">Mid-Range ($800)</option>
+                        <option value="2000">High-End ($2,000)</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="results">
+                <div class="result-row">
+                    <strong>Scope-Based Materials:</strong>
+                    <span id="bathroom-scope-cost">$1,500</span>
+                </div>
+                <div class="result-row">
+                    <strong>Shower/Tub:</strong>
+                    <span id="bathroom-fixture-cost">$1,500</span>
+                </div>
+                <div class="result-row">
+                    <strong>Flooring:</strong>
+                    <span id="bathroom-floor-cost">$1,000</span>
+                </div>
+                <div class="result-row">
+                    <strong>Vanity & Sink:</strong>
+                    <span id="bathroom-vanity-cost">$800</span>
+                </div>
+                <div class="result-row">
+                    <strong>Toilet:</strong>
+                    <span id="bathroom-toilet-cost">$300</span>
+                </div>
+                <div class="result-row">
+                    <strong>Miscellaneous (5%):</strong>
+                    <span id="bathroom-misc-cost">$318</span>
+                </div>
+                <div class="total">
+                    <div>ESTIMATED MATERIALS TOTAL</div>
+                    <div id="bathroom-total">$5,418</div>
+                </div>
+            </div>
+            <div class="notes">
+                <strong>💡 Note:</strong> These are material costs only. Labor typically adds 60-120% to material costs for bathrooms. Waterproofing is critical.
+            </div>
+        </div>
+        
+        <!-- FLOORING CALCULATOR -->
+        <div id="flooring" class="calculator hidden">
+            <h3>🏠 Flooring Installation Cost Estimator</h3>
+            <div class="grid-2">
+                <div class="input-group">
+                    <label>Area to be Floored (sq ft)</label>
+                    <input type="number" id="flooring-sqft" value="500" oninput="calculateFlooring()">
+                </div>
+                <div class="input-group">
+                    <label>Flooring Material</label>
+                    <select id="flooring-material" onchange="calculateFlooring()">
+                        <option value="2.50">Vinyl Plank ($2.50/sqft)</option>
+                        <option value="4.00">Laminate ($4.00/sqft)</option>
+                        <option value="5.00">Ceramic Tile ($5.00/sqft)</option>
+                        <option value="6.50">Hardwood ($6.50/sqft)</option>
+                        <option value="8.00">Luxury Vinyl Sheet ($8.00/sqft)</option>
+                        <option value="10.00">Stone/Natural ($10.00/sqft)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="grid-2">
+                <div class="input-group">
+                    <label>Subfloor Repair Needed?</label>
+                    <select id="flooring-subfloor" onchange="calculateFlooring()">
+                        <option value="0">No</option>
+                        <option value="500">Minor ($500)</option>
+                        <option value="1500">Moderate ($1,500)</option>
+                        <option value="3000">Extensive ($3,000+)</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label>Removal of Existing Flooring</label>
+                    <select id="flooring-removal" onchange="calculateFlooring()">
+                        <option value="0">No removal</option>
+                        <option value="0.50">Standard ($0.50/sqft)</option>
+                        <option value="1.00">Complex/Hardwood ($1.00/sqft)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="input-group">
+                <label>Additional Materials (underlayment, trim, etc.)</label>
+                <input type="number" id="flooring-misc" value="200" oninput="calculateFlooring()">
+            </div>
+            
+            <div class="results">
+                <div class="result-row">
+                    <strong>Flooring Material:</strong>
+                    <span id="flooring-material-cost">$1,250</span>
+                </div>
+                <div class="result-row">
+                    <strong>Removal (if applicable):</strong>
+                    <span id="flooring-removal-cost">$0</span>
+                </div>
+                <div class="result-row">
+                    <strong>Subfloor Repair:</strong>
+                    <span id="flooring-subfloor-cost">$0</span>
+                </div>
+                <div class="result-row">
+                    <strong>Misc (trim, underlayment, etc.):</strong>
+                    <span id="flooring-misc-cost">$200</span>
+                </div>
+                <div class="total">
+                    <div>ESTIMATED MATERIALS TOTAL</div>
+                    <div id="flooring-total">$1,450</div>
+                </div>
+            </div>
+            <div class="notes">
+                <strong>💡 Note:</strong> These are material costs only. Labor for flooring installation typically runs $3-8/sqft depending on complexity. Tile and stone require more labor.
+            </div>
+        </div>
+        
+        <!-- CUSTOM BUILD CALCULATOR -->
+        <div id="custom" class="calculator hidden">
+            <h3>⚙️ Custom Project Cost Builder</h3>
+            <p style="color: #666; font-size: 13px; margin-bottom: 15px;">Build a custom estimate line-by-line:</p>
+            
+            <div class="input-group">
+                <label>Item 1: Description</label>
+                <input type="text" placeholder="e.g., Drywall repair and finish" value="">
+            </div>
+            <div class="grid-2">
+                <div class="input-group">
+                    <label>Qty</label>
+                    <input type="number" value="1" placeholder="1">
+                </div>
+                <div class="input-group">
+                    <label>Unit Cost</label>
+                    <input type="number" placeholder="500">
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin: 15px 0;">
+                <button class="btn" onclick="alert('Custom calculator — add line items as needed. This is a template for manual entry.')">+ Add Line Item</button>
+            </div>
+            
+            <div class="results">
+                <div class="result-row">
+                    <strong>Subtotal</strong>
+                    <span>$0</span>
+                </div>
+                <div class="result-row">
+                    <strong>Tax (if applicable)</strong>
+                    <span>$0</span>
+                </div>
+                <div class="total">
+                    <div>TOTAL MATERIALS</div>
+                    <div>$0</div>
+                </div>
+            </div>
+            <div class="notes">
+                <strong>💡 Tip:</strong> For custom builds, itemize everything. This helps with quoting accuracy and avoids scope creep disputes.
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function selectProject(type) {
+            // Hide all
+            document.getElementById('kitchen').classList.add('hidden');
+            document.getElementById('bathroom').classList.add('hidden');
+            document.getElementById('flooring').classList.add('hidden');
+            document.getElementById('custom').classList.add('hidden');
+            
+            // Show selected
+            document.getElementById(type).classList.remove('hidden');
+            
+            // Update buttons
+            document.querySelectorAll('.btn-group .btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+        
+        function calculateKitchen() {
+            const sqft = parseFloat(document.getElementById('kitchen-sqft').value) || 150;
+            const scope = document.getElementById('kitchen-scope').value;
+            const cabinets = parseFloat(document.getElementById('kitchen-cabinets').value) || 4000;
+            const counters = parseFloat(document.getElementById('kitchen-counters').value) || 4500;
+            const appliances = parseFloat(document.getElementById('kitchen-appliances').value) || 0;
+            const flooring = parseFloat(document.getElementById('kitchen-flooring').value) || 0;
+            
+            const scopeCosts = { budget: 15 * sqft, mid: 30 * sqft, premium: 45 * sqft };
+            const scopeCost = scopeCosts[scope] || 2250;
+            const misc = (scopeCost + cabinets + counters + appliances + flooring) * 0.05;
+            const total = scopeCost + cabinets + counters + appliances + flooring + misc;
+            
+            document.getElementById('kitchen-scope-cost').textContent = '$' + scopeCost.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            document.getElementById('kitchen-cab-cost').textContent = '$' + cabinets.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            document.getElementById('kitchen-counter-cost').textContent = '$' + counters.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            document.getElementById('kitchen-app-cost').textContent = '$' + appliances.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            document.getElementById('kitchen-floor-cost').textContent = '$' + flooring.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            document.getElementById('kitchen-misc-cost').textContent = '$' + misc.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            document.getElementById('kitchen-total').textContent = '$' + total.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+        
+        function calculateBathroom() {
+            const sqft = parseFloat(document.getElementById('bathroom-sqft').value) || 75;
+            const scope = document.getElementById('bathroom-scope').value;
+            const fixtures = parseFloat(document.getElementById('bathroom-fixtures').value) || 1500;
+            const flooring = parseFloat(document.getElementById('bathroom-flooring').value) || 1000;
+            const vanity = parseFloat(document.getElementById('bathroom-vanity').value) || 800;
+            const toilet = parseFloat(document.getElementById('bathroom-toilet').value) || 300;
+            
+            const scopeCosts = { budget: 20 * sqft, mid: 35 * sqft, premium: 60 * sqft };
+            const scopeCost = scopeCosts[scope] || 1500;
+            const misc = (scopeCost + fixtures + flooring + vanity + toilet) * 0.05;
+            const total = scopeCost + fixtures + flooring + vanity + toilet + misc;
+            
+            document.getElementById('bathroom-scope-cost').textContent = '$' + scopeCost.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            document.getElementById('bathroom-fixture-cost').textContent = '$' + fixtures.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            document.getElementById('bathroom-floor-cost').textContent = '$' + flooring.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            document.getElementById('bathroom-vanity-cost').textContent = '$' + vanity.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            document.getElementById('bathroom-toilet-cost').textContent = '$' + toilet.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            document.getElementById('bathroom-misc-cost').textContent = '$' + misc.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            document.getElementById('bathroom-total').textContent = '$' + total.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+        
+        function calculateFlooring() {
+            const sqft = parseFloat(document.getElementById('flooring-sqft').value) || 500;
+            const material = parseFloat(document.getElementById('flooring-material').value) || 2.50;
+            const subfloor = parseFloat(document.getElementById('flooring-subfloor').value) || 0;
+            const removal = parseFloat(document.getElementById('flooring-removal').value) || 0;
+            const misc = parseFloat(document.getElementById('flooring-misc').value) || 200;
+            
+            const materialCost = sqft * material;
+            const removalCost = removal > 0 ? sqft * removal : 0;
+            const total = materialCost + removalCost + subfloor + misc;
+            
+            document.getElementById('flooring-material-cost').textContent = '$' + materialCost.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            document.getElementById('flooring-removal-cost').textContent = '$' + removalCost.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            document.getElementById('flooring-subfloor-cost').textContent = '$' + subfloor.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            document.getElementById('flooring-misc-cost').textContent = '$' + misc.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            document.getElementById('flooring-total').textContent = '$' + total.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+        
+        // Initialize
+        calculateKitchen();
+        calculateBathroom();
+        calculateFlooring();
+    </script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+{
+  "generated": "2026-02-28T14:00:00Z",
+  "status": "FOLLOW-UPS DUE",
+  "dueToday": [
+    {
+      "contact": "Jeff",
+      "company": "Drexel Properties",
+      "phone": "(773) 667-9760",
+      "email": "help@drexelproperties.com",
+      "lastContact": "2026-02-21",
+      "daysAgo": 7,
+      "followUpDate": "2026-02-28",
+      "suggestedMessage": "Hi Jeff, Following up on my intro email. Would love to discuss partnership on turnover projects. Free to chat this week? — Tris",
+      "type": "email_followup"
+    }
+  ],
+  "dueSoon": [
+    {
+      "contact": "Team",
+      "company": "CL3 Property Management",
+      "phone": "(773) 227-2388",
+      "email": "Info@CL3pm.com",
+      "followUpDate": "2026-03-01",
+      "suggestedMessage": "Hi Team, Quick follow-up on my email from 2/22 about turnover partnerships. Open to a brief call Monday? — Tris",
+      "type": "text"
+    },
+    {
+      "contact": "Team",
+      "company": "Be Realty Group",
+      "phone": "(773) 234-3363",
+      "email": "info@berealtygroup.com",
+      "followUpDate": "2026-03-01",
+      "suggestedMessage": "Hi Team, Following up on my email from 2/22. Would love to discuss how Valencia can support your management properties. — Tris",
+      "type": "text"
+    },
+    {
+      "contact": "Team",
+      "company": "Root Property Group",
+      "phone": "(773) 904-1382",
+      "email": "office@rootpg.com",
+      "followUpDate": "2026-03-01",
+      "suggestedMessage": "Hi Team, Quick check-in following my intro email from 2/22. Free for a call Monday? — Tris",
+      "type": "text"
+    },
+    {
+      "contact": "Team",
+      "company": "High Fidelity Property Management",
+      "phone": "(773) 697-4112",
+      "email": "HiFiPM@email.showmojo.com",
+      "followUpDate": "2026-03-02",
+      "suggestedMessage": "Hi Team, Following up from my email last week about condo turnover support. Would love to chat. — Tris",
+      "type": "text"
+    },
+    {
+      "contact": "Team",
+      "company": "Chicago Realty & Property Management",
+      "followUpDate": "2026-03-02",
+      "suggestedMessage": "5-star operation with excellent reviews. Emphasize quality reputation match when reaching out.",
+      "type": "note"
+    },
+    {
+      "contact": "Team",
+      "company": "Keyrenter Property Management Chicago Metro",
+      "phone": "(708) 435-2900",
+      "followUpDate": "2026-03-02",
+      "suggestedMessage": "Hi Team, Following up on Valencia Construction for multi-property portfolio support. Free for a call Monday? — Tris",
+      "type": "text"
+    }
+  ],
+  "craigslistStatus": "No real homeowner leads in past 3 days — all recent posts are contractor ads"
+}

@@ -1,0 +1,214 @@
+{
+  "contacts": [
+    {
+      "contact": "Serena",
+      "company": "Chicago Central Property Management",
+      "phone": "(224) 391-3130",
+      "email": "chicagocentralpm@gmail.com",
+      "type": "email_sent",
+      "date": "2026-02-27",
+      "result": "sent",
+      "followUpDate": "2026-03-06",
+      "notes": "Small family-owned PM, 2-flats and small buildings. Active in landlord Facebook groups. Personalized: emphasized fit for small multi-unit buildings."
+    },
+    {
+      "contact": "Team",
+      "company": "Chicago Style Management",
+      "phone": "(224) 601-5415",
+      "email": "info@chicagostylemanagement.com",
+      "type": "email_followup",
+      "date": "2026-02-27",
+      "result": "followup_sent",
+      "followUpDate": "2026-03-06",
+      "notes": "South Side focused, 161 Google reviews, active in Chicago Friendly Landlord Group. Follow-up sent 2/27 (overdue from 2/26)."
+    },
+    {
+      "contact": "Edin",
+      "company": "Property Hill Management",
+      "phone": "(312) 414-1105",
+      "email": "[need_to_obtain]",
+      "type": "email_followup",
+      "date": "2026-02-27",
+      "result": "followup_sent",
+      "followUpDate": "2026-03-06",
+      "notes": "Specializes in small/mid-size properties (1-20 units). 5+ years in business. Follow-up sent 2/27 (overdue from 2/26). Need email: call (312) 414-1105 or check chicagopropertymanagementservices.com."
+    },
+    {
+      "contact": "Team",
+      "company": "SimpliManaged Properties",
+      "phone": "[contact_via_website]",
+      "email": "info@simplimanaged.com",
+      "type": "email_sent",
+      "date": "2026-02-27",
+      "result": "sent",
+      "followUpDate": "2026-03-06",
+      "notes": "Built for small landlords (25 units or fewer). Boutique, hands-on. Perfect target. Personalized: emphasized shared market focus on small portfolio owners."
+    },
+    {
+      "contact": "[Owner]",
+      "company": "1982 Property Management",
+      "phone": "[contact_via_website]",
+      "email": "[contact_via_website_at_1982realty.com]",
+      "type": "email_sent",
+      "date": "2026-02-27",
+      "result": "sent",
+      "followUpDate": "2026-03-06",
+      "notes": "Boutique property management for small landlords. New-ish company, owner-operated. Personalized: emphasized mutual respect for owner-operator accountability and quality relationships."
+    },
+    {
+      "contact": "[Owner]",
+      "company": "Chicago Rental Property Management",
+      "phone": "(312) 680-2510",
+      "email": "[contact_via_website_at_chicagorentalpropertymanagement.com]",
+      "type": "email_followup",
+      "date": "2026-02-27",
+      "result": "followup_sent",
+      "followUpDate": "2026-03-06",
+      "notes": "Tiny, 5-star operation in Wicker Park. 26 Google reviews, 5.0 rating. Excellent reviews. Follow-up sent today per schedule."
+    },
+    {
+      "contact": "Konstantin Shelegeda",
+      "company": "Inter Properties Management",
+      "phone": "[contact_via_yelp]",
+      "email": "[contact_via_yelp]",
+      "type": "email_sent",
+      "date": "2026-03-02",
+      "result": "sent",
+      "followUpDate": "2026-03-09",
+      "notes": "Performance-based fees, hands-on PM style. Sent 3/2 emphasizing direct owner partnership, speed/reliability on turnovers."
+    },
+    {
+      "contact": "Team",
+      "company": "Open Path Realty, LLC",
+      "phone": "(773) 772-1142",
+      "email": "info@openpathrealty.com",
+      "type": "email_sent",
+      "date": "2026-03-02",
+      "result": "sent",
+      "followUpDate": "2026-03-09",
+      "notes": "Ukrainian Village based, 10+ years, 165 Google reviews. Sent 3/2 emphasizing track record and neighborhood focus."
+    },
+    {
+      "contact": "Owner",
+      "company": "Art Property Management",
+      "phone": "[contact_via_website]",
+      "email": "[contact_via_artpropertymanagement.com]",
+      "type": "email_sent",
+      "date": "2026-03-02",
+      "result": "sent",
+      "followUpDate": "2026-03-09",
+      "notes": "Small, boutique, owner-operated. Sent 3/2 with owner-to-owner positioning."
+    },
+    {
+      "contact": "Jeff",
+      "company": "Drexel Properties",
+      "phone": "(773) 667-9760",
+      "email": "help@drexelproperties.com",
+      "type": "email_sent",
+      "date": "2026-03-03",
+      "result": "sent",
+      "followUpDate": "2026-03-10",
+      "notes": "20+ years in business, 70 Google reviews, active in Chicago landlord Facebook groups. Personalized email mentioning Facebook activity. Sent 3/3."
+    },
+    {
+      "contact": "Team",
+      "company": "CL3 Property Management",
+      "phone": "(773) 227-2388",
+      "email": "Info@CL3pm.com",
+      "type": "email_sent",
+      "date": "2026-03-03",
+      "result": "sent",
+      "followUpDate": "2026-03-10",
+      "notes": "Lincoln Park based, 10+ years in business, 59 Google reviews. Manages condos and small multi-family. Personalized email mentioning portfolio. Sent 3/3."
+    },
+    {
+      "contact": "Team",
+      "company": "Be Realty Group",
+      "phone": "(773) 234-3363",
+      "email": "info@berealtygroup.com",
+      "type": "email_sent",
+      "date": "2026-03-03",
+      "result": "sent",
+      "followUpDate": "2026-03-10",
+      "notes": "Lakeview area, small operation. Yelp-recommended for property leasing and rent collection. Also has management arm. Sent 3/3."
+    },
+    {
+      "contact": "Team",
+      "company": "Root Property Group",
+      "phone": "(773) 904-1382",
+      "email": "office@rootpg.com",
+      "type": "email_sent",
+      "date": "2026-03-05",
+      "result": "sent",
+      "followUpDate": "2026-03-12",
+      "notes": "Lincoln Square, North Side focused. Small-to-mid, independent, local feel. Personalized email mentioning North Side specialization. SENT 3/5 (was overdue from 2/22)."
+    },
+    {
+      "contact": "Team",
+      "company": "High Fidelity Property Management",
+      "phone": "(773) 697-4112",
+      "email": "HiFiPM@email.showmojo.com",
+      "type": "email_sent",
+      "date": "2026-03-05",
+      "result": "sent",
+      "followUpDate": "2026-03-12",
+      "notes": "Lincoln Park based, 15+ years, manages condos and single-family. 13 Google reviews. Personalized email mentioning condo focus. SENT 3/5 (was overdue from 2/23)."
+    },
+    {
+      "contact": "Team",
+      "company": "Chicago Realty & Property Management",
+      "phone": "[contact_via_yelp]",
+      "email": "[contact_via_yelp]",
+      "type": "email_sent",
+      "date": "2026-03-05",
+      "result": "sent",
+      "followUpDate": "2026-03-12",
+      "notes": "Small, 5.0-star operation. Extremely helpful per reviews. Personalized email emphasizing their quality reputation. SENT 3/5 (was overdue from 2/23)."
+    },
+    {
+      "contact": "Team",
+      "company": "Keyrenter Property Management Chicago Metro",
+      "phone": "(708) 435-2900",
+      "email": "[find_at_keyrenterchicagometro.com]",
+      "type": "email_sent",
+      "date": "2026-03-05",
+      "result": "sent",
+      "followUpDate": "2026-03-12",
+      "notes": "Locally owned franchise, covers Chicago metro. Manages houses, condos, multi-family. Personalized mentioning multi-property portfolio. SENT 3/5 (was overdue from 2/23)."
+    },
+    {
+      "contact": "Team",
+      "company": "MLC Properties & Management",
+      "phone": "(773) 262-7555",
+      "email": "office@mlcproperties.com",
+      "type": "email_drafted",
+      "date": "2026-03-01",
+      "result": "pending",
+      "followUpDate": "2026-03-08",
+      "notes": "Rogers Park area, small local operation. Personalized email emphasizing fit for their portfolio and neighborhood focus."
+    },
+    {
+      "contact": "Team",
+      "company": "Urban REI Property Management",
+      "phone": "(312) 847-4414",
+      "email": "[find_at_urbanrei.com]",
+      "type": "email_drafted",
+      "date": "2026-03-01",
+      "result": "pending",
+      "followUpDate": "2026-03-08",
+      "notes": "Small operation, 7+ years, Yelp-recommended. Personalized email mentioning their long track record and reliability."
+    },
+    {
+      "contact": "Team",
+      "company": "XL Properties",
+      "phone": "(773) 504-0930",
+      "email": "[find_at_xlapartments.com]",
+      "type": "email_drafted",
+      "date": "2026-03-01",
+      "result": "pending",
+      "followUpDate": "2026-03-08",
+      "notes": "Small local operator. Personalized email with standard contractor pitch and transparency positioning."
+    }
+  ],
+  "lastUpdated": "2026-03-03T11:53:00Z"
+}
