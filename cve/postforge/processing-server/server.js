@@ -23,6 +23,13 @@ const path = require('path');
 
 // Import routes
 const videoRoutes = require('./routes/video');
+const adminRoutes = require('./routes/admin');
+
+// Import middleware and services
+const rateLimiter = require('./middleware/rateLimiter');
+const { queue } = require('./services/queue');
+const { monitor } = require('./services/monitoring');
+const { cleanup } = require('./utils/cleanup');
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -43,6 +50,9 @@ app.use((req, res, next) => {
   });
   next();
 });
+
+// Rate limiting by IP (global throttle)
+app.use(rateLimiter.rateLimitByIP(100)); // Max 100 requests per minute
 
 // API Key authentication (optional - disable for internal use)
 const authRequired = process.env.REQUIRE_AUTH !== 'false';
@@ -107,6 +117,9 @@ app.get('/', (req, res) => {
 // Register video processing routes
 app.use('/', videoRoutes);
 
+// Register admin routes (monitoring and configuration)
+app.use('/', adminRoutes);
+
 // ─── Error Handling ────────────────────────────────────────
 
 app.use((err, req, res, next) => {
@@ -152,15 +165,42 @@ Configuration:
   Debug: ${process.env.DEBUG || 'false'}
 
 Available Endpoints:
-  GET  /                    - API documentation
-  GET  /health              - Health check
-  POST /upload              - Upload video
-  POST /transcribe/:videoId - Transcribe with Whisper
-  POST /analyze/:videoId    - Find viral moments (Claude)
-  POST /cut/:videoId        - Generate clips with captions
-  GET  /clip/:videoId/:idx  - Download clip
-  GET  /batch/:videoId      - List all clips
-  POST /cleanup             - Delete old files
+  Video Processing:
+    GET  /                    - API documentation
+    GET  /health              - Health check
+    POST /upload              - Upload video
+    POST /transcribe/:videoId - Transcribe with Whisper
+    POST /analyze/:videoId    - Find viral moments (Claude)
+    POST /cut/:videoId        - Generate clips with captions
+    GET  /clip/:videoId/:idx  - Download clip
+    GET  /batch/:videoId      - List all clips
+    POST /cleanup             - Delete old files
+
+  Admin & Monitoring:
+    GET  /admin/stats         - System stats (CPU, RAM, disk, queue)
+    GET  /admin/queue         - Queue status and top users
+    GET  /admin/users         - User stats for abuse detection
+    GET  /admin/health        - Quick health check
+    GET  /admin/dashboard     - Full monitoring dashboard
+    GET  /admin/alerts        - Recent system alerts
+    GET  /admin/config        - Server configuration
+    GET  /admin/job/:jobId    - Job status
+    POST /admin/cleanup       - Manual cleanup trigger
+    POST /admin/reset-user    - Reset user rate limit stats
+
+Rate Limiting & Queue:
+  - Free tier: 5 clips/month, 100MB max file, 1 concurrent job
+  - Growth tier: 50 clips/month, 500MB max file, 2 concurrent jobs
+  - Pro tier: 150 clips/month, 1GB max file, 3 concurrent jobs
+  - Business tier: 500 clips/month, 5GB max file, 5 concurrent jobs
+  - Global: Max 3 jobs processing simultaneously, rest queued
+  - Timeouts: 30-minute max per job
+
+Auto Features:
+  ✓ Cleanup runs hourly (deletes files >24h old)
+  ✓ Monitoring records metrics every minute
+  ✓ Disk alerts at 80%, stops processing at 95%
+  ✓ CPU alerts at 90%, degrades gracefully
 
 Ready to process videos!
   `);

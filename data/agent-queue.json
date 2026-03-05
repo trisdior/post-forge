@@ -38,5 +38,29 @@
     "createdAt": "2026-03-04T21:04:19.471762Z",
     "updatedAt": "2026-03-05T12:37:00.000Z",
     "rejectionReason": "Gym membership sale, not a construction lead"
+  },
+  {
+    "id": "71724940-49f4-4d5d-a9ba-6f65b63ba306",
+    "source": "facebook",
+    "leadName": "Yesenia Arroyo",
+    "postUrl": "https://www.facebook.com/groups/belmontcragincommunity/posts/2147957429295699/",
+    "score": 40,
+    "status": "new",
+    "draftReply": null,
+    "assignedTo": "karl",
+    "createdAt": "2026-03-05T21:04:33.034770Z",
+    "updatedAt": "2026-03-05T21:04:33.034770Z"
+  },
+  {
+    "id": "f7d3e662-ab29-4d06-9254-4ea44617ed89",
+    "source": "facebook",
+    "leadName": "Alexia Soutsos-Abrams",
+    "postUrl": "https://www.facebook.com/groups/148056482809454/posts/1622155568732864/",
+    "score": 30,
+    "status": "new",
+    "draftReply": null,
+    "assignedTo": "karl",
+    "createdAt": "2026-03-05T21:04:33.049061Z",
+    "updatedAt": "2026-03-05T21:04:33.049061Z"
   }
 ]

@@ -1,6 +1,7 @@
 /**
  * Video Processing Routes
  * Upload → Transcribe → Analyze → Cut → Download pipeline
+ * With rate limiting, quota checks, and queue management
  */
 
 const express = require('express');
@@ -13,6 +14,9 @@ const { v4: uuidv4 } = require('uuid');
 const FFmpegService = require('../services/ffmpeg');
 const WhisperService = require('../services/whisper');
 const MomentsService = require('../services/moments');
+const rateLimiter = require('../middleware/rateLimiter');
+const { queue } = require('../services/queue');
+const { monitor } = require('../services/monitoring');
 
 const router = express.Router();
 
@@ -53,41 +57,54 @@ const upload = multer({
 
 // ─── POST /upload ─────────────────────────────────────────
 // Upload a video file
-router.post('/upload', upload.single('video'), async (req, res) => {
-  try {
-    if (!req.file) {
-      return res.status(400).json({ error: 'No video file provided' });
+// Validates file size against user tier and clip quota
+router.post('/upload',
+  upload.single('video'),
+  rateLimiter.validateFileSize,
+  rateLimiter.checkClipQuota,
+  async (req, res) => {
+    try {
+      if (!req.file) {
+        return res.status(400).json({ error: 'No video file provided' });
+      }
+
+      const videoId = path.basename(req.file.filename, path.extname(req.file.filename));
+      const { userId, userTier, tier, fileSize } = req.uploadValidation;
+
+      // Validate and get metadata
+      const metadata = await FFmpegService.validateVideo(req.file.path);
+
+      // Record this clip in the rate limiter
+      rateLimiter.recordClip(userId, fileSize);
+
+      res.json({
+        success: true,
+        videoId,
+        filename: req.file.filename,
+        path: req.file.path,
+        size: req.file.size,
+        duration: metadata.duration,
+        width: metadata.width,
+        height: metadata.height,
+        codec: metadata.codec,
+        userTier: tier.name,
+        clipsUsed: req.clipQuota.clipsUsed + 1,
+        clipsRemaining: req.clipQuota.clipsRemaining - 1,
+        message: 'Video uploaded successfully. Use this videoId for transcription.'
+      });
+    } catch (error) {
+      // Clean up file on error
+      if (req.file && fs.existsSync(req.file.path)) {
+        fs.unlinkSync(req.file.path);
+      }
+
+      res.status(400).json({
+        error: error.message,
+        details: process.env.DEBUG ? error.stack : undefined
+      });
     }
-
-    const videoId = path.basename(req.file.filename, path.extname(req.file.filename));
-
-    // Validate and get metadata
-    const metadata = await FFmpegService.validateVideo(req.file.path);
-
-    res.json({
-      success: true,
-      videoId,
-      filename: req.file.filename,
-      path: req.file.path,
-      size: req.file.size,
-      duration: metadata.duration,
-      width: metadata.width,
-      height: metadata.height,
-      codec: metadata.codec,
-      message: 'Video uploaded successfully. Use this videoId for transcription.'
-    });
-  } catch (error) {
-    // Clean up file on error
-    if (req.file && fs.existsSync(req.file.path)) {
-      fs.unlinkSync(req.file.path);
-    }
-
-    res.status(400).json({
-      error: error.message,
-      details: process.env.DEBUG ? error.stack : undefined
-    });
   }
-});
+);
 
 // ─── POST /transcribe/:videoId ────────────────────────────
 // Transcribe video audio using Whisper
@@ -218,9 +235,13 @@ router.post('/analyze/:videoId', async (req, res) => {
 
 // ─── POST /cut/:videoId ───────────────────────────────────
 // Cut and caption clips based on analyzed moments
-router.post('/cut/:videoId', async (req, res) => {
+// Uses job queue for max 3 concurrent processing
+// Degrades gracefully if CPU >90%
+router.post('/cut/:videoId', rateLimiter.checkClipQuota, async (req, res) => {
   try {
     const videoId = req.params.videoId;
+    const userId = req.headers['x-user-id'] || req.query.userId || 'anonymous';
+    const userTier = req.headers['x-user-tier'] || req.query.tier || 'free';
     const videoFile = findVideoFile(videoId);
     const workDir = path.join(CLIPS_DIR, videoId);
 
@@ -239,53 +260,51 @@ router.post('/cut/:videoId', async (req, res) => {
     const moments = JSON.parse(fs.readFileSync(momentsFile, 'utf8'));
 
     const captionStyle = req.body.captionStyle || 'hormozi';
-    const quality = req.body.quality || 'high'; // low, medium, high
+    const quality = req.body.quality || 'high';
     const width = req.body.width || 1080;
     const height = req.body.height || 1920;
 
-    const presets = { low: 'fast', medium: 'medium', high: 'slow' };
-    const preset = presets[quality] || 'medium';
+    // Check if we should gracefully degrade
+    const health = monitor.getSystemHealth();
+    const shouldQueue = health.cpu.percentUsed > 90;
 
-    const results = [];
-
-    // Cut each moment into a clip
-    for (let i = 0; i < moments.length; i++) {
-      const moment = moments[i];
-      const outputFile = path.join(workDir, `clip_${i + 1}.mp4`);
-
-      try {
-        await FFmpegService.cutClip(
-          videoFile,
-          outputFile,
-          {
-            startTime: moment.startSeconds,
-            duration: moment.duration || moment.endSeconds - moment.startSeconds,
-            width,
-            height,
-            captionText: moment.fullCaption || moment.hook,
+    if (shouldQueue) {
+      // Queue the job instead of processing immediately
+      const job = {
+        type: 'cut',
+        userId,
+        userTier,
+        videoId,
+        payload: { captionStyle, quality, width, height },
+        execute: async () => {
+          return await processCutJob(videoFile, workDir, moments, {
             captionStyle,
-            preset
-          }
-        );
+            quality,
+            width,
+            height
+          });
+        }
+      };
 
-        const stat = fs.statSync(outputFile);
-        results.push({
-          clipIndex: i + 1,
-          filename: `clip_${i + 1}.mp4`,
-          outputFile,
-          size: stat.size,
-          duration: moment.duration,
-          hook: moment.hook,
-          success: true
-        });
-      } catch (error) {
-        results.push({
-          clipIndex: i + 1,
-          error: error.message,
-          success: false
-        });
-      }
+      const queueResult = queue.enqueue(job);
+
+      return res.status(202).json({
+        success: true,
+        status: 'queued',
+        jobId: queueResult.jobId,
+        position: queueResult.position,
+        estimatedWaitSeconds: queueResult.estimatedWaitTime * 60,
+        message: queueResult.message
+      });
     }
+
+    // Process immediately
+    const results = await processCutJob(videoFile, workDir, moments, {
+      captionStyle,
+      quality,
+      width,
+      height
+    });
 
     const successful = results.filter(r => r.success).length;
 
@@ -311,6 +330,57 @@ router.post('/cut/:videoId', async (req, res) => {
     });
   }
 });
+
+/**
+ * Process cut job (extracted for queue support)
+ * @private
+ */
+async function processCutJob(videoFile, workDir, moments, options) {
+  const { captionStyle, quality, width, height } = options;
+  const presets = { low: 'fast', medium: 'medium', high: 'slow' };
+  const preset = presets[quality] || 'medium';
+  const results = [];
+
+  for (let i = 0; i < moments.length; i++) {
+    const moment = moments[i];
+    const outputFile = path.join(workDir, `clip_${i + 1}.mp4`);
+
+    try {
+      await FFmpegService.cutClip(
+        videoFile,
+        outputFile,
+        {
+          startTime: moment.startSeconds,
+          duration: moment.duration || moment.endSeconds - moment.startSeconds,
+          width,
+          height,
+          captionText: moment.fullCaption || moment.hook,
+          captionStyle,
+          preset
+        }
+      );
+
+      const stat = fs.statSync(outputFile);
+      results.push({
+        clipIndex: i + 1,
+        filename: `clip_${i + 1}.mp4`,
+        outputFile,
+        size: stat.size,
+        duration: moment.duration,
+        hook: moment.hook,
+        success: true
+      });
+    } catch (error) {
+      results.push({
+        clipIndex: i + 1,
+        error: error.message,
+        success: false
+      });
+    }
+  }
+
+  return results;
+}
 
 // ─── GET /clip/:videoId/:clipIndex ────────────────────────
 // Download a generated clip

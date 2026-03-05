@@ -75,7 +75,7 @@
       <button class="auth-btn" onclick="doSignup()">Create account â€” it's free</button>
       <div class="auth-switch">Already have an account? <a href="#" onclick="showLogin()">Sign in</a></div>
       <div class="divider">or</div>
-      <button class="guest-btn" onclick="window.location='/app'">Continue without account</button>
+      <button class="guest-btn" onclick="guestLogin()">Test mode (guest login)</button>
     </div>
 
     <!-- LOGIN -->
@@ -93,6 +93,8 @@
       <p class="error-msg" id="l-error"></p>
       <button class="auth-btn" onclick="doLogin()">Sign in</button>
       <div class="auth-switch">Don't have an account? <a href="#" onclick="showSignup()">Create one</a></div>
+      <div class="divider">or</div>
+      <button class="guest-btn" onclick="guestLogin()">Test mode (guest login)</button>
     </div>
   </div>
 
@@ -126,6 +128,17 @@
         err.textContent = 'Connection error. Try again.';
         err.classList.add('active');
       }
+    }
+
+    function guestLogin() {
+      localStorage.setItem('pf_token', 'guest_' + Date.now());
+      localStorage.setItem('pf_user', JSON.stringify({
+        id: 'guest',
+        email: 'test@postforge.com',
+        businessName: 'Test Business',
+        tier: 'business'
+      }));
+      window.location = '/app';
     }
 
     async function doLogin() {

@@ -1,3 +1,12 @@
-2026/03/05-12:22:18.191 50a4 Reusing MANIFEST C:\Users\trisd\clawd\data\facebook-browser-profile\Default\IndexedDB\https_www.facebook.com_0.indexeddb.leveldb/MANIFEST-000001
-2026/03/05-12:22:18.191 50a4 Recovering log #19
-2026/03/05-12:22:18.547 50a4 Reusing old log C:\Users\trisd\clawd\data\facebook-browser-profile\Default\IndexedDB\https_www.facebook.com_0.indexeddb.leveldb/000019.log 
+2026/03/05-15:03:10.071 5310 Reusing MANIFEST C:\Users\trisd\clawd\data\facebook-browser-profile\Default\IndexedDB\https_www.facebook.com_0.indexeddb.leveldb/MANIFEST-000001
+2026/03/05-15:03:10.071 5310 Recovering log #19
+2026/03/05-15:03:10.121 5310 Reusing old log C:\Users\trisd\clawd\data\facebook-browser-profile\Default\IndexedDB\https_www.facebook.com_0.indexeddb.leveldb/000019.log 
+2026/03/05-15:03:51.429 119c Level-0 table #24: started
+2026/03/05-15:03:51.449 119c Level-0 table #24: 1633729 bytes OK
+2026/03/05-15:03:51.450 119c Delete type=0 #19
+2026/03/05-15:03:51.802 119c Compacting 1@1 + 1@2 files
+2026/03/05-15:03:51.821 119c Generated table #25@1: 3657 keys, 173007 bytes
+2026/03/05-15:03:51.821 119c Compacted 1@1 + 1@2 files => 173007 bytes
+2026/03/05-15:03:51.824 119c compacted to: files[ 0 0 1 0 0 0 0 ]
+2026/03/05-15:03:51.824 119c Delete type=2 #21
+2026/03/05-15:03:51.825 119c Delete type=2 #24

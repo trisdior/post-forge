@@ -1384,6 +1384,29 @@ try {
   console.warn('[SOCIAL] Failed to initialize social routes:', e.message);
 }
 
+// ─── Initialize API Key Management ───
+try {
+  var apiKeyAuth = require('./middleware/apiKeyAuth');
+  var rateLimitApi = require('./middleware/rateLimitApi');
+  
+  // Add API key auth and rate limiting middleware for all /api/v1/* routes
+  app.use(apiKeyAuth);
+  app.use(rateLimitApi);
+  
+  // Setup API key routes
+  var setupKeyRoutes = require('./api/keys');
+  setupKeyRoutes(app);
+  
+  console.log('[API] API Key management initialized');
+} catch(e) {
+  console.warn('[API] Failed to initialize API key management:', e.message);
+}
+
+// Serve API Keys dashboard
+app.get('/api-keys', function(req, res) {
+  res.sendFile(path.join(__dirname, 'api-keys.html'));
+});
+
 app.get('/favicon.svg', function(req, res) {
   res.setHeader('Content-Type', 'image/svg+xml');
   res.sendFile(path.join(__dirname, 'favicon.svg'));
