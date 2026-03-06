@@ -24,6 +24,7 @@ const path = require('path');
 // Import routes
 const videoRoutes = require('./routes/video');
 const adminRoutes = require('./routes/admin');
+const advancedRoutes = require('./routes-advanced');
 
 // Import middleware and services
 const rateLimiter = require('./middleware/rateLimiter');
@@ -119,6 +120,9 @@ app.use('/', videoRoutes);
 
 // Register admin routes (monitoring and configuration)
 app.use('/', adminRoutes);
+
+// Register advanced clipping features
+app.use('/', advancedRoutes);
 
 // ─── Error Handling ────────────────────────────────────────
 
