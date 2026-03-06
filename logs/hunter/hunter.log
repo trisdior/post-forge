@@ -15,3 +15,16 @@
 [2026-03-05 16:00:02] === CRAIGSLIST SCAN ===
 [2026-03-05 16:00:07] âœ
 [2026-03-05 16:00:07] Hunter done.
+[2026-03-05 19:00:03] Hunter starting - Task: reddit
+[2026-03-05 19:00:03] === REDDIT SCAN ===
+[2026-03-05 19:00:03] âš  reddit-scan.py not found, skipping
+[2026-03-05 19:00:04] âœ
+[2026-03-05 19:00:04] Hunter done.
+[2026-03-05 20:00:03] Hunter starting - Task: craigslist
+[2026-03-05 20:00:03] === CRAIGSLIST SCAN ===
+[2026-03-05 20:00:08] âœ
+[2026-03-05 20:00:08] Hunter done.
+[2026-03-05 21:00:03] Hunter starting - Task: facebook
+[2026-03-05 21:00:03] Hunter done.
+[2026-03-05 22:30:02] Hunter starting - Task: nextdoor
+[2026-03-05 22:30:02] Hunter done.

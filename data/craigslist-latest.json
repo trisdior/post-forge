@@ -1,46 +1,7 @@
 ﻿{
-    "timestamp":  "2026-03-05 16:00:08",
-    "newPostsCount":  5,
+    "timestamp":  "2026-03-05 20:00:21",
+    "newPostsCount":  0,
     "posts":  [
-                  {
-                      "id":  "7919311249",
-                      "title":  "PROFESSIONAL PAINTING/INTERIOR/CABINETS/DRYWALL REPAIR",
-                      "url":  "https://chicago.craigslist.org/nwc/hss/d/chicago-professional-painting-interior/7919311249.html",
-                      "date":  "2026-03-05",
-                      "source":  "Craigslist",
-                      "snippet":  "PROFESSIONAL PAINTING/INTERIOR/CABINETS/DRYWALL REPAIR"
-                  },
-                  {
-                      "id":  "7919297056",
-                      "title":  "HOME REMODELING - KITCHENS - BATHROOMS - PAINTING - ROOFING",
-                      "url":  "https://chicago.craigslist.org/nch/hss/d/chicago-home-remodeling-kitchens/7919297056.html",
-                      "date":  "2026-03-05",
-                      "source":  "Craigslist",
-                      "snippet":  "HOME REMODELING - KITCHENS - BATHROOMS - PAINTING - ROOFING"
-                  },
-                  {
-                      "id":  "7919292833",
-                      "title":  "HANDY MAN 🏡 \u0026 GENERAL CONTRACTOR 👷‍♂️ - FULL RENOVATION👷‍",
-                      "url":  "https://chicago.craigslist.org/chc/hss/d/chicago-handy-man-general-contractor/7919292833.html",
-                      "date":  "2026-03-05",
-                      "source":  "Craigslist",
-                      "snippet":  "HANDY MAN 🏡 \u0026 GENERAL CONTRACTOR 👷‍♂️ - FULL RENOVATION👷‍"
-                  },
-                  {
-                      "id":  "7919291696",
-                      "title":  "HANDY MAN 🏡 \u0026 GENERAL CONTRACTOR 👷‍♂️ - FULL RENOVATION👷‍",
-                      "url":  "https://chicago.craigslist.org/wcl/hss/d/glenview-handy-man-general-contractor/7919291696.html",
-                      "date":  "2026-03-05",
-                      "source":  "Craigslist",
-                      "snippet":  "HANDY MAN 🏡 \u0026 GENERAL CONTRACTOR 👷‍♂️ - FULL RENOVATION👷‍"
-                  },
-                  {
-                      "id":  "7919290061",
-                      "title":  "HANDY MAN 🏡 \u0026 GENERAL CONTRACTOR 👷‍♂️ - FULL RENOVATION👷‍",
-                      "url":  "https://chicago.craigslist.org/sox/hss/d/wilmette-handy-man-general-contractor/7919290061.html",
-                      "date":  "2026-03-05",
-                      "source":  "Craigslist",
-                      "snippet":  "HANDY MAN 🏡 \u0026 GENERAL CONTRACTOR 👷‍♂️ - FULL RENOVATION👷‍"
-                  }
+
               ]
 }

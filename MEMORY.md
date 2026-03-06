@@ -157,22 +157,61 @@
 - **VisionBuild App** — AI remodel visualizer for contractors. Upload room photo → design variations + cost estimates. SaaS play.
 - **Other apps:** InstaBid, CrewTrack, ReviewHero, LeadSniper
 
-## PostForge — THE Main Product (Mar 4, 2026)
+## PostForge — THE Main Product (Mar 5, 2026 — Launch Imminent)
 - **Vision:** Every small business gets their own AI marketing employee
 - **Not a tool, not a dashboard — an EMPLOYEE**
-- **Pricing:** $29/49/99/299 per month (Starter/Pro/Business/Agency)
-- **Phase 1 (NOW):** Web tool, manual content generation
-- **Phase 2 (March):** Auto-pilot with scheduled gen + approval queue
-- **Phase 3 (April):** Full persistent agent per user
-- **Phase 4:** YC application + scale
+- **Pricing:** Free ($0, 10 posts) / Growth ($19, 50 posts) / Pro ($49, 150 posts) / Business ($99, 500 posts)
+- **Status:** FULLY BUILT — All phases complete, awaiting deployment
+  - Phase 1 ✅: Web tool + content generation with approval queue
+  - Phase 2 ✅: Auto-pilot with scheduled generation
+  - Phase 3 ✅: Full persistent agent per user (Redis-backed memory)
+  - Phase 4 ✅: API key system for platform integrations
+- **Key Components Built (Mar 5):**
+  - Phase C: Social Media Auto-Posting (Twitter, Instagram, LinkedIn, Facebook OAuth)
+  - Phase D: Viral Clip Engine (upload → transcribe → analyze → cut → caption → download)
+  - Rate limiting system (tier-based, monthly reset)
+  - API key management system (complete)
+  - Competitive analysis (10 companies researched)
+  - UI redesign (premium, "alive" look with animations)
 - **Key insight from Tris:** "We change the game with their own agent"
 - **YC RFS #3 literally asks for "AI-Native Agencies"** — this is us
 - **Market:** 33M small businesses in US × $99/mo = massive TAM
-- **Live URL:** https://postforge-nu.vercel.app
-- **Admin:** /admin (password: postforge2026)
-- **Current stats:** 3 users, 11 posts generated, $0 MRR
-- **Pages:** Landing, Create (with repurpose mode), Calendar, Analytics, Clips, Auto-Pilot, Settings, Onboarding, Admin
-- **Stack:** Node.js + Upstash Redis + Claude API + Vercel
+- **Live URL:** https://postforge-nu.vercel.app (deploying Mar 5)
+- **GitHub:** https://github.com/trisdior/post-forge
+- **Current stats:** 3 users (local), 0 public deployments yet, $0 MRR
+- **Pages:** Landing, Create (with repurpose mode), Calendar, Analytics, Clips, Auto-Pilot, Settings, Onboarding, API Keys
+- **Stack:** Node.js + Upstash Redis + Claude API + Vercel + Docker (processing server)
+- **Deployment Status (Mar 5, 4:46 PM):**
+  - ❌ CRITICAL: Git history being cleaned (exposed API keys to GitHub)
+  - ⏳ Waiting for 3 new API keys (Anthropic, Google, Sendinblue)
+  - ⏳ Will update Vercel env vars + redeploy
+  - ⏳ Then test production + launch
+
+## CRITICAL: GitHub Security Incident (Mar 5, 2026)
+**What happened:**
+- I committed `.env.local` with exposed API keys to GitHub (my mistake)
+- GitHub auto-detected and deactivated: Anthropic, Google, Sendinblue keys
+- Telegram bot token also exposed (Tris said it's no longer needed)
+- Currently cleaning git history (force push to remove `.env.local` permanently)
+
+**What's being done:**
+- Added `.gitignore` to prevent future commits of `.env.local`
+- Removing `.env.local` from git history completely
+- Force pushing to GitHub to clean the history
+- Requesting 3 new API keys from Tris (Anthropic, Google, Sendinblue only)
+
+**Lesson learned:**
+- NEVER commit `.env.local` to GitHub
+- ALWAYS create `.gitignore` first
+- Store secrets in platform env vars (Vercel), never in git
+- This was my failure, not Tris's — taking full responsibility
+
+**Next action (once git history is clean):**
+1. Get 3 new API keys from Tris
+2. Update Vercel environment variables
+3. Redeploy
+4. Test production at https://postforge-nu.vercel.app
+5. Launch: ProductHunt, Reddit, Twitter
 
 ## Christopher Valencia Enterprises (CVE) — Founded Mar 4, 2026
 - **Mission:** $1M MRR startup. AI agents find problems, build solutions, sell them. 24/7.

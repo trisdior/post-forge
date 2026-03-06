@@ -68,5 +68,11 @@ Tris reviews in the morning. Nothing goes live without his approval.
 - [x] Build Valencia lead nurture sequence ✅ (3/4 11PM) — SMS + messenger + email, 4-5 day consultation cycle
 - [x] Build CVE Operating Playbook ✅ (3/4 11PM) — 4-phase model, pricing, go-to-market, $108K Year 1 roadmap
 
+### 📋 NIGHTSHIFT BUILD (Mar 5-6 11PM)
+- [x] PostForge Launch Strategy (ProductHunt + Reddit + Twitter + warm outreach) ✅ (3/5 11PM)
+- [x] Valencia Lead Automation System (SMS/Email/Phone sequences + lead scoring) ✅ (3/5 11:40PM)
+- [x] CVE Sales One-Pager (contractor pitch deck, ROI breakdown) ✅ (3/5 11:50PM)
+- [x] CVE Sales Email Templates (10 ready-to-send outreach templates) ✅ (3/6 12:15AM)
+
 ## Completed
 (move items here as they're done)
