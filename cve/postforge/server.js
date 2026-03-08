@@ -744,16 +744,12 @@ app.get('/clips', function(req, res) {
   res.sendFile(path.join(__dirname, 'clips.html'));
 });
 
-app.get('/schedule', function(req, res) {
-  res.sendFile(path.join(__dirname, 'schedule.html'));
-});
-
-app.get('/approvals', function(req, res) {
-  res.sendFile(path.join(__dirname, 'approvals.html'));
-});
-
 app.get('/settings', function(req, res) {
   res.sendFile(path.join(__dirname, 'settings.html'));
+});
+
+app.get('/landing', function(req, res) {
+  res.sendFile(path.join(__dirname, 'landing.html'));
 });
 
 // ─── Onboarding ───
@@ -1390,43 +1386,6 @@ try {
   setupSocialRoutes(app, redis);
 } catch(e) {
   console.warn('[SOCIAL] Failed to initialize social routes:', e.message);
-}
-
-// ─── Initialize Phase 2 (Auto-Pilot Scheduler) ───
-try {
-  var Phase2DB = require('./services/phase2-db');
-  var Phase2Scheduler = require('./services/phase2-scheduler');
-  var Phase2Approval = require('./services/phase2-approval');
-  
-  var phase2DB = new Phase2DB(getRedis());
-  var phase2Scheduler = new Phase2Scheduler(phase2DB, ANTHROPIC_KEY);
-  var phase2Approval = new Phase2Approval(phase2DB);
-  
-  // Setup API routes for Phase 2
-  require('./api/phase2-routes')(app, phase2DB, phase2Scheduler, phase2Approval);
-  
-  // Check schedules every 5 minutes
-  setInterval(async function() {
-    try {
-      await phase2Scheduler.checkAndRunSchedules();
-    } catch(e) {
-      console.error('[Phase 2] Schedule check error:', e.message);
-    }
-  }, 5 * 60 * 1000);
-  
-  // Run approval expiration hourly
-  setInterval(async function() {
-    try {
-      await phase2Approval.expirePendingApprovals();
-    } catch(e) {
-      console.error('[Phase 2] Expiration error:', e.message);
-    }
-  }, 60 * 60 * 1000);
-  
-  console.log('[Phase 2] ✅ Auto-Pilot Scheduler initialized');
-} catch(e) {
-  console.error('[Phase 2] Initialization failed:', e.message);
-  console.error(e);
 }
 
 // ─── Initialize API Key Management ───
