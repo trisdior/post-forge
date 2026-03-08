@@ -127,23 +127,124 @@
       margin-bottom: 60px;
     }
 
-    .hero-visual {
+    /* Clips Section */
+    .clips-section {
+      padding: 80px 40px;
       background: var(--bg-light);
-      border: 1px solid var(--border);
+    }
+
+    .clips-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .clips-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .clips-header h2 {
+      font-size: 40px;
+      margin-bottom: 16px;
+    }
+
+    .clips-header p {
+      color: var(--text-muted);
+      font-size: 16px;
+    }
+
+    .clips-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .clip-card {
+      background: white;
       border-radius: 12px;
-      padding: 40px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      transition: all 0.2s;
+    }
+
+    .clip-card:hover {
+      box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+      transform: translateY(-4px);
+    }
+
+    .clip-preview {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       aspect-ratio: 16/9;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 48px;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .clip-preview.twitter {
+      background: linear-gradient(135deg, #1DA1F2 0%, #1a91da 100%);
+    }
+
+    .clip-preview.linkedin {
+      background: linear-gradient(135deg, #0A66C2 0%, #005099 100%);
+    }
+
+    .clip-preview.facebook {
+      background: linear-gradient(135deg, #1877F2 0%, #0c63e4 100%);
+    }
+
+    .clip-preview.instagram {
+      background: linear-gradient(135deg, #E1306C 0%, #C13584 100%);
+    }
+
+    .play-button {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      background: rgba(255,255,255,0.9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .clip-card:hover .play-button {
+      background: white;
+      transform: scale(1.1);
+    }
+
+    .clip-content {
+      padding: 20px;
+    }
+
+    .clip-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .clip-meta {
+      font-size: 12px;
       color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .clip-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
     }
 
     /* Social Proof */
     .social-proof {
       padding: 60px 40px;
-      background: var(--bg-light);
+      background: white;
       text-align: center;
     }
 
@@ -171,7 +272,7 @@
       color: white;
       font-size: 12px;
       font-weight: 600;
-      border: 2px solid var(--bg);
+      border: 2px solid white;
       margin: 0 -8px;
     }
 
@@ -368,6 +469,10 @@
       .hero {
         padding: 40px 20px;
       }
+
+      .clips-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -376,9 +481,9 @@
   <nav>
     <div class="logo">📝 PostForge</div>
     <ul>
+      <li><a href="#clips">Showcase</a></li>
       <li><a href="#features">Features</a></li>
       <li><a href="#pricing">Pricing</a></li>
-      <li><a href="#faq">FAQ</a></li>
     </ul>
     <div class="nav-actions">
       <button class="btn btn-secondary">Sign In</button>
@@ -389,13 +494,94 @@
   <!-- Hero -->
   <div class="hero">
     <h1>Your AI Marketing Employee</h1>
-    <p class="subtitle">Generate, schedule, and post social content automatically. No more manual posting, no more creative block.</p>
+    <p class="subtitle">Generate, schedule, and post social content automatically. Watch your engagement soar while you focus on what matters.</p>
     <div class="hero-cta">
       <button class="btn btn-primary">Start Free Trial</button>
       <button class="btn btn-secondary">Watch Demo</button>
     </div>
-    <div class="hero-visual">
-      📊 Dashboard Preview
+  </div>
+
+  <!-- Clips Showcase -->
+  <div class="clips-section" id="clips">
+    <div class="clips-container">
+      <div class="clips-header">
+        <h2>See It In Action</h2>
+        <p>Real examples of content generated, scheduled, and posted with PostForge</p>
+      </div>
+      
+      <div class="clips-grid">
+        <!-- Twitter Example -->
+        <div class="clip-card">
+          <div class="clip-preview twitter">
+            <div class="play-button">▶</div>
+          </div>
+          <div class="clip-content">
+            <div class="clip-title">Twitter Thread Generated</div>
+            <div class="clip-meta">AI-generated • 3 variants • Selected in 2 clicks</div>
+            <div class="clip-desc">"10 Ways to Scale Your SaaS" thread auto-generated and scheduled for optimal engagement time.</div>
+          </div>
+        </div>
+
+        <!-- LinkedIn Example -->
+        <div class="clip-card">
+          <div class="clip-preview linkedin">
+            <div class="play-button">▶</div>
+          </div>
+          <div class="clip-content">
+            <div class="clip-title">LinkedIn Post Approval</div>
+            <div class="clip-meta">Approval flow • 4hr window • Auto-post</div>
+            <div class="clip-desc">Review 3 professional variants and approve before posting. Or enable auto-approval for full automation.</div>
+          </div>
+        </div>
+
+        <!-- Facebook Example -->
+        <div class="clip-card">
+          <div class="clip-preview facebook">
+            <div class="play-button">▶</div>
+          </div>
+          <div class="clip-content">
+            <div class="clip-title">Multi-Platform Scheduling</div>
+            <div class="clip-meta">Schedule once • Post everywhere • Instant sync</div>
+            <div class="clip-desc">Schedule content for Twitter, LinkedIn, Facebook, and Instagram simultaneously. One click, all platforms.</div>
+          </div>
+        </div>
+
+        <!-- Dashboard Analytics -->
+        <div class="clip-card">
+          <div class="clip-preview" style="background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);">
+            <div class="play-button">▶</div>
+          </div>
+          <div class="clip-content">
+            <div class="clip-title">Analytics Dashboard</div>
+            <div class="clip-meta">Real-time metrics • Engagement tracking • ROI</div>
+            <div class="clip-desc">See what's working. Track impressions, clicks, and engagement across all platforms in one dashboard.</div>
+          </div>
+        </div>
+
+        <!-- Schedule Builder -->
+        <div class="clip-card">
+          <div class="clip-preview" style="background: linear-gradient(135deg, #10B981 0%, #059669 100%);">
+            <div class="play-button">▶</div>
+          </div>
+          <div class="clip-content">
+            <div class="clip-title">Smart Scheduling</div>
+            <div class="clip-meta">Recurring posts • Custom frequency • Auto-generate</div>
+            <div class="clip-desc">Set it and forget it. Schedule daily, weekly, or monthly posts with automatic content generation.</div>
+          </div>
+        </div>
+
+        <!-- Approval Queue -->
+        <div class="clip-card">
+          <div class="clip-preview" style="background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);">
+            <div class="play-button">▶</div>
+          </div>
+          <div class="clip-content">
+            <div class="clip-title">Approval Queue</div>
+            <div class="clip-meta">Pending reviews • Batch approval • Regenerate on demand</div>
+            <div class="clip-desc">Review all pending posts in one place. Approve, reject, or regenerate variants instantly.</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
