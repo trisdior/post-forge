@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PostForge — Schedule Content</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f5f5; color: #333; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+    .header { margin-bottom: 40px; }
+    .header h1 { font-size: 32px; margin-bottom: 10px; }
+    .header p { color: #666; font-size: 16px; }
+    
+    .section { background: white; border-radius: 12px; padding: 30px; margin-bottom: 30px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+    .section h2 { font-size: 20px; margin-bottom: 20px; }
+    
+    .schedules-list { display: grid; gap: 20px; }
+    .schedule-card { background: #fafafa; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; }
+    .schedule-card h3 { margin-bottom: 10px; }
+    .schedule-card p { color: #666; font-size: 14px; margin-bottom: 5px; }
+    .schedule-card .status { padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 500; display: inline-block; margin-top: 10px; }
+    .status.active { background: #d4f8d4; color: #1a7a1a; }
+    .status.paused { background: #ffd9d9; color: #7a1a1a; }
+    
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; margin-bottom: 8px; font-weight: 500; }
+    .form-group input, .form-group select { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; }
+    .form-group input:focus, .form-group select:focus { outline: none; border-color: #0066cc; box-shadow: 0 0 0 2px rgba(0,102,204,0.1); }
+    
+    .checkbox-group { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .checkbox-item { display: flex; align-items: center; }
+    .checkbox-item input { margin-right: 8px; }
+    .checkbox-item label { margin: 0; }
+    
+    .button-group { display: flex; gap: 10px; margin-top: 20px; }
+    .btn { padding: 10px 20px; border: none; border-radius: 6px; font-size: 14px; font-weight: 500; cursor: pointer; }
+    .btn-primary { background: #0066cc; color: white; }
+    .btn-primary:hover { background: #0052a3; }
+    .btn-secondary { background: #f0f0f0; color: #333; }
+    .btn-secondary:hover { background: #e0e0e0; }
+    .btn-danger { background: #ff4444; color: white; }
+    .btn-danger:hover { background: #cc0000; }
+    .btn:disabled { opacity: 0.6; cursor: not-allowed; }
+    
+    .empty-state { text-align: center; padding: 40px; color: #999; }
+    .empty-state p { margin: 10px 0; }
+    
+    .error { background: #ffe0e0; color: #cc0000; padding: 15px; border-radius: 6px; margin-bottom: 20px; }
+    .success { background: #e0f0ff; color: #0066cc; padding: 15px; border-radius: 6px; margin-bottom: 20px; }
+    
+    .loading { text-align: center; padding: 20px; color: #999; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📅 Content Schedule</h1>
+      <p>Set up recurring content generation for your social media</p>
+    </div>
+
+    <div id="messageArea"></div>
+
+    <!-- Active Schedules -->
+    <div class="section">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h2>Your Schedules</h2>
+        <button class="btn btn-primary" onclick="toggleForm()">+ New Schedule</button>
+      </div>
+
+      <div id="schedulesList" class="schedules-list">
+        <div class="loading">Loading schedules...</div>
+      </div>
+    </div>
+
+    <!-- Create Form -->
+    <div id="createForm" class="section" style="display: none;">
+      <h2>Create New Schedule</h2>
+      <form onsubmit="submitForm(event)">
+        <div class="form-group">
+          <label>How often?</label>
+          <select id="frequency" required>
+            <option value="daily">Every Day</option>
+            <option value="weekly">Every Week (Monday)</option>
+            <option value="monthly">Every Month</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>What time?</label>
+          <input type="time" id="time" value="11:00" required>
+        </div>
+
+        <div class="form-group">
+          <label>Which platforms?</label>
+          <div class="checkbox-group">
+            <div class="checkbox-item">
+              <input type="checkbox" id="twitter" value="twitter" checked>
+              <label for="twitter">Twitter/X</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="linkedin" value="linkedin" checked>
+              <label for="linkedin">LinkedIn</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="facebook" value="facebook">
+              <label for="facebook">Facebook</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="instagram" value="instagram">
+              <label for="instagram">Instagram</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Content type?</label>
+          <select id="industry" required>
+            <option value="marketing">Marketing</option>
+            <option value="saas">SaaS</option>
+            <option value="personal-brand">Personal Brand</option>
+            <option value="construction">Construction/Contractor</option>
+            <option value="news-commentary">News Commentary</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Generate how many versions?</label>
+          <select id="variations">
+            <option value="1">1 (standard)</option>
+            <option value="3" selected>3 (compare)</option>
+            <option value="5">5 (deep dive)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <div class="checkbox-item">
+            <input type="checkbox" id="autoApprove">
+            <label for="autoApprove">Auto-post the highest-scoring variant? (skip approval)</label>
+          </div>
+        </div>
+
+        <div class="button-group">
+          <button type="submit" class="btn btn-primary">✓ Create Schedule</button>
+          <button type="button" class="btn btn-secondary" onclick="toggleForm()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const API_BASE = '/api/phase2';
+    const token = localStorage.getItem('postforge_token');
+
+    function showMessage(text, type = 'success') {
+      const area = document.getElementById('messageArea');
+      const className = type === 'error' ? 'error' : 'success';
+      area.innerHTML = `<div class="${className}">${text}</div>`;
+      setTimeout(() => { area.innerHTML = ''; }, 5000);
+    }
+
+    function toggleForm() {
+      const form = document.getElementById('createForm');
+      form.style.display = form.style.display === 'none' ? 'block' : 'none';
+    }
+
+    async function loadSchedules() {
+      try {
+        const res = await fetch(`${API_BASE}/schedules`, {
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+        const data = await res.json();
+        
+        const list = document.getElementById('schedulesList');
+        
+        if (!data.schedules || data.schedules.length === 0) {
+          list.innerHTML = '<div class="empty-state"><p>No schedules yet</p><p>Create one to get started!</p></div>';
+          return;
+        }
+
+        list.innerHTML = data.schedules.map(s => `
+          <div class="schedule-card">
+            <h3>${s.frequency.charAt(0).toUpperCase() + s.frequency.slice(1)} at ${s.time}</h3>
+            <p>Platforms: ${s.platforms.join(', ')}</p>
+            <p>Industry: ${s.industry}</p>
+            <p>Variations: ${s.variations}</p>
+            <span class="status ${s.isActive ? 'active' : 'paused'}">${s.isActive ? '🟢 Active' : '🔴 Paused'}</span>
+            <div style="margin-top: 15px;">
+              ${s.isActive ? 
+                `<button class="btn btn-secondary" onclick="pauseSchedule('${s.id}')" style="margin-right: 10px;">⏸ Pause</button>` :
+                `<button class="btn btn-secondary" onclick="resumeSchedule('${s.id}')" style="margin-right: 10px;">▶ Resume</button>`
+              }
+              <button class="btn btn-danger" onclick="deleteSchedule('${s.id}')">🗑 Delete</button>
+            </div>
+          </div>
+        `).join('');
+      } catch (e) {
+        document.getElementById('schedulesList').innerHTML = `<div class="error">Error loading schedules: ${e.message}</div>`;
+      }
+    }
+
+    async function submitForm(e) {
+      e.preventDefault();
+      
+      const platforms = [];
+      ['twitter', 'linkedin', 'facebook', 'instagram'].forEach(p => {
+        if (document.getElementById(p).checked) platforms.push(p);
+      });
+
+      if (platforms.length === 0) {
+        showMessage('Please select at least one platform', 'error');
+        return;
+      }
+
+      const formData = {
+        frequency: document.getElementById('frequency').value,
+        time: document.getElementById('time').value,
+        platforms,
+        industry: document.getElementById('industry').value,
+        variations: parseInt(document.getElementById('variations').value),
+        autoApprove: document.getElementById('autoApprove').checked
+      };
+
+      try {
+        const res = await fetch(`${API_BASE}/schedules`, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData)
+        });
+
+        if (!res.ok) {
+          const err = await res.json();
+          throw new Error(err.error);
+        }
+
+        showMessage('✅ Schedule created!');
+        document.querySelector('form').reset();
+        toggleForm();
+        loadSchedules();
+      } catch (e) {
+        showMessage(`Error: ${e.message}`, 'error');
+      }
+    }
+
+    async function pauseSchedule(id) {
+      try {
+        await fetch(`${API_BASE}/schedules/${id}/pause`, {
+          method: 'POST',
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+        loadSchedules();
+      } catch (e) {
+        showMessage(`Error: ${e.message}`, 'error');
+      }
+    }
+
+    async function resumeSchedule(id) {
+      try {
+        await fetch(`${API_BASE}/schedules/${id}/resume`, {
+          method: 'POST',
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+        loadSchedules();
+      } catch (e) {
+        showMessage(`Error: ${e.message}`, 'error');
+      }
+    }
+
+    async function deleteSchedule(id) {
+      if (!confirm('Delete this schedule?')) return;
+      
+      try {
+        await fetch(`${API_BASE}/schedules/${id}`, {
+          method: 'DELETE',
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+        loadSchedules();
+      } catch (e) {
+        showMessage(`Error: ${e.message}`, 'error');
+      }
+    }
+
+    // Load on page load
+    loadSchedules();
+  </script>
+</body>
+</html>

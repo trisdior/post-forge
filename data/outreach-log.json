@@ -181,34 +181,66 @@
       "company": "MLC Properties & Management",
       "phone": "(773) 262-7555",
       "email": "office@mlcproperties.com",
-      "type": "email_drafted",
-      "date": "2026-03-01",
-      "result": "pending",
-      "followUpDate": "2026-03-08",
-      "notes": "Rogers Park area, small local operation. Personalized email emphasizing fit for their portfolio and neighborhood focus."
+      "type": "email_sent",
+      "date": "2026-03-06",
+      "result": "sent",
+      "followUpDate": "2026-03-13",
+      "notes": "Rogers Park area, small local operation. Personalized email emphasizing fit for their portfolio and neighborhood focus. SENT 3/6."
     },
     {
       "contact": "Team",
       "company": "Urban REI Property Management",
       "phone": "(312) 847-4414",
       "email": "[find_at_urbanrei.com]",
-      "type": "email_drafted",
-      "date": "2026-03-01",
-      "result": "pending",
-      "followUpDate": "2026-03-08",
-      "notes": "Small operation, 7+ years, Yelp-recommended. Personalized email mentioning their long track record and reliability."
+      "type": "email_sent",
+      "date": "2026-03-06",
+      "result": "sent",
+      "followUpDate": "2026-03-13",
+      "notes": "Small operation, 7+ years, Yelp-recommended. Personalized email mentioning their long track record and reliability. SENT 3/6."
     },
     {
       "contact": "Team",
       "company": "XL Properties",
       "phone": "(773) 504-0930",
       "email": "[find_at_xlapartments.com]",
-      "type": "email_drafted",
-      "date": "2026-03-01",
-      "result": "pending",
-      "followUpDate": "2026-03-08",
-      "notes": "Small local operator. Personalized email with standard contractor pitch and transparency positioning."
+      "type": "email_sent",
+      "date": "2026-03-06",
+      "result": "sent",
+      "followUpDate": "2026-03-13",
+      "notes": "Small local operator. Personalized email with standard contractor pitch and transparency positioning. SENT 3/6."
     }
   ],
-  "lastUpdated": "2026-03-03T11:53:00Z"
+  "followupDrafts": [
+    {
+      "contact": "Team",
+      "company": "SimpliManaged Properties",
+      "email": "info@simplimanaged.com",
+      "type": "email_followup_drafted",
+      "date": "2026-03-07",
+      "subject": "Re: Contractor for your Chicago properties",
+      "bodySnippet": "Following up on my email from Feb 27th... focus on small landlords (25 units or fewer)... fast turnarounds and transparent pricing.",
+      "followUpDate": "2026-03-07"
+    },
+    {
+      "contact": "Serena",
+      "company": "Chicago Central Property Management",
+      "email": "chicagocentralpm@gmail.com",
+      "type": "email_followup_drafted",
+      "date": "2026-03-07",
+      "subject": "Re: Contractor partnership for your properties",
+      "bodySnippet": "Checking in on earlier outreach... manage a lot of 2-flats and small multi-family buildings — that's our wheelhouse.",
+      "followUpDate": "2026-03-07"
+    },
+    {
+      "contact": "Edin",
+      "company": "Property Hill Management",
+      "email": "[NEED TO CALL (312) 414-1105]",
+      "type": "email_followup_drafted",
+      "date": "2026-03-07",
+      "subject": "Re: Contractor for Property Hill clients",
+      "bodySnippet": "Following up on my outreach... specialize in unit turnovers, renovations, maintenance. Fast, reliable, owner-operated.",
+      "followUpDate": "2026-03-07"
+    }
+  ],
+  "lastUpdated": "2026-03-07T23:23:00Z"
 }

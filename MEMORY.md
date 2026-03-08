@@ -70,10 +70,10 @@
 
 ## Active Projects & TODOs
 
-### CURRENT PRIORITY: 3-Business Launch (Feb 26-28)
-**Active Execution Phase**
+### CURRENT PRIORITY: 2-Business Focus (Mar 7+)
+**Simplified. Delvrai Killed.**
 
-#### 1. Valencia Construction (Get 1st Client by Feb 28)
+#### 1. Valencia Construction (Get 1st Client by Mar 31)
 - ✅ Lead Gen Blitz cron active (8am + 8pm)
 - ✅ Hunter AI scraping leads
 - 🔴 **WORKFLOW BROKEN** (Mar 2): Hunter finds leads but wasn't queuing them for Karl (Closer)
@@ -86,28 +86,24 @@
 - ⏳ Make 3 calls/day through Saturday
 - ⏳ Get 1 consultation booked = proof of concept
 
-#### 2. Trovva AI (Content Hub Launch - Monday Mar 1)
-- ✅ 5 blog posts written (1,500-1,800 words each)
-- ✅ 5 Twitter threads written (ready to post)
-- ✅ Substack setup complete (bio, about, welcome email)
-- ✅ Publish guide created (Mon-Fri schedule)
-- ⏳ Friday: Review content + setup accounts
-- ⏳ Monday 9am: Goes live
+#### 2. PostForge Phase 2 (Auto-Pilot Scheduler - Next Week)
+- ✅ Entire system built (2,390 lines, Sat Mar 7 nightshift)
+- ✅ Backend complete (scheduler, approval, API)
+- ✅ Frontend complete (ApprovalQueue, ScheduleBuilder)
+- ✅ Documentation complete (guides + checklists)
+- ⏳ Monday night: Integration (2 hours)
+- ⏳ Tuesday morning: Deploy to Vercel
+- ⏳ Tuesday+: Monitor + gather feedback
 
-#### 3. Delvrai (AI Agency - Sales Agent Launch Friday)
-- ✅ Company name locked (@delvrai)
-- ✅ Sales materials drafted
-- ⏳ Friday: Create Twitter account
-- ⏳ Saturday: Spawn sales agent
-- ⏳ Monday: Agent hunting 100+ contractors
+**Impact:** +$150-250/mo MRR when live
 
-#### 4. Mission Control Dashboard (LIVE)
+#### 3. Mission Control Dashboard (LIVE)
 - ✅ Built and running on localhost:3001
 - ✅ Shows all 3 businesses in real-time
 - ✅ Progress trackers, revenue goals, checklists
 - ✅ Data syncs from mission control files
 
-#### 5. Knowledge Extraction Agent (Ongoing)
+#### 4. Knowledge Extraction Agent (Ongoing)
 - ✅ AI Money Machines analyzed (15 ideas extracted)
 - ⏳ Zero to One reading now
 - ⏳ Feeds ideas to Trovva content pipeline
@@ -148,70 +144,29 @@
   - Location: `C:\Users\trisd\clawd\parapet\`
 - **Next steps (Week 2):** Deploy to Railway (backend) + Vercel (frontend), buy parapet.ai domain, get first 3 beta users
 
-## Future Plans / Revenue Stack
-- **Valencia Construction** — first client is #1 priority, big ticket local revenue
-- **AI Agency** — SaaS for ANY small business owner (not just contractors). Niches: real estate, auto shops, restaurants, salons, law firms, dentists, fitness, e-commerce
+## Future Plans / Revenue Stack (Tris Approved Focus)
+- **Valencia Construction** — first client is #1 priority, big ticket local revenue ($30-50K projects)
+- **PostForge** — Auto-pilot scheduler for small business marketing. Phase 2 launching next week. Target: $1K+/mo MRR
 - **Faceless YouTube** — Dr Insanity (true crime/bodycam) + Fern (dark Reddit stories). ~$65/mo to run, fully automatable
 - **X Articles** — monetized long-form content on Twitter. Repurpose book chapters + AI knowledge
-- **Amazon KDP** — AI-generated books. First book: "AI Money Machines" (manuscript in books/) — LOW PRIORITY, just an idea, not a main stream
-- **VisionBuild App** — AI remodel visualizer for contractors. Upload room photo → design variations + cost estimates. SaaS play.
-- **Other apps:** InstaBid, CrewTrack, ReviewHero, LeadSniper
+- ~~Delvrai (AI Agency)~~ — KILLED (deprioritized for Valencia + PostForge focus)
 
-## PostForge — THE Main Product (Mar 5, 2026 — Launch Imminent)
+## PostForge — THE Main Product (Mar 4, 2026)
 - **Vision:** Every small business gets their own AI marketing employee
 - **Not a tool, not a dashboard — an EMPLOYEE**
-- **Pricing:** Free ($0, 10 posts) / Growth ($19, 50 posts) / Pro ($49, 150 posts) / Business ($99, 500 posts)
-- **Status:** FULLY BUILT — All phases complete, awaiting deployment
-  - Phase 1 ✅: Web tool + content generation with approval queue
-  - Phase 2 ✅: Auto-pilot with scheduled generation
-  - Phase 3 ✅: Full persistent agent per user (Redis-backed memory)
-  - Phase 4 ✅: API key system for platform integrations
-- **Key Components Built (Mar 5):**
-  - Phase C: Social Media Auto-Posting (Twitter, Instagram, LinkedIn, Facebook OAuth)
-  - Phase D: Viral Clip Engine (upload → transcribe → analyze → cut → caption → download)
-  - Rate limiting system (tier-based, monthly reset)
-  - API key management system (complete)
-  - Competitive analysis (10 companies researched)
-  - UI redesign (premium, "alive" look with animations)
+- **Pricing:** $29/49/99/299 per month (Starter/Pro/Business/Agency)
+- **Phase 1 (NOW):** Web tool, manual content generation
+- **Phase 2 (March):** Auto-pilot with scheduled gen + approval queue
+- **Phase 3 (April):** Full persistent agent per user
+- **Phase 4:** YC application + scale
 - **Key insight from Tris:** "We change the game with their own agent"
 - **YC RFS #3 literally asks for "AI-Native Agencies"** — this is us
 - **Market:** 33M small businesses in US × $99/mo = massive TAM
-- **Live URL:** https://postforge-nu.vercel.app (deploying Mar 5)
-- **GitHub:** https://github.com/trisdior/post-forge
-- **Current stats:** 3 users (local), 0 public deployments yet, $0 MRR
-- **Pages:** Landing, Create (with repurpose mode), Calendar, Analytics, Clips, Auto-Pilot, Settings, Onboarding, API Keys
-- **Stack:** Node.js + Upstash Redis + Claude API + Vercel + Docker (processing server)
-- **Deployment Status (Mar 5, 4:46 PM):**
-  - ❌ CRITICAL: Git history being cleaned (exposed API keys to GitHub)
-  - ⏳ Waiting for 3 new API keys (Anthropic, Google, Sendinblue)
-  - ⏳ Will update Vercel env vars + redeploy
-  - ⏳ Then test production + launch
-
-## CRITICAL: GitHub Security Incident (Mar 5, 2026)
-**What happened:**
-- I committed `.env.local` with exposed API keys to GitHub (my mistake)
-- GitHub auto-detected and deactivated: Anthropic, Google, Sendinblue keys
-- Telegram bot token also exposed (Tris said it's no longer needed)
-- Currently cleaning git history (force push to remove `.env.local` permanently)
-
-**What's being done:**
-- Added `.gitignore` to prevent future commits of `.env.local`
-- Removing `.env.local` from git history completely
-- Force pushing to GitHub to clean the history
-- Requesting 3 new API keys from Tris (Anthropic, Google, Sendinblue only)
-
-**Lesson learned:**
-- NEVER commit `.env.local` to GitHub
-- ALWAYS create `.gitignore` first
-- Store secrets in platform env vars (Vercel), never in git
-- This was my failure, not Tris's — taking full responsibility
-
-**Next action (once git history is clean):**
-1. Get 3 new API keys from Tris
-2. Update Vercel environment variables
-3. Redeploy
-4. Test production at https://postforge-nu.vercel.app
-5. Launch: ProductHunt, Reddit, Twitter
+- **Live URL:** https://postforge-nu.vercel.app
+- **Admin:** /admin (password: postforge2026)
+- **Current stats:** 3 users, 11 posts generated, $0 MRR
+- **Pages:** Landing, Create (with repurpose mode), Calendar, Analytics, Clips, Auto-Pilot, Settings, Onboarding, Admin
+- **Stack:** Node.js + Upstash Redis + Claude API + Vercel
 
 ## Christopher Valencia Enterprises (CVE) — Founded Mar 4, 2026
 - **Mission:** $1M MRR startup. AI agents find problems, build solutions, sell them. 24/7.

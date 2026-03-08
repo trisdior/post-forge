@@ -19,6 +19,9 @@ Tris reviews in the morning. Nothing goes live without his approval.
 - [x] Write the viral article: "I'm 20 and Own a Construction Company" ✅ (2/16)
 - [x] Create 30 days of Facebook group posts (pre-written, dated) ✅ (2/16)
 - [x] Build automated email sequences for new leads (welcome + 3 follow-ups) ✅ (2/17)
+- [x] **Karl's Lead Processor v2** — Finish drafting pending leads in queue + improve scoring ✅ (3/7 NIGHTSHIFT)
+- [x] **Valencia Lead Nurture - Production Setup** — Deploy SMS + Messenger + Email ✅ (3/7 NIGHTSHIFT)
+- [x] **PostForge Phase 2: Auto-Pilot Scheduler** — Scheduled generation + approval workflow ✅ (3/7 NIGHTSHIFT)
 
 ### 🟡 Business Infrastructure
 - [x] Create a professional invoice template ✅ (2/19)
@@ -68,11 +71,5 @@ Tris reviews in the morning. Nothing goes live without his approval.
 - [x] Build Valencia lead nurture sequence ✅ (3/4 11PM) — SMS + messenger + email, 4-5 day consultation cycle
 - [x] Build CVE Operating Playbook ✅ (3/4 11PM) — 4-phase model, pricing, go-to-market, $108K Year 1 roadmap
 
-### 📋 NIGHTSHIFT BUILD (Mar 5-6 11PM)
-- [x] PostForge Launch Strategy (ProductHunt + Reddit + Twitter + warm outreach) ✅ (3/5 11PM)
-- [x] Valencia Lead Automation System (SMS/Email/Phone sequences + lead scoring) ✅ (3/5 11:40PM)
-- [x] CVE Sales One-Pager (contractor pitch deck, ROI breakdown) ✅ (3/5 11:50PM)
-- [x] CVE Sales Email Templates (10 ready-to-send outreach templates) ✅ (3/6 12:15AM)
-
 ## Completed
-(move items here as they're done)
+(Items moved here as they're done)

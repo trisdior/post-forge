@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PostForge — Approval Queue</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f5f5; color: #333; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+    .header { margin-bottom: 40px; }
+    .header h1 { font-size: 32px; margin-bottom: 10px; }
+    .header p { color: #666; font-size: 16px; }
+    
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; margin-bottom: 30px; }
+    .stat-card { background: white; border-radius: 8px; padding: 20px; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+    .stat-card .number { font-size: 28px; font-weight: bold; color: #0066cc; }
+    .stat-card .label { color: #666; font-size: 12px; margin-top: 5px; }
+    
+    .approval-item { background: white; border-radius: 12px; padding: 25px; margin-bottom: 25px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+    .approval-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 15px; }
+    .approval-header h3 { font-size: 18px; }
+    .approval-header .expires { color: #999; font-size: 12px; }
+    
+    .variants { margin-bottom: 20px; }
+    .variants h4 { margin-bottom: 15px; }
+    .variant { border: 2px solid #e0e0e0; border-radius: 8px; padding: 15px; margin-bottom: 10px; cursor: pointer; transition: all 0.2s; }
+    .variant:hover { background: #f9f9f9; }
+    .variant.selected { border-color: #0066cc; background: #f0f7ff; }
+    .variant-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+    .variant-score { background: #0066cc; color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 500; }
+    .variant-text { color: #333; line-height: 1.6; font-size: 14px; }
+    
+    .actions { display: flex; gap: 10px; flex-wrap: wrap; }
+    .btn { padding: 10px 16px; border: none; border-radius: 6px; font-size: 14px; font-weight: 500; cursor: pointer; }
+    .btn-primary { background: #0066cc; color: white; }
+    .btn-primary:hover { background: #0052a3; }
+    .btn-primary:disabled { background: #ccc; cursor: not-allowed; }
+    .btn-secondary { background: #f0f0f0; color: #333; }
+    .btn-secondary:hover { background: #e0e0e0; }
+    .btn-danger { background: #ff4444; color: white; }
+    .btn-danger:hover { background: #cc0000; }
+    
+    .empty-state { text-align: center; padding: 60px 20px; background: white; border-radius: 12px; }
+    .empty-state p { color: #999; margin: 10px 0; }
+    
+    .error { background: #ffe0e0; color: #cc0000; padding: 15px; border-radius: 6px; margin-bottom: 20px; }
+    .success { background: #e0f0ff; color: #0066cc; padding: 15px; border-radius: 6px; margin-bottom: 20px; }
+    
+    .loading { text-align: center; padding: 40px; color: #999; }
+    
+    .radio-label { display: flex; align-items: center; }
+    .radio-label input { margin-right: 10px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>⏳ Pending Approvals</h1>
+      <p>Review and approve your scheduled content before it posts</p>
+    </div>
+
+    <div id="messageArea"></div>
+
+    <!-- Stats -->
+    <div id="stats" class="stats" style="display: none;">
+      <div class="stat-card">
+        <div class="number" id="stat-pending">0</div>
+        <div class="label">Pending</div>
+      </div>
+      <div class="stat-card">
+        <div class="number" id="stat-approved">0</div>
+        <div class="label">Approved</div>
+      </div>
+      <div class="stat-card">
+        <div class="number" id="stat-expires">—</div>
+        <div class="label">Oldest Expires In</div>
+      </div>
+    </div>
+
+    <!-- Approvals List -->
+    <div id="approvalsList">
+      <div class="loading">Loading approvals...</div>
+    </div>
+  </div>
+
+  <script>
+    const API_BASE = '/api/phase2';
+    const token = localStorage.getItem('postforge_token');
+    const selectedVariants = {};
+
+    function showMessage(text, type = 'success') {
+      const area = document.getElementById('messageArea');
+      const className = type === 'error' ? 'error' : 'success';
+      area.innerHTML = `<div class="${className}">${text}</div>`;
+      setTimeout(() => { area.innerHTML = ''; }, 5000);
+    }
+
+    function selectVariant(approvalId, variantId) {
+      selectedVariants[approvalId] = variantId;
+      
+      // Update UI
+      document.querySelectorAll(`[data-approval="${approvalId}"] .variant`).forEach(el => {
+        el.classList.remove('selected');
+      });
+      document.querySelector(`[data-approval="${approvalId}"] [data-variant="${variantId}"]`).classList.add('selected');
+    }
+
+    async function loadApprovals() {
+      try {
+        const res = await fetch(`${API_BASE}/approvals`, {
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+        const data = await res.json();
+
+        // Show stats
+        if (data.stats) {
+          document.getElementById('stat-pending').textContent = data.stats.pending;
+          document.getElementById('stat-approved').textContent = data.stats.approved;
+          document.getElementById('stat-expires').textContent = data.stats.oldestPendingExpiresIn ? `${data.stats.oldestPendingExpiresIn}m` : '—';
+          document.getElementById('stats').style.display = 'grid';
+        }
+
+        const list = document.getElementById('approvalsList');
+
+        if (!data.approvals || data.approvals.length === 0) {
+          list.innerHTML = '<div class="empty-state"><p>✨ No pending approvals!</p><p>Scheduled posts will appear here when it\'s time to review.</p></div>';
+          return;
+        }
+
+        list.innerHTML = data.approvals.map(approval => `
+          <div class="approval-item" data-approval="${approval.id}">
+            <div class="approval-header">
+              <h3>Approval from ${new Date(approval.createdAt).toLocaleDateString()}</h3>
+              <span class="expires">Expires in: ${Math.round((approval.expiresAt - Date.now()) / 60000)}m</span>
+            </div>
+
+            <div class="variants">
+              <h4>Pick your favorite:</h4>
+              ${approval.variants.map((variant, idx) => `
+                <div class="variant ${selectedVariants[approval.id] === variant.id ? 'selected' : ''}" 
+                     data-variant="${variant.id}"
+                     onclick="selectVariant('${approval.id}', '${variant.id}')">
+                  <div class="variant-header">
+                    <label class="radio-label">
+                      <input type="radio" name="variant-${approval.id}" value="${variant.id}" 
+                             ${selectedVariants[approval.id] === variant.id ? 'checked' : ''} 
+                             onchange="selectVariant('${approval.id}', '${variant.id}')">
+                      <span></span>
+                    </label>
+                    <span class="variant-score">Score: ${variant.score ? variant.score.toFixed(1) : '8.0'}/10</span>
+                  </div>
+                  <div class="variant-text">${variant.text}</div>
+                </div>
+              `).join('')}
+            </div>
+
+            <div class="actions">
+              <button class="btn btn-primary" onclick="approveVariant('${approval.id}')" 
+                      ${selectedVariants[approval.id] ? '' : 'disabled'}>
+                ✓ Approve & Schedule
+              </button>
+              <button class="btn btn-secondary" onclick="regenerateVariants('${approval.id}')">
+                🔄 Regenerate
+              </button>
+              <button class="btn btn-danger" onclick="rejectApproval('${approval.id}')">
+                ✕ Reject
+              </button>
+            </div>
+          </div>
+        `).join('');
+      } catch (e) {
+        document.getElementById('approvalsList').innerHTML = `<div class="error">Error loading approvals: ${e.message}</div>`;
+      }
+    }
+
+    async function approveVariant(approvalId) {
+      const variantId = selectedVariants[approvalId];
+      if (!variantId) {
+        showMessage('Please select a variant', 'error');
+        return;
+      }
+
+      try {
+        const res = await fetch(`${API_BASE}/approvals/${approvalId}/approve`, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            selectedVariant: variantId,
+            autoPost: true
+          })
+        });
+
+        if (!res.ok) {
+          const err = await res.json();
+          throw new Error(err.error);
+        }
+
+        showMessage('✅ Approved and scheduled!');
+        loadApprovals();
+      } catch (e) {
+        showMessage(`Error: ${e.message}`, 'error');
+      }
+    }
+
+    async function rejectApproval(approvalId) {
+      try {
+        const res = await fetch(`${API_BASE}/approvals/${approvalId}/reject`, {
+          method: 'POST',
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+
+        if (!res.ok) {
+          const err = await res.json();
+          throw new Error(err.error);
+        }
+
+        showMessage('✅ Rejected');
+        loadApprovals();
+      } catch (e) {
+        showMessage(`Error: ${e.message}`, 'error');
+      }
+    }
+
+    async function regenerateVariants(approvalId) {
+      try {
+        const res = await fetch(`${API_BASE}/approvals/${approvalId}/regenerate`, {
+          method: 'POST',
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+
+        if (!res.ok) {
+          const err = await res.json();
+          throw new Error(err.error);
+        }
+
+        showMessage('✅ Variants regenerated!');
+        loadApprovals();
+      } catch (e) {
+        showMessage(`Error: ${e.message}`, 'error');
+      }
+    }
+
+    // Load on page load
+    loadApprovals();
+    
+    // Refresh every 30 seconds
+    setInterval(loadApprovals, 30000);
+  </script>
+</body>
+</html>

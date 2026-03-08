@@ -1,3 +1,6 @@
-2026/03/05-12:18:12.642 53f4 Reusing MANIFEST C:\Users\trisd\clawd\data\facebook-browser-profile\Default\Local Storage\leveldb/MANIFEST-000001
-2026/03/05-12:18:12.662 53f4 Recovering log #19
-2026/03/05-12:18:12.664 53f4 Reusing old log C:\Users\trisd\clawd\data\facebook-browser-profile\Default\Local Storage\leveldb/000019.log 
+2026/03/06-15:00:11.724 6284 Reusing MANIFEST C:\Users\trisd\clawd\data\facebook-browser-profile\Default\Local Storage\leveldb/MANIFEST-000001
+2026/03/06-15:00:11.731 6284 Recovering log #26
+2026/03/06-15:00:11.735 6284 Reusing old log C:\Users\trisd\clawd\data\facebook-browser-profile\Default\Local Storage\leveldb/000026.log 
+2026/03/06-15:04:22.116 6d4c Level-0 table #30: started
+2026/03/06-15:04:22.131 6d4c Level-0 table #30: 12030 bytes OK
+2026/03/06-15:04:22.147 6d4c Delete type=0 #26

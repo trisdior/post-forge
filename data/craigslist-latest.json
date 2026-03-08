@@ -1,7 +1,70 @@
 ﻿{
-    "timestamp":  "2026-03-05 20:00:21",
-    "newPostsCount":  0,
+    "timestamp":  "2026-03-07 17:17:50",
+    "newPostsCount":  8,
     "posts":  [
-
+                  {
+                      "id":  "7919788496",
+                      "title":  "HVAC Appliance and Garbage Disposal Installation/Repair Services",
+                      "url":  "https://chicago.craigslist.org/chc/hss/d/chicago-hvac-appliance-and-garbage/7919788496.html",
+                      "date":  "2026-03-07",
+                      "source":  "Craigslist",
+                      "snippet":  "HVAC Appliance and Garbage Disposal Installation/Repair Services"
+                  },
+                  {
+                      "id":  "7919715160",
+                      "title":  "🌟🟪🟨🟥🟩🌟 PAINTING SERVICE!  QUALITY + AFFORDABLE!📞",
+                      "url":  "https://chicago.craigslist.org/wcl/hss/d/palatine-painting-service-quality/7919715160.html",
+                      "date":  "2026-03-07",
+                      "source":  "Craigslist",
+                      "snippet":  "🌟🟪🟨🟥🟩🌟 PAINTING SERVICE!  QUALITY + AFFORDABLE!📞"
+                  },
+                  {
+                      "id":  "7919696742",
+                      "title":  "✳️ ⛑ 🚑 📞 DRYWALL  REPAIR, I\u0027ll fix it right \u0026 FAST!⚡️☎",
+                      "url":  "https://chicago.craigslist.org/chc/hss/d/palatine-drywall-repair-ill-fix-it/7919696742.html",
+                      "date":  "2026-03-07",
+                      "source":  "Craigslist",
+                      "snippet":  "✳️ ⛑ 🚑 📞 DRYWALL  REPAIR, I\u0027ll fix it right \u0026 FAST!⚡️☎"
+                  },
+                  {
+                      "id":  "7919693747",
+                      "title":  "HANDYMAN*PAINTER**206 696 6677** CHICAGO/ SUBURBS**",
+                      "url":  "https://chicago.craigslist.org/chc/hss/d/chicago-handymanpainter-chicago-suburbs/7919693747.html",
+                      "date":  "2026-03-07",
+                      "source":  "Craigslist",
+                      "snippet":  "HANDYMAN*PAINTER**206 696 6677** CHICAGO/ SUBURBS**"
+                  },
+                  {
+                      "id":  "7919682420",
+                      "title":  "Remodeling - Kitchen Refinishing - Artistic Design: (312)735-3453",
+                      "url":  "https://chicago.craigslist.org/chc/hss/d/flossmoor-remodeling-kitchen/7919682420.html",
+                      "date":  "2026-03-07",
+                      "source":  "Craigslist",
+                      "snippet":  "Remodeling - Kitchen Refinishing - Artistic Design: (312)735-3453"
+                  },
+                  {
+                      "id":  "7919626105",
+                      "title":  "Logan HVAC and Remodeling Services . Heating and cooling services!",
+                      "url":  "https://chicago.craigslist.org/chc/hss/d/chicago-logan-hvac-and-remodeling/7919626105.html",
+                      "date":  "2026-03-07",
+                      "source":  "Craigslist",
+                      "snippet":  "Logan HVAC and Remodeling Services . Heating and cooling services!"
+                  },
+                  {
+                      "id":  "7919580244",
+                      "title":  "HOME REMODELING - KITCHENS - BATHROOMS - PAINTING - ROOFING",
+                      "url":  "https://chicago.craigslist.org/chc/hss/d/chicago-home-remodeling-kitchens/7919580244.html",
+                      "date":  "2026-03-07",
+                      "source":  "Craigslist",
+                      "snippet":  "HOME REMODELING - KITCHENS - BATHROOMS - PAINTING - ROOFING"
+                  },
+                  {
+                      "id":  "7919572578",
+                      "title":  "Remodeling Contractor",
+                      "url":  "https://chicago.craigslist.org/chc/hss/d/remodeling-contractor/7919572578.html",
+                      "date":  "2026-03-07",
+                      "source":  "Craigslist",
+                      "snippet":  "Remodeling Contractor"
+                  }
               ]
 }

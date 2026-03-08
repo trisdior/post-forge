@@ -62,5 +62,17 @@
     "assignedTo": "karl",
     "createdAt": "2026-03-05T21:04:33.049061Z",
     "updatedAt": "2026-03-05T21:04:33.049061Z"
+  },
+  {
+    "id": "3a341eef-6ae4-4729-944b-a8d6c177c01b",
+    "source": "facebook",
+    "leadName": "Tyler Starks",
+    "postUrl": "https://www.facebook.com/groups/470730068060176/posts/1434561341677039/",
+    "score": 40,
+    "status": "new",
+    "draftReply": null,
+    "assignedTo": "karl",
+    "createdAt": "2026-03-07T23:29:01.268575Z",
+    "updatedAt": "2026-03-07T23:29:01.268575Z"
   }
 ]
