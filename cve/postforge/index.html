@@ -3,791 +3,559 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PostForge — Your AI Marketing Employee</title>
-  <meta name="description" content="Your own AI marketing employee for $99/month. It learns your business, creates content, posts across all platforms, and gets smarter every week. Replace the $4K/month marketing hire.">
-  <meta property="og:title" content="PostForge — Your AI Marketing Employee">
-  <meta property="og:description" content="Your own AI marketing employee. It learns your business, creates content, and posts everywhere. $99/month instead of $4,000.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://postforge.com">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <title>PostForge — Content Engine</title>
   <style>
-    :root {
-      --bg: #0a0a0f;
-      --surface: #12121a;
-      --card: #16161f;
-      --border: #1e1e2e;
-      --text: #f0f0f5;
-      --muted: #8888a0;
-      --accent: #7c3aed;
-      --accent2: #a855f7;
-      --accent3: #c084fc;
-      --blue: #3b82f6;
-      --cyan: #06b6d4;
-      --pink: #ec4899;
-      --green: #10b981;
-      --orange: #f59e0b;
-    }
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Inter', -apple-system, sans-serif;
+    
+    :root {
+      --primary: #0066cc;
+      --primary-light: #f0f7ff;
+      --primary-dark: #0052a3;
+      --text-primary: #111;
+      --text-secondary: #666;
+      --border: #e5e5e5;
+      --bg: #fff;
+      --bg-secondary: #fafafa;
+      --success: #22c55e;
+      --danger: #ef4444;
+      --warning: #f59e0b;
+    }
+
+    html, body { 
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      background: #f8f9fa;
+      color: var(--text-primary);
+      line-height: 1.5;
+    }
+
+    .navbar {
       background: var(--bg);
-      color: var(--text);
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
     }
 
-    /* ─── ANIMATED BACKGROUND ─── */
-    .bg-grid {
-      position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 0;
-      background-image: 
-        linear-gradient(rgba(124,58,237,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(124,58,237,0.03) 1px, transparent 1px);
-      background-size: 60px 60px;
-    }
-    .bg-glow {
-      position: fixed; top: -200px; left: 50%; transform: translateX(-50%);
-      width: 800px; height: 600px; z-index: 0;
-      background: radial-gradient(ellipse, rgba(124,58,237,0.15) 0%, rgba(168,85,247,0.05) 40%, transparent 70%);
-      animation: glowPulse 8s ease-in-out infinite;
-    }
-    .bg-glow2 {
-      position: fixed; bottom: -100px; right: -100px;
-      width: 500px; height: 500px; z-index: 0;
-      background: radial-gradient(circle, rgba(6,182,212,0.1) 0%, transparent 70%);
-      animation: glowPulse 12s ease-in-out infinite reverse;
-    }
-    @keyframes glowPulse {
-      0%, 100% { opacity: 0.6; transform: translateX(-50%) scale(1); }
-      50% { opacity: 1; transform: translateX(-50%) scale(1.1); }
+    .logo {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--primary);
+      cursor: pointer;
+      user-select: none;
     }
 
-    /* ─── FLOATING PARTICLES ─── */
-    .particles { position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 0; pointer-events: none; }
-    .particle {
-      position: absolute; border-radius: 50%; opacity: 0;
-      animation: float linear infinite;
-    }
-    @keyframes float {
-      0% { opacity: 0; transform: translateY(100vh) scale(0); }
-      10% { opacity: 1; }
-      90% { opacity: 1; }
-      100% { opacity: 0; transform: translateY(-10vh) scale(1); }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      margin-left: auto;
+      list-style: none;
     }
 
-    /* ─── NAV ─── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(10,10,15,0.8); backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(124,58,237,0.1);
-      padding: 16px 32px;
-      display: flex; align-items: center; justify-content: space-between;
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+      padding: 8px 0;
+      border-bottom: 2px solid transparent;
     }
-    .nav-logo { font-size: 22px; font-weight: 900; letter-spacing: -0.5px; }
-    .nav-logo span { background: linear-gradient(135deg, var(--accent2), var(--cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .nav-links { display: flex; align-items: center; gap: 28px; }
-    .nav-links a { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--text); }
-    .nav-cta {
-      background: linear-gradient(135deg, var(--accent), var(--accent2)) !important;
-      color: #fff !important; padding: 10px 24px !important; border-radius: 10px !important;
-      font-weight: 600 !important; transition: all 0.3s !important;
-      box-shadow: 0 0 20px rgba(124,58,237,0.3);
-    }
-    .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 0 30px rgba(124,58,237,0.5); }
 
-    /* ─── HERO ─── */
-    .hero {
-      position: relative; z-index: 1;
-      max-width: 900px; margin: 0 auto;
-      padding: 160px 24px 100px; text-align: center;
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--primary);
+      border-bottom-color: var(--primary);
     }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: linear-gradient(135deg, rgba(124,58,237,0.15), rgba(6,182,212,0.1));
-      border: 1px solid rgba(124,58,237,0.2);
-      padding: 8px 20px; border-radius: 100px;
-      font-size: 13px; font-weight: 600; color: var(--accent3);
+
+    .profile {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-left: 16px;
+      border-left: 1px solid var(--border);
+    }
+
+    .profile-pic {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--primary-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 32px 24px;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
       margin-bottom: 32px;
-      animation: fadeInUp 0.8s ease-out;
-    }
-    .hero-badge .pulse {
-      width: 8px; height: 8px; background: var(--green); border-radius: 50%;
-      box-shadow: 0 0 10px var(--green);
-      animation: pulse 2s ease-in-out infinite;
-    }
-    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeInUp2 {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    h1 {
-      font-size: clamp(42px, 6vw, 72px); font-weight: 900;
-      line-height: 1.05; letter-spacing: -3px;
-      margin-bottom: 28px;
-      animation: fadeInUp 0.8s ease-out 0.1s both;
-    }
-    .gradient-text {
-      background: linear-gradient(135deg, var(--accent2), var(--cyan), var(--accent3));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-size: 200% 200%;
-      animation: gradientShift 6s ease-in-out infinite;
-    }
-    @keyframes gradientShift {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-    }
-    .hero-sub {
-      font-size: 19px; color: var(--muted); line-height: 1.7;
-      max-width: 560px; margin: 0 auto 44px;
-      animation: fadeInUp 0.8s ease-out 0.2s both;
-    }
-    .hero-actions {
-      display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
-      animation: fadeInUp 0.8s ease-out 0.3s both;
-    }
-    .btn-glow {
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      color: #fff; padding: 16px 36px; border-radius: 12px;
-      font-size: 16px; font-weight: 700; text-decoration: none;
-      transition: all 0.3s; position: relative; overflow: hidden;
-      box-shadow: 0 0 30px rgba(124,58,237,0.4), inset 0 1px 0 rgba(255,255,255,0.1);
-    }
-    .btn-glow:hover {
-      transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 0 50px rgba(124,58,237,0.6), inset 0 1px 0 rgba(255,255,255,0.2);
-    }
-    .btn-glow::after {
-      content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
-      transform: rotate(45deg); animation: shimmer 3s ease-in-out infinite;
-    }
-    @keyframes shimmer {
-      0% { transform: translateX(-100%) rotate(45deg); }
-      100% { transform: translateX(100%) rotate(45deg); }
-    }
-    .btn-outline {
-      background: transparent; border: 1px solid var(--border);
-      color: var(--text); padding: 16px 36px; border-radius: 12px;
-      font-size: 16px; font-weight: 600; text-decoration: none;
-      transition: all 0.3s;
-    }
-    .btn-outline:hover { border-color: var(--accent); background: rgba(124,58,237,0.05); transform: translateY(-2px); }
-    .hero-note {
-      color: #52525b; font-size: 13px; margin-top: 20px;
-      animation: fadeInUp 0.8s ease-out 0.4s both;
     }
 
-    /* ─── PLATFORM ICONS ─── */
-    .platforms {
-      position: relative; z-index: 1;
-      display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;
-      padding: 0 24px 60px;
-      animation: fadeInUp 0.8s ease-out 0.5s both;
+    .header h1 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 8px;
     }
-    .platform-icon {
-      display: flex; align-items: center; gap: 8px;
-      color: var(--muted); font-size: 14px; font-weight: 500;
-      transition: all 0.3s;
-    }
-    .platform-icon:hover { color: var(--text); transform: translateY(-2px); }
-    .platform-icon svg { width: 24px; height: 24px; }
 
-    /* ─── LIVE COUNTER ─── */
-    .live-bar {
-      position: relative; z-index: 1;
-      max-width: 700px; margin: 0 auto 80px;
-      display: flex; justify-content: center; gap: 48px; flex-wrap: wrap;
-      padding: 24px 32px;
-      background: linear-gradient(135deg, rgba(124,58,237,0.08), rgba(6,182,212,0.05));
-      border: 1px solid rgba(124,58,237,0.12);
-      border-radius: 16px;
+    .header p {
+      color: var(--text-secondary);
+      font-size: 16px;
     }
-    .live-stat { text-align: center; }
-    .live-num {
-      font-size: 32px; font-weight: 900; letter-spacing: -1px;
-      background: linear-gradient(135deg, var(--text), var(--accent3));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    }
-    .live-label { font-size: 12px; color: var(--muted); margin-top: 4px; text-transform: uppercase; letter-spacing: 1px; }
 
-    /* ─── SECTIONS ─── */
-    section {
-      position: relative; z-index: 1;
-      max-width: 1100px; margin: 0 auto;
-      padding: 100px 24px;
+    .header-actions {
+      display: flex;
+      gap: 12px;
     }
-    .section-tag {
-      display: inline-block; font-size: 12px; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 2px;
-      color: var(--accent2); margin-bottom: 16px;
-    }
-    .section-title {
-      font-size: clamp(32px, 4vw, 48px); font-weight: 900;
-      letter-spacing: -2px; margin-bottom: 16px;
-    }
-    .section-sub { font-size: 17px; color: var(--muted); max-width: 600px; line-height: 1.7; margin-bottom: 60px; }
 
-    /* ─── FEATURE CARDS ─── */
-    .features-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    .btn {
+      padding: 10px 16px;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      box-shadow: 0 4px 12px rgba(0, 102, 204, 0.15);
+    }
+
+    .btn-secondary {
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+    }
+
+    .btn-secondary:hover {
+      background: #f0f0f0;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 20px;
-    }
-    .feature-card {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 16px; padding: 32px;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      position: relative; overflow: hidden;
-    }
-    .feature-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-      background: linear-gradient(90deg, transparent, var(--accent2), transparent);
-      opacity: 0; transition: opacity 0.4s;
-    }
-    .feature-card:hover {
-      border-color: rgba(124,58,237,0.3);
-      transform: translateY(-4px);
-      box-shadow: 0 20px 60px rgba(124,58,237,0.1);
-    }
-    .feature-card:hover::before { opacity: 1; }
-    .feature-icon {
-      width: 48px; height: 48px; border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 24px; margin-bottom: 20px;
-    }
-    .feature-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
-    .feature-card p { font-size: 14px; color: var(--muted); line-height: 1.7; }
-
-    /* ─── HOW IT WORKS ─── */
-    .steps { display: flex; gap: 32px; flex-wrap: wrap; justify-content: center; }
-    .step {
-      flex: 1; min-width: 250px; max-width: 320px; text-align: center;
-      padding: 40px 24px;
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 16px; transition: all 0.4s;
-      position: relative;
-    }
-    .step:hover { border-color: rgba(124,58,237,0.3); transform: translateY(-4px); }
-    .step-num {
-      width: 56px; height: 56px; border-radius: 50%; margin: 0 auto 20px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 22px; font-weight: 900;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      color: #fff;
-      box-shadow: 0 0 30px rgba(124,58,237,0.3);
-    }
-    .step h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
-    .step p { font-size: 14px; color: var(--muted); line-height: 1.6; }
-    .step-arrow {
-      display: flex; align-items: center; justify-content: center;
-      color: var(--accent2); font-size: 24px; padding-top: 40px;
+      margin-bottom: 32px;
     }
 
-    /* ─── INTEGRATIONS ─── */
-    .integrations-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    .card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      transition: all 0.2s;
+    }
+
+    .card:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      border-color: var(--primary);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      margin-bottom: 16px;
+    }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      background: var(--primary-light);
+    }
+
+    .card-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .card-meta {
+      color: var(--text-secondary);
+      font-size: 13px;
+    }
+
+    .metric {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 16px 0;
+    }
+
+    .metric-label {
+      color: var(--text-secondary);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .progress-bar {
+      height: 8px;
+      background: var(--bg-secondary);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 12px;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--primary);
+      transition: width 0.3s;
+    }
+
+    .section {
+      margin-bottom: 32px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .section h2 {
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .view-all {
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .feed {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .feed-item {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.2s;
+    }
+
+    .feed-item:hover {
+      background: var(--bg-secondary);
+    }
+
+    .feed-item:last-child {
+      border-bottom: none;
+    }
+
+    .feed-content h3 {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .feed-meta {
+      color: var(--text-secondary);
+      font-size: 13px;
+    }
+
+    .badge {
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .badge-success {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .badge-pending {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .badge-danger {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 48px 32px;
+      color: var(--text-secondary);
+    }
+
+    .empty-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+      opacity: 0.5;
+    }
+
+    .empty-state h3 {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+
+    .empty-state p {
+      font-size: 14px;
+      margin-bottom: 24px;
+    }
+
+    .stat-row {
+      display: flex;
       gap: 16px;
+      margin-top: 16px;
+      flex-wrap: wrap;
     }
-    .int-card {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 14px; padding: 24px 16px; text-align: center;
-      transition: all 0.3s; cursor: default;
-    }
-    .int-card:hover { border-color: rgba(124,58,237,0.3); transform: translateY(-3px); }
-    .int-icon { font-size: 32px; margin-bottom: 10px; }
-    .int-name { font-size: 13px; font-weight: 600; }
-    .int-status { font-size: 11px; color: var(--green); margin-top: 4px; }
-    .int-soon { font-size: 11px; color: var(--orange); margin-top: 4px; }
 
-    /* ─── PRICING ─── */
-    .pricing-grid { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
-    .price-card {
-      flex: 1; min-width: 280px; max-width: 340px;
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 20px; padding: 36px 28px;
-      transition: all 0.4s; position: relative;
+    .stat {
+      flex: 1;
+      min-width: 120px;
     }
-    .price-card.popular {
-      border-color: var(--accent);
-      background: linear-gradient(135deg, rgba(124,58,237,0.08), rgba(168,85,247,0.04));
-      box-shadow: 0 0 40px rgba(124,58,237,0.15);
-      transform: scale(1.03);
-    }
-    .price-card:hover { transform: translateY(-4px); }
-    .price-card.popular:hover { transform: scale(1.03) translateY(-4px); }
-    .popular-badge {
-      position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      color: #fff; padding: 6px 20px; border-radius: 100px;
-      font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
-    }
-    .price-name { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
-    .price-amount { font-size: 48px; font-weight: 900; letter-spacing: -2px; margin-bottom: 4px; }
-    .price-amount span { font-size: 16px; font-weight: 500; color: var(--muted); }
-    .price-desc { font-size: 14px; color: var(--muted); margin-bottom: 28px; }
-    .price-features { list-style: none; margin-bottom: 32px; }
-    .price-features li {
-      font-size: 14px; color: var(--muted); padding: 8px 0;
-      border-bottom: 1px solid rgba(30,30,46,0.5);
-      display: flex; align-items: center; gap: 10px;
-    }
-    .price-features li::before { content: '✓'; color: var(--green); font-weight: 700; }
-    .price-btn {
-      display: block; width: 100%; padding: 14px; border-radius: 12px;
-      font-size: 15px; font-weight: 600; text-align: center;
-      text-decoration: none; transition: all 0.3s; cursor: pointer;
-      font-family: inherit; border: none;
-    }
-    .price-btn-fill {
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      color: #fff;
-      box-shadow: 0 0 20px rgba(124,58,237,0.3);
-    }
-    .price-btn-fill:hover { box-shadow: 0 0 40px rgba(124,58,237,0.5); transform: translateY(-2px); }
-    .price-btn-outline {
-      background: transparent; border: 1px solid var(--border); color: var(--text);
-    }
-    .price-btn-outline:hover { border-color: var(--accent); }
 
-    /* ─── DEMO SECTION ─── */
-    .demo-box {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 20px; padding: 40px; max-width: 700px; margin: 0 auto;
-      position: relative; overflow: hidden;
+    .stat-value {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--primary);
     }
-    .demo-box::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-      background: linear-gradient(90deg, var(--accent), var(--cyan), var(--pink));
-    }
-    .demo-input-row { display: flex; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; }
-    .demo-input {
-      flex: 1; min-width: 180px; background: var(--bg); border: 1px solid var(--border);
-      border-radius: 10px; padding: 12px 16px; color: var(--text);
-      font-family: inherit; font-size: 14px; outline: none; transition: border-color 0.3s;
-    }
-    .demo-input:focus { border-color: var(--accent); }
-    .demo-input::placeholder { color: #44445a; }
-    .demo-select {
-      background: var(--bg); border: 1px solid var(--border); border-radius: 10px;
-      padding: 12px 16px; color: var(--text); font-family: inherit; font-size: 14px;
-      outline: none; min-width: 150px;
-    }
-    .demo-btn {
-      width: 100%; padding: 14px; border: none; border-radius: 12px;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      color: #fff; font-size: 15px; font-weight: 700; font-family: inherit;
-      cursor: pointer; transition: all 0.3s;
-      box-shadow: 0 0 20px rgba(124,58,237,0.3);
-    }
-    .demo-btn:hover { box-shadow: 0 0 40px rgba(124,58,237,0.5); transform: translateY(-2px); }
-    .demo-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
-    .demo-results { margin-top: 24px; }
-    .demo-post {
-      background: var(--bg); border: 1px solid var(--border); border-radius: 12px;
-      padding: 20px; margin-bottom: 12px; transition: all 0.3s;
-    }
-    .demo-post:hover { border-color: rgba(124,58,237,0.2); }
-    .demo-post-label { font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--accent2); margin-bottom: 8px; letter-spacing: 1px; }
-    .demo-post-content { font-size: 14px; line-height: 1.7; color: var(--muted); }
-    .spinner { width: 32px; height: 32px; border: 3px solid var(--border); border-top-color: var(--accent2); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 20px auto; }
-    @keyframes spin { to { transform: rotate(360deg); } }
 
-    /* ─── CTA SECTION ─── */
-    .cta-section {
-      position: relative; z-index: 1;
-      text-align: center; padding: 100px 24px;
+    .stat-label {
+      color: var(--text-secondary);
+      font-size: 12px;
+      margin-top: 4px;
     }
-    .cta-box {
-      max-width: 700px; margin: 0 auto;
-      background: linear-gradient(135deg, rgba(124,58,237,0.12), rgba(6,182,212,0.08));
-      border: 1px solid rgba(124,58,237,0.2);
-      border-radius: 24px; padding: 64px 40px;
-      position: relative; overflow: hidden;
-    }
-    .cta-box::before {
-      content: ''; position: absolute; top: -2px; left: -2px; right: -2px; bottom: -2px;
-      background: linear-gradient(135deg, var(--accent), var(--cyan), var(--accent2));
-      border-radius: 26px; z-index: -1; opacity: 0.15;
-    }
-    .cta-box h2 { font-size: 36px; font-weight: 900; letter-spacing: -1px; margin-bottom: 16px; }
-    .cta-box p { font-size: 17px; color: var(--muted); margin-bottom: 32px; }
 
-    /* ─── FOOTER ─── */
-    footer {
-      position: relative; z-index: 1;
-      border-top: 1px solid var(--border); padding: 40px 24px;
-    }
-    .footer-inner {
-      max-width: 1100px; margin: 0 auto;
-      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;
-    }
-    .footer-logo { font-size: 18px; font-weight: 800; }
-    .footer-logo span { background: linear-gradient(135deg, var(--accent2), var(--cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .footer-copy { color: #44445a; font-size: 13px; }
-    .footer-links { display: flex; gap: 24px; }
-    .footer-links a { color: var(--muted); text-decoration: none; font-size: 13px; transition: color 0.2s; }
-    .footer-links a:hover { color: var(--text); }
-
-    /* ─── RESPONSIVE ─── */
     @media (max-width: 768px) {
-      .nav-links a:not(.nav-cta) { display: none; }
-      .hero { padding: 120px 20px 60px; }
-      h1 { letter-spacing: -1.5px; }
-      .steps { flex-direction: column; align-items: center; }
-      .step-arrow { display: none; }
-      .pricing-grid { flex-direction: column; align-items: center; }
-      .price-card.popular { transform: none; }
-      .price-card.popular:hover { transform: translateY(-4px); }
-      .live-bar { gap: 24px; }
-    }
+      .header {
+        flex-direction: column;
+        gap: 16px;
+      }
 
-    /* ─── SCROLL ANIMATIONS ─── */
-    .reveal {
-      opacity: 0; transform: translateY(40px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
+      .nav-links {
+        display: none;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
     }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
   </style>
 </head>
 <body>
-
-  <!-- Animated Background -->
-  <div class="bg-grid"></div>
-  <div class="bg-glow"></div>
-  <div class="bg-glow2"></div>
-  <div class="particles" id="particles"></div>
-
-  <!-- Nav -->
-  <nav>
-    <div class="nav-logo">post<span>forge</span></div>
-    <div class="nav-links">
-      <a href="#features">Features</a>
-      <a href="#integrations">Integrations</a>
-      <a href="#pricing">Pricing</a>
-      <a href="/login">Log in</a>
-      <a href="/signup" class="nav-cta">Start Free →</a>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="logo">📝 PostForge</div>
+    <ul class="nav-links">
+      <li><a href="/" class="active">Dashboard</a></li>
+      <li><a href="/create">Create</a></li>
+      <li><a href="/schedule">Schedule</a></li>
+      <li><a href="/approvals">Approvals</a></li>
+      <li><a href="/calendar">Calendar</a></li>
+      <li><a href="/analytics">Analytics</a></li>
+    </ul>
+    <div class="profile">
+      <div class="profile-pic">👤</div>
+      <div>
+        <div style="font-size: 14px; font-weight: 600;">Account</div>
+        <div style="font-size: 12px; color: var(--text-secondary);">Settings</div>
+      </div>
     </div>
   </nav>
 
-  <!-- Hero -->
-  <div class="hero">
-    <div class="hero-badge"><div class="pulse"></div> Not a tool. An employee.</div>
-    <h1>Your <span class="gradient-text">AI marketing<br>employee</span></h1>
-    <p class="hero-sub">It learns your business. Creates content daily. Posts across every platform. Gets smarter every week. Like hiring a $4K/month marketer &#x2014; for $99.</p>
-    <div class="hero-actions">
-      <a href="/signup" class="btn-glow">Get your AI employee &#x2192;</a>
-      <a href="#demo" class="btn-outline">See it work &#x2193;</a>
-    </div>
-    <p class="hero-note">5 free posts to try &#xB7; No credit card &#xB7; Cancel anytime</p>
-  </div>
-
-  <!-- Platform Icons -->
-  <div class="platforms">
-    <div class="platform-icon">&#x1F4F8; Instagram</div>
-    <div class="platform-icon">&#x1F4D8; Facebook</div>
-    <div class="platform-icon">X Twitter/X</div>
-    <div class="platform-icon">&#x1F4BC; LinkedIn</div>
-    <div class="platform-icon">&#x1F3B5; TikTok</div>
-  </div>
-
-  <!-- Live Stats -->
-  <div class="live-bar reveal">
-    <div class="live-stat"><div class="live-num" id="stat-posts">2,847</div><div class="live-label">Posts Generated</div></div>
-    <div class="live-stat"><div class="live-num" id="stat-biz">143</div><div class="live-label">Businesses</div></div>
-    <div class="live-stat"><div class="live-num" id="stat-hours">1,200+</div><div class="live-label">Hours Saved</div></div>
-    <div class="live-stat"><div class="live-num">4.9/5</div><div class="live-label">Rating</div></div>
-  </div>
-
-  <!-- Features -->
-  <section id="features">
-    <div class="section-tag">Why an agent, not a tool</div>
-    <h2 class="section-title reveal">Tools wait for you.<br>Your agent works for you.</h2>
-    <p class="section-sub reveal">Other platforms give you buttons to click. PostForge gives you an AI employee that does the work while you run your business.</p>
-    <div class="features-grid">
-      <div class="feature-card reveal">
-        <div class="feature-icon" style="background:linear-gradient(135deg,rgba(168,85,247,0.15),rgba(168,85,247,0.05));">&#x1F9E0;</div>
-        <h3>It Learns Your Business</h3>
-        <p>Your agent remembers your services, location, voice, audience, and what content performs. Week 1 is good. Week 4 is scary good.</p>
-      </div>
-      <div class="feature-card reveal">
-        <div class="feature-icon" style="background:linear-gradient(135deg,rgba(16,185,129,0.15),rgba(16,185,129,0.05));">&#x1F4CB;</div>
-        <h3>Creates &#x2192; You Approve</h3>
-        <p>Your agent generates a week of content and sends it to you. Tap approve or reject. 2 minutes of your time. Done.</p>
-      </div>
-      <div class="feature-card reveal">
-        <div class="feature-icon" style="background:linear-gradient(135deg,rgba(6,182,212,0.15),rgba(6,182,212,0.05));">&#x1F4C8;</div>
-        <h3>Weekly Strategy Reports</h3>
-        <p>Every Monday, your agent analyzes what worked, suggests improvements, and spots trending topics in your industry.</p>
-      </div>
-      <div class="feature-card reveal">
-        <div class="feature-icon" style="background:linear-gradient(135deg,rgba(236,72,153,0.15),rgba(236,72,153,0.05));">&#x1F3AF;</div>
-        <h3>Never Repeats Itself</h3>
-        <p>Tracks every post it's created. Varies content types automatically. Tips, showcases, promos, engagement &#x2014; balanced mix always.</p>
-      </div>
-      <div class="feature-card reveal">
-        <div class="feature-icon" style="background:linear-gradient(135deg,rgba(245,158,11,0.15),rgba(245,158,11,0.05));">&#x1F4AC;</div>
-        <h3>Talk to It Like a Person</h3>
-        <p>"Create a post about our spring sale." "Stop using so many hashtags." It listens, learns, and adjusts.</p>
-      </div>
-      <div class="feature-card reveal">
-        <div class="feature-icon" style="background:linear-gradient(135deg,rgba(124,58,237,0.15),rgba(124,58,237,0.05));">&#x1F680;</div>
-        <h3>Every Platform, One Agent</h3>
-        <p>Instagram, Facebook, X, LinkedIn, TikTok &#x2014; your agent writes natively for each. Not one post copy-pasted everywhere.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- How it Works -->
-  <section id="how">
-    <div class="section-tag">How it works</div>
-    <h2 class="section-title reveal">Hire your agent in 60 seconds.</h2>
-    <p class="section-sub reveal">No tutorials. No learning curve. Your agent starts working immediately.</p>
-    <div class="steps">
-      <div class="step reveal">
-        <div class="step-num">1</div>
-        <h3>Teach it your business</h3>
-        <p>Name, services, location, voice. 60 seconds. Your agent remembers forever.</p>
-      </div>
-      <div class="step-arrow reveal">&#x2192;</div>
-      <div class="step reveal">
-        <div class="step-num">2</div>
-        <h3>Agent creates your content</h3>
-        <p>Personalized posts for every platform. It knows YOUR business, YOUR audience, YOUR city.</p>
-      </div>
-      <div class="step-arrow reveal">&#x2192;</div>
-      <div class="step reveal">
-        <div class="step-num">3</div>
-        <h3>Approve and go</h3>
-        <p>Review the queue, tap approve. Your agent posts on schedule. You get back to work.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Integrations -->
-  <section id="integrations">
-    <div class="section-tag">Integrations</div>
-    <h2 class="section-title reveal">Connect everything.</h2>
-    <p class="section-sub reveal">Post directly to your accounts. No copy-pasting.</p>
-    <div class="integrations-grid">
-      <div class="int-card reveal"><div class="int-icon">&#x1F4F8;</div><div class="int-name">Instagram</div><div class="int-status">● Connected</div></div>
-      <div class="int-card reveal"><div class="int-icon">&#x1F4D8;</div><div class="int-name">Facebook</div><div class="int-status">● Connected</div></div>
-      <div class="int-card reveal"><div class="int-icon">X</div><div class="int-name">X / Twitter</div><div class="int-status">● Connected</div></div>
-      <div class="int-card reveal"><div class="int-icon">&#x1F4BC;</div><div class="int-name">LinkedIn</div><div class="int-status">● Connected</div></div>
-      <div class="int-card reveal"><div class="int-icon">&#x1F3B5;</div><div class="int-name">TikTok</div><div class="int-soon">Coming soon</div></div>
-      <div class="int-card reveal"><div class="int-icon">&#x1F4CC;</div><div class="int-name">Pinterest</div><div class="int-soon">Coming soon</div></div>
-      <div class="int-card reveal"><div class="int-icon">&#x1F4CA;</div><div class="int-name">Google Business</div><div class="int-soon">Coming soon</div></div>
-      <div class="int-card reveal"><div class="int-icon">&#x1F5D3;</div><div class="int-name">Google Calendar</div><div class="int-soon">Coming soon</div></div>
-    </div>
-  </section>
-
-  <!-- Live Demo -->
-  <section id="demo">
-    <div class="section-tag">Live Demo</div>
-    <h2 class="section-title reveal">Try it right now.</h2>
-    <p class="section-sub reveal">No signup needed. See real AI-generated content for your business.</p>
-    <div class="demo-box reveal">
-      <div class="demo-input-row">
-        <input class="demo-input" id="demo-biz" placeholder="Your business name" value="">
-        <input class="demo-input" id="demo-type" placeholder="What you do (e.g. plumbing, hair salon)">
-      </div>
-      <div class="demo-input-row">
-        <input class="demo-input" id="demo-location" placeholder="City (e.g. Chicago)">
-        <select class="demo-select" id="demo-platform">
-          <option value="instagram">Instagram</option>
-          <option value="facebook">Facebook</option>
-          <option value="twitter">X (Twitter)</option>
-          <option value="linkedin">LinkedIn</option>
-          <option value="tiktok">TikTok</option>
-        </select>
-      </div>
-      <button class="demo-btn" id="demo-btn" onclick="runDemo()">Generate 3 posts with AI &#x2728;</button>
-      <div class="demo-results" id="demo-results"></div>
-    </div>
-  </section>
-
-  <!-- Pricing -->
-  <section id="pricing">
-    <div class="section-tag">Pricing</div>
-    <h2 class="section-title reveal">A marketing hire costs $4,000/mo.<br>Your agent costs $19.</h2>
-    <p class="section-sub reveal">Start free. Upgrade when your agent proves itself. Every plan is profitable for us &#x2014; no catches.</p>
-    <div class="pricing-grid">
-      <div class="price-card reveal">
-        <div class="price-name">Free</div>
-        <div class="price-amount">$0<span>/mo</span></div>
-        <div class="price-desc">See what your agent can do</div>
-        <ul class="price-features">
-          <li>10 AI posts per month</li>
-          <li>1 platform</li>
-          <li>Agent learns your business</li>
-          <li>Content queue</li>
-          <li>Copy + export</li>
-        </ul>
-        <a href="/signup" class="price-btn price-btn-outline">Start free</a>
-      </div>
-      <div class="price-card popular reveal">
-        <div class="popular-badge">Founding Member &#x2014; limited spots</div>
-        <div class="price-name">Growth</div>
-        <div class="price-amount">$19<span>/mo</span></div>
-        <div class="price-desc">Your AI marketing employee</div>
-        <ul class="price-features">
-          <li>50 posts per month</li>
-          <li>All 5 platforms</li>
-          <li>Full agent memory + learning</li>
-          <li>Content queue + approval</li>
-          <li>Weekly strategy reports</li>
-          <li>Content repurposing</li>
-          <li>Chat with your agent</li>
-          <li>Analytics dashboard</li>
-        </ul>
-        <a href="/signup" class="price-btn price-btn-fill">Hire Your Agent &#x2192;</a>
-      </div>
-      <div class="price-card reveal">
-        <div class="price-name">Pro</div>
-        <div class="price-amount">$49<span>/mo</span></div>
-        <div class="price-desc">For power users and growing teams</div>
-        <ul class="price-features">
-          <li>150 posts per month</li>
-          <li>All platforms + auto-pilot</li>
-          <li>Advanced agent intelligence</li>
-          <li>Competitor monitoring</li>
-          <li>Trend detection</li>
-          <li>Priority AI (faster + smarter)</li>
-          <li>Analytics + performance insights</li>
-          <li>Priority support</li>
-        </ul>
-        <a href="/signup" class="price-btn price-btn-outline">Start Pro</a>
-      </div>
-    </div>
-    <p style="text-align:center;color:var(--muted);font-size:13px;margin-top:20px;position:relative;z-index:1">Need more? <strong>Business ($99/mo)</strong> &#x2014; 500 posts, multi-brand, API access, white-label. <a href="/signup" style="color:var(--accent2)">Contact us</a></p>
-  </section>
-
-  <!-- CTA -->
-  <div class="cta-section">
-    <div class="cta-box reveal">
-      <h2>Your competitors are posting daily.<br>You should be too.</h2>
-      <p>Your AI marketing employee is ready to start. Teach it your business in 60 seconds and never write another post yourself.</p>
-      <a href="/signup" class="btn-glow">Get your AI employee &#x2192;</a>
-    </div>
-  </div>
-
-  <!-- Footer -->
-  <footer>
-    <div class="footer-inner">
+  <!-- Main Content -->
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
       <div>
-        <div class="footer-logo">post<span>forge</span></div>
-        <p class="footer-copy">© 2026 Christopher Valencia Enterprises</p>
+        <h1>Welcome Back</h1>
+        <p>Here's what's happening with your content</p>
       </div>
-      <div class="footer-links">
-        <a href="/terms">Terms</a>
-        <a href="/privacy">Privacy</a>
-        <a href="mailto:support@postforge.com">Contact</a>
+      <div class="header-actions">
+        <button class="btn btn-secondary">📊 Export</button>
+        <button class="btn btn-primary">+ New Post</button>
       </div>
     </div>
-  </footer>
+
+    <!-- Stats Grid -->
+    <div class="grid">
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">Total Posts</div>
+            <div class="card-meta">This month</div>
+          </div>
+          <div class="card-icon">📊</div>
+        </div>
+        <div class="metric" id="total-posts">12</div>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: 60%"></div>
+        </div>
+        <div style="color: var(--text-secondary); font-size: 12px; margin-top: 12px;">
+          4 more to reach your goal
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">Scheduled</div>
+            <div class="card-meta">Posts queued</div>
+          </div>
+          <div class="card-icon">📅</div>
+        </div>
+        <div class="metric" id="scheduled">7</div>
+        <div style="display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap;">
+          <span class="badge badge-success">3 Today</span>
+          <span class="badge badge-pending">4 Later</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">Engagement</div>
+            <div class="card-meta">Total this week</div>
+          </div>
+          <div class="card-icon">❤️</div>
+        </div>
+        <div class="metric" id="engagement">342</div>
+        <div style="color: var(--success); font-size: 12px; margin-top: 12px;">
+          +12% from last week
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Stats -->
+    <div class="section">
+      <div class="card">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 24px;">
+          <div class="stat">
+            <div class="stat-value">1,234</div>
+            <div class="stat-label">Impressions</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">89</div>
+            <div class="stat-label">Clicks</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">7.2%</div>
+            <div class="stat-label">Engagement Rate</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">342</div>
+            <div class="stat-label">Followers</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent Posts -->
+    <div class="section">
+      <div class="section-header">
+        <h2>Recent Posts</h2>
+        <a href="/calendar" class="view-all">View all →</a>
+      </div>
+      <div class="feed">
+        <div class="feed-item">
+          <div class="feed-content">
+            <h3>"10 Ways to Scale Your SaaS in 2026"</h3>
+            <div class="feed-meta">Posted 2 hours ago • Twitter + LinkedIn</div>
+          </div>
+          <span class="badge badge-success">Published</span>
+        </div>
+        <div class="feed-item">
+          <div class="feed-content">
+            <h3>"What I Learned Building 3 Products"</h3>
+            <div class="feed-meta">Scheduled for today • 3:00 PM</div>
+          </div>
+          <span class="badge badge-pending">Scheduled</span>
+        </div>
+        <div class="feed-item">
+          <div class="feed-content">
+            <h3>Waiting for approval: "AI Trends Report"</h3>
+            <div class="feed-meta">Created 4 hours ago • 3 variants</div>
+          </div>
+          <span class="badge badge-pending">Pending</span>
+        </div>
+        <div class="feed-item">
+          <div class="feed-content">
+            <h3>"Why Your Cold Emails Are Failing"</h3>
+            <div class="feed-meta">Published yesterday • Twitter, LinkedIn, Facebook</div>
+          </div>
+          <span class="badge badge-success">Published</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="section">
+      <div class="section-header">
+        <h2>Quick Actions</h2>
+      </div>
+      <div class="grid">
+        <div class="card" style="cursor: pointer;">
+          <div style="text-align: center; padding: 20px;">
+            <div style="font-size: 32px; margin-bottom: 12px;">✍️</div>
+            <div class="card-title">Create Post</div>
+            <div class="card-meta">Generate new content now</div>
+          </div>
+        </div>
+        <div class="card" style="cursor: pointer;">
+          <div style="text-align: center; padding: 20px;">
+            <div style="font-size: 32px; margin-bottom: 12px;">📅</div>
+            <div class="card-title">Schedule</div>
+            <div class="card-meta">Set up recurring posts</div>
+          </div>
+        </div>
+        <div class="card" style="cursor: pointer;">
+          <div style="text-align: center; padding: 20px;">
+            <div style="font-size: 32px; margin-bottom: 12px;">⏳</div>
+            <div class="card-title">Review Queue</div>
+            <div class="card-meta">Approve pending posts</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script>
-    // ─── Particles ───
-    (function() {
-      var container = document.getElementById('particles');
-      var colors = ['#7c3aed', '#a855f7', '#06b6d4', '#3b82f6', '#ec4899'];
-      for (var i = 0; i < 30; i++) {
-        var p = document.createElement('div');
-        p.className = 'particle';
-        var size = Math.random() * 4 + 2;
-        p.style.width = size + 'px';
-        p.style.height = size + 'px';
-        p.style.left = Math.random() * 100 + '%';
-        p.style.background = colors[Math.floor(Math.random() * colors.length)];
-        p.style.animationDuration = (Math.random() * 15 + 10) + 's';
-        p.style.animationDelay = (Math.random() * 10) + 's';
-        container.appendChild(p);
-      }
-    })();
-
-    // ─── Scroll Reveal ───
-    var reveals = document.querySelectorAll('.reveal');
-    var observer = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1 });
-    reveals.forEach(function(el) { observer.observe(el); });
-
-    // ─── Counter Animation ───
-    function animateCounter(el, target) {
-      var current = 0;
-      var step = Math.ceil(target / 60);
-      var timer = setInterval(function() {
-        current += step;
-        if (current >= target) { current = target; clearInterval(timer); }
-        el.textContent = current.toLocaleString();
-      }, 25);
-    }
-    var statsObserver = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          animateCounter(document.getElementById('stat-posts'), 2847);
-          animateCounter(document.getElementById('stat-biz'), 143);
-          statsObserver.disconnect();
-        }
-      });
-    });
-    statsObserver.observe(document.querySelector('.live-bar'));
-
-    // ─── Demo ───
-    async function runDemo() {
-      var btn = document.getElementById('demo-btn');
-      var results = document.getElementById('demo-results');
-      btn.disabled = true;
-      btn.textContent = 'AI is writing...';
-      results.innerHTML = '<div style="text-align:center;padding:20px;"><div class="spinner"></div><p style="color:var(--muted);font-size:14px;">Generating posts... ~10 seconds</p></div>';
-
-      try {
-        var controller = new AbortController();
-        setTimeout(function() { controller.abort(); }, 55000);
-        var res = await fetch('/api/demo', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          signal: controller.signal,
-          body: JSON.stringify({
-            businessName: document.getElementById('demo-biz').value || 'My Business',
-            businessType: document.getElementById('demo-type').value || 'home services',
-            location: document.getElementById('demo-location').value || 'Chicago',
-            platform: document.getElementById('demo-platform').value,
-            count: 3,
-            brandVoice: 'professional but friendly'
-          })
-        });
-        var data = await res.json();
-        if (data.success && data.posts) {
-          var html = '';
-          data.posts.forEach(function(post) {
-            html += '<div class="demo-post">';
-            html += '<div class="demo-post-label">' + (post.type || 'Post') + ' · ' + (post.best_time || '') + '</div>';
-            html += '<div class="demo-post-content">' + (post.content || '').replace(/\n/g, '<br>') + '</div>';
-            if (post.image_suggestion) {
-              html += '<div style="margin-top:10px;padding:8px 12px;background:rgba(124,58,237,0.06);border-radius:8px;font-size:12px;color:#a78bfa;">&#x1F4F7; ' + post.image_suggestion + '</div>';
-            }
-            html += '</div>';
-          });
-          results.innerHTML = html;
-        } else {
-          results.innerHTML = '<div class="demo-post"><div class="demo-post-content" style="color:#ef4444;">' + (data.error || 'Error generating posts') + '</div></div>';
-        }
-      } catch(e) {
-        results.innerHTML = '<div class="demo-post"><div class="demo-post-content" style="color:#ef4444;">Request timed out. Try again.</div></div>';
-      }
-      btn.textContent = 'Generate 3 posts with AI &#x2728;';
-      btn.disabled = false;
-    }
+    // Simulate real data
+    document.getElementById('total-posts').textContent = Math.floor(Math.random() * 20) + 10;
+    document.getElementById('scheduled').textContent = Math.floor(Math.random() * 10) + 5;
+    document.getElementById('engagement').textContent = Math.floor(Math.random() * 500) + 200;
   </script>
-
 </body>
 </html>
